@@ -1,0 +1,11 @@
+# This is comment line (09/05/2014)
+#/TODO - ignore only TODO file in the root of the directory
+#TODO
+#build/ # ignore all files in the directory build/
+#doc/*.txt # ignore any txt files in doc dir -- example: doc/notes.txt
+
+
+
+#--------------------- configuration section -------------------------------------------#
+
+*.bak # ignore all files with ".bak" extension
