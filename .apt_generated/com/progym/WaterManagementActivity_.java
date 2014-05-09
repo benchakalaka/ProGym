@@ -10,18 +10,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ImageView;
 import com.progym.R.id;
 import com.progym.R.layout;
 import org.androidannotations.api.view.HasViews;
 import org.androidannotations.api.view.OnViewChangedListener;
 import org.androidannotations.api.view.OnViewChangedNotifier;
 
-public final class StartActivity_
-    extends StartActivity
+public final class WaterManagementActivity_
+    extends WaterManagementActivity
     implements HasViews, OnViewChangedListener
 {
 
@@ -33,7 +32,7 @@ public final class StartActivity_
         init_(savedInstanceState);
         super.onCreate(savedInstanceState);
         OnViewChangedNotifier.replaceNotifier(previousNotifier);
-        setContentView(layout.start_activity);
+        setContentView(layout.water_management_activity);
     }
 
     private void init_(Bundle savedInstanceState) {
@@ -58,38 +57,52 @@ public final class StartActivity_
         onViewChangedNotifier_.notifyViewChanged(this);
     }
 
-    public static StartActivity_.IntentBuilder_ intent(Context context) {
-        return new StartActivity_.IntentBuilder_(context);
+    public static WaterManagementActivity_.IntentBuilder_ intent(Context context) {
+        return new WaterManagementActivity_.IntentBuilder_(context);
     }
 
-    public static StartActivity_.IntentBuilder_ intent(android.app.Fragment fragment) {
-        return new StartActivity_.IntentBuilder_(fragment);
+    public static WaterManagementActivity_.IntentBuilder_ intent(android.app.Fragment fragment) {
+        return new WaterManagementActivity_.IntentBuilder_(fragment);
     }
 
-    public static StartActivity_.IntentBuilder_ intent(android.support.v4.app.Fragment supportFragment) {
-        return new StartActivity_.IntentBuilder_(supportFragment);
+    public static WaterManagementActivity_.IntentBuilder_ intent(android.support.v4.app.Fragment supportFragment) {
+        return new WaterManagementActivity_.IntentBuilder_(supportFragment);
     }
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        twTest = ((TextView) hasViews.findViewById(id.twTest));
-        btnWater = ((Button) hasViews.findViewById(id.btnWater));
+        ivBottl = ((ImageView) hasViews.findViewById(id.ivBottl));
+        ivBottl2 = ((ImageView) hasViews.findViewById(id.ivBottl2));
         {
-            View view = hasViews.findViewById(id.btnWater);
+            View view = hasViews.findViewById(id.ivBottl);
             if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
+                view.setOnLongClickListener(new OnLongClickListener() {
 
 
                     @Override
-                    public void onClick(View view) {
-                        StartActivity_.this.btnWater();
+                    public boolean onLongClick(View view) {
+                        return WaterManagementActivity_.this.ivBottl(view);
                     }
 
                 }
                 );
             }
         }
-        afterViews();
+        {
+            View view = hasViews.findViewById(id.ivBottl2);
+            if (view!= null) {
+                view.setOnLongClickListener(new OnLongClickListener() {
+
+
+                    @Override
+                    public boolean onLongClick(View view) {
+                        return WaterManagementActivity_.this.ivBottl2(view);
+                    }
+
+                }
+                );
+            }
+        }
     }
 
     public static class IntentBuilder_ {
@@ -101,26 +114,26 @@ public final class StartActivity_
 
         public IntentBuilder_(Context context) {
             context_ = context;
-            intent_ = new Intent(context, StartActivity_.class);
+            intent_ = new Intent(context, WaterManagementActivity_.class);
         }
 
         public IntentBuilder_(android.app.Fragment fragment) {
             fragment_ = fragment;
             context_ = fragment.getActivity();
-            intent_ = new Intent(context_, StartActivity_.class);
+            intent_ = new Intent(context_, WaterManagementActivity_.class);
         }
 
         public IntentBuilder_(android.support.v4.app.Fragment fragment) {
             fragmentSupport_ = fragment;
             context_ = fragment.getActivity();
-            intent_ = new Intent(context_, StartActivity_.class);
+            intent_ = new Intent(context_, WaterManagementActivity_.class);
         }
 
         public Intent get() {
             return intent_;
         }
 
-        public StartActivity_.IntentBuilder_ flags(int flags) {
+        public WaterManagementActivity_.IntentBuilder_ flags(int flags) {
             intent_.setFlags(flags);
             return this;
         }

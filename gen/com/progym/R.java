@@ -22,15 +22,29 @@ public final class R {
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
+        public static final int background_round_border=0x7f020000;
+        public static final int background_round_border_green=0x7f020001;
+        public static final int body=0x7f020002;
+        public static final int bottle=0x7f020003;
+        public static final int bottle2=0x7f020004;
+        public static final int glass=0x7f020005;
+        public static final int ic_launcher=0x7f020006;
     }
     public static final class id {
-        public static final int action_settings=0x7f080002;
+        public static final int action_settings=0x7f080009;
+        public static final int btnWater=0x7f080002;
+        public static final int horizontalScrollView1=0x7f080006;
+        public static final int imageView1=0x7f080005;
+        public static final int ivBottl=0x7f080007;
+        public static final int ivBottl2=0x7f080008;
         public static final int rl_start_root=0x7f080000;
+        public static final int textView1=0x7f080004;
         public static final int twTest=0x7f080001;
+        public static final int water_managment_root_relative_layout=0x7f080003;
     }
     public static final class layout {
         public static final int start_activity=0x7f030000;
+        public static final int water_management_activity=0x7f030001;
     }
     public static final class menu {
         public static final int start=0x7f070000;
