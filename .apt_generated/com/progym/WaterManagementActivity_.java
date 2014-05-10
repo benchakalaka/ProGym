@@ -10,9 +10,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.progym.R.id;
 import com.progym.R.layout;
 import org.androidannotations.api.view.HasViews;
@@ -71,17 +74,23 @@ public final class WaterManagementActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        ivBottl = ((ImageView) hasViews.findViewById(id.ivBottl));
-        ivBottl2 = ((ImageView) hasViews.findViewById(id.ivBottl2));
+        llRightPanelBody = ((LinearLayout) hasViews.findViewById(id.llRightPanelBody));
+        twPercentWatterCompletted = ((TextView) hasViews.findViewById(id.twPercentWatterCompletted));
+        ivBottle500ML = ((ImageView) hasViews.findViewById(id.ivBottle500ML));
+        ivBottle2L = ((ImageView) hasViews.findViewById(id.ivBottle2L));
+        ivBottle1L = ((ImageView) hasViews.findViewById(id.ivBottle1L));
+        ivGlass250ML = ((ImageView) hasViews.findViewById(id.ivGlass250ML));
+        llAlreadyConsumedWaterList = ((LinearLayout) hasViews.findViewById(id.llAlreadyConsumedWaterList));
+        ivCustomWaterVolume = ((ImageView) hasViews.findViewById(id.ivCustomWaterVolume));
         {
-            View view = hasViews.findViewById(id.ivBottl);
+            View view = hasViews.findViewById(id.ivBottle2L);
             if (view!= null) {
-                view.setOnLongClickListener(new OnLongClickListener() {
+                view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
-                    public boolean onLongClick(View view) {
-                        return WaterManagementActivity_.this.ivBottl(view);
+                    public void onClick(View view) {
+                        WaterManagementActivity_.this.ivBottle2L();
                     }
 
                 }
@@ -89,20 +98,141 @@ public final class WaterManagementActivity_
             }
         }
         {
-            View view = hasViews.findViewById(id.ivBottl2);
+            View view = hasViews.findViewById(id.ivBottle1L);
             if (view!= null) {
-                view.setOnLongClickListener(new OnLongClickListener() {
+                view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
-                    public boolean onLongClick(View view) {
-                        return WaterManagementActivity_.this.ivBottl2(view);
+                    public void onClick(View view) {
+                        WaterManagementActivity_.this.ivBottle1L();
                     }
 
                 }
                 );
             }
         }
+        {
+            View view = hasViews.findViewById(id.ivBottle500ML);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        WaterManagementActivity_.this.ivBottle500ML();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ivGlass250ML);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        WaterManagementActivity_.this.ivGlass250ML();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ivCustomWaterVolume);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        WaterManagementActivity_.this.ivCustomWaterVolume();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ivGlass250ML);
+            if (view!= null) {
+                view.setOnLongClickListener(new OnLongClickListener() {
+
+
+                    @Override
+                    public boolean onLongClick(View view) {
+                        return WaterManagementActivity_.this.ivGlass250ML(view);
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ivBottle500ML);
+            if (view!= null) {
+                view.setOnLongClickListener(new OnLongClickListener() {
+
+
+                    @Override
+                    public boolean onLongClick(View view) {
+                        return WaterManagementActivity_.this.ivBottle500ML(view);
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ivBottle2L);
+            if (view!= null) {
+                view.setOnLongClickListener(new OnLongClickListener() {
+
+
+                    @Override
+                    public boolean onLongClick(View view) {
+                        return WaterManagementActivity_.this.ivBottle2L(view);
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ivBottle1L);
+            if (view!= null) {
+                view.setOnLongClickListener(new OnLongClickListener() {
+
+
+                    @Override
+                    public boolean onLongClick(View view) {
+                        return WaterManagementActivity_.this.ivBottle1L(view);
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ivCustomWaterVolume);
+            if (view!= null) {
+                view.setOnLongClickListener(new OnLongClickListener() {
+
+
+                    @Override
+                    public boolean onLongClick(View view) {
+                        return WaterManagementActivity_.this.ivCustomWaterVolume(view);
+                    }
+
+                }
+                );
+            }
+        }
+        afterViews();
     }
 
     public static class IntentBuilder_ {
