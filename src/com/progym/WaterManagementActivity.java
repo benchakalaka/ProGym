@@ -1,18 +1,18 @@
 package com.progym;
 
+import java.util.List;
+
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.LongClick;
 import org.androidannotations.annotations.ViewById;
 
-import com.progym.model.User;
-import com.progym.utils.GlobalConstants;
-
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.media.MediaPlayer;
+import android.util.Log;
 import android.view.DragEvent;
 import android.view.View;
 import android.view.View.DragShadowBuilder;
@@ -20,9 +20,14 @@ import android.view.View.OnDragListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.RelativeLayout.LayoutParams;
+
+import com.progym.model.User;
+import com.progym.model.WaterConsumed;
+import com.progym.utils.GlobalConstants;
+import com.progym.utils.Utils;
 
 @EActivity ( R.layout.water_management_activity )
 public class WaterManagementActivity extends Activity {
@@ -33,11 +38,12 @@ public class WaterManagementActivity extends Activity {
 	@ViewById ImageView		ivCustomWaterVolume;
 	@ViewById LinearLayout	llAlreadyConsumedWaterList;
 	@ViewById LinearLayout	llRightPanelBody;
-	@ViewById TextView		twPercentWatterCompletted; 
+	@ViewById TextView		twPercentWatterCompletted;
 
 	private MediaPlayer		mediaPlayer;
 
 	@Override protected void onDestroy() {
+		super.onDestroy();
 		if ( mediaPlayer != null ) {
 			mediaPlayer.stop();
 			mediaPlayer.release();
@@ -54,39 +60,57 @@ public class WaterManagementActivity extends Activity {
 		ivBottle1L.setTag(GlobalConstants.WATER_VOLUMES.BOTTLE_1L);
 		ivBottle2L.setTag(GlobalConstants.WATER_VOLUMES.BOTTLE_2L);
 		// ivCustomWaterVolume.setTag(GlobalConstants.WATER_VOLUMES.);
+		
+		List <WaterConsumed> list = WaterConsumed.listAll(WaterConsumed.class);
+		
+		for (WaterConsumed w : list){
+			LayoutParams params = new RelativeLayout.LayoutParams(60, 60);
+			ImageView iv = new ImageView(getApplicationContext());
+			iv.setBackgroundResource( Utils.getImageIdByVolume(Integer.valueOf(w.volumeConsumed)) );
+			iv.setLayoutParams(params);
+			
+			llAlreadyConsumedWaterList.addView(iv);
+			
+			Log.d(GlobalConstants.TAG,w.user.name + " drink ("+w.volumeConsumed+" ml) "/*+w.date.toGMTString()*/);
+		}
+		
 
 		llRightPanelBody.setOnDragListener(new OnDragListener() {
 
 			@Override public boolean onDrag(View v, final DragEvent event) {
 				switch (event.getAction()) {
 					case DragEvent.ACTION_DROP:
-						if ( null != mediaPlayer ) mediaPlayer.start();
+						if ( null != mediaPlayer ){
+							mediaPlayer.start();
+						}
 						final String tag = event.getClipData().getDescription().getLabel().toString();
 
 						LayoutParams params = new RelativeLayout.LayoutParams(60, 60);
 						ImageView iv = new ImageView(getApplicationContext());
-						if ( tag.equals(GlobalConstants.WATER_VOLUMES.GLASS_250ML) ) {
-							iv.setBackgroundResource(R.drawable.glass);
-						}
-
-						if ( tag.equals(GlobalConstants.WATER_VOLUMES.BOTTLE_500ML) ) {
-							iv.setBackgroundResource(R.drawable.bottle);
-						}
-
-						if ( tag.equals(GlobalConstants.WATER_VOLUMES.BOTTLE_1L) ) {
-							iv.setBackgroundResource(R.drawable.bottle2);
-						}
-
-						if ( tag.equals(GlobalConstants.WATER_VOLUMES.BOTTLE_2L) ) {
-							iv.setBackgroundResource(R.drawable.body);
-						}
-
+						iv.setBackgroundResource( Utils.getImageIdByTag(tag) );
 						iv.setLayoutParams(params);
+						
 						llAlreadyConsumedWaterList.addView(iv);
 						
-						User u = User.findById(User.class, Long.valueOf(1));
-						double needToDrink = (u.weight / 30);
-						twPercentWatterCompletted.setText(String.valueOf((needToDrink * 1000 ) / 250));
+						User u = User.find(User.class, "name = ?", "Eleonora Kosheleva").get(0);
+						WaterConsumed waterToLog = new WaterConsumed(getApplicationContext());
+						waterToLog.user = u;
+						waterToLog.volumeConsumed = Utils.getVolumeByTag(tag);
+						waterToLog.date = new java.sql.Date(System.currentTimeMillis());
+						waterToLog.save();
+						
+						List <WaterConsumed> list = WaterConsumed.listAll(WaterConsumed.class);
+						
+						double alreadyDrinked = 0;
+						
+						for (WaterConsumed w : list){
+							Log.d(GlobalConstants.TAG,w.user.name + " drink ("+w.volumeConsumed+" ml) "/*+w.date.toGMTString()*/);
+							alreadyDrinked +=w.volumeConsumed;
+						}
+						
+						// in ml
+						double shouldDring = (u.weight / 30)*1000;
+						twPercentWatterCompletted.setText(String.valueOf((shouldDring - alreadyDrinked<0) ? "0 ml " : (int)(shouldDring - alreadyDrinked)) + "ml left");
 						
 						break;
 				}
@@ -95,49 +119,37 @@ public class WaterManagementActivity extends Activity {
 		});
 
 	}
-
-	@LongClick boolean ivGlass250ML(View v) {
+	
+	private void dragView (View v){
 		String tag = v.getTag().toString();
 		String[] mimeTypes = { ClipDescription.MIMETYPE_TEXT_PLAIN };
 		ClipData dragData = new ClipData(tag, mimeTypes, new ClipData.Item(tag));
 		View.DragShadowBuilder shadow = new DragShadowBuilder((ImageView) v);
 		v.startDrag(dragData, shadow, null, 0);
+	}
+
+	@LongClick boolean ivGlass250ML(View v) {
+		dragView(v);
 		return true;
 	}
 
 	@LongClick boolean ivBottle500ML(View v) {
-		String tag = v.getTag().toString();
-		String[] mimeTypes = { ClipDescription.MIMETYPE_TEXT_PLAIN };
-		ClipData dragData = new ClipData(tag, mimeTypes, new ClipData.Item(tag));
-		View.DragShadowBuilder shadow = new DragShadowBuilder((ImageView) v);
-		v.startDrag(dragData, shadow, null, 0);
+		dragView(v);
 		return true;
 	}
 
 	@LongClick boolean ivBottle1L(View v) {
-		String tag = v.getTag().toString();
-		String[] mimeTypes = { ClipDescription.MIMETYPE_TEXT_PLAIN };
-		ClipData dragData = new ClipData(tag, mimeTypes, new ClipData.Item(tag));
-		View.DragShadowBuilder shadow = new DragShadowBuilder((ImageView) v);
-		v.startDrag(dragData, shadow, null, 0);
+		dragView(v);
 		return true;
 	}
 
 	@LongClick boolean ivBottle2L(View v) {
-		String tag = v.getTag().toString();
-		String[] mimeTypes = { ClipDescription.MIMETYPE_TEXT_PLAIN };
-		ClipData dragData = new ClipData(tag, mimeTypes, new ClipData.Item(tag));
-		View.DragShadowBuilder shadow = new DragShadowBuilder((ImageView) v);
-		v.startDrag(dragData, shadow, null, 0);
+		dragView(v);
 		return true;
 	}
 
 	@LongClick boolean ivCustomWaterVolume(View v) {
-		String tag = v.getTag().toString();
-		String[] mimeTypes = { ClipDescription.MIMETYPE_TEXT_PLAIN };
-		ClipData dragData = new ClipData(tag, mimeTypes, new ClipData.Item(tag));
-		View.DragShadowBuilder shadow = new DragShadowBuilder((ImageView) v);
-		v.startDrag(dragData, shadow, null, 0);
+		//dragView(v);
 		return true;
 	}
 

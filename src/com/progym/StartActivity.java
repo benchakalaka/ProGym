@@ -1,17 +1,12 @@
 package com.progym;
 
-import java.util.List;
-
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
-import com.progym.model.User;
-
 import android.app.Activity;
 import android.content.Intent;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
@@ -29,22 +24,16 @@ import android.widget.TextView;
      @ViewById Button btnWater;
 
      @AfterViews void afterViews() {
+          
+      //    List <User> users = User.find(User.class, "name = ?", "Eleonora Kosheleva");
           twTest.setText("Test successful");
-          User u = new User(getApplicationContext());
-          u.age = 23;
-          u.gender = "M";
-          u.height = 177;
-          u.name = "Igor Karpachev";
-          u.weight = 85;
-          u.bodyType = 0;
-          u.save();
           
-          List<User> users = User.listAll(User.class);
-          
-          for (User single: users){
-          	Log.d("TAG", single.name);
-          }
      }
+     
+     @Click void btnUserProfile () {
+     	startActivity(new Intent(StartActivity.this, UserProfileActivity_.class));
+     }
+     
      
      @Click void btnWater () {
      	startActivity(new Intent(StartActivity.this, WaterManagementActivity_.class));

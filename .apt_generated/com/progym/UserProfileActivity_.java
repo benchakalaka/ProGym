@@ -13,15 +13,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.EditText;
 import com.progym.R.id;
 import com.progym.R.layout;
 import org.androidannotations.api.view.HasViews;
 import org.androidannotations.api.view.OnViewChangedListener;
 import org.androidannotations.api.view.OnViewChangedNotifier;
 
-public final class StartActivity_
-    extends StartActivity
+public final class UserProfileActivity_
+    extends UserProfileActivity
     implements HasViews, OnViewChangedListener
 {
 
@@ -33,7 +33,7 @@ public final class StartActivity_
         init_(savedInstanceState);
         super.onCreate(savedInstanceState);
         OnViewChangedNotifier.replaceNotifier(previousNotifier);
-        setContentView(layout.start_activity);
+        setContentView(layout.user_profile_activity);
     }
 
     private void init_(Bundle savedInstanceState) {
@@ -58,31 +58,36 @@ public final class StartActivity_
         onViewChangedNotifier_.notifyViewChanged(this);
     }
 
-    public static StartActivity_.IntentBuilder_ intent(Context context) {
-        return new StartActivity_.IntentBuilder_(context);
+    public static UserProfileActivity_.IntentBuilder_ intent(Context context) {
+        return new UserProfileActivity_.IntentBuilder_(context);
     }
 
-    public static StartActivity_.IntentBuilder_ intent(android.app.Fragment fragment) {
-        return new StartActivity_.IntentBuilder_(fragment);
+    public static UserProfileActivity_.IntentBuilder_ intent(android.app.Fragment fragment) {
+        return new UserProfileActivity_.IntentBuilder_(fragment);
     }
 
-    public static StartActivity_.IntentBuilder_ intent(android.support.v4.app.Fragment supportFragment) {
-        return new StartActivity_.IntentBuilder_(supportFragment);
+    public static UserProfileActivity_.IntentBuilder_ intent(android.support.v4.app.Fragment supportFragment) {
+        return new UserProfileActivity_.IntentBuilder_(supportFragment);
     }
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        btnWater = ((Button) hasViews.findViewById(id.btnWater));
-        twTest = ((TextView) hasViews.findViewById(id.twTest));
+        etGender = ((EditText) hasViews.findViewById(id.etGender));
+        etHeight = ((EditText) hasViews.findViewById(id.etHeight));
+        btnSave = ((Button) hasViews.findViewById(id.btnSave));
+        etBodyType = ((EditText) hasViews.findViewById(id.etBodyType));
+        etWeight = ((EditText) hasViews.findViewById(id.etWeight));
+        etAge = ((EditText) hasViews.findViewById(id.etAge));
+        etName = ((EditText) hasViews.findViewById(id.etName));
         {
-            View view = hasViews.findViewById(id.btnUserProfile);
+            View view = hasViews.findViewById(id.btnSave);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        StartActivity_.this.btnUserProfile();
+                        UserProfileActivity_.this.btnSave();
                     }
 
                 }
@@ -90,14 +95,14 @@ public final class StartActivity_
             }
         }
         {
-            View view = hasViews.findViewById(id.btnWater);
+            View view = hasViews.findViewById(id.btnClearProfile);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        StartActivity_.this.btnWater();
+                        UserProfileActivity_.this.btnClearProfile();
                     }
 
                 }
@@ -116,26 +121,26 @@ public final class StartActivity_
 
         public IntentBuilder_(Context context) {
             context_ = context;
-            intent_ = new Intent(context, StartActivity_.class);
+            intent_ = new Intent(context, UserProfileActivity_.class);
         }
 
         public IntentBuilder_(android.app.Fragment fragment) {
             fragment_ = fragment;
             context_ = fragment.getActivity();
-            intent_ = new Intent(context_, StartActivity_.class);
+            intent_ = new Intent(context_, UserProfileActivity_.class);
         }
 
         public IntentBuilder_(android.support.v4.app.Fragment fragment) {
             fragmentSupport_ = fragment;
             context_ = fragment.getActivity();
-            intent_ = new Intent(context_, StartActivity_.class);
+            intent_ = new Intent(context_, UserProfileActivity_.class);
         }
 
         public Intent get() {
             return intent_;
         }
 
-        public StartActivity_.IntentBuilder_ flags(int flags) {
+        public UserProfileActivity_.IntentBuilder_ flags(int flags) {
             intent_.setFlags(flags);
             return this;
         }
