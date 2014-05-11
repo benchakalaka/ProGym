@@ -1,5 +1,7 @@
 package com.progym;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.androidannotations.annotations.AfterViews;
@@ -31,6 +33,9 @@ import com.progym.utils.Utils;
 
 @EActivity ( R.layout.water_management_activity )
 public class WaterManagementActivity extends Activity {
+	
+	private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	
 	@ViewById ImageView		ivGlass250ML;
 	@ViewById ImageView		ivBottle500ML;
 	@ViewById ImageView		ivBottle1L;
@@ -96,7 +101,7 @@ public class WaterManagementActivity extends Activity {
 						WaterConsumed waterToLog = new WaterConsumed(getApplicationContext());
 						waterToLog.user = u;
 						waterToLog.volumeConsumed = Utils.getVolumeByTag(tag);
-						waterToLog.date = new java.sql.Date(System.currentTimeMillis());
+						waterToLog.date = dateFormat.format(new Date());
 						waterToLog.save();
 						
 						List <WaterConsumed> list = WaterConsumed.listAll(WaterConsumed.class);
@@ -104,7 +109,7 @@ public class WaterManagementActivity extends Activity {
 						double alreadyDrinked = 0;
 						
 						for (WaterConsumed w : list){
-							Log.d(GlobalConstants.TAG,w.user.name + " drink ("+w.volumeConsumed+" ml) "/*+w.date.toGMTString()*/);
+							Log.d(GlobalConstants.TAG,w.user.name + " drink ("+w.volumeConsumed+" ml) at "+w.date);
 							alreadyDrinked +=w.volumeConsumed;
 						}
 						

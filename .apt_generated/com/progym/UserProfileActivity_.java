@@ -72,13 +72,13 @@ public final class UserProfileActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        etGender = ((EditText) hasViews.findViewById(id.etGender));
         etHeight = ((EditText) hasViews.findViewById(id.etHeight));
-        btnSave = ((Button) hasViews.findViewById(id.btnSave));
-        etBodyType = ((EditText) hasViews.findViewById(id.etBodyType));
-        etWeight = ((EditText) hasViews.findViewById(id.etWeight));
-        etAge = ((EditText) hasViews.findViewById(id.etAge));
         etName = ((EditText) hasViews.findViewById(id.etName));
+        etWeight = ((EditText) hasViews.findViewById(id.etWeight));
+        btnSave = ((Button) hasViews.findViewById(id.btnSave));
+        etGender = ((EditText) hasViews.findViewById(id.etGender));
+        etAge = ((EditText) hasViews.findViewById(id.etAge));
+        etBodyType = ((EditText) hasViews.findViewById(id.etBodyType));
         {
             View view = hasViews.findViewById(id.btnSave);
             if (view!= null) {

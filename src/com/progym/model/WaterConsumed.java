@@ -1,7 +1,5 @@
 package com.progym.model;
 
-import java.sql.Date;
-
 import android.content.Context;
 
 import com.orm.SugarRecord;
@@ -12,7 +10,7 @@ import com.orm.SugarRecord;
 public class WaterConsumed extends SugarRecord <WaterConsumed> {
 
 	public int	volumeConsumed;
-	public Date	date;
+	public String	date;
 	public User	user;
 
 	public WaterConsumed ( Context ctx ) {
