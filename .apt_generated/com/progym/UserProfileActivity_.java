@@ -72,28 +72,13 @@ public final class UserProfileActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        etHeight = ((EditText) hasViews.findViewById(id.etHeight));
-        etName = ((EditText) hasViews.findViewById(id.etName));
         etWeight = ((EditText) hasViews.findViewById(id.etWeight));
-        btnSave = ((Button) hasViews.findViewById(id.btnSave));
+        etHeight = ((EditText) hasViews.findViewById(id.etHeight));
         etGender = ((EditText) hasViews.findViewById(id.etGender));
-        etAge = ((EditText) hasViews.findViewById(id.etAge));
         etBodyType = ((EditText) hasViews.findViewById(id.etBodyType));
-        {
-            View view = hasViews.findViewById(id.btnSave);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        UserProfileActivity_.this.btnSave();
-                    }
-
-                }
-                );
-            }
-        }
+        etAge = ((EditText) hasViews.findViewById(id.etAge));
+        btnSave = ((Button) hasViews.findViewById(id.btnSave));
+        etName = ((EditText) hasViews.findViewById(id.etName));
         {
             View view = hasViews.findViewById(id.btnClearProfile);
             if (view!= null) {
@@ -103,6 +88,21 @@ public final class UserProfileActivity_
                     @Override
                     public void onClick(View view) {
                         UserProfileActivity_.this.btnClearProfile();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.btnSave);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        UserProfileActivity_.this.btnSave();
                     }
 
                 }

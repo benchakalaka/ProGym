@@ -10,6 +10,25 @@ package com.progym;
 public final class R {
     public static final class attr {
     }
+    public static final class color {
+        public static final int caldroid_black=0x7f050001;
+        public static final int caldroid_darker_gray=0x7f050005;
+        public static final int caldroid_gray=0x7f050004;
+        /**  A dark Holo shade of blue 
+         */
+        public static final int caldroid_holo_blue_dark=0x7f050007;
+        /**  A light Holo shade of blue 
+         */
+        public static final int caldroid_holo_blue_light=0x7f050006;
+        /**  For settings framework 
+         */
+        public static final int caldroid_lighter_gray=0x7f050003;
+        /**  A really bright Holo shade of blue 
+         */
+        public static final int caldroid_sky_blue=0x7f050008;
+        public static final int caldroid_transparent=0x7f050002;
+        public static final int caldroid_white=0x7f050000;
+    }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
 
@@ -18,8 +37,8 @@ public final class R {
          would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
 	
          */
-        public static final int activity_horizontal_margin=0x7f050000;
-        public static final int activity_vertical_margin=0x7f050001;
+        public static final int activity_horizontal_margin=0x7f080000;
+        public static final int activity_vertical_margin=0x7f080001;
     }
     public static final class drawable {
         public static final int background_round_border=0x7f020000;
@@ -27,49 +46,72 @@ public final class R {
         public static final int body=0x7f020002;
         public static final int bottle=0x7f020003;
         public static final int bottle2=0x7f020004;
-        public static final int custom=0x7f020005;
-        public static final int glass=0x7f020006;
-        public static final int ic_launcher=0x7f020007;
-        public static final int left_arrow_64=0x7f020008;
-        public static final int right_arrow_64=0x7f020009;
-        public static final int shelf=0x7f02000a;
+        public static final int calendar_next_arrow=0x7f020005;
+        public static final int calendar_prev_arrow=0x7f020006;
+        public static final int cell_bg=0x7f020007;
+        public static final int custom=0x7f020008;
+        public static final int disable_cell=0x7f020009;
+        public static final int glass=0x7f02000a;
+        public static final int ic_launcher=0x7f02000b;
+        public static final int left_arrow=0x7f02000c;
+        public static final int left_arrow_64=0x7f02000d;
+        public static final int red_border=0x7f02000e;
+        public static final int red_border_gray_bg=0x7f02000f;
+        public static final int right_arrow=0x7f020010;
+        public static final int right_arrow_64=0x7f020011;
+        public static final int shelf=0x7f020012;
     }
     public static final class id {
-        public static final int action_settings=0x7f09001a;
-        public static final int btnClearProfile=0x7f09000f;
-        public static final int btnSave=0x7f090005;
-        public static final int btnUserProfile=0x7f090003;
-        public static final int btnWater=0x7f090002;
-        public static final int etAge=0x7f09000d;
-        public static final int etBodyType=0x7f09000e;
-        public static final int etGender=0x7f090009;
-        public static final int etHeight=0x7f09000c;
-        public static final int etName=0x7f090007;
-        public static final int etWeight=0x7f09000b;
-        public static final int horizontalScrollView1=0x7f090011;
-        public static final int ivBottle1L=0x7f090014;
-        public static final int ivBottle2L=0x7f090015;
-        public static final int ivBottle500ML=0x7f090013;
-        public static final int ivCustomWaterVolume=0x7f090016;
-        public static final int ivGlass250ML=0x7f090012;
-        public static final int llAlreadyConsumedWaterList=0x7f090019;
-        public static final int llRightPanelBody=0x7f090017;
-        public static final int rl_start_root=0x7f090000;
-        public static final int rl_user_profile=0x7f090004;
-        public static final int textView1=0x7f090006;
-        public static final int textView2=0x7f090008;
-        public static final int textView3=0x7f09000a;
-        public static final int twPercentWatterCompletted=0x7f090018;
-        public static final int twTest=0x7f090001;
-        public static final int water_managment_root_relative_layout=0x7f090010;
+        public static final int action_settings=0x7f0a0026;
+        public static final int btnClearProfile=0x7f0a0017;
+        public static final int btnSave=0x7f0a000d;
+        public static final int btnUserProfile=0x7f0a000b;
+        public static final int btnWater=0x7f0a000a;
+        public static final int calendar_gridview=0x7f0a0007;
+        public static final int calendar_left_arrow=0x7f0a0001;
+        public static final int calendar_month_year_textview=0x7f0a0002;
+        public static final int calendar_right_arrow=0x7f0a0003;
+        public static final int calendar_title_view=0x7f0a0000;
+        public static final int calendar_tv=0x7f0a0006;
+        public static final int etAge=0x7f0a0015;
+        public static final int etBodyType=0x7f0a0016;
+        public static final int etGender=0x7f0a0011;
+        public static final int etHeight=0x7f0a0014;
+        public static final int etName=0x7f0a000f;
+        public static final int etWeight=0x7f0a0013;
+        public static final int horizontalScrollView1=0x7f0a001d;
+        public static final int ivBottle1L=0x7f0a0020;
+        public static final int ivBottle2L=0x7f0a0021;
+        public static final int ivBottle500ML=0x7f0a001f;
+        public static final int ivCalendar=0x7f0a001a;
+        public static final int ivCustomWaterVolume=0x7f0a0022;
+        public static final int ivGlass250ML=0x7f0a001e;
+        public static final int ivNextDay=0x7f0a001b;
+        public static final int ivPrevDay=0x7f0a0019;
+        public static final int llAlreadyConsumedWaterList=0x7f0a0025;
+        public static final int llRightPanelBody=0x7f0a0023;
+        public static final int months_infinite_pager=0x7f0a0005;
+        public static final int rl_start_root=0x7f0a0008;
+        public static final int rl_user_profile=0x7f0a000c;
+        public static final int textView1=0x7f0a000e;
+        public static final int textView2=0x7f0a0010;
+        public static final int textView3=0x7f0a0012;
+        public static final int twCurrentDate=0x7f0a001c;
+        public static final int twPercentWatterCompletted=0x7f0a0024;
+        public static final int twTest=0x7f0a0009;
+        public static final int water_managment_root_relative_layout=0x7f0a0018;
+        public static final int weekday_gridview=0x7f0a0004;
     }
     public static final class layout {
-        public static final int start_activity=0x7f030000;
-        public static final int user_profile_activity=0x7f030001;
-        public static final int water_management_activity=0x7f030002;
+        public static final int calendar_view=0x7f030000;
+        public static final int date_cell=0x7f030001;
+        public static final int date_grid_fragment=0x7f030002;
+        public static final int start_activity=0x7f030003;
+        public static final int user_profile_activity=0x7f030004;
+        public static final int water_management_activity=0x7f030005;
     }
     public static final class menu {
-        public static final int start=0x7f080000;
+        public static final int start=0x7f090000;
     }
     public static final class raw {
         public static final int pouring_liquid=0x7f040000;
@@ -81,6 +123,26 @@ public final class R {
     }
     public static final class style {
         /** 
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    
+
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        
+
+        Base application theme for API 11+. This theme completely replaces
+        AppBaseTheme from res/values/styles.xml on API 11+ devices.
+    
+ API 11 theme customizations can go here. 
+
+        Base application theme for API 14+. This theme completely replaces
+        AppBaseTheme from BOTH res/values/styles.xml and
+        res/values-v11/styles.xml on API 14+ devices.
+    
+ API 14 theme customizations can go here. 
+
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
 	
@@ -103,6 +165,8 @@ public final class R {
          */
         public static final int AppBaseTheme=0x7f070000;
         /**  Application theme. 
+ All customizations that are NOT specific to a particular API-level can go here. 
+ Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f070001;

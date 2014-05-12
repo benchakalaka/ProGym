@@ -17,7 +17,3 @@ http://www.iconspedia.com/search/shelf/
 
 http://findicons.com/search/board
 
-
-Just in case
-
-http://push-link.com/ - this link will help to keep tracking new version of app
