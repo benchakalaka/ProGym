@@ -72,8 +72,8 @@ public final class StartActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        twTest = ((TextView) hasViews.findViewById(id.twTest));
         btnWater = ((Button) hasViews.findViewById(id.btnWater));
+        twTest = ((TextView) hasViews.findViewById(id.twTest));
         {
             View view = hasViews.findViewById(id.btnUserProfile);
             if (view!= null) {

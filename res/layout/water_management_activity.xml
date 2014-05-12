@@ -36,13 +36,6 @@
 					android:background="@drawable/left_arrow_64" />
 				
 				<ImageView
-					android:id="@+id/ivCalendar"
-					android:layout_width="50dp"
-					android:layout_height="50dp"
-					android:layout_toRightOf="@id/ivPrevDay"
-					android:background="@drawable/custom" />
-				
-				<ImageView
 					android:id="@+id/ivNextDay"
 					android:layout_width="50dp"
 					android:layout_height="wrap_content"

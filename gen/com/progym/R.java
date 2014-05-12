@@ -62,7 +62,7 @@ public final class R {
         public static final int shelf=0x7f020012;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a0026;
+        public static final int action_settings=0x7f0a0025;
         public static final int btnClearProfile=0x7f0a0017;
         public static final int btnSave=0x7f0a000d;
         public static final int btnUserProfile=0x7f0a000b;
@@ -79,25 +79,24 @@ public final class R {
         public static final int etHeight=0x7f0a0014;
         public static final int etName=0x7f0a000f;
         public static final int etWeight=0x7f0a0013;
-        public static final int horizontalScrollView1=0x7f0a001d;
-        public static final int ivBottle1L=0x7f0a0020;
-        public static final int ivBottle2L=0x7f0a0021;
-        public static final int ivBottle500ML=0x7f0a001f;
-        public static final int ivCalendar=0x7f0a001a;
-        public static final int ivCustomWaterVolume=0x7f0a0022;
-        public static final int ivGlass250ML=0x7f0a001e;
-        public static final int ivNextDay=0x7f0a001b;
+        public static final int horizontalScrollView1=0x7f0a001c;
+        public static final int ivBottle1L=0x7f0a001f;
+        public static final int ivBottle2L=0x7f0a0020;
+        public static final int ivBottle500ML=0x7f0a001e;
+        public static final int ivCustomWaterVolume=0x7f0a0021;
+        public static final int ivGlass250ML=0x7f0a001d;
+        public static final int ivNextDay=0x7f0a001a;
         public static final int ivPrevDay=0x7f0a0019;
-        public static final int llAlreadyConsumedWaterList=0x7f0a0025;
-        public static final int llRightPanelBody=0x7f0a0023;
+        public static final int llAlreadyConsumedWaterList=0x7f0a0024;
+        public static final int llRightPanelBody=0x7f0a0022;
         public static final int months_infinite_pager=0x7f0a0005;
         public static final int rl_start_root=0x7f0a0008;
         public static final int rl_user_profile=0x7f0a000c;
         public static final int textView1=0x7f0a000e;
         public static final int textView2=0x7f0a0010;
         public static final int textView3=0x7f0a0012;
-        public static final int twCurrentDate=0x7f0a001c;
-        public static final int twPercentWatterCompletted=0x7f0a0024;
+        public static final int twCurrentDate=0x7f0a001b;
+        public static final int twPercentWatterCompletted=0x7f0a0023;
         public static final int twTest=0x7f0a0009;
         public static final int water_managment_root_relative_layout=0x7f0a0018;
         public static final int weekday_gridview=0x7f0a0004;

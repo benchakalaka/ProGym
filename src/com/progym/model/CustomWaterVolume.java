@@ -9,7 +9,8 @@ import com.orm.SugarRecord;
  */
 public class CustomWaterVolume extends SugarRecord <CustomWaterVolume> {
 
-	public double	customVolume;
+	public User	user;
+	public int	customVolume;
 
 	public CustomWaterVolume ( Context ctx ) {
 		super(ctx);
