@@ -11,26 +11,27 @@ import com.orm.SugarRecord;
  */
 public class User extends SugarRecord <User> {
 
-	// ------------------------- body fat level, future feature
-	public String	name;
-	/**
-	 * Dropdown for gender
-	 */
-	public String	gender;
-	public double	weight;
-	public int	height;
-	public int	age;
-	/**
-	 * Body type represent metabolism speed
-	 * 0 - ektomorf
-	 * 1 - mezomorf
-	 * 2 - endomorf
-	 * Dropdown with body type and explanation who is who
-	 */
-	public int	bodyType;
+     // ------------------------- body fat level, future feature
+     public String name;
+     /**
+      * Male - 0
+      * Female - 1
+      */
+     public int    gender;
+     public double weight;
+     public int    height;
+     public int    age;
+     /**
+      * Ektomorf ------------------- 0
+      * Mezomorf ------------------- 1
+      * Endomorf ------------------- 2
+      * Ekto-Mezo ------------------ 3
+      * Endo-Mezo ------------------ 4
+      */
+     public int    bodyType;
 
-	public User ( Context arg0 ) {
-		super(arg0);
-	}
+     public User ( Context arg0 ) {
+          super(arg0);
+     }
 
 }

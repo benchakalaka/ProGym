@@ -13,7 +13,6 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
@@ -86,26 +85,29 @@ public final class WaterManagementActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        ivNextDay = ((ImageView) hasViews.findViewById(id.ivNextDay));
-        ivBottle2L = ((ImageView) hasViews.findViewById(id.ivBottle2L));
-        ivBottle500ML = ((ImageView) hasViews.findViewById(id.ivBottle500ML));
-        ivPrevDay = ((ImageView) hasViews.findViewById(id.ivPrevDay));
-        twPercentWatterCompletted = ((TextView) hasViews.findViewById(id.twPercentWatterCompletted));
-        twCurrentDate = ((TextView) hasViews.findViewById(id.twCurrentDate));
-        ivBottle1L = ((ImageView) hasViews.findViewById(id.ivBottle1L));
-        llRightPanelBody = ((LinearLayout) hasViews.findViewById(id.llRightPanelBody));
         ivGlass250ML = ((ImageView) hasViews.findViewById(id.ivGlass250ML));
+        twConsumed = ((TextView) hasViews.findViewById(id.twConsumed));
         ivCustomWaterVolume = ((ImageView) hasViews.findViewById(id.ivCustomWaterVolume));
         llAlreadyConsumedWaterList = ((LinearLayout) hasViews.findViewById(id.llAlreadyConsumedWaterList));
+        ivNextDay = ((ImageView) hasViews.findViewById(id.ivNextDay));
+        twConsumedInPercent = ((TextView) hasViews.findViewById(id.twConsumedInPercent));
+        twPercentWatterCompletted = ((TextView) hasViews.findViewById(id.twPercentWatterCompletted));
+        twCurrentDate = ((TextView) hasViews.findViewById(id.twCurrentDate));
+        ivPrevDay = ((ImageView) hasViews.findViewById(id.ivPrevDay));
+        twLeft = ((TextView) hasViews.findViewById(id.twLeft));
+        llRightPanelBody = ((LinearLayout) hasViews.findViewById(id.llRightPanelBody));
+        ivBottle1L = ((ImageView) hasViews.findViewById(id.ivBottle1L));
+        ivBottle500ML = ((ImageView) hasViews.findViewById(id.ivBottle500ML));
+        ivBottle2L = ((ImageView) hasViews.findViewById(id.ivBottle2L));
         {
-            View view = hasViews.findViewById(id.ivNextDay);
+            View view = hasViews.findViewById(id.ivPrevDay);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        WaterManagementActivity_.this.ivNextDay();
+                        WaterManagementActivity_.this.ivPrevDay();
                     }
 
                 }
@@ -128,45 +130,14 @@ public final class WaterManagementActivity_
             }
         }
         {
-            View view = hasViews.findViewById(id.ivPrevDay);
+            View view = hasViews.findViewById(id.ivNextDay);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        WaterManagementActivity_.this.ivPrevDay();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.ivCustomWaterVolume);
-            if (view!= null) {
-                view.setOnLongClickListener(new OnLongClickListener() {
-
-
-                    @Override
-                    public boolean onLongClick(View view) {
-                        return WaterManagementActivity_.this.ivCustomWaterVolume(view);
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.ivCustomWaterVolume);
-            if (view!= null) {
-                view.setOnTouchListener(new OnTouchListener() {
-
-
-                    @Override
-                    public boolean onTouch(View view, MotionEvent event) {
-                        WaterManagementActivity_.this.ivCustomWaterVolume(event, view);
-                        return true;
+                        WaterManagementActivity_.this.ivNextDay();
                     }
 
                 }
@@ -190,14 +161,14 @@ public final class WaterManagementActivity_
             }
         }
         {
-            View view = hasViews.findViewById(id.ivBottle1L);
+            View view = hasViews.findViewById(id.ivCustomWaterVolume);
             if (view!= null) {
                 view.setOnTouchListener(new OnTouchListener() {
 
 
                     @Override
                     public boolean onTouch(View view, MotionEvent event) {
-                        WaterManagementActivity_.this.ivBottle1L(event, view);
+                        WaterManagementActivity_.this.ivCustomWaterVolume(event, view);
                         return true;
                     }
 
@@ -230,6 +201,22 @@ public final class WaterManagementActivity_
                     @Override
                     public boolean onTouch(View view, MotionEvent event) {
                         WaterManagementActivity_.this.ivBottle2L(event, view);
+                        return true;
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ivBottle1L);
+            if (view!= null) {
+                view.setOnTouchListener(new OnTouchListener() {
+
+
+                    @Override
+                    public boolean onTouch(View view, MotionEvent event) {
+                        WaterManagementActivity_.this.ivBottle1L(event, view);
                         return true;
                     }
 

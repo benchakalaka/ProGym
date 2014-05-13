@@ -8,6 +8,10 @@
 package com.progym;
 
 public final class R {
+    public static final class array {
+        public static final int bodyTypes=0x7f090000;
+        public static final int genders=0x7f090001;
+    }
     public static final class attr {
     }
     public static final class color {
@@ -60,57 +64,70 @@ public final class R {
         public static final int right_arrow=0x7f020010;
         public static final int right_arrow_64=0x7f020011;
         public static final int shelf=0x7f020012;
+        public static final int wheel_bg=0x7f020013;
+        public static final int wheel_val=0x7f020014;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a0025;
-        public static final int btnClearProfile=0x7f0a0017;
-        public static final int btnSave=0x7f0a000d;
-        public static final int btnUserProfile=0x7f0a000b;
-        public static final int btnWater=0x7f0a000a;
-        public static final int calendar_gridview=0x7f0a0007;
-        public static final int calendar_left_arrow=0x7f0a0001;
-        public static final int calendar_month_year_textview=0x7f0a0002;
-        public static final int calendar_right_arrow=0x7f0a0003;
-        public static final int calendar_title_view=0x7f0a0000;
-        public static final int calendar_tv=0x7f0a0006;
-        public static final int etAge=0x7f0a0015;
-        public static final int etBodyType=0x7f0a0016;
-        public static final int etGender=0x7f0a0011;
-        public static final int etHeight=0x7f0a0014;
-        public static final int etName=0x7f0a000f;
-        public static final int etWeight=0x7f0a0013;
-        public static final int horizontalScrollView1=0x7f0a001c;
-        public static final int ivBottle1L=0x7f0a001f;
-        public static final int ivBottle2L=0x7f0a0020;
-        public static final int ivBottle500ML=0x7f0a001e;
-        public static final int ivCustomWaterVolume=0x7f0a0021;
-        public static final int ivGlass250ML=0x7f0a001d;
-        public static final int ivNextDay=0x7f0a001a;
-        public static final int ivPrevDay=0x7f0a0019;
-        public static final int llAlreadyConsumedWaterList=0x7f0a0024;
-        public static final int llRightPanelBody=0x7f0a0022;
-        public static final int months_infinite_pager=0x7f0a0005;
-        public static final int rl_start_root=0x7f0a0008;
-        public static final int rl_user_profile=0x7f0a000c;
-        public static final int textView1=0x7f0a000e;
-        public static final int textView2=0x7f0a0010;
-        public static final int textView3=0x7f0a0012;
-        public static final int twCurrentDate=0x7f0a001b;
-        public static final int twPercentWatterCompletted=0x7f0a0023;
-        public static final int twTest=0x7f0a0009;
-        public static final int water_managment_root_relative_layout=0x7f0a0018;
-        public static final int weekday_gridview=0x7f0a0004;
+        public static final int action_settings=0x7f0b002e;
+        public static final int btnClearProfile=0x7f0b001b;
+        public static final int btnSave=0x7f0b0012;
+        public static final int btnUserProfile=0x7f0b0010;
+        public static final int btnWater=0x7f0b000f;
+        public static final int calendar_gridview=0x7f0b000c;
+        public static final int calendar_left_arrow=0x7f0b0001;
+        public static final int calendar_month_year_textview=0x7f0b0002;
+        public static final int calendar_right_arrow=0x7f0b0003;
+        public static final int calendar_title_view=0x7f0b0000;
+        public static final int calendar_tv=0x7f0b000b;
+        public static final int etName=0x7f0b0014;
+        public static final int horizontalScrollView1=0x7f0b0029;
+        public static final int hsvWaterVolumes=0x7f0b0020;
+        public static final int ivBodyType=0x7f0b0009;
+        public static final int ivBottle1L=0x7f0b0023;
+        public static final int ivBottle2L=0x7f0b0024;
+        public static final int ivBottle500ML=0x7f0b0022;
+        public static final int ivCustomWaterVolume=0x7f0b0025;
+        public static final int ivGlass250ML=0x7f0b0021;
+        public static final int ivNextDay=0x7f0b001e;
+        public static final int ivPrevDay=0x7f0b001d;
+        public static final int ivVolumeImage=0x7f0b0007;
+        public static final int llAlreadyConsumedWaterList=0x7f0b002a;
+        public static final int llRightPanelBody=0x7f0b0026;
+        public static final int months_infinite_pager=0x7f0b0005;
+        public static final int rlRrootItem=0x7f0b0006;
+        public static final int rl_start_root=0x7f0b000d;
+        public static final int rl_user_profile=0x7f0b0011;
+        public static final int spinnerGender=0x7f0b0016;
+        public static final int textView1=0x7f0b0013;
+        public static final int textView2=0x7f0b0015;
+        public static final int twBodyType=0x7f0b000a;
+        public static final int twConsumed=0x7f0b002b;
+        public static final int twConsumedInPercent=0x7f0b002d;
+        public static final int twCurrentDate=0x7f0b001f;
+        public static final int twLeft=0x7f0b002c;
+        public static final int twPercentWatterCompletted=0x7f0b0028;
+        public static final int twTest=0x7f0b000e;
+        public static final int twWaterVolume=0x7f0b0008;
+        public static final int water_managment_root_relative_lasyout=0x7f0b0027;
+        public static final int water_managment_root_relative_layout=0x7f0b001c;
+        public static final int weekday_gridview=0x7f0b0004;
+        public static final int wheelAge=0x7f0b0019;
+        public static final int wheelBodyType=0x7f0b001a;
+        public static final int wheelHeight=0x7f0b0018;
+        public static final int wheelWeight=0x7f0b0017;
     }
     public static final class layout {
         public static final int calendar_view=0x7f030000;
-        public static final int date_cell=0x7f030001;
-        public static final int date_grid_fragment=0x7f030002;
-        public static final int start_activity=0x7f030003;
-        public static final int user_profile_activity=0x7f030004;
-        public static final int water_management_activity=0x7f030005;
+        public static final int custom_hsv_consumed_water_item=0x7f030001;
+        public static final int custom_wheel_bodytype_item=0x7f030002;
+        public static final int date_cell=0x7f030003;
+        public static final int date_grid_fragment=0x7f030004;
+        public static final int start_activity=0x7f030005;
+        public static final int user_profile_activity=0x7f030006;
+        public static final int water_management_activity=0x7f030007;
     }
     public static final class menu {
-        public static final int start=0x7f090000;
+        public static final int start=0x7f0a0000;
     }
     public static final class raw {
         public static final int pouring_liquid=0x7f040000;

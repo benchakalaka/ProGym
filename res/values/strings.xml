@@ -5,4 +5,17 @@
 	<string name="hello_world">Hello world!</string>
 	<string name="action_settings">Settings</string>
 
+	<string-array name="bodyTypes">
+		<item>Ektomorf</item>
+		<item>Mezomorf</item>
+		<item>Endomorf</item>
+		<item>Ekto-Mezo</item>
+		<item>Endo-Mezo</item>
+	</string-array>
+	
+	<string-array name="genders">
+		<item>Male</item>
+		<item>Female</item>
+	</string-array>
+
 </resources>

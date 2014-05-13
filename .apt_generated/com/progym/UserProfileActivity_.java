@@ -8,14 +8,18 @@ package com.progym;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+import com.progym.R.array;
 import com.progym.R.id;
 import com.progym.R.layout;
+import kankan.wheel.widget.WheelView;
 import org.androidannotations.api.view.HasViews;
 import org.androidannotations.api.view.OnViewChangedListener;
 import org.androidannotations.api.view.OnViewChangedNotifier;
@@ -38,6 +42,9 @@ public final class UserProfileActivity_
 
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
+        Resources resources_ = this.getResources();
+        bodyTypes = resources_.getStringArray(array.bodyTypes);
+        genders = resources_.getStringArray(array.genders);
     }
 
     @Override
@@ -72,13 +79,13 @@ public final class UserProfileActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        etHeight = ((EditText) hasViews.findViewById(id.etHeight));
-        etGender = ((EditText) hasViews.findViewById(id.etGender));
-        etBodyType = ((EditText) hasViews.findViewById(id.etBodyType));
         etName = ((EditText) hasViews.findViewById(id.etName));
-        etWeight = ((EditText) hasViews.findViewById(id.etWeight));
+        wheelHeight = ((WheelView) hasViews.findViewById(id.wheelHeight));
+        spinnerGender = ((Spinner) hasViews.findViewById(id.spinnerGender));
+        wheelBodyType = ((WheelView) hasViews.findViewById(id.wheelBodyType));
+        wheelWeight = ((WheelView) hasViews.findViewById(id.wheelWeight));
         btnSave = ((Button) hasViews.findViewById(id.btnSave));
-        etAge = ((EditText) hasViews.findViewById(id.etAge));
+        wheelAge = ((WheelView) hasViews.findViewById(id.wheelAge));
         {
             View view = hasViews.findViewById(id.btnClearProfile);
             if (view!= null) {

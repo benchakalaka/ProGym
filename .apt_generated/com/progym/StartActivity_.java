@@ -75,21 +75,6 @@ public final class StartActivity_
         btnWater = ((Button) hasViews.findViewById(id.btnWater));
         twTest = ((TextView) hasViews.findViewById(id.twTest));
         {
-            View view = hasViews.findViewById(id.btnUserProfile);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        StartActivity_.this.btnUserProfile();
-                    }
-
-                }
-                );
-            }
-        }
-        {
             View view = hasViews.findViewById(id.btnWater);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
@@ -98,6 +83,21 @@ public final class StartActivity_
                     @Override
                     public void onClick(View view) {
                         StartActivity_.this.btnWater();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.btnUserProfile);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        StartActivity_.this.btnUserProfile();
                     }
 
                 }
