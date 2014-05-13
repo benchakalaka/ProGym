@@ -79,28 +79,13 @@ public final class UserProfileActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
+        btnSave = ((Button) hasViews.findViewById(id.btnSave));
         etName = ((EditText) hasViews.findViewById(id.etName));
+        wheelWeight = ((WheelView) hasViews.findViewById(id.wheelWeight));
+        wheelBodyType = ((WheelView) hasViews.findViewById(id.wheelBodyType));
+        wheelAge = ((WheelView) hasViews.findViewById(id.wheelAge));
         wheelHeight = ((WheelView) hasViews.findViewById(id.wheelHeight));
         spinnerGender = ((Spinner) hasViews.findViewById(id.spinnerGender));
-        wheelBodyType = ((WheelView) hasViews.findViewById(id.wheelBodyType));
-        wheelWeight = ((WheelView) hasViews.findViewById(id.wheelWeight));
-        btnSave = ((Button) hasViews.findViewById(id.btnSave));
-        wheelAge = ((WheelView) hasViews.findViewById(id.wheelAge));
-        {
-            View view = hasViews.findViewById(id.btnClearProfile);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        UserProfileActivity_.this.btnClearProfile();
-                    }
-
-                }
-                );
-            }
-        }
         {
             View view = hasViews.findViewById(id.btnSave);
             if (view!= null) {
@@ -110,6 +95,21 @@ public final class UserProfileActivity_
                     @Override
                     public void onClick(View view) {
                         UserProfileActivity_.this.btnSave();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.btnClearProfile);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        UserProfileActivity_.this.btnClearProfile();
                     }
 
                 }

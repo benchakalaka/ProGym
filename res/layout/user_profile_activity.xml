@@ -1,116 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:id="@+id/rl_user_profile"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent" >
+    android:id="@+id/rl_user_profile"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
 
-	<ScrollView
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:layout_above="@+id/btnSave" >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnSave" >
 
-		<LinearLayout
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:orientation="vertical" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
 
-			<TextView
-				android:id="@+id/textView1"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:text="name" />
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="name" />
 
-			<EditText
-				android:id="@+id/etName"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:ems="10"
-				android:inputType="textPersonName" />
+            <EditText
+                android:id="@+id/etName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
 
-			<TextView
-				android:id="@+id/textView2"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:text="Gender" />
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gender" />
 
-			<Spinner
-				android:id="@+id/spinnerGender"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content" />
+            <Spinner
+                android:id="@+id/spinnerGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-			<LinearLayout
-				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:background="@drawable/background_round_border_green"
-				android:orientation="horizontal" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/background_round_border_green"
+                android:orientation="horizontal" >
 
-				<LinearLayout
-					android:layout_width="match_parent"
-					android:layout_height="match_parent"
-					android:layout_weight="1"
-					android:orientation="vertical" >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
 
-					<TextView
-						android:id="@+id/textView2"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:text="Weight" />
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Weight" />
 
-					<kankan.wheel.widget.WheelView
-						android:id="@+id/wheelWeight"
-						android:layout_width="50dp"
-						android:layout_height="100dp"
-						 />
-				</LinearLayout>
+                    <kankan.wheel.widget.WheelView
+                        android:id="@+id/wheelWeight"
+                        android:layout_width="50dp"
+                        android:layout_height="100dp" />
+                </LinearLayout>
 
-				
-				<LinearLayout
-					android:layout_width="match_parent"
-					android:layout_height="match_parent"
-					android:layout_weight="1"
-					android:orientation="vertical" >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
 
-					<TextView
-						android:id="@+id/textView2"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:text="Weight" />
-				<kankan.wheel.widget.WheelView
-					android:id="@+id/wheelHeight"
-					android:layout_width="50dp"
-					android:layout_height="100dp"
-					 />
-				</LinearLayout>
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Height" />
 
-				<kankan.wheel.widget.WheelView
-					android:id="@+id/wheelAge"
-					android:layout_width="50dp"
-					android:layout_height="100dp"
-					android:layout_weight="1" />
+                    <kankan.wheel.widget.WheelView
+                        android:id="@+id/wheelHeight"
+                        android:layout_width="50dp"
+                        android:layout_height="100dp" />
+                </LinearLayout>
 
-				<kankan.wheel.widget.WheelView
-					android:id="@+id/wheelBodyType"
-					android:layout_width="50dp"
-					android:layout_height="100dp"
-					android:layout_weight="1" />
-			</LinearLayout>
-		</LinearLayout>
-	</ScrollView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
 
-	<Button
-		android:id="@+id/btnSave"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_alignParentBottom="true"
-		android:layout_alignParentLeft="true"
-		android:text="save" />
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Age" />
 
-	<Button
-		android:id="@+id/btnClearProfile"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_alignParentBottom="true"
-		android:layout_alignParentRight="true"
-		android:text="clear profile" />
+                    <kankan.wheel.widget.WheelView
+                        android:id="@+id/wheelAge"
+                        android:layout_width="50dp"
+                        android:layout_height="100dp"
+                        android:layout_weight="1" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Body type" />
+
+                    <kankan.wheel.widget.WheelView
+                        android:id="@+id/wheelBodyType"
+                        android:layout_width="50dp"
+                        android:layout_height="100dp"
+                        android:layout_weight="1" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:text="save" />
+
+    <Button
+        android:id="@+id/btnClearProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="clear profile" />
 
 </RelativeLayout>

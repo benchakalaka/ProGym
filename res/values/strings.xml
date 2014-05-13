@@ -17,5 +17,6 @@
 		<item>Male</item>
 		<item>Female</item>
 	</string-array>
+		<string name="food">food</string>
 
 </resources>

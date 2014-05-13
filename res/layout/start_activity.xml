@@ -30,4 +30,12 @@
         android:layout_alignParentRight="true"
         android:text="profile" />
 
+     <Button
+         android:id="@+id/btnFood"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentBottom="true"
+         android:layout_toRightOf="@+id/btnWater"
+         android:text="@string/food" />
+
 </RelativeLayout>

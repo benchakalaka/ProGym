@@ -24,3 +24,7 @@ http://findicons.com/search/board
 Graph Library
 
 https://github.com/jjoe64/GraphView
+
+
+ViewPAger library
+https://github.com/astuetz/PagerSlidingTabStrip

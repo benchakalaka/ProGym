@@ -21,12 +21,17 @@ import android.widget.TextView;
      // Select.from(TestRecord.class).where(Condition.prop("test").eq("satya"),Condition.prop("prop").eq(2)).list();
 
      @ViewById TextView twTest;
-     @ViewById Button   btnWater;
+     @ViewById Button btnFood;
+     @ViewById Button btnUserProfile;
+     @ViewById Button btnWater;
 
      @AfterViews void afterViews() {
-
           // List <User> users = User.find(User.class, "name = ?", "Eleonora Kosheleva");
           twTest.setText("Test successful");
+     }
+     
+     @Click void btnFood() {
+          startActivity(new Intent(StartActivity.this, FoodManagmentActivity_.class));
      }
 
      @Click void btnUserProfile() {
