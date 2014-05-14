@@ -72,10 +72,25 @@ public final class StartActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        btnWater = ((Button) hasViews.findViewById(id.btnWater));
         twTest = ((TextView) hasViews.findViewById(id.twTest));
-        btnUserProfile = ((Button) hasViews.findViewById(id.btnUserProfile));
+        btnWater = ((Button) hasViews.findViewById(id.btnWater));
         btnFood = ((Button) hasViews.findViewById(id.btnFood));
+        btnUserProfile = ((Button) hasViews.findViewById(id.btnUserProfile));
+        {
+            View view = hasViews.findViewById(id.btnUserProfile);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        StartActivity_.this.btnUserProfile();
+                    }
+
+                }
+                );
+            }
+        }
         {
             View view = hasViews.findViewById(id.btnWater);
             if (view!= null) {
@@ -100,21 +115,6 @@ public final class StartActivity_
                     @Override
                     public void onClick(View view) {
                         StartActivity_.this.btnFood();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.btnUserProfile);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        StartActivity_.this.btnUserProfile();
                     }
 
                 }

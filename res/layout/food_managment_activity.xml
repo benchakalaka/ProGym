@@ -1,171 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/water_managment_root_relative_layout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+	android:id="@+id/water_managment_root_relative_layout"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent" >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentTop="true"
-        android:orientation="horizontal"
-        android:padding="1dp" >
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="fill_parent"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentTop="true"
+		android:orientation="horizontal"
+		android:padding="1dp" >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="3dp"
-            android:layout_weight="1"
-            android:background="@drawable/background_round_border"
-            android:orientation="vertical" >
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_margin="3dp"
+			android:layout_weight="1"
+			android:background="@drawable/background_round_border"
+			android:orientation="vertical" >
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/background_round_border_green"
-                android:orientation="horizontal" >
+			<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="50dp"
+				android:layout_margin="10dp"
+				android:background="@drawable/background_round_border_green"
+				android:orientation="horizontal" >
 
-                <ImageView
-                    android:id="@+id/ivPrevDay"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentTop="true"
-                    android:background="@drawable/left_arrow_64" />
+				<ImageView
+					android:id="@+id/ivPrevDay"
+					android:layout_width="50dp"
+					android:layout_height="wrap_content"
+					android:layout_alignParentBottom="true"
+					android:layout_alignParentTop="true"
+					android:background="@drawable/left_arrow_64" />
 
-                <ImageView
-                    android:id="@+id/ivNextDay"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentTop="true"
-                    android:background="@drawable/right_arrow_64" />
+				<ImageView
+					android:id="@+id/ivNextDay"
+					android:layout_width="50dp"
+					android:layout_height="wrap_content"
+					android:layout_alignParentBottom="true"
+					android:layout_alignParentRight="true"
+					android:layout_alignParentTop="true"
+					android:background="@drawable/right_arrow_64" />
 
-                <TextView
-                    android:id="@+id/twCurrentDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:gravity="center"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
-            </RelativeLayout>
+				<TextView
+					android:id="@+id/twCurrentDate"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_alignParentBottom="true"
+					android:layout_alignParentTop="true"
+					android:layout_centerHorizontal="true"
+					android:gravity="center"
+					android:text="2020-20-20"
+					android:textAppearance="?android:attr/textAppearanceLarge" />
+			</RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@drawable/background_round_border_green"
-                android:orientation="horizontal" >
+			<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="10dp"
+				android:background="@drawable/background_round_border_green"
+				android:orientation="horizontal" >
 
-                <ImageView
-                    android:id="@+id/ivNextScreen"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:background="@drawable/left_arrow_64" />
+				<com.progym.custom.NonSwipeableViewPager
+					android:id="@+id/viewPager"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:background="@drawable/background_round_border" />
+			</RelativeLayout>
+		</LinearLayout>
 
-                <ImageView
-                    android:id="@+id/ivPrevScreen"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentTop="true"
-                    android:background="@drawable/right_arrow_64" />
+		<!-- Right panel -->
 
-                <TextView
-                    android:id="@+id/textView1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:gravity="center"
-                    android:text="Types of volumes"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+		<LinearLayout
+			android:id="@+id/llRightPanelBody"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_margin="3dp"
+			android:layout_weight="1"
+			android:background="@drawable/background_round_border"
+			android:orientation="vertical" >
 
-                <android.support.v4.view.ViewPager
-                    android:id="@+id/viewPager"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/ivPrevScreen"
-                    android:background="@drawable/background_round_border" />
-            </RelativeLayout>
-        </LinearLayout>
+			<RelativeLayout
+				android:id="@+id/water_managment_root_relative_lasyout"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_margin="3dp" >
 
-        <!-- Right panel with body and horizontal scroll (what has been consumed by user) -->
+				<TextView
+					android:id="@+id/twPercentWatterCompletted"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textAppearance="?android:attr/textAppearanceLarge"
+					android:textColor="@android:color/white" />
 
-        <LinearLayout
-            android:id="@+id/llRightPanelBody"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="3dp"
-            android:layout_weight="1"
-            android:background="@drawable/background_round_border"
-            android:orientation="vertical" >
+				<ImageView
+					android:id="@+id/ivOnPlate"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_alignParentBottom="true"
+					android:layout_alignParentTop="true"
+					android:background="@drawable/plate" />
 
-            <RelativeLayout
-                android:id="@+id/water_managment_root_relative_lasyout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="3dp" >
+				<HorizontalScrollView
+					android:id="@+id/horizontalScrollView1"
+					android:layout_width="wrap_content"
+					android:layout_height="50dp"
+					android:layout_alignParentBottom="true" >
 
-                <TextView
-                    android:id="@+id/twPercentWatterCompletted"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
+					<LinearLayout
+						android:id="@+id/llAlreadyConsumedMeals"
+						android:layout_width="match_parent"
+						android:layout_height="50dp"
+						android:orientation="horizontal" >
+					</LinearLayout>
+				</HorizontalScrollView>
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/body" />
-
-                <HorizontalScrollView
-                    android:id="@+id/horizontalScrollView1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_alignParentBottom="true" >
-
-                    <LinearLayout
-                        android:id="@+id/llAlreadyConsumedWaterList"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:orientation="horizontal" >
-                    </LinearLayout>
-                </HorizontalScrollView>
-
-                <TextView
-                    android:id="@+id/twConsumed"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/twPercentWatterCompletted"
-                    android:text="Consumed"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/holo_blue_dark" />
-
-                <TextView
-                    android:id="@+id/twLeft"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/twConsumed"
-                    android:text="Left"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/holo_green_dark" />
-
-                <TextView
-                    android:id="@+id/twConsumedInPercent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/twLeft"
-                    android:text="Percent"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
-            </RelativeLayout>
-        </LinearLayout>
-    </LinearLayout>
+				<TextView
+					android:id="@+id/twListOfMeals"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_below="@id/twPercentWatterCompletted"
+					android:text="Consumed"
+					android:textAppearance="?android:attr/textAppearanceLarge"
+					android:textColor="@android:color/holo_blue_dark" />
+			</RelativeLayout>
+		</LinearLayout>
+	</LinearLayout>
 
 </RelativeLayout>

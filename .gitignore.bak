@@ -10,4 +10,3 @@
 
 *.bak # ignore all files with ".bak" extension
 bin/
-!bin/ProGym.apk

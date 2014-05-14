@@ -25,9 +25,9 @@ public final class R {
 		public static final int disable_cell = 0x7f020009;
 		public static final int ic_launcher = 0x7f02000b;
 		public static final int left_arrow = 0x7f02000c;
-		public static final int red_border = 0x7f02000e;
-		public static final int red_border_gray_bg = 0x7f02000f;
-		public static final int right_arrow = 0x7f020010;
+		public static final int red_border = 0x7f02000f;
+		public static final int red_border_gray_bg = 0x7f020010;
+		public static final int right_arrow = 0x7f020011;
 	}
 	public static final class id {
 		public static final int calendar_gridview = 0x7f0b000c;

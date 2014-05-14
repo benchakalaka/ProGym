@@ -9,12 +9,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.progym.R.id;
 import com.progym.R.layout;
+import com.progym.custom.NonSwipeableViewPager;
 import org.androidannotations.api.SdkVersionHelper;
 import org.androidannotations.api.view.HasViews;
 import org.androidannotations.api.view.OnViewChangedListener;
@@ -80,7 +82,9 @@ public final class FoodManagmentActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        viewPager = ((ViewPager) hasViews.findViewById(id.viewPager));
+        twListOfMeals = ((TextView) hasViews.findViewById(id.twListOfMeals));
+        ivOnPlate = ((ImageView) hasViews.findViewById(id.ivOnPlate));
+        viewPager = ((NonSwipeableViewPager) hasViews.findViewById(id.viewPager));
         afterViews();
     }
 
