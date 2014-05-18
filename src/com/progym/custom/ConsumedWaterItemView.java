@@ -12,7 +12,6 @@ import com.progym.R;
 
 @EViewGroup ( R.layout.custom_hsv_consumed_water_item ) public class ConsumedWaterItemView extends RelativeLayout {
 
-     @ViewById public TextView  twWaterVolume;
      @ViewById public ImageView ivVolumeImage;
 
      public ConsumedWaterItemView ( Context context ) {

@@ -18,56 +18,76 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnticipateOvershootInterpolator;
-import android.widget.ArrayAdapter;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 
 import com.progym.custom.BodyTypeItemView;
 import com.progym.custom.BodyTypeItemView_;
 import com.progym.model.User;
 import com.progym.model.WaterConsumed;
+import com.progym.utils.DataBaseUtils;
 
 @EActivity ( R.layout.user_profile_activity )
 public class UserProfileActivity extends Activity {
 
 	@ViewById EditText		etName;
-	@ViewById Spinner		spinnerGender;
 
 	@ViewById WheelView		wheelWeight;
 	@ViewById WheelView		wheelHeight;
 	@ViewById WheelView		wheelAge;
 	@ViewById WheelView		wheelBodyType;
+	@ViewById WheelView		wheelGender;
 
 	@ViewById Button		btnSave;
 
 	@StringArrayRes String[]	bodyTypes;
 	@StringArrayRes String[]	genders;
 
+	private User			userToSave;
+
 	@AfterViews void afterViews() {
-		spinnerGender.setAdapter(new ArrayAdapter <String>(this, android.R.layout.simple_list_item_1, genders));
-		wheelBodyType.setViewAdapter(new NumericWheelAdapter(this, 20, 100));
-		wheelWeight.setViewAdapter(new NumericWheelAdapter(this, 20, 100));
-		wheelHeight.setViewAdapter(new NumericWheelAdapter(this, 20, 100));
+		wheelWeight.setViewAdapter(new NumericWheelAdapter(this, 0, 200));
+		wheelHeight.setViewAdapter(new NumericWheelAdapter(this, 0, 200));
 		wheelAge.setViewAdapter(new NumericWheelAdapter(this, 0, 99));
+
 		wheelBodyType.setViewAdapter(new BodyTypeAdapter(this));
-		wheelBodyType.setCyclic(true);
+		wheelGender.setViewAdapter(new MaleFemaleAdapter(this));
 
 		wheelWeight.setInterpolator(new AnticipateOvershootInterpolator());
-		// wheel.addChangingListener(changedListener);
-		// wheel.addScrollingListener(scrolledListener);
 		etName.setText("Eleonora Kosheleva");
+		InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+		imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+	}
+
+	private void setUpUser() {
+		User u = DataBaseUtils.getCurrentUser();
+		if ( null != u ) {
+			etName.setText(u.name);
+			wheelAge.setCurrentItem(u.age);
+			wheelBodyType.setCurrentItem(u.bodyType); // , true
+			wheelHeight.setCurrentItem(u.height); // , true
+			wheelWeight.setCurrentItem((int) u.weight); // , true
+		}
+	}
+
+	@Override protected void onResume() {
+		super.onResume();
+		setUpUser();
 	}
 
 	@Click void btnSave() {
-		User u = new User(getApplicationContext());
-		u.name = etName.getText().toString();
-		u.age = Integer.valueOf(wheelAge.getCurrentItem());
-		u.gender = spinnerGender.getSelectedItemPosition();
-		u.height = 168; // Integer.valueOf(etHeight.getText().toString());
-		u.weight = 59; // Double.valueOf(etWeight.getText().toString());
-		u.bodyType = wheelBodyType.getCurrentItem();
-		u.save();
+		userToSave = DataBaseUtils.getCurrentUser();
+		if ( null == userToSave ) {
+			userToSave = new User(getApplicationContext());
+		}
+		userToSave.name = etName.getText().toString();
+		userToSave.age = Integer.valueOf(wheelAge.getCurrentItem());
+		userToSave.gender = wheelGender.getCurrentItem();
+		userToSave.height = wheelHeight.getCurrentItem();
+		userToSave.weight = wheelWeight.getCurrentItem();
+		userToSave.bodyType = wheelBodyType.getCurrentItem();
+		userToSave.save();
 		startActivity(new Intent(UserProfileActivity.this, StartActivity_.class));
 	}
 
@@ -97,14 +117,46 @@ public class UserProfileActivity extends Activity {
 	 */
 	private class BodyTypeAdapter extends AbstractWheelTextAdapter {
 		// Countries names
-		private final String	bodyTypes[]		= new String[] { "Ektomorf", "Mezomorf", "Endomorf" };
+		private final String	bodyTypes[]		= new String[] { "Ectomorf", "Mezomorf", "Endomorf" };
 		// Countries flags
-		private final int		bodyTypesImages[]	= new int[] { R.drawable.glass, R.drawable.bottle, R.drawable.bottle2 };
+		private final int		bodyTypesImages[]	= new int[] { R.drawable.ectomorf, R.drawable.mezomorf, R.drawable.endomorf };
 
 		/**
 		 * Constructor
 		 */
 		protected BodyTypeAdapter ( Context context ) {
+			super(context, R.layout.custom_wheel_bodytype_item, NO_RESOURCE);
+		}
+
+		@Override public View getItem(int index, View cachedView, ViewGroup parent) {
+			BodyTypeItemView view = BodyTypeItemView_.build(context);
+			view.ivBodyType.setImageResource(bodyTypesImages[index]);
+			view.twBodyType.setText(bodyTypes[index]);
+			return view;
+		}
+
+		@Override public int getItemsCount() {
+			return bodyTypes.length;
+		}
+
+		@Override protected CharSequence getItemText(int index) {
+			return bodyTypes[index];
+		}
+	}
+
+	/**
+	 * Adapter for countries
+	 */
+	private class MaleFemaleAdapter extends AbstractWheelTextAdapter {
+		// Countries names
+		private final String	bodyTypes[]		= new String[] { "Male", "Female" };
+		// Countries flags
+		private final int		bodyTypesImages[]	= new int[] { R.drawable.female, R.drawable.male };
+
+		/**
+		 * Constructor
+		 */
+		protected MaleFemaleAdapter ( Context context ) {
 			super(context, R.layout.custom_wheel_bodytype_item, NO_RESOURCE);
 		}
 

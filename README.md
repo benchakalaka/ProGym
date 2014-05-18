@@ -28,3 +28,6 @@ https://github.com/jjoe64/GraphView
 
 ViewPAger library
 https://github.com/astuetz/PagerSlidingTabStrip
+
+Very very useful custom libraries
+http://www.androidviews.net/

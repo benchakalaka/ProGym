@@ -33,7 +33,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentTop="true"
-                    android:background="@drawable/left_arrow_64" />
+                    android:background="@drawable/left" />
 
                 <ImageView
                     android:id="@+id/ivNextDay"
@@ -42,17 +42,32 @@
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
-                    android:background="@drawable/right_arrow_64" />
+                    android:background="@drawable/right" />
 
-                <TextView
-                    android:id="@+id/twCurrentDate"
+                <LinearLayout
+                    android:id="@+id/llLeftPanelDateWithCalendar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
+                    android:background="@drawable/background_round_border"
                     android:gravity="center"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/twCurrentDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2020-20-20"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@android:color/white" />
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/calendar" />
+                </LinearLayout>
             </RelativeLayout>
 
             <RelativeLayout
@@ -62,41 +77,15 @@
                 android:background="@drawable/background_round_border_green"
                 android:orientation="horizontal" >
 
-                <ImageView
-                    android:id="@+id/ivNextScreen"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:background="@drawable/left_arrow_64" />
-
-                <ImageView
-                    android:id="@+id/ivPrevScreen"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentTop="true"
-                    android:background="@drawable/right_arrow_64" />
-
-                <TextView
-                    android:id="@+id/textView1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:gravity="center"
-                    android:text="Types of volumes"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                <android.support.v4.view.ViewPager
+                <com.progym.custom.NonSwipeableViewPager
                     android:id="@+id/viewPager"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/ivPrevScreen"
                     android:background="@drawable/background_round_border" />
             </RelativeLayout>
         </LinearLayout>
 
-        <!-- Right panel with body and horizontal scroll (what has been consumed by user) -->
+        <!-- Right panel -->
 
         <LinearLayout
             android:id="@+id/llRightPanelBody"
@@ -104,7 +93,6 @@
             android:layout_height="match_parent"
             android:layout_margin="3dp"
             android:layout_weight="1"
-            android:background="@drawable/background_round_border"
             android:orientation="vertical" >
 
             <RelativeLayout
@@ -121,49 +109,59 @@
                     android:textColor="@android:color/white" />
 
                 <ImageView
+                    android:id="@+id/ivOnPlate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/body" />
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/plate" />
 
                 <HorizontalScrollView
                     android:id="@+id/horizontalScrollView1"
                     android:layout_width="wrap_content"
-                    android:layout_height="50dp"
+                    android:layout_height="100dp"
                     android:layout_alignParentBottom="true" >
 
                     <LinearLayout
-                        android:id="@+id/llAlreadyConsumedWaterList"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:id="@+id/llCreatedPlates"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
                         android:orientation="horizontal" >
                     </LinearLayout>
                 </HorizontalScrollView>
 
-                <TextView
-                    android:id="@+id/twConsumed"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/twPercentWatterCompletted"
-                    android:text="Consumed"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/holo_blue_dark" />
+                <ScrollView
+                    android:id="@+id/svListOfConsumedMeals"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/horizontalScrollView1"
+                    android:layout_below="@+id/ibCreatePlate" >
 
-                <TextView
-                    android:id="@+id/twLeft"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/twConsumed"
-                    android:text="Left"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/holo_green_dark" />
+                    <LinearLayout
+                        android:id="@+id/llAlreadyOnPlate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+                    </LinearLayout>
+                </ScrollView>
 
-                <TextView
-                    android:id="@+id/twConsumedInPercent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/twLeft"
-                    android:text="Percent"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                <ImageButton
+                    android:id="@+id/ibSavePlate"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/save" />
+
+                <ImageButton
+                    android:id="@+id/ibCreatePlate"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/plus" />
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
