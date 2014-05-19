@@ -15,7 +15,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import com.progym.R.array;
 import com.progym.R.id;
 import com.progym.R.layout;
@@ -79,13 +78,13 @@ public final class UserProfileActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        wheelWeight = ((WheelView) hasViews.findViewById(id.wheelWeight));
+        wheelGender = ((WheelView) hasViews.findViewById(id.wheelGender));
         wheelHeight = ((WheelView) hasViews.findViewById(id.wheelHeight));
-        etName = ((EditText) hasViews.findViewById(id.etName));
-        spinnerGender = ((Spinner) hasViews.findViewById(id.spinnerGender));
         wheelBodyType = ((WheelView) hasViews.findViewById(id.wheelBodyType));
-        wheelAge = ((WheelView) hasViews.findViewById(id.wheelAge));
         btnSave = ((Button) hasViews.findViewById(id.btnSave));
+        wheelWeight = ((WheelView) hasViews.findViewById(id.wheelWeight));
+        etName = ((EditText) hasViews.findViewById(id.etName));
+        wheelAge = ((WheelView) hasViews.findViewById(id.wheelAge));
         {
             View view = hasViews.findViewById(id.btnSave);
             if (view!= null) {

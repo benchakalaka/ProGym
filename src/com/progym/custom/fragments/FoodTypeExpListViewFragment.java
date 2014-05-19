@@ -17,12 +17,25 @@ import android.widget.Toast;
 import com.progym.FoodManagmentActivity;
 import com.progym.R;
 import com.progym.custom.ExpandableListAdapter;
+import com.progym.model.Ingridient;
+import com.progym.model.ReadyMeal;
+import com.progym.utils.DataBaseUtils;
+import com.progym.utils.Utils;
 
 @EFragment ( R.layout.fragment_food_type_list_view ) public class FoodTypeExpListViewFragment extends Fragment {
      @ViewById ExpandableListView    expListView;
      ExpandableListAdapter           listAdapter;
      List <String>                   listDataHeader;
      HashMap <String, List <String>> listDataChild;
+     
+     List <String> readyMeals = new ArrayList <String>();
+     
+     public void addToReadyMeal (String date){
+     	readyMeals.add(date);
+     	listAdapter.notifyDataSetChanged();
+     }
+     
+     int FOOD_CATALOGUE;
 
      @AfterViews void afterViews() {
           // preparing list data
@@ -37,8 +50,18 @@ import com.progym.custom.ExpandableListAdapter;
           expListView.setOnChildClickListener(new OnChildClickListener() {
 
                @Override public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                    Toast.makeText(getActivity().getApplicationContext(), listDataHeader.get(groupPosition) + " : " + listDataChild.get(listDataHeader.get(groupPosition))
-                              .get(childPosition), Toast.LENGTH_SHORT).show();
+               	FOOD_CATALOGUE = groupPosition;
+               	
+               	// READY MEALS GROUP HAS BEEN CLICKED
+               	if (FOOD_CATALOGUE == 4){
+          			List<Ingridient> listOfProduct = DataBaseUtils.getProductsOnPlate(listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition));
+          			
+          			for (Ingridient p : listOfProduct){
+          				Utils.log(p.productName);
+          			}
+               	}
+               	
+                    Toast.makeText(getActivity().getApplicationContext(), listDataHeader.get(groupPosition) + " : " + listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition), Toast.LENGTH_SHORT).show();
                     ((FoodManagmentActivity) getActivity()).viewPager.setCurrentItem(FoodManagmentActivity.SPECIFIC_FOOD_SPECIFICATION, true);
                     return false;
                }
@@ -53,12 +76,12 @@ import com.progym.custom.ExpandableListAdapter;
           listDataChild = new HashMap <String, List <String>>();
 
           // Adding child data
-          listDataHeader.add("Meat");
-          listDataHeader.add("Poridge");
-          listDataHeader.add("Vegitables");
-          listDataHeader.add("Fruits");
-          listDataHeader.add("Ready meals");
-          listDataHeader.add("Other");
+          listDataHeader.add("Meat"); // 0 - MEAT_CATALOGUE
+          listDataHeader.add("Poridge"); // 1 - PORRIDGE_CATALOGUE
+          listDataHeader.add("Vegitables"); // 2 - VEGITABLES_CATALOGUE
+          listDataHeader.add("Fruits"); // 3 - FRUITS_CATALOGUE
+          listDataHeader.add("Ready meals"); // 4 - READY_MEALS_CATALOGUE
+          listDataHeader.add("Other"); // 5 OTHER_CATALOGUE
 
           // Adding child data
           List <String> meat = new ArrayList <String>();
@@ -102,9 +125,12 @@ import com.progym.custom.ExpandableListAdapter;
           fruits.add("Mandarinu");
           fruits.add("Appelsinu");
 
-          List <String> readyMeals = new ArrayList <String>();
-          readyMeals.add("Ready meal 1");
-          readyMeals.add("Ready meal 2");
+          
+          
+          List <ReadyMeal> meals = ReadyMeal.listAll(ReadyMeal.class);
+          for (ReadyMeal meal :meals){
+          	readyMeals.add(meal.date);
+          }
 
           List <String> other = new ArrayList <String>();
           other.add("Mushroom");

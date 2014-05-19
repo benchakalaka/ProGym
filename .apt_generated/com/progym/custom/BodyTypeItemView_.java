@@ -67,8 +67,8 @@ public final class BodyTypeItemView_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        ivBodyType = ((ImageView) hasViews.findViewById(id.ivBodyType));
         twBodyType = ((TextView) hasViews.findViewById(id.twBodyType));
+        ivBodyType = ((ImageView) hasViews.findViewById(id.ivBodyType));
     }
 
 }

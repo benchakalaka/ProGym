@@ -67,8 +67,8 @@ public final class SpecificProductSpecificationFragment_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        btnShowFoodTypes = ((Button) hasViews.findViewById(com.progym.R.id.btnShowFoodTypes));
         ivFoodImage = ((ImageView) hasViews.findViewById(com.progym.R.id.ivFoodImage));
+        btnShowFoodTypes = ((Button) hasViews.findViewById(com.progym.R.id.btnShowFoodTypes));
         {
             View view = hasViews.findViewById(com.progym.R.id.btnShowFoodTypes);
             if (view!= null) {

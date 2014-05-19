@@ -12,8 +12,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
-import android.widget.TextView;
+import android.view.animation.AnimationUtils;
+import android.widget.LinearLayout;
+import com.progym.R.anim;
 import com.progym.R.id;
 import com.progym.R.layout;
 import org.androidannotations.api.view.HasViews;
@@ -38,6 +39,7 @@ public final class StartActivity_
 
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
+        fadeIn = AnimationUtils.loadAnimation(this, anim.fadein);
     }
 
     @Override
@@ -72,19 +74,19 @@ public final class StartActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        twTest = ((TextView) hasViews.findViewById(id.twTest));
-        btnWater = ((Button) hasViews.findViewById(id.btnWater));
-        btnFood = ((Button) hasViews.findViewById(id.btnFood));
-        btnUserProfile = ((Button) hasViews.findViewById(id.btnUserProfile));
+        llProfile = ((LinearLayout) hasViews.findViewById(id.llProfile));
+        llTraining = ((LinearLayout) hasViews.findViewById(id.llTraining));
+        llNutrition = ((LinearLayout) hasViews.findViewById(id.llNutrition));
+        llProgress = ((LinearLayout) hasViews.findViewById(id.llProgress));
         {
-            View view = hasViews.findViewById(id.btnUserProfile);
+            View view = hasViews.findViewById(id.llProgress);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        StartActivity_.this.btnUserProfile();
+                        StartActivity_.this.llProgress();
                     }
 
                 }
@@ -92,14 +94,14 @@ public final class StartActivity_
             }
         }
         {
-            View view = hasViews.findViewById(id.btnWater);
+            View view = hasViews.findViewById(id.llProfile);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        StartActivity_.this.btnWater();
+                        StartActivity_.this.llProfile();
                     }
 
                 }
@@ -107,14 +109,29 @@ public final class StartActivity_
             }
         }
         {
-            View view = hasViews.findViewById(id.btnFood);
+            View view = hasViews.findViewById(id.llNutrition);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        StartActivity_.this.btnFood();
+                        StartActivity_.this.llNutrition();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.llTraining);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        StartActivity_.this.llTraining();
                     }
 
                 }

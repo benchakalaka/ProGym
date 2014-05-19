@@ -7,7 +7,6 @@ package com.progym.custom;
 
 import android.content.Context;
 import android.widget.ImageView;
-import android.widget.TextView;
 import com.progym.R.id;
 import com.progym.R.layout;
 import org.androidannotations.api.view.HasViews;
@@ -68,7 +67,6 @@ public final class ConsumedWaterItemView_
     @Override
     public void onViewChanged(HasViews hasViews) {
         ivVolumeImage = ((ImageView) hasViews.findViewById(id.ivVolumeImage));
-        twWaterVolume = ((TextView) hasViews.findViewById(id.twWaterVolume));
     }
 
 }

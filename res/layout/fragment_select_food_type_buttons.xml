@@ -27,7 +27,7 @@
                 android:layout_weight="1"
                 android:contentDescription="@null"
                 android:scaleType="fitCenter"
-                android:src="@drawable/bottle" />
+                android:src="@drawable/bottle_1" />
 
             <ImageButton
                 android:id="@+id/buttonCalendar"
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:contentDescription="@null"
-                android:src="@drawable/bottle" />
+                android:src="@drawable/bottle_1" />
         </TableRow>
 
         <LinearLayout
@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:contentDescription="@null"
-                android:src="@drawable/bottle" />
+                android:src="@drawable/bottle_1" />
 
             <ImageButton
                 android:id="@+id/start_imagebutton_briefing"
@@ -80,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:contentDescription="@null"
-                android:src="@drawable/bottle" />
+                android:src="@drawable/bottle_1" />
         </TableRow>
 
         <LinearLayout
@@ -117,7 +117,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:contentDescription="@null"
-                android:src="@drawable/bottle" />
+                android:src="@drawable/bottle_1" />
 
             <ImageButton
                 android:id="@+id/buttonExit"
@@ -125,7 +125,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:contentDescription="@null"
-                android:src="@drawable/bottle" />
+                android:src="@drawable/bottle_1" />
         </TableRow>
 
         <LinearLayout
