@@ -42,8 +42,8 @@ public final class UserProfileActivity_
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
         Resources resources_ = this.getResources();
-        bodyTypes = resources_.getStringArray(array.bodyTypes);
         genders = resources_.getStringArray(array.genders);
+        bodyTypes = resources_.getStringArray(array.bodyTypes);
     }
 
     @Override
@@ -78,13 +78,13 @@ public final class UserProfileActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        wheelGender = ((WheelView) hasViews.findViewById(id.wheelGender));
-        wheelHeight = ((WheelView) hasViews.findViewById(id.wheelHeight));
-        wheelBodyType = ((WheelView) hasViews.findViewById(id.wheelBodyType));
-        btnSave = ((Button) hasViews.findViewById(id.btnSave));
         wheelWeight = ((WheelView) hasViews.findViewById(id.wheelWeight));
+        btnSave = ((Button) hasViews.findViewById(id.btnSave));
+        wheelGender = ((WheelView) hasViews.findViewById(id.wheelGender));
         etName = ((EditText) hasViews.findViewById(id.etName));
+        wheelHeight = ((WheelView) hasViews.findViewById(id.wheelHeight));
         wheelAge = ((WheelView) hasViews.findViewById(id.wheelAge));
+        wheelBodyType = ((WheelView) hasViews.findViewById(id.wheelBodyType));
         {
             View view = hasViews.findViewById(id.btnSave);
             if (view!= null) {

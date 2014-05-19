@@ -1,225 +1,232 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/water_managment_root_relative_layout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+	android:id="@+id/water_managment_root_relative_layout"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent" >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentTop="true"
-        android:orientation="horizontal"
-        android:padding="1dp" >
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="fill_parent"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentTop="true"
+		android:orientation="horizontal"
+		android:padding="1dp" >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="3dp"
-            android:layout_weight="1"
-            android:background="@drawable/background_round_border"
-            android:orientation="vertical" >
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_margin="3dp"
+			android:layout_weight="1"
+			android:background="@drawable/background_round_border"
+			android:orientation="vertical" >
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/background_round_border_green"
-                android:orientation="horizontal" >
+			<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="50dp"
+				android:layout_margin="10dp"
+				android:background="@drawable/background_round_border_green"
+				android:orientation="horizontal" >
 
-                <ImageView
-                    android:id="@+id/ivPrevDay"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentTop="true"
-                    android:background="@drawable/left" />
+				<ImageView
+					android:id="@+id/ivPrevDay"
+					android:layout_width="50dp"
+					android:layout_height="wrap_content"
+					android:layout_alignParentBottom="true"
+					android:layout_alignParentTop="true"
+					android:background="@drawable/left" />
 
-                <ImageView
-                    android:id="@+id/ivNextDay"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentTop="true"
-                    android:background="@drawable/right" />
+				<ImageView
+					android:id="@+id/ivNextDay"
+					android:layout_width="50dp"
+					android:layout_height="wrap_content"
+					android:layout_alignParentBottom="true"
+					android:layout_alignParentRight="true"
+					android:layout_alignParentTop="true"
+					android:background="@drawable/right" />
 
-                <LinearLayout
-                    android:id="@+id/llLeftPanelDateWithCalendar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:background="@drawable/background_round_border"
-                    android:gravity="center"
-                    android:orientation="horizontal" >
+				<LinearLayout
+					android:id="@+id/llLeftPanelDateWithCalendar"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_alignParentBottom="true"
+					android:layout_alignParentTop="true"
+					android:layout_centerHorizontal="true"
+					android:background="@drawable/background_round_border"
+					android:gravity="center"
+					android:orientation="horizontal" >
 
-                    <TextView
-                        android:id="@+id/twCurrentDate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="2020-20-20"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@android:color/white" />
+					<TextView
+						android:id="@+id/twCurrentDate"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="2020-20-20"
+						android:textAppearance="?android:attr/textAppearanceLarge"
+						android:textColor="@android:color/white" />
 
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/calendar" />
-                </LinearLayout>
-            </RelativeLayout>
+					<ImageView
+						android:layout_width="50dp"
+						android:layout_height="50dp"
+						android:background="@drawable/calendar" />
+				</LinearLayout>
+			</RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@drawable/background_round_border_green"
-                android:orientation="horizontal" >
+			<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="10dp"
+				android:background="@drawable/background_round_border_green"
+				android:orientation="horizontal" >
 
-                <TextView
-                    android:id="@+id/textView1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:gravity="center"
-                    android:text="Types of volumes"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+				<TextView
+					android:id="@+id/textView1"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_alignParentTop="true"
+					android:layout_centerHorizontal="true"
+					android:gravity="center"
+					android:text="Types of volumes"
+					android:textAppearance="?android:attr/textAppearanceLarge" />
 
-                <HorizontalScrollView
-                    android:id="@+id/hsvWaterVolumes"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/textView1"
-                    android:background="@drawable/shelf" >
+				<HorizontalScrollView
+					android:id="@+id/hsvWaterVolumes"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_below="@+id/textView1"
+					android:background="@drawable/shelf" >
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal" >
+					<LinearLayout
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:orientation="horizontal" >
 
-                        <ImageView
-                            android:id="@+id/ivGlass250ML"
-                            android:layout_width="50dp"
-                            android:layout_height="100dp"
-                            android:background="@drawable/glass_025"
-                            android:tag="250 ml" />
+						<ImageView
+							android:id="@+id/ivGlass250ML"
+							android:layout_width="50dp"
+							android:layout_height="100dp"
+							android:background="@drawable/glass_025"
+							android:tag="250 ml" />
 
-                        <ImageView
-                            android:id="@+id/ivBottle500ML"
-                            android:layout_width="50dp"
-                            android:layout_height="100dp"
-                            android:background="@drawable/bottle_05"
-                            android:tag="500 ml" />
+						<ImageView
+							android:id="@+id/ivBottle500ML"
+							android:layout_width="50dp"
+							android:layout_height="100dp"
+							android:background="@drawable/bottle_05"
+							android:tag="500 ml" />
 
-                        <ImageView
-                            android:id="@+id/ivBottle1L"
-                            android:layout_width="50dp"
-                            android:layout_height="100dp"
-                            android:background="@drawable/bottle_1"
-                            android:tag="1 littre" />
+						<ImageView
+							android:id="@+id/ivBottle1L"
+							android:layout_width="50dp"
+							android:layout_height="100dp"
+							android:background="@drawable/bottle_1"
+							android:tag="1 littre" />
 
-                        <ImageView
-                            android:id="@+id/ivBottle2L"
-                            android:layout_width="50dp"
-                            android:layout_height="100dp"
-                            android:background="@drawable/bottle_2"
-                            android:tag="2 littres" />
+						<ImageView
+							android:id="@+id/ivBottle2L"
+							android:layout_width="50dp"
+							android:layout_height="100dp"
+							android:background="@drawable/bottle_2"
+							android:tag="2 littres" />
 
-                        <ImageView
-                            android:id="@+id/ivCustomWaterVolume"
-                            android:layout_width="50dp"
-                            android:layout_height="100dp"
-                            android:background="@drawable/custom" />
-                    </LinearLayout>
-                </HorizontalScrollView>
-            </RelativeLayout>
-        </LinearLayout>
+						<ImageView
+							android:id="@+id/ivCustomWaterVolume"
+							android:layout_width="50dp"
+							android:layout_height="100dp"
+							android:background="@drawable/custom" />
+					</LinearLayout>
+				</HorizontalScrollView>
 
-        <!-- Right panel with body and horizontal scroll (what has been consumed by user) -->
+				<LinearLayout
+					android:id="@+id/llConsumedStatistic"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:layout_alignParentBottom="true"
+					android:layout_margin="3dp"
+					android:background="@drawable/background_round_border"
+					android:orientation="horizontal" >
 
-        <LinearLayout
-            android:id="@+id/llRightPanelBody"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="3dp"
-            android:layout_weight="1"
-            android:background="@android:color/black"
-            android:orientation="vertical" >
+					<TextView
+						android:id="@+id/twPercentComplete"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="50%"
+						android:textAppearance="?android:attr/textAppearanceLarge"
+						android:textColor="@android:color/holo_blue_dark" />
 
-            <RelativeLayout
-                android:id="@+id/water_managment_root_relative_lasyout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="3dp" >
+					<ProgressBar
+						android:id="@+id/pbConsumedLeft"
+						style="?android:attr/progressBarStyleHorizontal"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:progress="50"
+						android:progressDrawable="@drawable/progressbar_bg" />
+				</LinearLayout>
+			</RelativeLayout>
+		</LinearLayout>
 
-                <TextView
-                    android:id="@+id/twPercentWatterCompletted"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
+		<!-- Right panel with body and horizontal scroll (what has been consumed by user) -->
 
-                <com.progym.custom.WaterLevelBodyView
-                    android:id="@+id/ivBodyWaterLevel"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:scaleX="0.5"
-                    android:layout_alignParentTop="true"
-                    android:background="@android:color/black" />
+		<LinearLayout
+			android:id="@+id/llRightPanelBody"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_margin="3dp"
+			android:layout_weight="1"
+			android:background="@android:color/black"
+			android:orientation="vertical" >
 
-                <ImageView
-                    android:id="@+id/ivBodyWater"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleX="0.5"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentTop="true"
-                    android:background="@drawable/body" />
+			<RelativeLayout
+				android:id="@+id/water_managment_root_relative_lasyout"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_margin="3dp" >
 
-                <HorizontalScrollView
-                    android:id="@+id/horizontalScrollView1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
-                    android:layout_alignParentBottom="true" >
+				<com.progym.custom.WaterLevelBodyView
+					android:id="@+id/ivBodyWaterLevel"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_alignParentBottom="true"
+					android:layout_alignParentTop="true"
+					android:background="@android:color/black"
+					android:scaleX="0.5" />
 
-                    <LinearLayout
-                        android:id="@+id/llAlreadyConsumedWaterList"
-                        android:layout_width="wrap_content"
-                        android:layout_height="100dp"
-                        android:orientation="horizontal" >
-                    </LinearLayout>
-                </HorizontalScrollView>
+				<ImageView
+					android:id="@+id/ivBodyWater"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_alignParentBottom="true"
+					android:layout_alignParentTop="true"
+					android:background="@drawable/body"
+					android:scaleX="0.5" />
 
-                <TextView
-                    android:id="@+id/twConsumed"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/twPercentWatterCompletted"
-                    android:text="Consumed"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/holo_blue_dark" />
+				<com.todddavies.components.progressbar.ProgressWheel
+					xmlns:ProgressWheel="http://schemas.android.com/apk/res-auto"
+					android:id="@+id/pwConsumedCircleProgress"
+					android:layout_width="100dp"
+					android:layout_height="100dp"
+					ProgressWheel:barColor="#0097D6"
+					ProgressWheel:barLength="60dp"
+					ProgressWheel:barWidth="10dp"
+					ProgressWheel:rimColor="@color/caldroid_yellow"
+					ProgressWheel:rimWidth="14dp"
+					ProgressWheel:text="1,25L"
+					ProgressWheel:textColor="@android:color/holo_blue_light"
+					ProgressWheel:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/twLeft"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/twConsumed"
-                    android:text="Left"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/holo_green_dark" />
+				<HorizontalScrollView
+					android:id="@+id/horizontalScrollView1"
+					android:layout_width="wrap_content"
+					android:layout_height="100dp"
+					android:layout_alignParentBottom="true" >
 
-                <TextView
-                    android:id="@+id/twConsumedInPercent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/twLeft"
-                    android:text="Percent"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
-            </RelativeLayout>
-        </LinearLayout>
-    </LinearLayout>
+					<LinearLayout
+						android:id="@+id/llAlreadyConsumedWaterList"
+						android:layout_width="wrap_content"
+						android:layout_height="100dp"
+						android:orientation="horizontal" >
+					</LinearLayout>
+				</HorizontalScrollView>
+			</RelativeLayout>
+		</LinearLayout>
+	</LinearLayout>
 
 </RelativeLayout>

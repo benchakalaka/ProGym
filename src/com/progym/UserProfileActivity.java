@@ -28,152 +28,151 @@ import com.progym.model.User;
 import com.progym.model.WaterConsumed;
 import com.progym.utils.DataBaseUtils;
 
-@EActivity ( R.layout.user_profile_activity )
-public class UserProfileActivity extends Activity {
+@EActivity ( R.layout.user_profile_activity ) public class UserProfileActivity extends Activity {
 
-	@ViewById EditText		etName;
+     @ViewById EditText       etName;
 
-	@ViewById WheelView		wheelWeight;
-	@ViewById WheelView		wheelHeight;
-	@ViewById WheelView		wheelAge;
-	@ViewById WheelView		wheelBodyType;
-	@ViewById WheelView		wheelGender;
+     @ViewById WheelView      wheelWeight;
+     @ViewById WheelView      wheelHeight;
+     @ViewById WheelView      wheelAge;
+     @ViewById WheelView      wheelBodyType;
+     @ViewById WheelView      wheelGender;
 
-	@ViewById Button		btnSave;
+     @ViewById Button         btnSave;
 
-	@StringArrayRes String[]	bodyTypes;
-	@StringArrayRes String[]	genders;
+     @StringArrayRes String[] bodyTypes;
+     @StringArrayRes String[] genders;
 
-	private User			userToSave;
+     private User             userToSave;
 
-	@AfterViews void afterViews() {
-		wheelWeight.setViewAdapter(new NumericWheelAdapter(this, 0, 200));
-		wheelHeight.setViewAdapter(new NumericWheelAdapter(this, 0, 200));
-		wheelAge.setViewAdapter(new NumericWheelAdapter(this, 0, 99));
+     @AfterViews void afterViews() {
+          wheelWeight.setViewAdapter(new NumericWheelAdapter(this, 0, 200));
+          wheelHeight.setViewAdapter(new NumericWheelAdapter(this, 0, 200));
+          wheelAge.setViewAdapter(new NumericWheelAdapter(this, 0, 99));
 
-		wheelBodyType.setViewAdapter(new BodyTypeAdapter(this));
-		wheelGender.setViewAdapter(new MaleFemaleAdapter(this));
+          wheelBodyType.setViewAdapter(new BodyTypeAdapter(this));
+          wheelGender.setViewAdapter(new MaleFemaleAdapter(this));
 
-		wheelWeight.setInterpolator(new AnticipateOvershootInterpolator());
-		etName.setText("Eleonora Kosheleva");
-		InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
-		imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
-	}
+          wheelWeight.setInterpolator(new AnticipateOvershootInterpolator());
+          etName.setText("Eleonora Kosheleva");
+          InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+          imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+     }
 
-	private void setUpUser() {
-		User u = DataBaseUtils.getCurrentUser();
-		if ( null != u ) {
-			etName.setText(u.name);
-			wheelAge.setCurrentItem(u.age);
-			wheelBodyType.setCurrentItem(u.bodyType); // , true
-			wheelHeight.setCurrentItem(u.height); // , true
-			wheelWeight.setCurrentItem((int) u.weight); // , true
-		}
-	}
+     private void setUpUser() {
+          User u = DataBaseUtils.getCurrentUser();
+          if ( null != u ) {
+               etName.setText(u.name);
+               wheelAge.setCurrentItem(u.age);
+               wheelBodyType.setCurrentItem(u.bodyType); // , true
+               wheelHeight.setCurrentItem(u.height); // , true
+               wheelWeight.setCurrentItem((int) u.weight); // , true
+          }
+     }
 
-	@Override protected void onResume() {
-		super.onResume();
-		setUpUser();
-	}
+     @Override protected void onResume() {
+          super.onResume();
+          setUpUser();
+     }
 
-	@Click void btnSave() {
-		userToSave = DataBaseUtils.getCurrentUser();
-		if ( null == userToSave ) {
-			userToSave = new User(getApplicationContext());
-		}
-		userToSave.name = etName.getText().toString();
-		userToSave.age = Integer.valueOf(wheelAge.getCurrentItem());
-		userToSave.gender = wheelGender.getCurrentItem();
-		userToSave.height = wheelHeight.getCurrentItem();
-		userToSave.weight = wheelWeight.getCurrentItem();
-		userToSave.bodyType = wheelBodyType.getCurrentItem();
-		userToSave.save();
-		startActivity(new Intent(UserProfileActivity.this, StartActivity_.class));
-	}
+     @Click void btnSave() {
+          userToSave = DataBaseUtils.getCurrentUser();
+          if ( null == userToSave ) {
+               userToSave = new User(getApplicationContext());
+          }
+          userToSave.name = etName.getText().toString();
+          userToSave.age = Integer.valueOf(wheelAge.getCurrentItem());
+          userToSave.gender = wheelGender.getCurrentItem();
+          userToSave.height = wheelHeight.getCurrentItem();
+          userToSave.weight = wheelWeight.getCurrentItem();
+          userToSave.bodyType = wheelBodyType.getCurrentItem();
+          userToSave.save();
+          startActivity(new Intent(UserProfileActivity.this, StartActivity_.class));
+     }
 
-	@Click void btnClearProfile() {
-		User.deleteAll(User.class);
-		WaterConsumed.deleteAll(WaterConsumed.class);
-	}
+     @Click void btnClearProfile() {
+          User.deleteAll(User.class);
+          WaterConsumed.deleteAll(WaterConsumed.class);
+     }
 
-	@Override public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		// commmited from home
-		getMenuInflater().inflate(R.menu.start, menu);
-		return true;
-	}
+     @Override public boolean onCreateOptionsMenu(Menu menu) {
+          // Inflate the menu; this adds items to the action bar if it is present.
+          // commmited from home
+          getMenuInflater().inflate(R.menu.start, menu);
+          return true;
+     }
 
-	@Override public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if ( id == R.id.action_settings ) { return true; }
-		return super.onOptionsItemSelected(item);
-	}
+     @Override public boolean onOptionsItemSelected(MenuItem item) {
+          // Handle action bar item clicks here. The action bar will
+          // automatically handle clicks on the Home/Up button, so long
+          // as you specify a parent activity in AndroidManifest.xml.
+          int id = item.getItemId();
+          if ( id == R.id.action_settings ) { return true; }
+          return super.onOptionsItemSelected(item);
+     }
 
-	/**
-	 * Adapter for countries
-	 */
-	private class BodyTypeAdapter extends AbstractWheelTextAdapter {
-		// Countries names
-		private final String	bodyTypes[]		= new String[] { "Ectomorf", "Mezomorf", "Endomorf" };
-		// Countries flags
-		private final int		bodyTypesImages[]	= new int[] { R.drawable.ectomorf, R.drawable.mezomorf, R.drawable.endomorf };
+     /**
+      * Adapter for countries
+      */
+     private class BodyTypeAdapter extends AbstractWheelTextAdapter {
+          // Countries names
+          private final String bodyTypes[]       = new String[] { "Ectomorf", "Mezomorf", "Endomorf" };
+          // Countries flags
+          private final int    bodyTypesImages[] = new int[] { R.drawable.ectomorf, R.drawable.mezomorf, R.drawable.endomorf };
 
-		/**
-		 * Constructor
-		 */
-		protected BodyTypeAdapter ( Context context ) {
-			super(context, R.layout.custom_wheel_bodytype_item, NO_RESOURCE);
-		}
+          /**
+           * Constructor
+           */
+          protected BodyTypeAdapter ( Context context ) {
+               super(context, R.layout.custom_wheel_bodytype_item, NO_RESOURCE);
+          }
 
-		@Override public View getItem(int index, View cachedView, ViewGroup parent) {
-			BodyTypeItemView view = BodyTypeItemView_.build(context);
-			view.ivBodyType.setImageResource(bodyTypesImages[index]);
-			view.twBodyType.setText(bodyTypes[index]);
-			return view;
-		}
+          @Override public View getItem(int index, View cachedView, ViewGroup parent) {
+               BodyTypeItemView view = BodyTypeItemView_.build(context);
+               view.ivBodyType.setImageResource(bodyTypesImages[index]);
+               view.twBodyType.setText(bodyTypes[index]);
+               return view;
+          }
 
-		@Override public int getItemsCount() {
-			return bodyTypes.length;
-		}
+          @Override public int getItemsCount() {
+               return bodyTypes.length;
+          }
 
-		@Override protected CharSequence getItemText(int index) {
-			return bodyTypes[index];
-		}
-	}
+          @Override protected CharSequence getItemText(int index) {
+               return bodyTypes[index];
+          }
+     }
 
-	/**
-	 * Adapter for countries
-	 */
-	private class MaleFemaleAdapter extends AbstractWheelTextAdapter {
-		// Countries names
-		private final String	bodyTypes[]		= new String[] { "Male", "Female" };
-		// Countries flags
-		private final int		bodyTypesImages[]	= new int[] { R.drawable.female, R.drawable.male };
+     /**
+      * Adapter for countries
+      */
+     private class MaleFemaleAdapter extends AbstractWheelTextAdapter {
+          // Countries names
+          private final String bodyTypes[]       = new String[] { "Male", "Female" };
+          // Countries flags
+          private final int    bodyTypesImages[] = new int[] { R.drawable.female, R.drawable.male };
 
-		/**
-		 * Constructor
-		 */
-		protected MaleFemaleAdapter ( Context context ) {
-			super(context, R.layout.custom_wheel_bodytype_item, NO_RESOURCE);
-		}
+          /**
+           * Constructor
+           */
+          protected MaleFemaleAdapter ( Context context ) {
+               super(context, R.layout.custom_wheel_bodytype_item, NO_RESOURCE);
+          }
 
-		@Override public View getItem(int index, View cachedView, ViewGroup parent) {
-			BodyTypeItemView view = BodyTypeItemView_.build(context);
-			view.ivBodyType.setImageResource(bodyTypesImages[index]);
-			view.twBodyType.setText(bodyTypes[index]);
-			return view;
-		}
+          @Override public View getItem(int index, View cachedView, ViewGroup parent) {
+               BodyTypeItemView view = BodyTypeItemView_.build(context);
+               view.ivBodyType.setImageResource(bodyTypesImages[index]);
+               view.twBodyType.setText(bodyTypes[index]);
+               return view;
+          }
 
-		@Override public int getItemsCount() {
-			return bodyTypes.length;
-		}
+          @Override public int getItemsCount() {
+               return bodyTypes.length;
+          }
 
-		@Override protected CharSequence getItemText(int index) {
-			return bodyTypes[index];
-		}
-	}
+          @Override protected CharSequence getItemText(int index) {
+               return bodyTypes[index];
+          }
+     }
 
 }

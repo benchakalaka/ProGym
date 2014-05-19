@@ -46,11 +46,11 @@ public final class FoodManagmentActivity_
 
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
+        fadeIn = AnimationUtils.loadAnimation(this, anim.fadein);
         leftIn = AnimationUtils.loadAnimation(this, anim.push_left_in);
         leftOut = AnimationUtils.loadAnimation(this, anim.push_left_out);
-        fadeIn = AnimationUtils.loadAnimation(this, anim.fadein);
-        rightIn = AnimationUtils.loadAnimation(this, anim.push_right_in);
         rightOut = AnimationUtils.loadAnimation(this, anim.push_right_out);
+        rightIn = AnimationUtils.loadAnimation(this, anim.push_right_in);
     }
 
     @Override
@@ -93,17 +93,17 @@ public final class FoodManagmentActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        ivPrevDay = ((ImageView) hasViews.findViewById(id.ivPrevDay));
         twCurrentDate = ((TextView) hasViews.findViewById(id.twCurrentDate));
-        ivNextDay = ((ImageView) hasViews.findViewById(id.ivNextDay));
+        ivPrevDay = ((ImageView) hasViews.findViewById(id.ivPrevDay));
         llLeftPanelDateWithCalendar = ((LinearLayout) hasViews.findViewById(id.llLeftPanelDateWithCalendar));
-        llCreatedPlates = ((LinearLayout) hasViews.findViewById(id.llCreatedPlates));
-        llAlreadyOnPlate = ((LinearLayout) hasViews.findViewById(id.llAlreadyOnPlate));
-        ibCreatePlate = ((ImageButton) hasViews.findViewById(id.ibCreatePlate));
+        ivNextDay = ((ImageView) hasViews.findViewById(id.ivNextDay));
         viewPager = ((NonSwipeableViewPager) hasViews.findViewById(id.viewPager));
-        svListOfConsumedMeals = ((ScrollView) hasViews.findViewById(id.svListOfConsumedMeals));
-        ibSavePlate = ((ImageButton) hasViews.findViewById(id.ibSavePlate));
+        ibCreatePlate = ((ImageButton) hasViews.findViewById(id.ibCreatePlate));
+        llCreatedPlates = ((LinearLayout) hasViews.findViewById(id.llCreatedPlates));
         ivOnPlate = ((ImageView) hasViews.findViewById(id.ivOnPlate));
+        ibSavePlate = ((ImageButton) hasViews.findViewById(id.ibSavePlate));
+        svListOfConsumedMeals = ((ScrollView) hasViews.findViewById(id.svListOfConsumedMeals));
+        llAlreadyOnPlate = ((LinearLayout) hasViews.findViewById(id.llAlreadyOnPlate));
         {
             View view = hasViews.findViewById(id.ivNextDay);
             if (view!= null) {
@@ -135,21 +135,6 @@ public final class FoodManagmentActivity_
             }
         }
         {
-            View view = hasViews.findViewById(id.ibSavePlate);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        FoodManagmentActivity_.this.ibSavePlate();
-                    }
-
-                }
-                );
-            }
-        }
-        {
             View view = hasViews.findViewById(id.ibCreatePlate);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
@@ -165,14 +150,29 @@ public final class FoodManagmentActivity_
             }
         }
         {
-            View view = hasViews.findViewById(id.twCurrentDate);
+            View view = hasViews.findViewById(id.ibSavePlate);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        FoodManagmentActivity_.this.twCurrentDate();
+                        FoodManagmentActivity_.this.ibSavePlate();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.llLeftPanelDateWithCalendar);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        FoodManagmentActivity_.this.llLeftPanelDateWithCalendar();
                     }
 
                 }

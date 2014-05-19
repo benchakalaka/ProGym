@@ -74,25 +74,10 @@ public final class StartActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        llProfile = ((LinearLayout) hasViews.findViewById(id.llProfile));
-        llTraining = ((LinearLayout) hasViews.findViewById(id.llTraining));
-        llNutrition = ((LinearLayout) hasViews.findViewById(id.llNutrition));
         llProgress = ((LinearLayout) hasViews.findViewById(id.llProgress));
-        {
-            View view = hasViews.findViewById(id.llProgress);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        StartActivity_.this.llProgress();
-                    }
-
-                }
-                );
-            }
-        }
+        llNutrition = ((LinearLayout) hasViews.findViewById(id.llNutrition));
+        llTraining = ((LinearLayout) hasViews.findViewById(id.llTraining));
+        llProfile = ((LinearLayout) hasViews.findViewById(id.llProfile));
         {
             View view = hasViews.findViewById(id.llProfile);
             if (view!= null) {
@@ -117,6 +102,21 @@ public final class StartActivity_
                     @Override
                     public void onClick(View view) {
                         StartActivity_.this.llNutrition();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.llProgress);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        StartActivity_.this.llProgress();
                     }
 
                 }
