@@ -78,13 +78,13 @@ public final class UserProfileActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        wheelWeight = ((WheelView) hasViews.findViewById(id.wheelWeight));
         btnSave = ((Button) hasViews.findViewById(id.btnSave));
-        wheelGender = ((WheelView) hasViews.findViewById(id.wheelGender));
         etName = ((EditText) hasViews.findViewById(id.etName));
-        wheelHeight = ((WheelView) hasViews.findViewById(id.wheelHeight));
         wheelAge = ((WheelView) hasViews.findViewById(id.wheelAge));
         wheelBodyType = ((WheelView) hasViews.findViewById(id.wheelBodyType));
+        wheelGender = ((WheelView) hasViews.findViewById(id.wheelGender));
+        wheelHeight = ((WheelView) hasViews.findViewById(id.wheelHeight));
+        wheelWeight = ((WheelView) hasViews.findViewById(id.wheelWeight));
         {
             View view = hasViews.findViewById(id.btnSave);
             if (view!= null) {

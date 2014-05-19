@@ -58,7 +58,7 @@ import com.todddavies.components.progressbar.ProgressWheel;
      @ViewById ProgressBar        pbConsumedLeft;
 
      private MediaPlayer          mediaPlayer;
-
+ 
      @Click void llLeftPanelDateWithCalendar() {
           calendar = new CaldroidFragment();
           calendar.setCaldroidListener(onDateChangeListener);
@@ -66,7 +66,7 @@ import com.todddavies.components.progressbar.ProgressWheel;
           List <WaterConsumed> list = DataBaseUtils.getAllWaterConsumed();
 
           HashMap <Date, Integer> datesAndColour = new HashMap <Date, Integer>();
-          int shouldConsumePerDay = DataBaseUtils.getWaterUserShouldConsumePerDay();
+          double shouldConsumePerDay = DataBaseUtils.getWaterUserShouldConsumePerDay();
           for ( WaterConsumed singleDate : list ) {
                try {
                     int consumedPerDay = DataBaseUtils.getConsumedPerDay(singleDate.date);
@@ -280,5 +280,4 @@ import com.todddavies.components.progressbar.ProgressWheel;
                }
           }
      }
-
 }

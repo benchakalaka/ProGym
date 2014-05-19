@@ -74,10 +74,40 @@ public final class StartActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        llProgress = ((LinearLayout) hasViews.findViewById(id.llProgress));
-        llNutrition = ((LinearLayout) hasViews.findViewById(id.llNutrition));
         llTraining = ((LinearLayout) hasViews.findViewById(id.llTraining));
+        llNutrition = ((LinearLayout) hasViews.findViewById(id.llNutrition));
         llProfile = ((LinearLayout) hasViews.findViewById(id.llProfile));
+        llProgress = ((LinearLayout) hasViews.findViewById(id.llProgress));
+        {
+            View view = hasViews.findViewById(id.llTraining);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        StartActivity_.this.llTraining();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.llProgress);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        StartActivity_.this.llProgress();
+                    }
+
+                }
+                );
+            }
+        }
         {
             View view = hasViews.findViewById(id.llProfile);
             if (view!= null) {
@@ -102,36 +132,6 @@ public final class StartActivity_
                     @Override
                     public void onClick(View view) {
                         StartActivity_.this.llNutrition();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.llProgress);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        StartActivity_.this.llProgress();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.llTraining);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        StartActivity_.this.llTraining();
                     }
 
                 }

@@ -50,7 +50,7 @@ import com.roomorama.caldroid.CaldroidFragment;
 
      private Meal                           CURRENT_MEAL;
      private View                           CURRENT_MEAL_VIEW;
-
+ 
      @ViewById public NonSwipeableViewPager viewPager;
      @ViewById public ImageView             ivOnPlate;
      @ViewById public ScrollView            svListOfConsumedMeals;
