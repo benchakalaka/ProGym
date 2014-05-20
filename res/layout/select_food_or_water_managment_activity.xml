@@ -29,7 +29,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:padding="6dp"
-                android:src="@drawable/food" />
+                android:src="@drawable/meal_title" />
 
             <TextView
                 android:id="@+id/textView1"

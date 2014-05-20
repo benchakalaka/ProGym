@@ -3,8 +3,9 @@
     android:id="@+id/rootRelative"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="2dip"
-    android:background="@drawable/background_round_border_green_" >
+    android:layout_margin="3dip"
+    android:padding="5dp"
+    android:background="@drawable/background_start_buttons" >
 
     <ImageView
         android:id="@+id/ivProduct"

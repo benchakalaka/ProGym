@@ -79,14 +79,14 @@ public final class StartActivity_
         llProfile = ((LinearLayout) hasViews.findViewById(id.llProfile));
         llProgress = ((LinearLayout) hasViews.findViewById(id.llProgress));
         {
-            View view = hasViews.findViewById(id.llTraining);
+            View view = hasViews.findViewById(id.llNutrition);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        StartActivity_.this.llTraining();
+                        StartActivity_.this.llNutrition();
                     }
 
                 }
@@ -109,6 +109,21 @@ public final class StartActivity_
             }
         }
         {
+            View view = hasViews.findViewById(id.llTraining);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        StartActivity_.this.llTraining();
+                    }
+
+                }
+                );
+            }
+        }
+        {
             View view = hasViews.findViewById(id.llProfile);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
@@ -117,21 +132,6 @@ public final class StartActivity_
                     @Override
                     public void onClick(View view) {
                         StartActivity_.this.llProfile();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.llNutrition);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        StartActivity_.this.llNutrition();
                     }
 
                 }

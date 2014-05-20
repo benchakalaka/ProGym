@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.animation.AnimationUtils;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -47,9 +48,9 @@ public final class FoodManagmentActivity_
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
         leftIn = AnimationUtils.loadAnimation(this, anim.push_left_in);
-        fadeIn = AnimationUtils.loadAnimation(this, anim.fadein);
         rightIn = AnimationUtils.loadAnimation(this, anim.push_right_in);
         leftOut = AnimationUtils.loadAnimation(this, anim.push_left_out);
+        fadeIn = AnimationUtils.loadAnimation(this, anim.fadein);
         rightOut = AnimationUtils.loadAnimation(this, anim.push_right_out);
     }
 
@@ -93,17 +94,18 @@ public final class FoodManagmentActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        ivPrevDay = ((ImageView) hasViews.findViewById(id.ivPrevDay));
         llLeftPanelDateWithCalendar = ((LinearLayout) hasViews.findViewById(id.llLeftPanelDateWithCalendar));
         ivNextDay = ((ImageView) hasViews.findViewById(id.ivNextDay));
         twCurrentDate = ((TextView) hasViews.findViewById(id.twCurrentDate));
-        llAlreadyOnPlate = ((LinearLayout) hasViews.findViewById(id.llAlreadyOnPlate));
+        ivPrevDay = ((ImageView) hasViews.findViewById(id.ivPrevDay));
         llCreatedPlates = ((LinearLayout) hasViews.findViewById(id.llCreatedPlates));
         viewPager = ((NonSwipeableViewPager) hasViews.findViewById(id.viewPager));
-        ibCreatePlate = ((ImageButton) hasViews.findViewById(id.ibCreatePlate));
         svListOfConsumedMeals = ((ScrollView) hasViews.findViewById(id.svListOfConsumedMeals));
-        ivOnPlate = ((ImageView) hasViews.findViewById(id.ivOnPlate));
         ibSavePlate = ((ImageButton) hasViews.findViewById(id.ibSavePlate));
+        horizontalScrollView = ((HorizontalScrollView) hasViews.findViewById(id.horizontalScrollView));
+        ibCreatePlate = ((ImageButton) hasViews.findViewById(id.ibCreatePlate));
+        ivOnPlate = ((ImageView) hasViews.findViewById(id.ivOnPlate));
+        llAlreadyOnPlate = ((LinearLayout) hasViews.findViewById(id.llAlreadyOnPlate));
         {
             View view = hasViews.findViewById(id.ivPrevDay);
             if (view!= null) {
@@ -135,21 +137,6 @@ public final class FoodManagmentActivity_
             }
         }
         {
-            View view = hasViews.findViewById(id.ibSavePlate);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        FoodManagmentActivity_.this.ibSavePlate();
-                    }
-
-                }
-                );
-            }
-        }
-        {
             View view = hasViews.findViewById(id.llLeftPanelDateWithCalendar);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
@@ -158,6 +145,21 @@ public final class FoodManagmentActivity_
                     @Override
                     public void onClick(View view) {
                         FoodManagmentActivity_.this.llLeftPanelDateWithCalendar();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ibSavePlate);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        FoodManagmentActivity_.this.ibSavePlate();
                     }
 
                 }
@@ -179,6 +181,7 @@ public final class FoodManagmentActivity_
                 );
             }
         }
+        afterViews();
         afterViews();
     }
 
