@@ -2,6 +2,7 @@ package com.progym;
 
 import java.util.Date;
 
+import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.ViewById;
@@ -18,7 +19,7 @@ import android.widget.TextView;
 
 import com.roomorama.caldroid.CaldroidFragment;
 
-@EBean public abstract class ProgymSuperActivity extends FragmentActivity implements SuperInterface {
+@EBean public abstract class ProgymSuperActivity extends FragmentActivity implements ISuperActivity {
      static Date                                          SELECTED_DATE        = new Date();
      CaldroidFragment                                     calendar;
      @ViewById ImageView                                  ivNextDay;
@@ -27,10 +28,8 @@ import com.roomorama.caldroid.CaldroidFragment;
 
      @AnimationRes ( R.anim.push_left_in ) Animation      leftIn;
      @AnimationRes ( R.anim.push_left_out ) Animation     leftOut;
-
      @AnimationRes ( R.anim.push_right_in ) Animation     rightIn;
      @AnimationRes ( R.anim.push_right_out ) Animation    rightOut;
-
      @AnimationRes ( R.anim.fadein ) Animation            fadeIn;
 
      @ViewById LinearLayout                               llLeftPanelDateWithCalendar;
@@ -53,6 +52,14 @@ import com.roomorama.caldroid.CaldroidFragment;
                                                                                     }
                                                                                };
 
+     @AfterViews void afterViews() {
+          leftIn.setDuration(1000);
+          leftOut.setDuration(1000);
+          rightIn.setDuration(1000);
+          rightOut.setDuration(1000);
+          fadeIn.setDuration(1000);
+     }
+
      /**
       * Calendar control button
       * display next day
@@ -62,14 +69,14 @@ import com.roomorama.caldroid.CaldroidFragment;
           leftOut.setAnimationListener(new AnimationListener() {
 
                @Override public void onAnimationStart(Animation animation) {
+                    // Add one day (add one day to currrnet date)
+                    SELECTED_DATE = DateUtils.addDays(SELECTED_DATE, 1);
                }
 
                @Override public void onAnimationRepeat(Animation animation) {
                }
 
                @Override public void onAnimationEnd(Animation animation) {
-                    // Add one day (add one day to currrnet date)
-                    SELECTED_DATE = DateUtils.addDays(SELECTED_DATE, 1);
                     displaySelectedDate();
                     llLeftPanelDateWithCalendar.startAnimation(leftIn);
                }

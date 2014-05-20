@@ -9,7 +9,7 @@
         android:id="@+id/ivVolumeImage"
         android:layout_width="100dip"
         android:layout_height="100dip"
-        android:background="@drawable/meal"
+        android:background="@drawable/meal_title"
         android:layout_alignParentTop="true" />
 
     <TextView

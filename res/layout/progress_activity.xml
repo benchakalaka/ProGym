@@ -18,14 +18,14 @@
             android:layout_height="match_parent"
             android:layout_margin="3dp"
             android:layout_weight="1"
-            android:background="@drawable/background_round_border"
+            android:background="@drawable/round_border_gray_gradient"
             android:orientation="vertical" >
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_margin="10dp"
-                android:background="@drawable/background_round_border_green"
+                android:background="@drawable/round_border_gray_gradient"
                 android:orientation="horizontal" >
 
                 <LinearLayout
@@ -35,7 +35,8 @@
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
-                    android:background="@drawable/background_round_border"
+                    android:padding="3dp"
+                    android:layout_margin="5dp"
                     android:gravity="center"
                     android:orientation="horizontal" >
 
@@ -44,45 +45,41 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Dayly"
+                        android:padding="4dp"
+                        android:background="@drawable/background_transparent_inside"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="@android:color/white" />
 
-                    <ImageView
-                        android:layout_width="3dp"
-                        android:layout_height="30dp"
-                        android:background="@android:color/white" />
 
                     <TextView
                         android:id="@+id/twMonthly"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Monthly"
+                        android:padding="4dp"
+                        android:background="@drawable/background_transparent_inside"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="@android:color/white" />
 
-                    <ImageView
-                        android:layout_width="3dp"
-                        android:layout_height="30dp"
-                        android:background="@android:color/white" />
 
                     <TextView
                         android:id="@+id/twYearly"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Yearly"
+                        android:padding="4dp"
+                        android:background="@drawable/background_transparent_inside"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="@android:color/white" />
 
-                    <ImageView
-                        android:layout_width="3dp"
-                        android:layout_height="30dp"
-                        android:background="@android:color/white" />
 
                     <TextView
                         android:id="@+id/twRange"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Range"
+                        android:padding="4dp"
+                        android:background="@drawable/background_transparent_inside"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="@android:color/white" />
                 </LinearLayout>
@@ -92,14 +89,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@drawable/background_round_border_green"
                 android:orientation="horizontal" >
 
                 <com.progym.custom.NonSwipeableViewPager
                     android:id="@+id/viewPager"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/background_round_border" />
+                    android:background="@drawable/round_border_gray_gradient" />
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>

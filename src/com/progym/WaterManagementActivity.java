@@ -16,6 +16,10 @@ import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapShader;
+import android.graphics.Shader;
 import android.media.MediaPlayer;
 import android.view.DragEvent;
 import android.view.MotionEvent;
@@ -23,6 +27,7 @@ import android.view.View;
 import android.view.View.DragShadowBuilder;
 import android.view.View.OnDragListener;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -43,22 +48,63 @@ import com.todddavies.components.progressbar.ProgressWheel;
 
 @EActivity ( R.layout.water_management_activity ) public class WaterManagementActivity extends ProgymSuperActivity {
 
-     @ViewById ImageView          ivGlass250ML;
-     @ViewById ImageView          ivBottle500ML;
-     @ViewById ImageView          ivBottle1L;
-     @ViewById ImageView          ivBottle2L;
-     @ViewById ImageView          ivCustomWaterVolume;
-     @ViewById WaterLevelBodyView ivBodyWaterLevel;
-     @ViewById TextView           twPercentComplete;
+     @ViewById ImageView            ivGlass250ML;
+     @ViewById ImageView            ivBottle500ML;
+     @ViewById ImageView            ivBottle1L;
+     @ViewById ImageView            ivBottle2L;
+     @ViewById ImageView            ivCustomWaterVolume;
 
-     @ViewById LinearLayout       llAlreadyConsumedWaterList;
-     @ViewById LinearLayout       llRightPanelBody;
+     @ViewById TextView             twPercentComplete;
 
-     @ViewById ProgressWheel      pwConsumedCircleProgress;
-     @ViewById ProgressBar        pbConsumedLeft;
+     @ViewById LinearLayout         llAlreadyConsumedWaterList;
+     @ViewById LinearLayout         llRightPanelBody;
+     @ViewById LinearLayout         llEditCustomWater;
 
-     private MediaPlayer          mediaPlayer;
- 
+     @ViewById HorizontalScrollView horizontalScrollView;
+
+     @ViewById ProgressWheel        pwConsumedCircleProgress;
+     @ViewById ProgressBar          pbConsumedLeft;
+     @ViewById WaterLevelBodyView   ivBodyWaterLevel;
+
+     private MediaPlayer            mediaPlayer;
+
+     @Click void llEditCustomWater() {
+          AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+          alert.setTitle("Custom water volume");
+          alert.setMessage("Volume in ML");
+
+          // Set an EditText view to get user input
+          final EditText input = new EditText(this);
+          alert.setView(input);
+
+          final CustomWaterVolume cwv;
+          List <CustomWaterVolume> customVolumes = CustomWaterVolume.listAll(CustomWaterVolume.class);
+          if ( customVolumes.isEmpty() ) {
+               cwv = new CustomWaterVolume(getApplicationContext());
+          } else {
+               cwv = customVolumes.get(0);
+               input.setText(String.valueOf(cwv.customVolume));
+          }
+
+          alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+               @Override public void onClick(DialogInterface dialog, int whichButton) {
+
+                    String value = input.getText().toString();
+                    cwv.customVolume = Integer.valueOf(value);
+                    cwv.user = User.find(User.class, "name = ?", "Eleonora Kosheleva").get(0);
+                    cwv.save();
+               }
+          });
+
+          alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+               @Override public void onClick(DialogInterface dialog, int whichButton) {
+                    // Canceled.
+               }
+          });
+          alert.show();
+     }
+
      @Click void llLeftPanelDateWithCalendar() {
           calendar = new CaldroidFragment();
           calendar.setCaldroidListener(onDateChangeListener);
@@ -146,7 +192,10 @@ import com.todddavies.components.progressbar.ProgressWheel;
           }
      }
 
-     @AfterViews void afterViews() {
+     @Override @AfterViews void afterViews() {
+          Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.shader);
+          Shader shader = new BitmapShader(Bitmap.createScaledBitmap(bitmap, 100, 100, false), Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+          pwConsumedCircleProgress.setBarShader(shader);
           displaySelectedDate();
           loadVolumesByDate(twCurrentDate.getText().toString());
           // init player
@@ -167,6 +216,14 @@ import com.todddavies.components.progressbar.ProgressWheel;
                               itemView.ivVolumeImage.setBackgroundResource(Utils.getImageIdByTag(tag));
                               // itemView.twWaterVolume.setText(String.valueOf(Utils.getVolumeByTag(tag)));
                               llAlreadyConsumedWaterList.addView(itemView);
+
+                              horizontalScrollView.postDelayed(new Runnable() {
+                                   @Override public void run() {
+                                        horizontalScrollView.smoothScrollTo(llAlreadyConsumedWaterList.getRight(), llAlreadyConsumedWaterList.getTop());
+                                   }
+                              }, 100L);
+
+                              itemView.startAnimation(leftIn);
 
                               User u = DataBaseUtils.getCurrentUser();
                               WaterConsumed waterToLog = new WaterConsumed(getApplicationContext());
@@ -240,43 +297,6 @@ import com.todddavies.components.progressbar.ProgressWheel;
                     dragView(v);
                } else {
                     Toast.makeText(getApplicationContext(), "There is no custom water value found", Toast.LENGTH_SHORT).show();
-               }
-          } else {
-               if ( event.getAction() == MotionEvent.ACTION_UP ) {
-                    AlertDialog.Builder alert = new AlertDialog.Builder(this);
-
-                    alert.setTitle("Custom water volume");
-                    alert.setMessage("Volume in ML");
-
-                    // Set an EditText view to get user input
-                    final EditText input = new EditText(this);
-                    alert.setView(input);
-
-                    final CustomWaterVolume cwv;
-                    List <CustomWaterVolume> customVolumes = CustomWaterVolume.listAll(CustomWaterVolume.class);
-                    if ( customVolumes.isEmpty() ) {
-                         cwv = new CustomWaterVolume(getApplicationContext());
-                    } else {
-                         cwv = customVolumes.get(0);
-                         input.setText(String.valueOf(cwv.customVolume));
-                    }
-
-                    alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                         @Override public void onClick(DialogInterface dialog, int whichButton) {
-
-                              String value = input.getText().toString();
-                              cwv.customVolume = Integer.valueOf(value);
-                              cwv.user = User.find(User.class, "name = ?", "Eleonora Kosheleva").get(0);
-                              cwv.save();
-                         }
-                    });
-
-                    alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                         @Override public void onClick(DialogInterface dialog, int whichButton) {
-                              // Canceled.
-                         }
-                    });
-                    alert.show();
                }
           }
      }

@@ -34,39 +34,45 @@ import com.echo.holographlibrary.BarGraph;
 import com.echo.holographlibrary.BarGraph.OnBarClickedListener;
 import com.progym.R;
 
-@EFragment ( R.layout.fragment_bargraph )
-public class BarFragment extends Fragment {
+@EFragment ( R.layout.fragment_bargraph ) public class BarFragment extends Fragment {
 
-	@ViewById BarGraph	bargraph;
+     @ViewById BarGraph bargraph;
 
-	public void setBarData(String date, double shouldDrink, int consumed) {
-		final Resources resources = getResources();
-		ArrayList <Bar> aBars = new ArrayList <Bar>();
+     public void setBarData(final String date, final double shouldDrink, final int consumed) {
+          final Resources resources = getResources();
+          ArrayList <Bar> aBars = new ArrayList <Bar>();
 
-		Bar bar = new Bar();
-		bar.setColor(resources.getColor(R.color.green_light));
-		bar.setSelectedColor(resources.getColor(R.color.transparent_orange));
-		bar.setName("Should Drink");
-		bar.setValue((int) shouldDrink);
-		bar.setValueString(String.format("%.2f L", (shouldDrink / 1000f)));
-		aBars.add(bar);
+          Bar bar = new Bar();
+          bar.setColor(resources.getColor(R.color.green_light));
+          bar.setSelectedColor(resources.getColor(R.color.caldroid_white));
+          bar.setName("Should Drink");
+          bar.setValue((int) shouldDrink);
+          bar.setValueString(String.format("%.2f L", (shouldDrink / 1000f)));
+          aBars.add(bar);
 
-		bar = new Bar();
-		bar.setColor(resources.getColor(R.color.orange));
-		bar.setName("Consumed");
-		bar.setValue(consumed);
-		bar.setValueString(String.format("%.2f L", (consumed / 1000f)));
-		aBars.add(bar);
+          bar = new Bar();
+          bar.setColor(resources.getColor(R.color.caldroid_holo_blue_light));
+          bar.setName("Consumed");
+          bar.setValue(consumed);
+          bar.setValueString(String.format("%.2f L", (consumed / 1000f)));
+          aBars.add(bar);
 
-		bargraph.setBars(aBars);
+          bargraph.setBars(aBars);
 
-		bargraph.setOnBarClickedListener(new OnBarClickedListener() {
+          bargraph.setOnBarClickedListener(new OnBarClickedListener() {
 
-			@Override public void onClick(int index) {
-				Toast.makeText(getActivity(), "Bar " + index + " clicked", Toast.LENGTH_SHORT).show();
-			}
-		});
+               @Override public void onClick(int index) {
+                    if ( 0 == index ) {
+                         Toast.makeText(getActivity(), "You shoud drink " + String.format("%.2f L per day", (shouldDrink / 1000f)), Toast.LENGTH_SHORT).show();
+                    }
 
-	}
+                    if ( 1 == index ) {
+                         Toast.makeText(getActivity(), date + " you consumed " + String.format("%.2f L", (consumed / 1000f)), Toast.LENGTH_SHORT).show();
+                    }
+
+               }
+          });
+
+     }
 
 }

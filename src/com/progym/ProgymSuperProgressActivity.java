@@ -13,7 +13,7 @@ import com.progym.custom.NonSwipeableViewPager;
 import com.roomorama.caldroid.CaldroidFragment;
 
 @EBean
-public abstract class ProgymSuperProgressActivity extends FragmentActivity implements IProgress {
+public abstract class ProgymSuperProgressActivity extends FragmentActivity implements IProgressActivity {
 	static Date									SELECTED_DATE			= new Date();
 	CaldroidFragment								calendar;
 

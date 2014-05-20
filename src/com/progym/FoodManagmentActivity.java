@@ -19,6 +19,7 @@ import android.view.DragEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnDragListener;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -50,7 +51,7 @@ import com.roomorama.caldroid.CaldroidFragment;
 
      private Meal                           CURRENT_MEAL;
      private View                           CURRENT_MEAL_VIEW;
- 
+
      @ViewById public NonSwipeableViewPager viewPager;
      @ViewById public ImageView             ivOnPlate;
      @ViewById public ScrollView            svListOfConsumedMeals;
@@ -60,9 +61,11 @@ import com.roomorama.caldroid.CaldroidFragment;
      @ViewById public ImageButton           ibCreatePlate;
      @ViewById public ImageButton           ibSavePlate;
 
+     @ViewById public HorizontalScrollView  horizontalScrollView;
+
      private ArrayList <View>               PLATES_BUTTONS;
 
-     @AfterViews void afterViews() {
+     @Override @AfterViews void afterViews() {
           PLATES_BUTTONS = new ArrayList <View>();
           viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
           displaySelectedDate();
@@ -76,6 +79,7 @@ import com.roomorama.caldroid.CaldroidFragment;
 
                               if ( null == CURRENT_MEAL ) {
                                    Toast.makeText(getApplicationContext(), "Create Plate please", Toast.LENGTH_SHORT).show();
+                                   ibCreatePlate.startAnimation(fadeIn);
                                    return false;
                               }
 
@@ -97,6 +101,12 @@ import com.roomorama.caldroid.CaldroidFragment;
 
                               int currentAmountOfIngridients = Integer.valueOf(((SinglePlateItemView) CURRENT_MEAL_VIEW).twIngridientsAmount.getText().toString());
                               ((SinglePlateItemView) CURRENT_MEAL_VIEW).twIngridientsAmount.setText(String.valueOf(currentAmountOfIngridients + 1));
+                              svListOfConsumedMeals.post(new Runnable() {
+                                   @Override public void run() {
+                                        // This method works even better because there are no animations.
+                                        svListOfConsumedMeals.smoothScrollTo(0, svListOfConsumedMeals.getBottom());
+                                   }
+                              });
                     }
                     return true;
                }
@@ -218,7 +228,7 @@ import com.roomorama.caldroid.CaldroidFragment;
 
      private void createProductOnPlate(Meal meal) {
           SinglePlateItemView itemView = SinglePlateItemView_.build(getApplicationContext());
-          itemView.ivVolumeImage.setBackgroundResource(R.drawable.meal);
+          itemView.ivVolumeImage.setBackgroundResource(R.drawable.plate);
           itemView.twIngridientsAmount.setText(String.valueOf(DataBaseUtils.getProductsOnPlate(meal).size()));
 
           // Set Meal as property to this VEIW :TODO

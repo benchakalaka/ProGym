@@ -25,7 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_margin="10dp"
-                android:background="@drawable/background_round_border_green"
+                android:background="@drawable/background_round_border_green_"
                 android:orientation="horizontal" >
 
                 <LinearLayout
@@ -94,7 +94,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@drawable/background_round_border_green"
+                android:background="@drawable/background_round_border_green_"
                 android:orientation="horizontal" >
 
                 <com.progym.custom.NonSwipeableViewPager
@@ -104,12 +104,12 @@
                     android:background="@drawable/background_round_border" />
             </RelativeLayout>
 
-
+ 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
-                android:background="@drawable/background_round_border_green"
+                android:background="@drawable/background_round_border_green_"
                 android:orientation="horizontal" >
 
                 <com.echo.holographlibrary.BarGraph
