@@ -30,13 +30,13 @@ import com.roomorama.caldroid.CaldroidFragment;
           calendar.setCaldroidListener(onDateChangeListener);
 
           List <WaterConsumed> list = DataBaseUtils.getAllWaterConsumed();
-
+ 
           HashMap <Date, Integer> datesAndColour = new HashMap <Date, Integer>();
           double shouldConsumePerDay = DataBaseUtils.getWaterUserShouldConsumePerDay();
           Utils.dateFormat.applyPattern(GlobalConstants.DATE_PATTERN_YYYY_MM_DD);
           for ( WaterConsumed singleDate : list ) {
-               try {
-
+               try { 
+  
                     int consumedPerDay = DataBaseUtils.getConsumedPerDay(singleDate.date);
                     boolean isDrinkedEnough = consumedPerDay < shouldConsumePerDay;
                     int color;

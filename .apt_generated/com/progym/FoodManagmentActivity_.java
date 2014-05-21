@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.animation.AnimationUtils;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -46,11 +47,11 @@ public final class FoodManagmentActivity_
 
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
-        fadeIn = AnimationUtils.loadAnimation(this, anim.fadein);
-        rightIn = AnimationUtils.loadAnimation(this, anim.push_right_in);
         rightOut = AnimationUtils.loadAnimation(this, anim.push_right_out);
-        leftOut = AnimationUtils.loadAnimation(this, anim.push_left_out);
         leftIn = AnimationUtils.loadAnimation(this, anim.push_left_in);
+        leftOut = AnimationUtils.loadAnimation(this, anim.push_left_out);
+        rightIn = AnimationUtils.loadAnimation(this, anim.push_right_in);
+        fadeIn = AnimationUtils.loadAnimation(this, anim.fadein);
     }
 
     @Override
@@ -93,32 +94,18 @@ public final class FoodManagmentActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        twCurrentDate = ((TextView) hasViews.findViewById(id.twCurrentDate));
-        ivPrevDay = ((ImageView) hasViews.findViewById(id.ivPrevDay));
         ivNextDay = ((ImageView) hasViews.findViewById(id.ivNextDay));
         llLeftPanelDateWithCalendar = ((LinearLayout) hasViews.findViewById(id.llLeftPanelDateWithCalendar));
-        ivOnPlate = ((ImageView) hasViews.findViewById(id.ivOnPlate));
-        llCreatedPlates = ((LinearLayout) hasViews.findViewById(id.llCreatedPlates));
+        ivPrevDay = ((ImageView) hasViews.findViewById(id.ivPrevDay));
+        twCurrentDate = ((TextView) hasViews.findViewById(id.twCurrentDate));
         svListOfConsumedMeals = ((ScrollView) hasViews.findViewById(id.svListOfConsumedMeals));
-        llAlreadyOnPlate = ((LinearLayout) hasViews.findViewById(id.llAlreadyOnPlate));
         viewPager = ((NonSwipeableViewPager) hasViews.findViewById(id.viewPager));
-        ibSavePlate = ((ImageButton) hasViews.findViewById(id.ibSavePlate));
+        llCreatedPlates = ((LinearLayout) hasViews.findViewById(id.llCreatedPlates));
         ibCreatePlate = ((ImageButton) hasViews.findViewById(id.ibCreatePlate));
-        {
-            View view = hasViews.findViewById(id.ivNextDay);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        FoodManagmentActivity_.this.ivNextDay();
-                    }
-
-                }
-                );
-            }
-        }
+        horizontalScrollView = ((HorizontalScrollView) hasViews.findViewById(id.horizontalScrollView));
+        ibSavePlate = ((ImageButton) hasViews.findViewById(id.ibSavePlate));
+        ivOnPlate = ((ImageView) hasViews.findViewById(id.ivOnPlate));
+        llAlreadyOnPlate = ((LinearLayout) hasViews.findViewById(id.llAlreadyOnPlate));
         {
             View view = hasViews.findViewById(id.ivPrevDay);
             if (view!= null) {
@@ -128,6 +115,21 @@ public final class FoodManagmentActivity_
                     @Override
                     public void onClick(View view) {
                         FoodManagmentActivity_.this.ivPrevDay();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ivNextDay);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        FoodManagmentActivity_.this.ivNextDay();
                     }
 
                 }
@@ -179,6 +181,7 @@ public final class FoodManagmentActivity_
                 );
             }
         }
+        afterViews();
         afterViews();
     }
 

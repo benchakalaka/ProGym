@@ -55,13 +55,13 @@ import com.todddavies.components.progressbar.ProgressWheel;
      @ViewById ImageView            ivCustomWaterVolume;
 
      @ViewById TextView             twPercentComplete;
-
+ 
      @ViewById LinearLayout         llAlreadyConsumedWaterList;
      @ViewById LinearLayout         llRightPanelBody;
      @ViewById LinearLayout         llEditCustomWater;
 
      @ViewById HorizontalScrollView horizontalScrollView;
-
+  
      @ViewById ProgressWheel        pwConsumedCircleProgress;
      @ViewById ProgressBar          pbConsumedLeft;
      @ViewById WaterLevelBodyView   ivBodyWaterLevel;
@@ -178,7 +178,7 @@ import com.todddavies.components.progressbar.ProgressWheel;
                mediaPlayer.release();
                mediaPlayer = null;
           }
-     }
+     } 
 
      private void loadVolumesByDate(String date) {
           // Display volumes consumed only in this day
@@ -189,8 +189,8 @@ import com.todddavies.components.progressbar.ProgressWheel;
                itemView.ivVolumeImage.setBackgroundResource(Utils.getImageIdByVolume(Integer.valueOf(w.volumeConsumed)));
                // itemView.twWaterVolume.setText(String.valueOf(w.volumeConsumed));
                llAlreadyConsumedWaterList.addView(itemView);
-          }
-     }
+          } 
+     } 
 
      @Override @AfterViews void afterViews() {
           Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.shader);

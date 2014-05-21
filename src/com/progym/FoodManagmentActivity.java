@@ -11,7 +11,9 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 import org.apache.commons.lang3.time.DateUtils;
+ 
 
+import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -165,11 +167,11 @@ import com.roomorama.caldroid.CaldroidFragment;
      private void setLastPlateActive() {
           if ( !PLATES_BUTTONS.isEmpty() ) {
                for ( View plateView : PLATES_BUTTONS ) {
-                    plateView.setPadding(0, 0, 0, 0);
+                    plateView.setBackgroundColor(Color.TRANSPARENT);//setPadding(0, 0, 0, 0);
                }
                // Set CURRENT_PLATE_VIEW - > display amount of products on the meal
                CURRENT_MEAL_VIEW = PLATES_BUTTONS.get(PLATES_BUTTONS.size() - 1);
-               PLATES_BUTTONS.get(PLATES_BUTTONS.size() - 1).setPadding(15, 15, 15, 15);
+               PLATES_BUTTONS.get(PLATES_BUTTONS.size() - 1).setBackgroundResource(R.drawable.background_transparent_inside);//.setPadding(15, 15, 15, 15);
           }
      }
 
@@ -228,7 +230,7 @@ import com.roomorama.caldroid.CaldroidFragment;
 
      private void createProductOnPlate(Meal meal) {
           SinglePlateItemView itemView = SinglePlateItemView_.build(getApplicationContext());
-          itemView.ivVolumeImage.setBackgroundResource(R.drawable.plate);
+          itemView.ivVolumeImage.setBackgroundResource(R.drawable.meal);
           itemView.twIngridientsAmount.setText(String.valueOf(DataBaseUtils.getProductsOnPlate(meal).size()));
 
           // Set Meal as property to this VEIW :TODO
@@ -251,10 +253,12 @@ import com.roomorama.caldroid.CaldroidFragment;
                     }
 
                     for ( View plateView : PLATES_BUTTONS ) {
-                         plateView.setPadding(0, 0, 0, 0);
+                         //plateView.setPadding(0, 0, 0, 0);
+                    	// Unselect all
+                         plateView.setBackgroundColor(Color.TRANSPARENT);//Color(Color.BLACK);
                     }
-
-                    v.setPadding(15, 15, 15, 15);
+                    v.setBackgroundResource(R.drawable.background_transparent_inside);
+                    //v.setPadding(15, 15, 15, 15);
 
                     putProductsOnPlate();
                }
@@ -266,7 +270,7 @@ import com.roomorama.caldroid.CaldroidFragment;
       * A simple pager adapter
       */
      private class ViewPagerAdapter extends FragmentStatePagerAdapter {
-
+  
           public FoodTypeExpListViewFragment          foodCategoryExpListViewFragment = new FoodTypeExpListViewFragment_();
           public SpecificProductSpecificationFragment specificFoodFragment            = new SpecificProductSpecificationFragment_();
 

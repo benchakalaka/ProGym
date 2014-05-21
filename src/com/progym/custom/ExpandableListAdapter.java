@@ -9,91 +9,95 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.progym.R;
+import com.progym.utils.Utils;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
-     private final Context                         _context;
-     private final List <String>                   _listDataHeader; // header titles
-     // child data in format of header title, child title
-     private final HashMap <String, List <String>> _listDataChild;
+	public static final int						MEAT_CATALOGUE			= 0;
+	public static final int						PORRIDGE_CATALOGUE		= 1;
+	public static final int						VEGITABLES_CATALOGUE	= 2;
+	public static final int						FRUITS_CATALOGUE		= 3;
+	public static final int						READY_MEALS_CATALOGUE	= 4;
+	public static final int						OTHER_CATALOGUE		= 5;
 
-     public ExpandableListAdapter ( Context context , List <String> listDataHeader ,
-               HashMap <String, List <String>> listChildData ) {
-          this._context = context;
-          this._listDataHeader = listDataHeader;
-          this._listDataChild = listChildData;
-     }
+	private final Context						_context;
+	private final List <String>					_listDataHeader;			// header titles
+	// child data in format of header title, child title
+	private final HashMap <String, List <String>>	_listDataChild;
 
-     @Override public Object getChild(int groupPosition, int childPosititon) {
-          return this._listDataChild.get(this._listDataHeader.get(groupPosition))
-                    .get(childPosititon);
-     }
+	public ExpandableListAdapter ( Context context , List <String> listDataHeader , HashMap <String, List <String>> listChildData ) {
+		this._context = context;
+		this._listDataHeader = listDataHeader;
+		this._listDataChild = listChildData;
+	}
 
-     @Override public long getChildId(int groupPosition, int childPosition) {
-          return childPosition;
-     }
+	@Override public Object getChild(int groupPosition, int childPosititon) {
+		return this._listDataChild.get(this._listDataHeader.get(groupPosition)).get(childPosititon);
+	}
 
-     @Override public View getChildView(int groupPosition, final int childPosition,
-               boolean isLastChild, View convertView, ViewGroup parent) {
+	@Override public long getChildId(int groupPosition, int childPosition) {
+		return childPosition;
+	}
 
-          final String childText = (String) getChild(groupPosition, childPosition);
+	@Override public View getChildView(int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
 
-          if ( convertView == null ) {
-               LayoutInflater infalInflater = (LayoutInflater) this._context
-                         .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-               convertView = infalInflater.inflate(R.layout.list_item, null);
-          }
+		final String childText = (String) getChild(groupPosition, childPosition);
 
-          TextView txtListChild = (TextView) convertView
-                    .findViewById(R.id.lblListItem);
+		if ( convertView == null ) {
+			LayoutInflater infalInflater = (LayoutInflater) this._context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			convertView = infalInflater.inflate(R.layout.list_item, null);
+		}
 
-          txtListChild.setText(childText);
-          return convertView;
-     }
+		TextView txtListChild = (TextView) convertView.findViewById(R.id.lblListItem);
 
-     @Override public int getChildrenCount(int groupPosition) {
-          return this._listDataChild.get(this._listDataHeader.get(groupPosition))
-                    .size();
-     }
+		txtListChild.setText(childText);
+		return convertView;
+	}
 
-     @Override public Object getGroup(int groupPosition) {
-          return this._listDataHeader.get(groupPosition);
-     }
+	@Override public int getChildrenCount(int groupPosition) {
+		return this._listDataChild.get(this._listDataHeader.get(groupPosition)).size();
+	}
 
-     @Override public int getGroupCount() {
-          return this._listDataHeader.size();
-     }
+	@Override public Object getGroup(int groupPosition) {
+		return this._listDataHeader.get(groupPosition);
+	}
 
-     @Override public long getGroupId(int groupPosition) {
-          return groupPosition;
-     }
+	@Override public int getGroupCount() {
+		return this._listDataHeader.size();
+	}
 
-     @Override public View getGroupView(int groupPosition, boolean isExpanded,
-               View convertView, ViewGroup parent) {
-          String headerTitle = (String) getGroup(groupPosition);
-          if ( convertView == null ) {
-               LayoutInflater infalInflater = (LayoutInflater) this._context
-                         .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-               convertView = infalInflater.inflate(R.layout.list_group, null);
-          }
+	@Override public long getGroupId(int groupPosition) {
+		return groupPosition;
+	}
 
-          TextView lblListHeader = (TextView) convertView
-                    .findViewById(R.id.lblListHeader);
-          lblListHeader.setTypeface(null, Typeface.BOLD);
-          lblListHeader.setText(headerTitle);
+	@Override public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
+		String headerTitle = (String) getGroup(groupPosition);
+		if ( convertView == null ) {
+			LayoutInflater infalInflater = (LayoutInflater) this._context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			convertView = infalInflater.inflate(R.layout.list_group, null);
+		}
 
-          return convertView;
-     }
+		TextView lblListHeader = (TextView) convertView.findViewById(R.id.lblListHeader);
+		ImageView iv = (ImageView) convertView.findViewById(R.id.image);
 
-     @Override public boolean hasStableIds() {
-          return false;
-     }
+		iv.setBackgroundResource(Utils.getImageIdByGroupPositionInExpListView(groupPosition));
 
-     @Override public boolean isChildSelectable(int groupPosition, int childPosition) {
-          return true;
-     }
+		lblListHeader.setTypeface(null, Typeface.BOLD);
+		lblListHeader.setText(headerTitle);
+
+		return convertView;
+	}
+
+	@Override public boolean hasStableIds() {
+		return false;
+	}
+
+	@Override public boolean isChildSelectable(int groupPosition, int childPosition) {
+		return true;
+	}
 
 }

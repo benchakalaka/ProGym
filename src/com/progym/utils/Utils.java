@@ -7,9 +7,42 @@ import android.util.Log;
 
 import com.progym.R;
 import com.progym.constants.GlobalConstants;
+import com.progym.custom.ExpandableListAdapter;
 
 public class Utils {
 	public final static SimpleDateFormat	dateFormat	= new SimpleDateFormat();
+	
+	public static int getImageIdByGroupPositionInExpListView(int groupPosition) {
+
+		int retResourceId = 0;
+		switch (groupPosition) {
+			case ExpandableListAdapter.MEAT_CATALOGUE:
+				retResourceId = R.drawable.food;
+				break;
+
+			case ExpandableListAdapter.FRUITS_CATALOGUE:
+				retResourceId = R.drawable.bottle;
+				break;
+
+			case ExpandableListAdapter.OTHER_CATALOGUE:
+				retResourceId = R.drawable.custom;
+				break;
+
+			case ExpandableListAdapter.PORRIDGE_CATALOGUE:
+				retResourceId = R.drawable.training;
+				break;
+				
+			case ExpandableListAdapter.READY_MEALS_CATALOGUE:
+				retResourceId = R.drawable.male;
+				break;
+				
+			case ExpandableListAdapter.VEGITABLES_CATALOGUE:
+				retResourceId = R.drawable.female;
+				break;
+		}
+
+		return retResourceId;
+	}
 
 	public static String formatDate(Date date) {
 		return dateFormat.format(date);
