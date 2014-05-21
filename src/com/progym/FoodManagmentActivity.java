@@ -11,7 +11,6 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 import org.apache.commons.lang3.time.DateUtils;
- 
 
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
@@ -143,7 +142,7 @@ import com.roomorama.caldroid.CaldroidFragment;
                HashMap <Date, Integer> datesToHighligt = new HashMap <Date, Integer>();
                for ( Meal meal : meals ) {
                     try {
-                         datesToHighligt.put(DateUtils.parseDate(meal.date, GlobalConstants.DATE_PATTERN_YYYY_MM_DD_HH_MM_SS), com.caldroid.R.color.caldroid_sky_blue);
+                         datesToHighligt.put(DateUtils.parseDate(meal.date, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD_HH_MM_SS), com.caldroid.R.color.caldroid_sky_blue);
                     } catch (ParseException e) {
                          e.printStackTrace();
                     }
@@ -156,9 +155,9 @@ import com.roomorama.caldroid.CaldroidFragment;
 
      @Override public void displaySelectedDate() {
           // Apply pattern for displaying into left panel without time
-          Utils.dateFormat.applyPattern(GlobalConstants.DATE_PATTERN_YYYY_MM_DD);
+          Utils.dateFormat.applyPattern(DataBaseUtils.DATE_PATTERN_YYYY_MM_DD);
           twCurrentDate.setText(Utils.dateFormat.format(SELECTED_DATE));
-          Utils.dateFormat.applyPattern(GlobalConstants.DATE_PATTERN_YYYY_MM_DD_HH_MM_SS);
+          Utils.dateFormat.applyPattern(DataBaseUtils.DATE_PATTERN_YYYY_MM_DD_HH_MM_SS);
           loadPlatesByDate(twCurrentDate.getText().toString());
           putProductsOnPlate();
           setLastPlateActive();
@@ -167,11 +166,11 @@ import com.roomorama.caldroid.CaldroidFragment;
      private void setLastPlateActive() {
           if ( !PLATES_BUTTONS.isEmpty() ) {
                for ( View plateView : PLATES_BUTTONS ) {
-                    plateView.setBackgroundColor(Color.TRANSPARENT);//setPadding(0, 0, 0, 0);
+                    plateView.setBackgroundColor(Color.TRANSPARENT);// setPadding(0, 0, 0, 0);
                }
                // Set CURRENT_PLATE_VIEW - > display amount of products on the meal
                CURRENT_MEAL_VIEW = PLATES_BUTTONS.get(PLATES_BUTTONS.size() - 1);
-               PLATES_BUTTONS.get(PLATES_BUTTONS.size() - 1).setBackgroundResource(R.drawable.background_transparent_inside);//.setPadding(15, 15, 15, 15);
+               PLATES_BUTTONS.get(PLATES_BUTTONS.size() - 1).setBackgroundResource(R.drawable.background_transparent_inside);// .setPadding(15, 15, 15, 15);
           }
      }
 
@@ -209,9 +208,9 @@ import com.roomorama.caldroid.CaldroidFragment;
 
           // //////////////////////// Format proper date (Date from twCurrentDate + CURRENT_TIME) /////////////////////////////
           String properDate = "";
-          Utils.dateFormat.applyPattern(GlobalConstants.DATE_PATTERN_YYYY_MM_DD);
+          Utils.dateFormat.applyPattern(DataBaseUtils.DATE_PATTERN_YYYY_MM_DD);
           properDate = Utils.dateFormat.format(SELECTED_DATE);
-          Utils.dateFormat.applyPattern(GlobalConstants.DATE_PATTERN_HH_MM_SS);
+          Utils.dateFormat.applyPattern(DataBaseUtils.DATE_PATTERN_HH_MM_SS);
           properDate += " " + Utils.dateFormat.format(new Date());
           // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -253,12 +252,12 @@ import com.roomorama.caldroid.CaldroidFragment;
                     }
 
                     for ( View plateView : PLATES_BUTTONS ) {
-                         //plateView.setPadding(0, 0, 0, 0);
-                    	// Unselect all
-                         plateView.setBackgroundColor(Color.TRANSPARENT);//Color(Color.BLACK);
+                         // plateView.setPadding(0, 0, 0, 0);
+                         // Unselect all
+                         plateView.setBackgroundColor(Color.TRANSPARENT);// Color(Color.BLACK);
                     }
                     v.setBackgroundResource(R.drawable.background_transparent_inside);
-                    //v.setPadding(15, 15, 15, 15);
+                    // v.setPadding(15, 15, 15, 15);
 
                     putProductsOnPlate();
                }
@@ -270,7 +269,7 @@ import com.roomorama.caldroid.CaldroidFragment;
       * A simple pager adapter
       */
      private class ViewPagerAdapter extends FragmentStatePagerAdapter {
-  
+
           public FoodTypeExpListViewFragment          foodCategoryExpListViewFragment = new FoodTypeExpListViewFragment_();
           public SpecificProductSpecificationFragment specificFoodFragment            = new SpecificProductSpecificationFragment_();
 

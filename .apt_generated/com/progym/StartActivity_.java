@@ -74,10 +74,10 @@ public final class StartActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        llTraining = ((LinearLayout) hasViews.findViewById(id.llTraining));
         llProgress = ((LinearLayout) hasViews.findViewById(id.llProgress));
-        llProfile = ((LinearLayout) hasViews.findViewById(id.llProfile));
+        llTraining = ((LinearLayout) hasViews.findViewById(id.llTraining));
         llNutrition = ((LinearLayout) hasViews.findViewById(id.llNutrition));
+        llProfile = ((LinearLayout) hasViews.findViewById(id.llProfile));
         {
             View view = hasViews.findViewById(id.llTraining);
             if (view!= null) {

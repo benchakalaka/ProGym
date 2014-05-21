@@ -19,7 +19,6 @@
         android:layout_height="30dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:background="@drawable/background_round_border"
         android:gravity="center_horizontal"
         android:paddingBottom="1dp"
         android:paddingLeft="3dp"

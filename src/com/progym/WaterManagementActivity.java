@@ -16,10 +16,6 @@ import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.DialogInterface;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapShader;
-import android.graphics.Shader;
 import android.media.MediaPlayer;
 import android.view.DragEvent;
 import android.view.MotionEvent;
@@ -55,13 +51,13 @@ import com.todddavies.components.progressbar.ProgressWheel;
      @ViewById ImageView            ivCustomWaterVolume;
 
      @ViewById TextView             twPercentComplete;
- 
+
      @ViewById LinearLayout         llAlreadyConsumedWaterList;
      @ViewById LinearLayout         llRightPanelBody;
      @ViewById LinearLayout         llEditCustomWater;
 
      @ViewById HorizontalScrollView horizontalScrollView;
-  
+
      @ViewById ProgressWheel        pwConsumedCircleProgress;
      @ViewById ProgressBar          pbConsumedLeft;
      @ViewById WaterLevelBodyView   ivBodyWaterLevel;
@@ -112,12 +108,9 @@ import com.todddavies.components.progressbar.ProgressWheel;
           List <WaterConsumed> list = DataBaseUtils.getAllWaterConsumed();
 
           HashMap <Date, Integer> datesAndColour = new HashMap <Date, Integer>();
-          double shouldConsumePerDay = DataBaseUtils.getWaterUserShouldConsumePerDay();
           for ( WaterConsumed singleDate : list ) {
                try {
-                    int consumedPerDay = DataBaseUtils.getConsumedPerDay(singleDate.date);
-                    datesAndColour.put(DateUtils.parseDate(singleDate.date, GlobalConstants.DATE_PATTERN_YYYY_MM_DD_HH_MM_SS), consumedPerDay < shouldConsumePerDay
-                              ? R.color.caldroid_yellow : R.color.caldroid_sky_blue);
+                    datesAndColour.put(DateUtils.parseDate(singleDate.date, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD_HH_MM_SS), R.color.caldroid_sky_blue);
                } catch (ParseException e) {
                     e.printStackTrace();
                }
@@ -129,9 +122,9 @@ import com.todddavies.components.progressbar.ProgressWheel;
 
      @Override public void displaySelectedDate() {
           // Apply pattern for displaying into left panel without time
-          Utils.dateFormat.applyPattern(GlobalConstants.DATE_PATTERN_YYYY_MM_DD);
+          Utils.dateFormat.applyPattern(DataBaseUtils.DATE_PATTERN_YYYY_MM_DD);
           twCurrentDate.setText(Utils.dateFormat.format(SELECTED_DATE));
-          Utils.dateFormat.applyPattern(GlobalConstants.DATE_PATTERN_YYYY_MM_DD_HH_MM_SS);
+          Utils.dateFormat.applyPattern(DataBaseUtils.DATE_PATTERN_YYYY_MM_DD_HH_MM_SS);
           loadVolumesByDate(twCurrentDate.getText().toString());
 
           int alreadyDrinked = DataBaseUtils.getConsumedPerDay(twCurrentDate.getText().toString());
@@ -178,7 +171,7 @@ import com.todddavies.components.progressbar.ProgressWheel;
                mediaPlayer.release();
                mediaPlayer = null;
           }
-     } 
+     }
 
      private void loadVolumesByDate(String date) {
           // Display volumes consumed only in this day
@@ -189,13 +182,10 @@ import com.todddavies.components.progressbar.ProgressWheel;
                itemView.ivVolumeImage.setBackgroundResource(Utils.getImageIdByVolume(Integer.valueOf(w.volumeConsumed)));
                // itemView.twWaterVolume.setText(String.valueOf(w.volumeConsumed));
                llAlreadyConsumedWaterList.addView(itemView);
-          } 
-     } 
+          }
+     }
 
      @Override @AfterViews void afterViews() {
-          Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.shader);
-          Shader shader = new BitmapShader(Bitmap.createScaledBitmap(bitmap, 100, 100, false), Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-          pwConsumedCircleProgress.setBarShader(shader);
           displaySelectedDate();
           loadVolumesByDate(twCurrentDate.getText().toString());
           // init player

@@ -73,7 +73,7 @@ import com.progym.utils.DataBaseUtils;
 
      @Click void llProgress() {
           llProgress.startAnimation(fadeIn);
-          startActivity(new Intent(StartActivity.this, ProgressActivity_.class));
+          startActivity(new Intent(StartActivity.this, ChooseTepeOfProgressActivity_.class));
      }
 
      @Override public boolean onCreateOptionsMenu(Menu menu) {
