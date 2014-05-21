@@ -16,7 +16,7 @@
 		android:theme="@style/AppTheme" >
 		<meta-data
 			android:name="DATABASE"
-			android:value="progym15.db" />
+			android:value="progym17.db" />
 		<meta-data
 			android:name="VERSION"
 			android:value="1" />

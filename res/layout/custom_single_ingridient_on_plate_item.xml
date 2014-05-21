@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/rlRrootItem"
+    android:layout_width="80dp"
+    android:layout_height="80dp"
     android:layout_marginLeft="5dp"
-    android:layout_width="100dip"
-     android:padding="15dp"
-    android:layout_height="100dip" >
+    android:padding="15dp" >
 
     <ImageView
         android:id="@+id/ivVolumeImage"
-        android:layout_width="100dip"
-        android:layout_height="100dip"
-        android:background="@drawable/meal"
-        android:layout_alignParentTop="true" />
+        android:layout_width="50dip"
+        android:layout_height="50dip"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/meal" />
 
     <TextView
         android:id="@+id/twIngridientsAmount"
@@ -19,6 +19,7 @@
         android:layout_height="30dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:background="@drawable/background_round_border"
         android:gravity="center_horizontal"
         android:paddingBottom="1dp"
         android:paddingLeft="3dp"
@@ -26,8 +27,8 @@
         android:paddingTop="1dp"
         android:text="4"
         android:textAlignment="center"
-        android:textStyle="bold"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
 
 </RelativeLayout>

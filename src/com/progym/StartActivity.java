@@ -15,7 +15,7 @@ import android.view.MenuItem;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.animation.Animation;
 import android.widget.LinearLayout;
-
+ 
 import com.progym.utils.DataBaseUtils;
 
 @EActivity ( R.layout.start_activity ) public class StartActivity extends Activity {

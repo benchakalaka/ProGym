@@ -78,28 +78,13 @@ public final class UserProfileActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        wheelHeight = ((WheelView) hasViews.findViewById(id.wheelHeight));
-        etName = ((EditText) hasViews.findViewById(id.etName));
-        wheelAge = ((WheelView) hasViews.findViewById(id.wheelAge));
-        wheelGender = ((WheelView) hasViews.findViewById(id.wheelGender));
-        wheelWeight = ((WheelView) hasViews.findViewById(id.wheelWeight));
         btnSave = ((Button) hasViews.findViewById(id.btnSave));
         wheelBodyType = ((WheelView) hasViews.findViewById(id.wheelBodyType));
-        {
-            View view = hasViews.findViewById(id.btnClearProfile);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        UserProfileActivity_.this.btnClearProfile();
-                    }
-
-                }
-                );
-            }
-        }
+        etName = ((EditText) hasViews.findViewById(id.etName));
+        wheelGender = ((WheelView) hasViews.findViewById(id.wheelGender));
+        wheelHeight = ((WheelView) hasViews.findViewById(id.wheelHeight));
+        wheelAge = ((WheelView) hasViews.findViewById(id.wheelAge));
+        wheelWeight = ((WheelView) hasViews.findViewById(id.wheelWeight));
         {
             View view = hasViews.findViewById(id.btnSave);
             if (view!= null) {
@@ -109,6 +94,21 @@ public final class UserProfileActivity_
                     @Override
                     public void onClick(View view) {
                         UserProfileActivity_.this.btnSave();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.btnClearProfile);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        UserProfileActivity_.this.btnClearProfile();
                     }
 
                 }

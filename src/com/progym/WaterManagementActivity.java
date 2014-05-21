@@ -183,14 +183,14 @@ import com.todddavies.components.progressbar.ProgressWheel;
                // itemView.twWaterVolume.setText(String.valueOf(w.volumeConsumed));
                llAlreadyConsumedWaterList.addView(itemView);
           }
-     }
+     }  
 
      @Override @AfterViews void afterViews() {
           displaySelectedDate();
           loadVolumesByDate(twCurrentDate.getText().toString());
           // init player
           mediaPlayer = MediaPlayer.create(WaterManagementActivity.this, R.raw.pouring_liquid);
-
+ 
           llRightPanelBody.setOnDragListener(new OnDragListener() {
 
                @Override public boolean onDrag(View v, final DragEvent event) {
