@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/water_managment_root_relative_layout"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent" >
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="fill_parent"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentTop="true"
+		android:baselineAligned="false"
+		android:orientation="horizontal"
+		android:padding="1dp" >
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_margin="3dp"
+			android:layout_weight="1"
+			android:background="@drawable/round_border_gray_gradient"
+			android:orientation="vertical" >
+
+			<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="50dp"
+				android:layout_margin="10dp"
+				android:background="@drawable/round_border_gray_gradient"
+				android:orientation="horizontal" >
+
+				<LinearLayout
+					android:id="@+id/llRangePanel"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_alignParentBottom="true"
+					android:layout_alignParentTop="true"
+					android:layout_centerHorizontal="true"
+					android:layout_margin="5dp"
+					android:gravity="center"
+					android:orientation="horizontal"
+					android:padding="3dp" >
+
+					<TextView
+						android:id="@+id/twDaily"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						android:background="@drawable/background_transparent_inside"
+						android:gravity="center"
+						android:padding="6dp"
+						android:text="Daily"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:textColor="@android:color/white"
+						android:textStyle="bold" />
+
+					<TextView
+						android:id="@+id/twMonthly"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						android:background="@drawable/background_transparent_inside"
+						android:gravity="center"
+						android:padding="6dp"
+						android:text="Monthly"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:textColor="@android:color/white"
+						android:textStyle="bold" />
+
+					<TextView
+						android:id="@+id/twYearly"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						android:background="@drawable/background_transparent_inside"
+						android:gravity="center"
+						android:padding="6dp"
+						android:text="Yearly"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:textColor="@android:color/white"
+						android:textStyle="bold" />
+				</LinearLayout>
+			</RelativeLayout>
+
+			<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="10dp"
+				android:orientation="horizontal" >
+
+				<com.progym.custom.NonSwipeableViewPager
+					android:id="@+id/viewPager"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:background="@drawable/round_border_gray_gradient" />
+			</RelativeLayout>
+		</LinearLayout>
+	</LinearLayout>
+
+</RelativeLayout>

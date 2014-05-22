@@ -20,6 +20,7 @@ public class DataBaseUtils {
      public static final String DATE_PATTERN_HH_MM_SS            = "HH:mm:ss";
      public static final String DATE_PATTERN_YYYY_MM_DD          = "yyyy/MM/dd";
      public static final String DATE_PATTERN_YYYY_MM             = "yyyy/MM";
+     public static final String DATE_PATTERN_YYYY                = "yyyy";
 
      private static User        CURRENT_USER;
 

@@ -42,8 +42,8 @@ public final class UserProfileActivity_
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
         Resources resources_ = this.getResources();
-        genders = resources_.getStringArray(array.genders);
         bodyTypes = resources_.getStringArray(array.bodyTypes);
+        genders = resources_.getStringArray(array.genders);
     }
 
     @Override
@@ -78,28 +78,13 @@ public final class UserProfileActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        btnSave = ((Button) hasViews.findViewById(id.btnSave));
-        wheelBodyType = ((WheelView) hasViews.findViewById(id.wheelBodyType));
         etName = ((EditText) hasViews.findViewById(id.etName));
-        wheelGender = ((WheelView) hasViews.findViewById(id.wheelGender));
-        wheelHeight = ((WheelView) hasViews.findViewById(id.wheelHeight));
         wheelAge = ((WheelView) hasViews.findViewById(id.wheelAge));
         wheelWeight = ((WheelView) hasViews.findViewById(id.wheelWeight));
-        {
-            View view = hasViews.findViewById(id.btnSave);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        UserProfileActivity_.this.btnSave();
-                    }
-
-                }
-                );
-            }
-        }
+        wheelBodyType = ((WheelView) hasViews.findViewById(id.wheelBodyType));
+        btnSave = ((Button) hasViews.findViewById(id.btnSave));
+        wheelGender = ((WheelView) hasViews.findViewById(id.wheelGender));
+        wheelHeight = ((WheelView) hasViews.findViewById(id.wheelHeight));
         {
             View view = hasViews.findViewById(id.btnClearProfile);
             if (view!= null) {
@@ -109,6 +94,21 @@ public final class UserProfileActivity_
                     @Override
                     public void onClick(View view) {
                         UserProfileActivity_.this.btnClearProfile();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.btnSave);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        UserProfileActivity_.this.btnSave();
                     }
 
                 }

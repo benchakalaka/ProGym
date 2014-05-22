@@ -10,7 +10,7 @@ import android.widget.RelativeLayout;
 @EActivity ( R.layout.choose_type_of_progress ) public class ChooseTepeOfProgressActivity extends ProgymSuperActivity {
 
      @ViewById RelativeLayout rlRoundImageWaterProgress;
-     @ViewById RelativeLayout rlRoundImageFoodProgress;
+     // @ViewById RelativeLayout rlRoundImageFoodProgress;
      @ViewById RelativeLayout rlRoundImageTraingingProgress;
 
      @Override public void displaySelectedDate() {
@@ -22,9 +22,11 @@ import android.widget.RelativeLayout;
           startActivity(new Intent(ChooseTepeOfProgressActivity.this, WaterProgressActivity_.class));
      }
 
-     @Click void rlRoundImageFoodProgress() {
-          rlRoundImageFoodProgress.startAnimation(rightOut);
-     }
+     /*
+      * @Click void rlRoundImageFoodProgress() {
+      * rlRoundImageFoodProgress.startAnimation(rightOut);
+      * }
+      */
 
      @Click void rlRoundImageTraingingProgress() {
           rlRoundImageTraingingProgress.startAnimation(rightOut);

@@ -1,6 +1,7 @@
 package com.progym.utils;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import android.app.Activity;
@@ -19,245 +20,287 @@ import com.progym.constants.GlobalConstants;
 import com.progym.custom.ExpandableListAdapter;
 
 public class Utils {
-	public final static SimpleDateFormat	dateFormat	= new SimpleDateFormat();
+     public final static SimpleDateFormat dateFormat = new SimpleDateFormat();
 
-	public static void showCustomToast(final Activity activity, final String message, final BitmapDrawable background) {
-		activity.runOnUiThread(new Runnable() {
+     /**
+      * @param monthNumber
+      *             Month Number starts with 0. For <b>January</b> it is <b>0</b> and for <b>December</b> it is <b>11</b>.
+      * @param year
+      * @return
+      */
+     public static int getDaysInMonth(int monthNumber, int year)
+     {
+          int days = 0;
+          if ( monthNumber >= 0 && monthNumber < 12 ) {
+               try
+               {
+                    Calendar calendar = Calendar.getInstance();
+                    int date = 1;
+                    calendar.set(year, monthNumber, date);
+                    days = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+               } catch (Exception e)
+               {
+                    if ( e != null ) {
+                         e.printStackTrace();
+                    }
+               }
+          }
+          return days;
+     }
 
-			@SuppressWarnings ( "deprecation" ) @Override public void run() {
-				try {
-					View layout = activity.getLayoutInflater().inflate(R.layout.toast_image_and_text, (ViewGroup) activity.findViewById(R.id.toast_layout_root));
+     /**
+      * ("EEEE", date);// Thursday
+      * ("MMM", date); // Jun
+      * ("MM", date); // 06
+      * ("yyyy", date); // 2013
+      * ("dd", date); // 20
+      * 
+      * @param date
+      *             Date object
+      * @param pattern
+      *             one of EEEE, MMM, MM, yyyy, dd values
+      */
+     public static String getDateSpecificValue(Date date, String pattern) {
+          return android.text.format.DateFormat.format(pattern, date).toString();
+     }
 
-					ImageView image = ((ImageView) layout.findViewById(R.id.toast_image_view));
-					TextView text = (TextView) layout.findViewById(R.id.toast_text_view);
+     public static void showCustomToast(final Activity activity, final String message, final BitmapDrawable background) {
+          activity.runOnUiThread(new Runnable() {
 
-					text.setText(message);
-					image.setBackgroundDrawable(background);
+               @SuppressWarnings ( "deprecation" ) @Override public void run() {
+                    try {
+                         View layout = activity.getLayoutInflater().inflate(R.layout.toast_image_and_text, (ViewGroup) activity.findViewById(R.id.toast_layout_root));
 
-					Toast toast = new Toast(activity.getApplicationContext());
+                         ImageView image = ((ImageView) layout.findViewById(R.id.toast_image_view));
+                         TextView text = (TextView) layout.findViewById(R.id.toast_text_view);
 
-					toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-					toast.setDuration(Toast.LENGTH_SHORT);
-					toast.setView(layout);
+                         text.setText(message);
+                         image.setBackgroundDrawable(background);
 
-					toast.show();
-					//text.startAnimation(AnimationManager.load(android.R.anim.slide_in_left));
-				} catch (Exception e) {
-					e.printStackTrace();
-					Utils.showToast(activity.getApplicationContext(), message, true);
-				}
-			}
-		});
-	}
-	
-	/**
-	 * Show short toast on UI thread
-	 * 
-	 * @param context
-	 *             application context or activity's context
-	 * @param message
-	 *             text representation of message to display
-	 * @param isShort
-	 *             define toast duration
-	 */
-	public static void showToast(final Context context, final String message, boolean isShort) {
-		final int toastDuration = isShort ? Toast.LENGTH_SHORT : Toast.LENGTH_LONG;
-		// Define toast duration
-		try {
-			Toast.makeText(context, message, toastDuration).show();
-		} catch (Exception ex) {
-			Activity activity = (Activity) context;
-			activity.runOnUiThread(new Runnable() {
+                         Toast toast = new Toast(activity.getApplicationContext());
 
-				@Override public void run() {
-					Toast.makeText(context, message, toastDuration).show();
-				}
-			});
-		}
-	}
+                         toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+                         toast.setDuration(Toast.LENGTH_SHORT);
+                         toast.setView(layout);
 
-	public static void showCustomToast(final Activity activity, final String message, final int imageResourcesId) {
-		activity.runOnUiThread(new Runnable() {
+                         toast.show();
+                         // text.startAnimation(AnimationManager.load(android.R.anim.slide_in_left));
+                    } catch (Exception e) {
+                         e.printStackTrace();
+                         Utils.showToast(activity.getApplicationContext(), message, true);
+                    }
+               }
+          });
+     }
 
-			@Override public void run() {
-				try {
-					View layout = activity.getLayoutInflater().inflate(R.layout.toast_image_and_text, (ViewGroup) activity.findViewById(R.id.toast_layout_root));
+     /**
+      * Show short toast on UI thread
+      * 
+      * @param context
+      *             application context or activity's context
+      * @param message
+      *             text representation of message to display
+      * @param isShort
+      *             define toast duration
+      */
+     public static void showToast(final Context context, final String message, boolean isShort) {
+          final int toastDuration = isShort ? Toast.LENGTH_SHORT : Toast.LENGTH_LONG;
+          // Define toast duration
+          try {
+               Toast.makeText(context, message, toastDuration).show();
+          } catch (Exception ex) {
+               Activity activity = (Activity) context;
+               activity.runOnUiThread(new Runnable() {
 
-					ImageView image = ((ImageView) layout.findViewById(R.id.toast_image_view));
-					TextView text = (TextView) layout.findViewById(R.id.toast_text_view);
+                    @Override public void run() {
+                         Toast.makeText(context, message, toastDuration).show();
+                    }
+               });
+          }
+     }
 
-					text.setText(message);
-					image.setImageResource(imageResourcesId);
+     public static void showCustomToast(final Activity activity, final String message, final int imageResourcesId) {
+          activity.runOnUiThread(new Runnable() {
 
-					Toast toast = new Toast(activity.getApplicationContext());
+               @Override public void run() {
+                    try {
+                         View layout = activity.getLayoutInflater().inflate(R.layout.toast_image_and_text, (ViewGroup) activity.findViewById(R.id.toast_layout_root));
 
-					toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-					toast.setDuration(Toast.LENGTH_SHORT);
-					toast.setView(layout);
+                         ImageView image = ((ImageView) layout.findViewById(R.id.toast_image_view));
+                         TextView text = (TextView) layout.findViewById(R.id.toast_text_view);
 
-					toast.show();
-					//text.startAnimation(AnimationManager.load(android.R.anim.slide_in_left));
-				} catch (Exception e) {
-					e.printStackTrace();
-					Utils.showToast(activity.getApplicationContext(), message, true);
-				}
-			}
-		});
-	}
+                         text.setText(message);
+                         image.setImageResource(imageResourcesId);
 
-	public static void showCustomToast(final Activity activity, final int messageResourcesId, final int imageResourcesId) {
+                         Toast toast = new Toast(activity.getApplicationContext());
 
-		activity.runOnUiThread(new Runnable() {
+                         toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+                         toast.setDuration(Toast.LENGTH_SHORT);
+                         toast.setView(layout);
 
-			@Override public void run() {
-				try {
-					View layout = activity.getLayoutInflater().inflate(R.layout.toast_image_and_text, (ViewGroup) activity.findViewById(R.id.toast_layout_root));
+                         toast.show();
+                         // text.startAnimation(AnimationManager.load(android.R.anim.slide_in_left));
+                    } catch (Exception e) {
+                         e.printStackTrace();
+                         Utils.showToast(activity.getApplicationContext(), message, true);
+                    }
+               }
+          });
+     }
 
-					ImageView image = ((ImageView) layout.findViewById(R.id.toast_image_view));
-					TextView text = (TextView) layout.findViewById(R.id.toast_text_view);
+     public static void showCustomToast(final Activity activity, final int messageResourcesId, final int imageResourcesId) {
 
-					text.setText(activity.getResources().getString(messageResourcesId));
-					image.setImageResource(imageResourcesId);
+          activity.runOnUiThread(new Runnable() {
 
-					Toast toast = new Toast(activity.getApplicationContext());
+               @Override public void run() {
+                    try {
+                         View layout = activity.getLayoutInflater().inflate(R.layout.toast_image_and_text, (ViewGroup) activity.findViewById(R.id.toast_layout_root));
 
-					toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-					toast.setDuration(Toast.LENGTH_SHORT);
-					toast.setView(layout);
+                         ImageView image = ((ImageView) layout.findViewById(R.id.toast_image_view));
+                         TextView text = (TextView) layout.findViewById(R.id.toast_text_view);
 
-					toast.show();
-					//text.startAnimation(AnimationManager.load(android.R.anim.slide_in_left));
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+                         text.setText(activity.getResources().getString(messageResourcesId));
+                         image.setImageResource(imageResourcesId);
 
-	}
+                         Toast toast = new Toast(activity.getApplicationContext());
 
-	public static int getImageIdByGroupPositionInExpListView(int groupPosition) {
+                         toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+                         toast.setDuration(Toast.LENGTH_SHORT);
+                         toast.setView(layout);
 
-		int retResourceId = 0;
-		switch (groupPosition) {
-			case ExpandableListAdapter.MEAT_CATALOGUE:
-				retResourceId = R.drawable.meat;
-				break;
+                         toast.show();
+                         // text.startAnimation(AnimationManager.load(android.R.anim.slide_in_left));
+                    } catch (Exception e) {
+                         e.printStackTrace();
+                    }
+               }
+          });
 
-			case ExpandableListAdapter.FRUITS_CATALOGUE:
-				retResourceId = R.drawable.fruits;
-				break;
+     }
 
-			case ExpandableListAdapter.OTHER_CATALOGUE:
-				retResourceId = R.drawable.custom_type;
-				break;
+     public static int getImageIdByGroupPositionInExpListView(int groupPosition) {
 
-			case ExpandableListAdapter.PORRIDGE_CATALOGUE:
-				retResourceId = R.drawable.porridge;
-				break;
+          int retResourceId = 0;
+          switch (groupPosition) {
+               case ExpandableListAdapter.MEAT_CATALOGUE:
+                    retResourceId = R.drawable.meat;
+                    break;
 
-			case ExpandableListAdapter.READY_MEALS_CATALOGUE:
-				retResourceId = R.drawable.ready;
-				break;
+               case ExpandableListAdapter.FRUITS_CATALOGUE:
+                    retResourceId = R.drawable.fruits;
+                    break;
 
-			case ExpandableListAdapter.VEGITABLES_CATALOGUE:
-				retResourceId = R.drawable.vegetables;
-				break;
-		}
+               case ExpandableListAdapter.OTHER_CATALOGUE:
+                    retResourceId = R.drawable.custom_type;
+                    break;
 
-		return retResourceId;
-	}
+               case ExpandableListAdapter.PORRIDGE_CATALOGUE:
+                    retResourceId = R.drawable.porridge;
+                    break;
 
-	public static String formatDate(Date date) {
-		return dateFormat.format(date);
-	}
+               case ExpandableListAdapter.READY_MEALS_CATALOGUE:
+                    retResourceId = R.drawable.ready;
+                    break;
 
-	public static void log(String message) {
+               case ExpandableListAdapter.VEGITABLES_CATALOGUE:
+                    retResourceId = R.drawable.vegetables;
+                    break;
+          }
 
-		Log.d(GlobalConstants.TAG, message == null ? "message == null" : message);
-	}
+          return retResourceId;
+     }
 
-	public static void log(int message) {
-		Log.d(GlobalConstants.TAG, String.valueOf(message));
-	}
+     public static String formatDate(Date date) {
+          return dateFormat.format(date);
+     }
 
-	public static int getImageIdByVolume(int volume) {
+     public static void log(String message) {
 
-		int retResourceId = 0;
-		switch (volume) {
-			case GlobalConstants.WATER_VOLUMES.GLASS_250_ML:
-				retResourceId = R.drawable.glass_025;
-				break;
+          Log.d(GlobalConstants.TAG, message == null ? "message == null" : message);
+     }
 
-			case GlobalConstants.WATER_VOLUMES.BOTTLE_500_ML:
-				retResourceId = R.drawable.bottle_05;
-				break;
+     public static void log(int message) {
+          Log.d(GlobalConstants.TAG, String.valueOf(message));
+     }
 
-			case GlobalConstants.WATER_VOLUMES.BOTTLE_1_L:
-				retResourceId = R.drawable.bottle_1;
-				break;
+     public static int getImageIdByVolume(int volume) {
 
-			case GlobalConstants.WATER_VOLUMES.BOTTLE_2_L:
-				retResourceId = R.drawable.bottle_2;
-				break;
-			default:
-				return R.drawable.custom;
-		}
+          int retResourceId = 0;
+          switch (volume) {
+               case GlobalConstants.WATER_VOLUMES.GLASS_250_ML:
+                    retResourceId = R.drawable.glass_025;
+                    break;
 
-		return retResourceId;
-	}
+               case GlobalConstants.WATER_VOLUMES.BOTTLE_500_ML:
+                    retResourceId = R.drawable.bottle_05;
+                    break;
 
-	public static int getImageIdByTag(String tag) {
-		// by default return glass
-		int retResourceId = 0;
+               case GlobalConstants.WATER_VOLUMES.BOTTLE_1_L:
+                    retResourceId = R.drawable.bottle_1;
+                    break;
 
-		if ( tag.equals(GlobalConstants.WATER_VOLUMES.GLASS_250ML) ) {
-			retResourceId = R.drawable.glass_025;
-		}
+               case GlobalConstants.WATER_VOLUMES.BOTTLE_2_L:
+                    retResourceId = R.drawable.bottle_2;
+                    break;
+               default:
+                    return R.drawable.custom;
+          }
 
-		if ( tag.equals(GlobalConstants.WATER_VOLUMES.BOTTLE_500ML) ) {
-			retResourceId = R.drawable.bottle_05;
-		}
+          return retResourceId;
+     }
 
-		if ( tag.equals(GlobalConstants.WATER_VOLUMES.BOTTLE_1L) ) {
-			retResourceId = R.drawable.bottle_1;
-		}
+     public static int getImageIdByTag(String tag) {
+          // by default return glass
+          int retResourceId = 0;
 
-		if ( tag.equals(GlobalConstants.WATER_VOLUMES.BOTTLE_2L) ) {
-			retResourceId = R.drawable.bottle_2;
-		}
+          if ( tag.equals(GlobalConstants.WATER_VOLUMES.GLASS_250ML) ) {
+               retResourceId = R.drawable.glass_025;
+          }
 
-		if ( 0 == retResourceId ) {
-			retResourceId = R.drawable.custom;
-		}
+          if ( tag.equals(GlobalConstants.WATER_VOLUMES.BOTTLE_500ML) ) {
+               retResourceId = R.drawable.bottle_05;
+          }
 
-		return retResourceId;
-	}
+          if ( tag.equals(GlobalConstants.WATER_VOLUMES.BOTTLE_1L) ) {
+               retResourceId = R.drawable.bottle_1;
+          }
 
-	public static int getVolumeByTag(String tag) {
-		// by default
-		int retWaterVolume = 0;
+          if ( tag.equals(GlobalConstants.WATER_VOLUMES.BOTTLE_2L) ) {
+               retResourceId = R.drawable.bottle_2;
+          }
 
-		if ( tag.equals(GlobalConstants.WATER_VOLUMES.GLASS_250ML) ) {
-			retWaterVolume = GlobalConstants.WATER_VOLUMES.GLASS_250_ML;
-		}
+          if ( 0 == retResourceId ) {
+               retResourceId = R.drawable.custom;
+          }
 
-		if ( tag.equals(GlobalConstants.WATER_VOLUMES.BOTTLE_500ML) ) {
-			retWaterVolume = GlobalConstants.WATER_VOLUMES.BOTTLE_500_ML;
-		}
+          return retResourceId;
+     }
 
-		if ( tag.equals(GlobalConstants.WATER_VOLUMES.BOTTLE_1L) ) {
-			retWaterVolume = GlobalConstants.WATER_VOLUMES.BOTTLE_1_L;
-		}
+     public static int getVolumeByTag(String tag) {
+          // by default
+          int retWaterVolume = 0;
 
-		if ( tag.equals(GlobalConstants.WATER_VOLUMES.BOTTLE_2L) ) {
-			retWaterVolume = GlobalConstants.WATER_VOLUMES.BOTTLE_2_L;
-		}
-		// Custom water volume
-		if ( 0 == retWaterVolume ) {
-			retWaterVolume = Integer.valueOf(tag);
-		}
+          if ( tag.equals(GlobalConstants.WATER_VOLUMES.GLASS_250ML) ) {
+               retWaterVolume = GlobalConstants.WATER_VOLUMES.GLASS_250_ML;
+          }
 
-		return retWaterVolume;
-	}
+          if ( tag.equals(GlobalConstants.WATER_VOLUMES.BOTTLE_500ML) ) {
+               retWaterVolume = GlobalConstants.WATER_VOLUMES.BOTTLE_500_ML;
+          }
+
+          if ( tag.equals(GlobalConstants.WATER_VOLUMES.BOTTLE_1L) ) {
+               retWaterVolume = GlobalConstants.WATER_VOLUMES.BOTTLE_1_L;
+          }
+
+          if ( tag.equals(GlobalConstants.WATER_VOLUMES.BOTTLE_2L) ) {
+               retWaterVolume = GlobalConstants.WATER_VOLUMES.BOTTLE_2_L;
+          }
+          // Custom water volume
+          if ( 0 == retWaterVolume ) {
+               retWaterVolume = Integer.valueOf(tag);
+          }
+
+          return retWaterVolume;
+     }
 
 }

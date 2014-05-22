@@ -23,7 +23,7 @@ package com.progym.custom.fragments.progress;
 import java.util.Date;
 import java.util.List;
 
-import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.res.AnimationRes;
@@ -32,8 +32,8 @@ import org.apache.commons.lang3.time.DateUtils;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.view.animation.Animation;
-import android.widget.LinearLayout;
-import android.widget.Toast;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.jjoe64.graphview.GraphView.GraphViewData;
 import com.jjoe64.graphview.GraphViewSeries;
@@ -45,137 +45,144 @@ import com.progym.model.WaterConsumed;
 import com.progym.utils.DataBaseUtils;
 import com.progym.utils.Utils;
 
-@EFragment ( R.layout.fragment_linegraph )
-public class WaterProgressMonthlyLineFragment extends Fragment {
+@EFragment ( R.layout.fragment_linegraph_monthly ) public class WaterProgressMonthlyLineFragment extends Fragment {
 
-	/**
-	 * 
-	 100% — FF
-	 * 95% — F2
-	 * 90% — E6
-	 * 85% — D9
-	 * 80% — CC
-	 * 75% — BF
-	 * 70% — B3
-	 * 65% — A6
-	 * 60% — 99
-	 * 55% — 8C
-	 * 50% — 80
-	 * 45% — 73
-	 * 40% — 66
-	 * 35% — 59
-	 * 30% — 4D
-	 * 25% — 40
-	 * 20% — 33
-	 * 15% — 26
-	 * 10% — 1A
-	 * 5% — 0D
-	 * 0% — 00
-	 */
-	@ViewById LinearLayout						llRootGraphLayout;
-	/*
-	 * create graph
-	 */
-	LineGraphView								graphView;
-	GraphViewSeries							seriesShouldDrink;
-	GraphViewSeries							seriesAverage;
-	GraphViewSeries							seriesConsumed;
-	@AnimationRes ( R.anim.hyperspace_out ) Animation	hyperscaleOut;
-	@AnimationRes ( R.anim.hyperspace_in ) Animation	hyperscaleIn;
-	//@AnimationRes ( R.anim.push_left_in ) Animation	leftIn;
+     /**
+      * 
+      100% — FF
+      * 95% — F2
+      * 90% — E6
+      * 85% — D9
+      * 80% — CC
+      * 75% — BF
+      * 70% — B3
+      * 65% — A6
+      * 60% — 99
+      * 55% — 8C
+      * 50% — 80
+      * 45% — 73
+      * 40% — 66
+      * 35% — 59
+      * 30% — 4D
+      * 25% — 40
+      * 20% — 33
+      * 15% — 26
+      * 10% — 1A
+      * 5% — 0D
+      * 0% — 00
+      */
+     @ViewById RelativeLayout                   rlRootGraphLayout;
+     @ViewById ImageView                        ivPrevYear;
+     @ViewById ImageView                        ivNextYear;
+     /*
+      * create graph
+      */
+     LineGraphView                              graphView;
+     GraphViewSeries                            seriesShouldDrink;
+     GraphViewSeries                            seriesAverage;
+     GraphViewSeries                            seriesConsumed;
 
-	@AfterViews void afterViews() {
-		hyperscaleOut.setFillAfter(true);
-		hyperscaleOut.setFillEnabled(true);
-		//leftIn.setFillAfter(true);
-		//leftIn.setFillEnabled(true);
-		hyperscaleIn.setFillAfter(true);
-		hyperscaleIn.setFillEnabled(true);
-	}
+     @AnimationRes ( R.anim.fadein ) Animation  fadeIn;
+     @AnimationRes ( R.anim.fadeout ) Animation fadeOut;
+     private Date                               DATE;
 
-	private void resetData() {
-		
-	}
+     @Click void ivPrevYear() {
+          ivNextYear.startAnimation(fadeIn);
+          rlRootGraphLayout.startAnimation(fadeOut);
+          DATE = DateUtils.addMonths(DATE, -1);
+          setLineData2(DATE);
+     }
 
-	public void setLineData2(List <WaterConsumed> list, int month) {
-		if ( null == list || list.isEmpty() ) {
-			//resetData();
-			Toast.makeText(getActivity(), "There is no data found for "+WaterProgressActivity.months[month], Toast.LENGTH_SHORT).show();
-			return;
-		}
-		
-		llRootGraphLayout.startAnimation(hyperscaleOut);
-		
-		int shouldDrinkWaterMlPerDay = (int) DataBaseUtils.getWaterUserShouldConsumePerDay();
+     @Click void ivNextYear() {
+          ivNextYear.startAnimation(fadeIn);
+          rlRootGraphLayout.startAnimation(fadeOut);
+          DATE = DateUtils.addMonths(DATE, 1);
+          setLineData2(DATE);
+     }
 
-		// TODO : HOW TO clear all these serieses ???
-		graphView = new LineGraphView(getActivity(), "Water statistic for " + WaterProgressActivity.months[month]);
+     public void setLineData2(Date date) {
+          DATE = date;
+          Utils.dateFormat.applyPattern(DataBaseUtils.DATE_PATTERN_YYYY);
+          // 31 - Amount of days in a month
+          int daysInMonth = Utils.getDaysInMonth(date.getMonth(), Integer.valueOf(Utils.getDateSpecificValue(date, "yyyy")));
 
-		int yMaxAxisValue = shouldDrinkWaterMlPerDay;
-		// 31 - Amount of days in a month
-		int daysInMonth = 31;
-		// first init "should drink" data
-		GraphViewData[] data = new GraphViewData[2];
-		data[0] = new GraphViewData(1, shouldDrinkWaterMlPerDay);
-		data[1] = new GraphViewData(daysInMonth, shouldDrinkWaterMlPerDay);
+          Utils.dateFormat.applyPattern(DataBaseUtils.DATE_PATTERN_YYYY_MM);
+          // Add to expandable list view ready meal date
 
-		seriesShouldDrink = new GraphViewSeries("Should drink", new GraphViewSeriesStyle(Color.rgb(250, 80, 90), 3), data);
-		// init "average" data
-		int averageWaterConsumedOnYaxis = 0;
-		for ( int i = 0; i < list.size(); i++ ) {
-			// calculate sum of all water consumed by user in a month
-			averageWaterConsumedOnYaxis += list.get(i).volumeConsumed;
-		}
-		averageWaterConsumedOnYaxis = averageWaterConsumedOnYaxis / daysInMonth;
+          List <WaterConsumed> list = DataBaseUtils.getAllWaterConsumedInMonth(Utils.dateFormat.format(date));
 
-		yMaxAxisValue = Math.max(yMaxAxisValue, averageWaterConsumedOnYaxis);
+          try {
+               if ( rlRootGraphLayout.getChildCount() == 3 ) {
+                    rlRootGraphLayout.removeViewAt(0);
+               }
+          } catch (Exception edsx) {
+               edsx.printStackTrace();
+          }
 
-		data = new GraphViewData[2];
-		data[0] = new GraphViewData(1, averageWaterConsumedOnYaxis);
-		data[1] = new GraphViewData(daysInMonth, averageWaterConsumedOnYaxis);
+          int shouldDrinkWaterMlPerDay = (int) DataBaseUtils.getWaterUserShouldConsumePerDay();
 
-		seriesAverage = new GraphViewSeries("Average Value", new GraphViewSeriesStyle(Color.rgb(90, 250, 00), 3), data);
+          // TODO : HOW TO clear all these serieses ???
+          graphView = new LineGraphView(getActivity(), String.format("Water statistic for %s  %s", WaterProgressActivity.months[date.getMonth()], Utils
+                    .getDateSpecificValue(date, "yyyy")));
 
-		data = new GraphViewData[daysInMonth];
-		// PASS AS PARAMETR
-		Date date = new Date();
-		// set first day of month
-		date.setDate(1);
-		date = DateUtils.setMonths(date, month);
-		int consumedPerDay = 0;
+          int yMaxAxisValue = shouldDrinkWaterMlPerDay;
 
-		for ( int i = 0; i < daysInMonth; i++ ) {
-			Utils.dateFormat.applyPattern(DataBaseUtils.DATE_PATTERN_YYYY_MM_DD);
-			consumedPerDay = DataBaseUtils.getConsumedPerDay(Utils.dateFormat.format(date));
-			yMaxAxisValue = Math.max(yMaxAxisValue, consumedPerDay);
-			data[i] = new GraphViewData(i + 1, consumedPerDay);
-			// increment day
-			date = DateUtils.addDays(date, 1);
-		}
+          // first init "should drink" data
+          GraphViewData[] data = new GraphViewData[2];
+          data[0] = new GraphViewData(1, shouldDrinkWaterMlPerDay);
+          data[1] = new GraphViewData(daysInMonth, shouldDrinkWaterMlPerDay);
 
-		seriesConsumed = new GraphViewSeries("Consumed", new GraphViewSeriesStyle(Color.BLUE, 4), data);
+          seriesShouldDrink = new GraphViewSeries("Should drink", new GraphViewSeriesStyle(Color.rgb(250, 80, 90), 3), data);
+          // init "average" data
+          int averageWaterConsumedOnYaxis = 0;
+          for ( int i = 0; i < list.size(); i++ ) {
+               // calculate sum of all water consumed by user in a month
+               averageWaterConsumedOnYaxis += list.get(i).volumeConsumed;
+          }
+          averageWaterConsumedOnYaxis = averageWaterConsumedOnYaxis / daysInMonth;
 
-		// add data
-		graphView.addSeries(seriesAverage);
-		graphView.addSeries(seriesShouldDrink);
-		graphView.addSeries(seriesConsumed);
-		// optional - set view port, start=2, size=10
-		// graphView.setViewPort(2, 10);
+          yMaxAxisValue = Math.max(yMaxAxisValue, averageWaterConsumedOnYaxis);
 
-		graphView.getGraphViewStyle().setTextSize(15);
-		graphView.getGraphViewStyle().setVerticalLabelsColor(Color.DKGRAY);
-		graphView.getGraphViewStyle().setGridColor(Color.DKGRAY);
+          data = new GraphViewData[2];
+          data[0] = new GraphViewData(1, averageWaterConsumedOnYaxis);
+          data[1] = new GraphViewData(daysInMonth, averageWaterConsumedOnYaxis);
 
-		graphView.setManualYAxisBounds(yMaxAxisValue, 0);
-		graphView.getGraphViewStyle().setNumHorizontalLabels(daysInMonth / 3);
-		// optional - legend
-		graphView.setShowLegend(true);
+          seriesAverage = new GraphViewSeries("Average Value", new GraphViewSeriesStyle(Color.rgb(90, 250, 00), 3), data);
 
-		// graphView.setHorizontalLabels(horizontalLabels);
-		// graphView.setVerticalLabels(new String[] { "high", "middle", "low" });
+          data = new GraphViewData[daysInMonth];
+          // set first day of month
+          date.setDate(1);
+          date = DateUtils.setMonths(date, date.getMonth());
+          int consumedPerDay = 0;
 
-		llRootGraphLayout.removeAllViews();
-		llRootGraphLayout.addView(graphView);
-		llRootGraphLayout.startAnimation(hyperscaleIn);
-	}
+          for ( int i = 0; i < daysInMonth; i++ ) {
+               Utils.dateFormat.applyPattern(DataBaseUtils.DATE_PATTERN_YYYY_MM_DD);
+               consumedPerDay = DataBaseUtils.getConsumedPerDay(Utils.dateFormat.format(date));
+               yMaxAxisValue = Math.max(yMaxAxisValue, consumedPerDay);
+               data[i] = new GraphViewData(i + 1, consumedPerDay);
+               // increment day
+               date = DateUtils.addDays(date, 1);
+          }
+
+          seriesConsumed = new GraphViewSeries("Consumed", new GraphViewSeriesStyle(Color.BLUE, 4), data);
+
+          // add data
+          graphView.addSeries(seriesAverage);
+          graphView.addSeries(seriesShouldDrink);
+          graphView.addSeries(seriesConsumed);
+          // optional - set view port, start=2, size=10
+          // graphView.setViewPort(2, 10);
+
+          graphView.getGraphViewStyle().setTextSize(15);
+          graphView.getGraphViewStyle().setVerticalLabelsColor(Color.DKGRAY);
+          graphView.getGraphViewStyle().setGridColor(Color.DKGRAY);
+
+          graphView.setManualYAxisBounds(yMaxAxisValue, 0);
+          graphView.getGraphViewStyle().setNumHorizontalLabels(daysInMonth / 3);
+          // optional - legend
+          graphView.setShowLegend(true);
+
+          rlRootGraphLayout.addView(graphView, 0);
+          rlRootGraphLayout.startAnimation(fadeIn);
+     }
 }
