@@ -1,4 +1,4 @@
-package com.progym;
+package com.progym.activities;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -26,7 +26,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
+import com.progym.R;
 import com.progym.constants.GlobalConstants;
+import com.progym.custom.CaldroidFragmentCustom;
 import com.progym.custom.NonSwipeableViewPager;
 import com.progym.custom.OneProductOnPlateView;
 import com.progym.custom.OneProductOnPlateView_;
@@ -42,9 +44,8 @@ import com.progym.model.ReadyMeal;
 import com.progym.model.User;
 import com.progym.utils.DataBaseUtils;
 import com.progym.utils.Utils;
-import com.roomorama.caldroid.CaldroidFragment;
 
-@EActivity ( R.layout.food_managment_activity ) public class FoodManagmentActivity extends ProgymSuperActivity {
+@EActivity ( R.layout.food_managment_activity ) public class ActivityFoodManagment extends ProgymSuperActivity {
 
      public static final int                EXPANDABLE_LISTVIEW_FOOD_TYPES = 0;
      public static final int                SPECIFIC_FOOD_SPECIFICATION    = 1;
@@ -66,6 +67,8 @@ import com.roomorama.caldroid.CaldroidFragment;
      private ArrayList <View>               PLATES_BUTTONS;
 
      @Override @AfterViews void afterViews() {
+          calendar = new CaldroidFragmentCustom();
+          calendar.setCaldroidListener(onDateChangeListener);
           PLATES_BUTTONS = new ArrayList <View>();
           viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
           displaySelectedDate();
@@ -78,7 +81,7 @@ import com.roomorama.caldroid.CaldroidFragment;
                               final String tag = event.getClipData().getDescription().getLabel().toString();
 
                               if ( null == CURRENT_MEAL ) {
-                                   Utils.showCustomToast(FoodManagmentActivity.this, "Plate has been created", R.drawable.plate);
+                                   Utils.showCustomToast(ActivityFoodManagment.this, "Plate has been created", R.drawable.plate);
                                    ibCreatePlate.startAnimation(fadeIn);
                                    return false;
                               }
@@ -122,7 +125,7 @@ import com.roomorama.caldroid.CaldroidFragment;
 
                // Add to expandable list view ready meal date
                ((ViewPagerAdapter) viewPager.getAdapter()).foodCategoryExpListViewFragment.addToReadyMeal(CURRENT_MEAL.date);
-               Utils.showCustomToast(FoodManagmentActivity.this, "Plate has been saved", R.drawable.plate);
+               Utils.showCustomToast(ActivityFoodManagment.this, "Plate has been saved", R.drawable.plate);
           } else {
                Utils.showCustomToast(this, "Create plate before saving it", R.drawable.plate);
                ibCreatePlate.startAnimation(leftIn);
@@ -130,9 +133,6 @@ import com.roomorama.caldroid.CaldroidFragment;
      }
 
      @Click void llLeftPanelDateWithCalendar() {
-          calendar = new CaldroidFragment();
-          calendar.setCaldroidListener(onDateChangeListener);
-
           List <Meal> meals = DataBaseUtils.getAllPlates();
           if ( null != meals && !meals.isEmpty() ) {
                HashMap <Date, Integer> datesToHighligt = new HashMap <Date, Integer>();
@@ -151,9 +151,7 @@ import com.roomorama.caldroid.CaldroidFragment;
 
      @Override public void displaySelectedDate() {
           // Apply pattern for displaying into left panel without time
-          Utils.dateFormat.applyPattern(DataBaseUtils.DATE_PATTERN_YYYY_MM_DD);
-          twCurrentDate.setText(Utils.dateFormat.format(SELECTED_DATE));
-          Utils.dateFormat.applyPattern(DataBaseUtils.DATE_PATTERN_YYYY_MM_DD_HH_MM_SS);
+          twCurrentDate.setText(Utils.formatDate(SELECTED_DATE, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD));
           loadPlatesByDate(twCurrentDate.getText().toString());
           putProductsOnPlate();
           setLastPlateActive();
@@ -205,10 +203,8 @@ import com.roomorama.caldroid.CaldroidFragment;
 
           // //////////////////////// Format proper date (Date from twCurrentDate + CURRENT_TIME) /////////////////////////////
           String properDate = "";
-          Utils.dateFormat.applyPattern(DataBaseUtils.DATE_PATTERN_YYYY_MM_DD);
-          properDate = Utils.dateFormat.format(SELECTED_DATE);
-          Utils.dateFormat.applyPattern(DataBaseUtils.DATE_PATTERN_HH_MM_SS);
-          properDate += " " + Utils.dateFormat.format(new Date());
+          properDate = Utils.formatDate(SELECTED_DATE, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD);
+          properDate += " " + Utils.formatDate(new Date(), DataBaseUtils.DATE_PATTERN_HH_MM_SS);
           // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
           meal.date = properDate;

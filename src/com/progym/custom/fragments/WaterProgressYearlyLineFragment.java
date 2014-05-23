@@ -1,4 +1,4 @@
-package com.progym.custom.fragments.progress;
+package com.progym.custom.fragments;
 
 /*
  * Created by Daniel Nadeau
@@ -43,13 +43,10 @@ import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.jjoe64.graphview.BarGraphView;
 import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.GraphView.GraphViewData;
 import com.jjoe64.graphview.GraphViewSeries;
-import com.jjoe64.graphview.GraphViewSeries.GraphViewSeriesStyle;
 import com.progym.R;
-import com.progym.WaterProgressActivity;
+import com.progym.activities.ActivityWaterProgress;
 import com.progym.model.WaterConsumed;
 import com.progym.utils.DataBaseUtils;
 import com.progym.utils.Utils;
@@ -122,11 +119,10 @@ import com.progym.utils.Utils;
           }
           DATE = date;
           // 31 - Amount of days in a month
-          int daysInMonth = Utils.getDaysInMonth(date.getMonth(), Integer.valueOf(Utils.getDateSpecificValue(date, "yyyy")));
+          int daysInMonth = Utils.getDaysInMonth(date.getMonth(), Integer.valueOf(Utils.formatDate(date, DataBaseUtils.DATE_PATTERN_YYYY)));
           // set January as first month
           date.setMonth(0);
           date.setDate(1);
-          Utils.dateFormat.applyPattern(DataBaseUtils.DATE_PATTERN_YYYY_MM);
 
           int[] x = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
 
@@ -138,7 +134,7 @@ import com.progym.utils.Utils;
           // Adding data to Income and Expense Series
           for ( int i = 0; i < x.length; i++ ) {
                // get all water records consumed per this month
-               list = DataBaseUtils.getAllWaterConsumedInMonth(Utils.dateFormat.format(date));
+               list = DataBaseUtils.getAllWaterConsumedInMonth(Utils.formatDate(date, DataBaseUtils.DATE_PATTERN_YYYY_MM));
                // init "average" data
                int averageWaterConsumedOnYaxis = 0;
                for ( int j = 0; j < list.size(); j++ ) {
@@ -180,13 +176,13 @@ import com.progym.utils.Utils;
           multiRenderer.setXLabels(0);
 
           for ( int i = 0; i < x.length; i++ ) {
-               multiRenderer.addXTextLabel(i, WaterProgressActivity.months_short[i]);
+               multiRenderer.addXTextLabel(i, ActivityWaterProgress.months_short[i]);
           }
 
           // Adding incomeRenderer and expenseRenderer to multipleRenderer
           // Note: The order of adding dataseries to dataset and renderers to multipleRenderer
           // should be same
-          multiRenderer.setChartTitle(String.format("Water statistic for %s year", Utils.getDateSpecificValue(DATE, "yyyy")));
+          multiRenderer.setChartTitle(String.format("Water statistic for %s year", Utils.formatDate(DATE, DataBaseUtils.DATE_PATTERN_YYYY)));
           multiRenderer.setXTitle("Months");
           multiRenderer.setYTitle("Water volume (ml)");
           multiRenderer.setAxesColor(Color.WHITE);
@@ -212,63 +208,5 @@ import com.progym.utils.Utils;
 
           GraphicalView mChartView = ChartFactory.getBarChartView(getActivity(), dataset, multiRenderer, Type.DEFAULT);
           rlRootGraphLayout.addView(mChartView, 0);
-     }
-
-     public void setLineData2(Date date) {
-          try {
-               if ( rlRootGraphLayout.getChildCount() == 3 ) {
-                    rlRootGraphLayout.removeViewAt(0);
-               }
-          } catch (Exception edsx) {
-               edsx.printStackTrace();
-          }
-          DATE = date;
-          // 31 - Amount of days in a month
-          int daysInMonth = Utils.getDaysInMonth(date.getMonth(), Integer.valueOf(Utils.getDateSpecificValue(date, "yyyy")));
-          // set January as first month
-          date.setMonth(0);
-          date.setDate(1);
-
-          Utils.dateFormat.applyPattern(DataBaseUtils.DATE_PATTERN_YYYY);
-          // TODO : HOW TO clear all these serieses ???
-          graphView = new BarGraphView(getActivity(), String.format("Water statistic for %s year", Utils.dateFormat.format(DATE)));
-
-          Utils.dateFormat.applyPattern(DataBaseUtils.DATE_PATTERN_YYYY_MM);
-
-          List <WaterConsumed> list;
-
-          // first init "should drink" data
-          GraphViewData[] data = new GraphViewData[12];
-          // could be replaced to SQL code
-          for ( int i = 0; i < 12; i++ ) {
-               // get all water records consumed per this month
-               list = DataBaseUtils.getAllWaterConsumedInMonth(Utils.dateFormat.format(date));
-               // init "average" data
-               int averageWaterConsumedOnYaxis = 0;
-               for ( int j = 0; j < list.size(); j++ ) {
-                    // calculate sum of all water consumed by user in a month
-                    averageWaterConsumedOnYaxis += list.get(j).volumeConsumed;
-               }
-               averageWaterConsumedOnYaxis = averageWaterConsumedOnYaxis / daysInMonth;
-               data[i] = new GraphViewData(i, averageWaterConsumedOnYaxis);
-               int color = /* (averageWaterConsumedOnYaxis == 0) ? Color.rgb(0, 0, 0) : */Color.rgb(250, 80, 90);
-               singleMonthBar = new GraphViewSeries(WaterProgressActivity.months[i], new GraphViewSeriesStyle(color, 1), data);
-               date = DateUtils.addMonths(date, 1);
-               // add data
-               graphView.addSeries(singleMonthBar);
-          }
-
-          graphView.getGraphViewStyle().setTextSize(15);
-          graphView.getGraphViewStyle().setNumHorizontalLabels(11);
-          graphView.getGraphViewStyle().setVerticalLabelsColor(Color.DKGRAY);
-          graphView.getGraphViewStyle().setGridColor(Color.DKGRAY);
-
-          // optional - legend
-          graphView.setShowLegend(true);
-
-          graphView.setHorizontalLabels(WaterProgressActivity.months_short);
-
-          rlRootGraphLayout.addView(graphView, 0);
-          rlRootGraphLayout.startAnimation(fadeIn);
      }
 }

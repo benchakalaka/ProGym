@@ -1,4 +1,4 @@
-package com.progym;
+package com.progym.activities;
 
 import kankan.wheel.widget.WheelView;
 import kankan.wheel.widget.adapters.AbstractWheelTextAdapter;
@@ -22,13 +22,14 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.progym.R;
 import com.progym.custom.BodyTypeItemView;
 import com.progym.custom.BodyTypeItemView_;
 import com.progym.model.User;
 import com.progym.model.WaterConsumed;
 import com.progym.utils.DataBaseUtils;
 
-@EActivity ( R.layout.user_profile_activity ) public class UserProfileActivity extends Activity {
+@EActivity ( R.layout.user_profile_activity ) public class ActivityUserProfile extends Activity {
 
      @ViewById EditText       etName;
 
@@ -87,7 +88,7 @@ import com.progym.utils.DataBaseUtils;
           userToSave.weight = wheelWeight.getCurrentItem();
           userToSave.bodyType = wheelBodyType.getCurrentItem();
           userToSave.save();
-          startActivity(new Intent(UserProfileActivity.this, StartActivity_.class));
+          startActivity(new Intent(ActivityUserProfile.this, ActivityStart_.class));
      }
 
      @Click void btnClearProfile() {

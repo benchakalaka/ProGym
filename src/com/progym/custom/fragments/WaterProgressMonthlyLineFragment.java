@@ -1,4 +1,4 @@
-package com.progym.custom.fragments.progress;
+package com.progym.custom.fragments;
 
 /*
  * Created by Daniel Nadeau
@@ -40,7 +40,7 @@ import com.jjoe64.graphview.GraphViewSeries;
 import com.jjoe64.graphview.GraphViewSeries.GraphViewSeriesStyle;
 import com.jjoe64.graphview.LineGraphView;
 import com.progym.R;
-import com.progym.WaterProgressActivity;
+import com.progym.activities.ActivityWaterProgress;
 import com.progym.model.WaterConsumed;
 import com.progym.utils.DataBaseUtils;
 import com.progym.utils.Utils;
@@ -102,14 +102,11 @@ import com.progym.utils.Utils;
 
      public void setLineData2(Date date) {
           DATE = date;
-          Utils.dateFormat.applyPattern(DataBaseUtils.DATE_PATTERN_YYYY);
           // 31 - Amount of days in a month
-          int daysInMonth = Utils.getDaysInMonth(date.getMonth(), Integer.valueOf(Utils.getDateSpecificValue(date, "yyyy")));
+          int daysInMonth = Utils.getDaysInMonth(date.getMonth(), Integer.valueOf(Utils.formatDate(date, DataBaseUtils.DATE_PATTERN_YYYY)));
 
-          Utils.dateFormat.applyPattern(DataBaseUtils.DATE_PATTERN_YYYY_MM);
           // Add to expandable list view ready meal date
-
-          List <WaterConsumed> list = DataBaseUtils.getAllWaterConsumedInMonth(Utils.dateFormat.format(date));
+          List <WaterConsumed> list = DataBaseUtils.getAllWaterConsumedInMonth(Utils.formatDate(date, DataBaseUtils.DATE_PATTERN_YYYY_MM));
 
           try {
                if ( rlRootGraphLayout.getChildCount() == 3 ) {
@@ -122,8 +119,8 @@ import com.progym.utils.Utils;
           int shouldDrinkWaterMlPerDay = (int) DataBaseUtils.getWaterUserShouldConsumePerDay();
 
           // TODO : HOW TO clear all these serieses ???
-          graphView = new LineGraphView(getActivity(), String.format("Water statistic for %s  %s", WaterProgressActivity.months[date.getMonth()], Utils
-                    .getDateSpecificValue(date, "yyyy")));
+          graphView = new LineGraphView(getActivity(), String.format("Water statistic for %s  %s", ActivityWaterProgress.months[date.getMonth()], Utils
+                    .formatDate(date, DataBaseUtils.DATE_PATTERN_YYYY)));
 
           int yMaxAxisValue = shouldDrinkWaterMlPerDay;
 
@@ -132,7 +129,7 @@ import com.progym.utils.Utils;
           data[0] = new GraphViewData(1, shouldDrinkWaterMlPerDay);
           data[1] = new GraphViewData(daysInMonth, shouldDrinkWaterMlPerDay);
 
-          seriesShouldDrink = new GraphViewSeries("Should drink", new GraphViewSeriesStyle(Color.rgb(250, 80, 90), 3), data);
+          seriesShouldDrink = new GraphViewSeries("Norma", new GraphViewSeriesStyle(Color.rgb(90, 250, 00), 3), data);
           // init "average" data
           int averageWaterConsumedOnYaxis = 0;
           for ( int i = 0; i < list.size(); i++ ) {
@@ -147,7 +144,7 @@ import com.progym.utils.Utils;
           data[0] = new GraphViewData(1, averageWaterConsumedOnYaxis);
           data[1] = new GraphViewData(daysInMonth, averageWaterConsumedOnYaxis);
 
-          seriesAverage = new GraphViewSeries("Average Value", new GraphViewSeriesStyle(Color.rgb(90, 250, 00), 3), data);
+          seriesAverage = new GraphViewSeries("Average Value", new GraphViewSeriesStyle(Color.rgb(250, 80, 90), 3), data);
 
           data = new GraphViewData[daysInMonth];
           // set first day of month
@@ -156,8 +153,7 @@ import com.progym.utils.Utils;
           int consumedPerDay = 0;
 
           for ( int i = 0; i < daysInMonth; i++ ) {
-               Utils.dateFormat.applyPattern(DataBaseUtils.DATE_PATTERN_YYYY_MM_DD);
-               consumedPerDay = DataBaseUtils.getConsumedPerDay(Utils.dateFormat.format(date));
+               consumedPerDay = DataBaseUtils.getConsumedPerDay(Utils.formatDate(date, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD));
                yMaxAxisValue = Math.max(yMaxAxisValue, consumedPerDay);
                data[i] = new GraphViewData(i + 1, consumedPerDay);
                // increment day

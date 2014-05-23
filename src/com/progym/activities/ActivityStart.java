@@ -1,4 +1,4 @@
-package com.progym;
+package com.progym.activities;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -15,10 +15,11 @@ import android.view.MenuItem;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.animation.Animation;
 import android.widget.LinearLayout;
- 
+
+import com.progym.R;
 import com.progym.utils.DataBaseUtils;
 
-@EActivity ( R.layout.start_activity ) public class StartActivity extends Activity {
+@EActivity ( R.layout.start_activity ) public class ActivityStart extends Activity {
 
      // Sugar basic usage - List<Book> books = Book.find(Book.class, "author = ?", new String{author.getId()});
      // Book.find(Note.class, "name = ? and title = ?", "satya", "title1");
@@ -59,12 +60,12 @@ import com.progym.utils.DataBaseUtils;
 
      @Click void llNutrition() {
           llNutrition.startAnimation(fadeIn);
-          startActivity(new Intent(StartActivity.this, SelectFoodOrWaterManagmentActivity_.class));
+          startActivity(new Intent(ActivityStart.this, ActivitySelectFoodOrWaterManagment_.class));
      }
 
      @Click void llProfile() {
           llProfile.startAnimation(fadeIn);
-          startActivity(new Intent(StartActivity.this, UserProfileActivity_.class));
+          startActivity(new Intent(ActivityStart.this, ActivityUserProfile_.class));
      }
 
      @Click void llTraining() {
@@ -73,7 +74,7 @@ import com.progym.utils.DataBaseUtils;
 
      @Click void llProgress() {
           llProgress.startAnimation(fadeIn);
-          startActivity(new Intent(StartActivity.this, ChooseTepeOfProgressActivity_.class));
+          startActivity(new Intent(ActivityStart.this, ActivityChooseProgressType_.class));
      }
 
      @Override public boolean onCreateOptionsMenu(Menu menu) {

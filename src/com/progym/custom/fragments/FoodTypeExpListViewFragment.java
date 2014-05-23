@@ -14,8 +14,8 @@ import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.Toast;
 
-import com.progym.FoodManagmentActivity;
 import com.progym.R;
+import com.progym.activities.ActivityFoodManagment;
 import com.progym.custom.ExpandableListAdapter;
 import com.progym.model.Ingridient;
 import com.progym.model.ReadyMeal;
@@ -62,7 +62,7 @@ import com.progym.utils.Utils;
                	}
                	
                     Toast.makeText(getActivity().getApplicationContext(), listDataHeader.get(groupPosition) + " : " + listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition), Toast.LENGTH_SHORT).show();
-                    ((FoodManagmentActivity) getActivity()).viewPager.setCurrentItem(FoodManagmentActivity.SPECIFIC_FOOD_SPECIFICATION, true);
+                    ((ActivityFoodManagment) getActivity()).viewPager.setCurrentItem(ActivityFoodManagment.SPECIFIC_FOOD_SPECIFICATION, true);
                     return false;
                }
           });

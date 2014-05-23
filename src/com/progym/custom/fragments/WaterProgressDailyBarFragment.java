@@ -1,4 +1,4 @@
-package com.progym.custom.fragments.progress;
+package com.progym.custom.fragments;
 
 /*
  * Created by Daniel Nadeau
@@ -21,31 +21,76 @@ package com.progym.custom.fragments.progress;
  */
 
 import java.util.ArrayList;
+import java.util.Date;
 
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
+import org.androidannotations.annotations.res.AnimationRes;
+import org.apache.commons.lang3.time.DateUtils;
 
 import android.content.res.Resources;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.animation.Animation;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.echo.holographlibrary.Bar;
 import com.echo.holographlibrary.BarGraph;
 import com.echo.holographlibrary.BarGraph.OnBarClickedListener;
 import com.progym.R;
+import com.progym.utils.DataBaseUtils;
+import com.progym.utils.Utils;
 
-@EFragment ( R.layout.fragment_bargraph ) public class WaterProgressDailyBarFragment extends Fragment {
+@EFragment ( R.layout.fragment_bargraph_daily ) public class WaterProgressDailyBarFragment extends Fragment {
 
-     @ViewById BarGraph bargraph;
+     @ViewById RelativeLayout                   rlRootDailyBar;
+     @ViewById ImageView                        ivPrevYear;
+     @ViewById ImageView                        ivNextYear;
+     @ViewById BarGraph                         bargraph;
+     @ViewById TextView                         twCurrentDay;
 
-     public void setBarData(final String date, final double shouldDrink, final int consumed) {
+     @AnimationRes ( R.anim.fadein ) Animation  fadeIn;
+     @AnimationRes ( R.anim.fadeout ) Animation fadeOut;
+     private Date                               DATE;
+
+     @Override public void onActivityCreated(Bundle savedInstanceState) {
+          super.onActivityCreated(savedInstanceState);
+          setBarData(new Date());
+     }
+
+     @Click void ivPrevYear() {
+          ivNextYear.startAnimation(fadeIn);
+          rlRootDailyBar.startAnimation(fadeOut);
+          DATE = DateUtils.addDays(DATE, -1);
+          setBarData(DATE);
+     }
+
+     @Click void ivNextYear() {
+          ivNextYear.startAnimation(fadeIn);
+          rlRootDailyBar.startAnimation(fadeOut);
+          DATE = DateUtils.addDays(DATE, 1);
+          setBarData(DATE);
+     }
+
+     public void setBarData(Date d) {
+          this.DATE = d;
+          twCurrentDay.setText(Utils.formatDate(d, "EEEE") + " - " + Utils.formatDate(d, "dd") + " of " + Utils.formatDate(d,
+                    "MMM"));
+          final String date = Utils.formatDate(this.DATE, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD);
+          final double shouldDrink = DataBaseUtils.getWaterUserShouldConsumePerDay();
+          final int consumed = DataBaseUtils.getConsumedPerDay(date);
+
           final Resources resources = getResources();
           ArrayList <Bar> aBars = new ArrayList <Bar>();
 
           Bar bar = new Bar();
           bar.setColor(resources.getColor(R.color.green_light));
           bar.setSelectedColor(resources.getColor(R.color.caldroid_white));
-          bar.setName("Should Drink");
+          bar.setName("Norma");
           bar.setValue((int) shouldDrink);
           bar.setValueString(String.format("%.2f L", (shouldDrink / 1000f)));
           aBars.add(bar);
@@ -63,7 +108,7 @@ import com.progym.R;
 
                @Override public void onClick(int index) {
                     if ( 0 == index ) {
-                         Toast.makeText(getActivity(), "You shoud drink " + String.format("%.2f L per day", (shouldDrink / 1000f)), Toast.LENGTH_SHORT).show();
+                         Toast.makeText(getActivity(), "Norma for you " + String.format("%.2f L per day", (shouldDrink / 1000f)), Toast.LENGTH_SHORT).show();
                     }
 
                     if ( 1 == index ) {
@@ -74,5 +119,4 @@ import com.progym.R;
           });
 
      }
-
 }

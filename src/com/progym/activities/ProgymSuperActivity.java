@@ -1,4 +1,4 @@
-package com.progym;
+package com.progym.activities;
 
 import java.util.Date;
 
@@ -17,11 +17,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.roomorama.caldroid.CaldroidFragment;
+import com.progym.R;
+import com.progym.custom.CaldroidFragmentCustom;
+import com.progym.interfaces.ISuperActivity;
 
 @EBean public abstract class ProgymSuperActivity extends FragmentActivity implements ISuperActivity {
      static Date                                          SELECTED_DATE        = new Date();
-     CaldroidFragment                                     calendar;
+     CaldroidFragmentCustom                               calendar;
      @ViewById ImageView                                  ivNextDay;
      @ViewById ImageView                                  ivPrevDay;
      @ViewById TextView                                   twCurrentDate;

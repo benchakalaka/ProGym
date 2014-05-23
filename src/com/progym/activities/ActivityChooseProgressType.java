@@ -1,4 +1,4 @@
-package com.progym;
+package com.progym.activities;
 
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
@@ -7,7 +7,9 @@ import org.androidannotations.annotations.ViewById;
 import android.content.Intent;
 import android.widget.RelativeLayout;
 
-@EActivity ( R.layout.choose_type_of_progress ) public class ChooseTepeOfProgressActivity extends ProgymSuperActivity {
+import com.progym.R;
+
+@EActivity ( R.layout.choose_type_of_progress ) public class ActivityChooseProgressType extends ProgymSuperActivity {
 
      @ViewById RelativeLayout rlRoundImageWaterProgress;
      // @ViewById RelativeLayout rlRoundImageFoodProgress;
@@ -19,7 +21,7 @@ import android.widget.RelativeLayout;
 
      @Click void rlRoundImageWaterProgress() {
           rlRoundImageWaterProgress.startAnimation(rightOut);
-          startActivity(new Intent(ChooseTepeOfProgressActivity.this, WaterProgressActivity_.class));
+          startActivity(new Intent(ActivityChooseProgressType.this, ActivityWaterProgress_.class));
      }
 
      /*

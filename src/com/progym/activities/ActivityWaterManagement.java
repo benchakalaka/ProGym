@@ -1,4 +1,4 @@
-package com.progym;
+package com.progym.activities;
 
 import java.text.ParseException;
 import java.util.Date;
@@ -30,7 +30,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.progym.R;
 import com.progym.constants.GlobalConstants;
+import com.progym.custom.CaldroidFragmentCustom;
 import com.progym.custom.ConsumedWaterItemView;
 import com.progym.custom.ConsumedWaterItemView_;
 import com.progym.custom.WaterLevelBodyView;
@@ -39,10 +41,9 @@ import com.progym.model.User;
 import com.progym.model.WaterConsumed;
 import com.progym.utils.DataBaseUtils;
 import com.progym.utils.Utils;
-import com.roomorama.caldroid.CaldroidFragment;
 import com.todddavies.components.progressbar.ProgressWheel;
 
-@EActivity ( R.layout.water_management_activity ) public class WaterManagementActivity extends ProgymSuperActivity {
+@EActivity ( R.layout.activity_water_management ) public class ActivityWaterManagement extends ProgymSuperActivity {
 
      @ViewById ImageView            ivGlass250ML;
      @ViewById ImageView            ivBottle500ML;
@@ -102,9 +103,6 @@ import com.todddavies.components.progressbar.ProgressWheel;
      }
 
      @Click void llLeftPanelDateWithCalendar() {
-          calendar = new CaldroidFragment();
-          calendar.setCaldroidListener(onDateChangeListener);
-
           List <WaterConsumed> list = DataBaseUtils.getAllWaterConsumed();
 
           HashMap <Date, Integer> datesAndColour = new HashMap <Date, Integer>();
@@ -122,9 +120,7 @@ import com.todddavies.components.progressbar.ProgressWheel;
 
      @Override public void displaySelectedDate() {
           // Apply pattern for displaying into left panel without time
-          Utils.dateFormat.applyPattern(DataBaseUtils.DATE_PATTERN_YYYY_MM_DD);
-          twCurrentDate.setText(Utils.dateFormat.format(SELECTED_DATE));
-          Utils.dateFormat.applyPattern(DataBaseUtils.DATE_PATTERN_YYYY_MM_DD_HH_MM_SS);
+          twCurrentDate.setText(Utils.formatDate(SELECTED_DATE, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD));
           loadVolumesByDate(twCurrentDate.getText().toString());
 
           int alreadyDrinked = DataBaseUtils.getConsumedPerDay(twCurrentDate.getText().toString());
@@ -186,10 +182,12 @@ import com.todddavies.components.progressbar.ProgressWheel;
      }
 
      @Override @AfterViews void afterViews() {
+          calendar = new CaldroidFragmentCustom();
+          calendar.setCaldroidListener(onDateChangeListener);
           displaySelectedDate();
           loadVolumesByDate(twCurrentDate.getText().toString());
           // init player
-          mediaPlayer = MediaPlayer.create(WaterManagementActivity.this, R.raw.pouring_liquid);
+          mediaPlayer = MediaPlayer.create(ActivityWaterManagement.this, R.raw.pouring_liquid);
 
           llRightPanelBody.setOnDragListener(new OnDragListener() {
 
@@ -219,7 +217,7 @@ import com.todddavies.components.progressbar.ProgressWheel;
                               WaterConsumed waterToLog = new WaterConsumed(getApplicationContext());
                               waterToLog.user = u;
                               waterToLog.volumeConsumed = Utils.getVolumeByTag(tag);
-                              waterToLog.date = Utils.dateFormat.format(SELECTED_DATE);
+                              waterToLog.date = Utils.formatDate(SELECTED_DATE, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD_HH_MM_SS);
                               waterToLog.save();
 
                               int alreadyDrinked = DataBaseUtils.getConsumedPerDay(twCurrentDate.getText().toString());

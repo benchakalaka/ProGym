@@ -20,7 +20,7 @@ import com.progym.constants.GlobalConstants;
 import com.progym.custom.ExpandableListAdapter;
 
 public class Utils {
-     public final static SimpleDateFormat dateFormat = new SimpleDateFormat();
+     private final static SimpleDateFormat dateFormat = new SimpleDateFormat();
 
      /**
       * @param monthNumber
@@ -48,20 +48,21 @@ public class Utils {
           return days;
      }
 
+     public static String formatDate(Date dateToFormat, String pattern) {
+          dateFormat.applyPattern(pattern);
+          return dateFormat.format(dateToFormat).toString();
+     }
+
      /**
-      * ("EEEE", date);// Thursday
-      * ("MMM", date); // Jun
-      * ("MM", date); // 06
-      * ("yyyy", date); // 2013
-      * ("dd", date); // 20
+      * "EEEE" - Thursday /////// "MMM" - Jun /////// "MM" - 06 /////// "yyyy" - 2013 /////// "dd"- 20 /////////
       * 
-      * @param date
+      * @param dateToFormat
       *             Date object
       * @param pattern
       *             one of EEEE, MMM, MM, yyyy, dd values
       */
-     public static String getDateSpecificValue(Date date, String pattern) {
-          return android.text.format.DateFormat.format(pattern, date).toString();
+     public static String getSpecificDateValue(Date dateToFormat, String pattern) {
+          return android.text.format.DateFormat.format(pattern, dateToFormat).toString();
      }
 
      public static void showCustomToast(final Activity activity, final String message, final BitmapDrawable background) {
@@ -208,10 +209,6 @@ public class Utils {
           }
 
           return retResourceId;
-     }
-
-     public static String formatDate(Date date) {
-          return dateFormat.format(date);
      }
 
      public static void log(String message) {

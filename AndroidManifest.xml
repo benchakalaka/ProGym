@@ -16,7 +16,7 @@
 		android:theme="@style/AppTheme" >
 		<meta-data
 			android:name="DATABASE"
-			android:value="progym17.db" />
+			android:value="progym20.db" />
 		<meta-data
 			android:name="VERSION"
 			android:value="1" />
@@ -28,7 +28,7 @@
 			android:value="com.progym" />
 
 		<activity
-			android:name="com.progym.StartActivity_"
+			android:name="com.progym.activities.ActivityStart_"
 			android:label="@string/app_name"
 			android:screenOrientation="sensorLandscape" >
 			<intent-filter>
@@ -38,36 +38,33 @@
 			</intent-filter>
 		</activity>
 		<activity
-			android:name="com.progym.WaterManagementActivity_"
+			android:name="com.progym.activities.ActivityWaterManagement_"
 			android:label="@string/app_name"
 			android:screenOrientation="sensorLandscape" >
 		</activity>
 		<activity
-			android:name="com.progym.FoodManagmentActivity_"
+			android:name="com.progym.activities.ActivityFoodManagment_"
 			android:label="@string/app_name"
 			android:screenOrientation="sensorLandscape" >
 		</activity>
 		<activity
-			android:name="com.progym.ChooseTepeOfProgressActivity_"
+			android:name="com.progym.activities.ActivityChooseProgressType_"
 			android:label="@string/app_name"
 			android:screenOrientation="sensorLandscape" >
 		</activity>
 		<activity
-			android:name="com.progym.WaterProgressActivity_"
+			android:name="com.progym.activities.ActivityWaterProgress_"
 			android:label="@string/app_name"
 			android:screenOrientation="sensorLandscape" >
 		</activity>
 		<activity
-			android:name="com.progym.UserProfileActivity_"
+			android:name="com.progym.activities.ActivityUserProfile_"
 			android:label="@string/app_name"
 			android:screenOrientation="sensorLandscape"
-			android:windowSoftInputMode="stateHidden|adjustPan" >
+			android:windowSoftInputMode="stateHidden" >
 		</activity>
 		<activity
-			android:name="org.achartengine.GraphicalActivity"
-			android:screenOrientation="sensorLandscape" />
-		<activity
-			android:name="com.progym.SelectFoodOrWaterManagmentActivity_"
+			android:name="com.progym.activities.ActivitySelectFoodOrWaterManagment_"
 			android:label="@string/app_name"
 			android:screenOrientation="sensorLandscape" >
 		</activity>

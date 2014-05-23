@@ -14,8 +14,8 @@ import android.view.View.DragShadowBuilder;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.progym.FoodManagmentActivity;
 import com.progym.R;
+import com.progym.activities.ActivityFoodManagment;
 
 @EFragment ( R.layout.fragment_specific_product_spec ) public class SpecificProductSpecificationFragment extends Fragment {
 
@@ -23,7 +23,7 @@ import com.progym.R;
      @ViewById ImageView ivFoodImage;
 
      @Click void btnShowFoodTypes() {
-          ((FoodManagmentActivity) getActivity()).viewPager.setCurrentItem(FoodManagmentActivity.EXPANDABLE_LISTVIEW_FOOD_TYPES, true);
+          ((ActivityFoodManagment) getActivity()).viewPager.setCurrentItem(ActivityFoodManagment.EXPANDABLE_LISTVIEW_FOOD_TYPES, true);
      }
 
      @Touch void ivFoodImage(MotionEvent event, View v) {
