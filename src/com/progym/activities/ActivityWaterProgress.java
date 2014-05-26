@@ -99,7 +99,7 @@ import com.progym.utils.Utils;
 
           public ProgressViewPagerAdapter ( FragmentManager fm ) {
                super(fm);
-          }
+          } 
 
           @Override public Fragment getItem(int position) {
                Fragment returnFragment = null;

@@ -1,0 +1,85 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android1="http://schemas.android.com/apk/res/android"
+    android1:id="@+id/linear_layout"
+    android1:layout_width="match_parent"
+    android1:layout_height="match_parent"
+    android1:orientation="vertical" xmlns:app="http://schemas.android.com/apk/res/com.progym">
+
+    <LinearLayout
+        android:id="@+id/llRightPanelBody"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="3dp"
+        android:layout_weight="1"
+        android:background="@drawable/background_round_border"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/water_managment_root_relative_lasyout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp" >
+
+            <ImageView
+                android:id="@+id/ivFoodImage"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/plate" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ivFoodImage"
+                android:text="Meat is a great protein source"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@android:color/background_light" />
+
+            <Button
+                android1:id="@+id/btnShowFoodTypes"
+                android1:layout_width="wrap_content"
+                android1:layout_height="wrap_content"
+                android1:layout_alignParentRight="true"
+                android1:layout_alignParentTop="true"
+                android:text="Back"
+                android:textColor="@android:color/background_light" />
+
+
+            <LinearLayout
+                android:id="@+id/llFat"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="30"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <it.sephiroth.android.wheel.view.Wheel
+                    xmlns:sephiroth="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/wheel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    sephiroth:numRotations="6"
+                    sephiroth:ticks="28" />
+            </LinearLayout>
+
+            <com.echo.holographlibrary.PieGraph
+                android1:id="@+id/pieGraph"
+                android1:layout_width="200dp"
+                android1:layout_height="200dp"
+                android1:layout_alignParentRight="true"
+                android1:layout_centerVertical="true"
+                app:pieInnerCircleRatio="150"
+                app:pieSlicePadding="5dp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

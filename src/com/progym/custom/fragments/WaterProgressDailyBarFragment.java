@@ -44,7 +44,7 @@ import com.echo.holographlibrary.BarGraph.OnBarClickedListener;
 import com.progym.R;
 import com.progym.utils.DataBaseUtils;
 import com.progym.utils.Utils;
-
+ 
 @EFragment ( R.layout.fragment_bargraph_daily ) public class WaterProgressDailyBarFragment extends Fragment {
 
      @ViewById RelativeLayout                   rlRootDailyBar;

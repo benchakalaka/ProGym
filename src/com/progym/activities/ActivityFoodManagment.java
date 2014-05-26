@@ -36,8 +36,8 @@ import com.progym.custom.SinglePlateItemView;
 import com.progym.custom.SinglePlateItemView_;
 import com.progym.custom.fragments.FoodTypeExpListViewFragment;
 import com.progym.custom.fragments.FoodTypeExpListViewFragment_;
-import com.progym.custom.fragments.SpecificProductSpecificationFragment;
-import com.progym.custom.fragments.SpecificProductSpecificationFragment_;
+import com.progym.custom.fragments.FragmentIngridient;
+import com.progym.custom.fragments.FragmentIngridient_;
 import com.progym.model.Ingridient;
 import com.progym.model.Meal;
 import com.progym.model.ReadyMeal;
@@ -45,247 +45,246 @@ import com.progym.model.User;
 import com.progym.utils.DataBaseUtils;
 import com.progym.utils.Utils;
 
-@EActivity ( R.layout.food_managment_activity ) public class ActivityFoodManagment extends ProgymSuperActivity {
+@EActivity ( R.layout.food_managment_activity )
+public class ActivityFoodManagment extends ProgymSuperActivity {
 
-     public static final int                EXPANDABLE_LISTVIEW_FOOD_TYPES = 0;
-     public static final int                SPECIFIC_FOOD_SPECIFICATION    = 1;
+	public static final int				EXPANDABLE_LISTVIEW_FOOD_TYPES	= 0;
+	public static final int				SPECIFIC_FOOD_SPECIFICATION		= 1;
 
-     private Meal                           CURRENT_MEAL;
-     private View                           CURRENT_MEAL_VIEW;
+	private Meal						CURRENT_MEAL;
+	private View						CURRENT_MEAL_VIEW;
 
-     @ViewById public NonSwipeableViewPager viewPager;
-     @ViewById public ImageView             ivOnPlate;
-     @ViewById public ScrollView            svListOfConsumedMeals;
-     @ViewById public LinearLayout          llAlreadyOnPlate;
-     @ViewById public LinearLayout          llCreatedPlates;
+	@ViewById public NonSwipeableViewPager	viewPager;
+	@ViewById public ImageView			ivOnPlate;
+	@ViewById public ScrollView			svListOfConsumedMeals;
+	@ViewById public LinearLayout			llAlreadyOnPlate;
+	@ViewById public LinearLayout			llCreatedPlates;
 
-     @ViewById public ImageButton           ibCreatePlate;
-     @ViewById public ImageButton           ibSavePlate;
+	@ViewById public ImageButton			ibCreatePlate;
+	@ViewById public ImageButton			ibSavePlate;
 
-     @ViewById public HorizontalScrollView  horizontalScrollView;
+	@ViewById public HorizontalScrollView	horizontalScrollView;
 
-     private ArrayList <View>               PLATES_BUTTONS;
+	private ArrayList <View>				PLATES_BUTTONS;
 
-     @Override @AfterViews void afterViews() {
-          calendar = new CaldroidFragmentCustom();
-          calendar.setCaldroidListener(onDateChangeListener);
-          PLATES_BUTTONS = new ArrayList <View>();
-          viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
-          displaySelectedDate();
-          svListOfConsumedMeals.setOnDragListener(new OnDragListener() {
+	@Override @AfterViews void afterViews() {
+		calendar = new CaldroidFragmentCustom();
+		calendar.setCaldroidListener(onDateChangeListener);
+		PLATES_BUTTONS = new ArrayList <View>();
+		viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
+		displaySelectedDate();
+		svListOfConsumedMeals.setOnDragListener(new OnDragListener() {
 
-               @Override public boolean onDrag(View v, DragEvent event) {
+			@Override public boolean onDrag(View v, DragEvent event) {
 
-                    switch (event.getAction()) {
-                         case DragEvent.ACTION_DROP:
-                              final String tag = event.getClipData().getDescription().getLabel().toString();
+				switch (event.getAction()) {
+					case DragEvent.ACTION_DROP:
+						final String tag = event.getClipData().getDescription().getLabel().toString();
 
-                              if ( null == CURRENT_MEAL ) {
-                                   Utils.showCustomToast(ActivityFoodManagment.this, "Plate has been created", R.drawable.plate);
-                                   ibCreatePlate.startAnimation(fadeIn);
-                                   return false;
-                              }
+						if ( null == CURRENT_MEAL ) {
+							Utils.showCustomToast(ActivityFoodManagment.this, "Plate has been created", R.drawable.plate);
+							ibCreatePlate.startAnimation(fadeIn);
+							return false;
+						}
 
-                              Ingridient ingridient = new Ingridient(getApplicationContext());
-                              ingridient.meal = CURRENT_MEAL;
-                              ingridient.date = CURRENT_MEAL.date;
-                              ingridient.carbohydrates = 30;
-                              ingridient.fat = 30;
-                              ingridient.protein = 30;
-                              ingridient.typeOfProduct = "Meat";
-                              ingridient.productName = "Chicken";
-                              ingridient.user = DataBaseUtils.getCurrentUser();
-                              ingridient.save();
+						Ingridient ingridient = new Ingridient(getApplicationContext());
+						ingridient.meal = CURRENT_MEAL;
+						ingridient.date = CURRENT_MEAL.date;
+						ingridient.carbohydrates = 30;
+						ingridient.fat = 30;
+						ingridient.protein = 30;
+						ingridient.typeOfProduct = "Meat";
+						ingridient.productName = "Chicken";
+						ingridient.user = DataBaseUtils.getCurrentUser();
+						ingridient.save();
 
-                              OneProductOnPlateView view = OneProductOnPlateView_.build(getApplicationContext());
-                              view.ivProduct.setImageResource(R.drawable.ingridient);
-                              view.twProductDescription.setText(ingridient.productName + " : " + CURRENT_MEAL.date);
-                              llAlreadyOnPlate.addView(view);
+						OneProductOnPlateView view = OneProductOnPlateView_.build(getApplicationContext());
+						view.ivProduct.setImageResource(R.drawable.ingridient);
+						view.twProductDescription.setText(ingridient.productName + " : " + CURRENT_MEAL.date);
+						llAlreadyOnPlate.addView(view);
 
-                              int currentAmountOfIngridients = Integer.valueOf(((SinglePlateItemView) CURRENT_MEAL_VIEW).twIngridientsAmount.getText().toString());
-                              ((SinglePlateItemView) CURRENT_MEAL_VIEW).twIngridientsAmount.setText(String.valueOf(currentAmountOfIngridients + 1));
-                              svListOfConsumedMeals.post(new Runnable() {
-                                   @Override public void run() {
-                                        // This method works even better because there are no animations.
-                                        svListOfConsumedMeals.smoothScrollTo(0, svListOfConsumedMeals.getBottom());
-                                   }
-                              });
-                    }
-                    return true;
-               }
-          });
-     }
+						int currentAmountOfIngridients = Integer.valueOf(((SinglePlateItemView) CURRENT_MEAL_VIEW).twIngridientsAmount.getText().toString());
+						((SinglePlateItemView) CURRENT_MEAL_VIEW).twIngridientsAmount.setText(String.valueOf(currentAmountOfIngridients + 1));
+						svListOfConsumedMeals.post(new Runnable() {
+							@Override public void run() {
+								// This method works even better because there are no animations.
+								svListOfConsumedMeals.smoothScrollTo(0, svListOfConsumedMeals.getBottom());
+							}
+						});
+				}
+				return true;
+			}
+		});
+	}
 
-     @Click void ibSavePlate() {
-          if ( null != CURRENT_MEAL ) {
-               ReadyMeal readyMeal = new ReadyMeal(getApplicationContext());
-               readyMeal.user = DataBaseUtils.getCurrentUser();
-               readyMeal.date = CURRENT_MEAL.date;
-               readyMeal.save();
+	@Click void ibSavePlate() {
+		if ( null != CURRENT_MEAL ) {
+			ReadyMeal readyMeal = new ReadyMeal(getApplicationContext());
+			readyMeal.user = DataBaseUtils.getCurrentUser();
+			readyMeal.date = CURRENT_MEAL.date;
+			readyMeal.save();
 
-               // Add to expandable list view ready meal date
-               ((ViewPagerAdapter) viewPager.getAdapter()).foodCategoryExpListViewFragment.addToReadyMeal(CURRENT_MEAL.date);
-               Utils.showCustomToast(ActivityFoodManagment.this, "Plate has been saved", R.drawable.plate);
-          } else {
-               Utils.showCustomToast(this, "Create plate before saving it", R.drawable.plate);
-               ibCreatePlate.startAnimation(leftIn);
-          }
-     }
+			// Add to expandable list view ready meal date
+			((ViewPagerAdapter) viewPager.getAdapter()).foodCategoryExpListViewFragment.addToReadyMeal(CURRENT_MEAL.date);
+			Utils.showCustomToast(ActivityFoodManagment.this, "Plate has been saved", R.drawable.plate);
+		} else {
+			Utils.showCustomToast(this, "Create plate before saving it", R.drawable.plate);
+			ibCreatePlate.startAnimation(leftIn);
+		}
+	}
 
-     @Click void llLeftPanelDateWithCalendar() {
-          List <Meal> meals = DataBaseUtils.getAllPlates();
-          if ( null != meals && !meals.isEmpty() ) {
-               HashMap <Date, Integer> datesToHighligt = new HashMap <Date, Integer>();
-               for ( Meal meal : meals ) {
-                    try {
-                         datesToHighligt.put(DateUtils.parseDate(meal.date, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD_HH_MM_SS), com.caldroid.R.color.caldroid_sky_blue);
-                    } catch (ParseException e) {
-                         e.printStackTrace();
-                    }
-               }
-               // highlight dates in calendar with blue color
-               calendar.setBackgroundResourceForDates(datesToHighligt);
-          }
-          calendar.show(getSupportFragmentManager(), GlobalConstants.TAG);
-     }
+	@Click void llLeftPanelDateWithCalendar() {
+		List <Meal> meals = DataBaseUtils.getAllPlates();
+		if ( null != meals && !meals.isEmpty() ) {
+			HashMap <Date, Integer> datesToHighligt = new HashMap <Date, Integer>();
+			for ( Meal meal : meals ) {
+				try {
+					datesToHighligt.put(DateUtils.parseDate(meal.date, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD_HH_MM_SS), com.caldroid.R.color.caldroid_sky_blue);
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+			}
+			// highlight dates in calendar with blue color
+			calendar.setBackgroundResourceForDates(datesToHighligt);
+		}
+		calendar.show(getSupportFragmentManager(), GlobalConstants.TAG);
+	}
 
-     @Override public void displaySelectedDate() {
-          // Apply pattern for displaying into left panel without time
-          twCurrentDate.setText(Utils.formatDate(SELECTED_DATE, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD));
-          loadPlatesByDate(twCurrentDate.getText().toString());
-          putProductsOnPlate();
-          setLastPlateActive();
-     }
+	@Override public void displaySelectedDate() {
+		// Apply pattern for displaying into left panel without time
+		twCurrentDate.setText(Utils.formatDate(SELECTED_DATE, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD));
+		loadPlatesByDate(twCurrentDate.getText().toString());
+		putProductsOnPlate();
+		setLastPlateActive();
+	}
 
-     private void setLastPlateActive() {
-          if ( !PLATES_BUTTONS.isEmpty() ) {
-               for ( View plateView : PLATES_BUTTONS ) {
-                    plateView.setBackgroundColor(Color.TRANSPARENT);// setPadding(0, 0, 0, 0);
-               }
-               // Set CURRENT_PLATE_VIEW - > display amount of products on the meal
-               CURRENT_MEAL_VIEW = PLATES_BUTTONS.get(PLATES_BUTTONS.size() - 1);
-               PLATES_BUTTONS.get(PLATES_BUTTONS.size() - 1).setBackgroundResource(R.drawable.background_transparent_inside);// .setPadding(15, 15, 15, 15);
-          }
-     }
+	private void setLastPlateActive() {
+		if ( !PLATES_BUTTONS.isEmpty() ) {
+			for ( View plateView : PLATES_BUTTONS ) {
+				plateView.setBackgroundColor(Color.TRANSPARENT);// setPadding(0, 0, 0, 0);
+			}
+			// Set CURRENT_PLATE_VIEW - > display amount of products on the meal
+			CURRENT_MEAL_VIEW = PLATES_BUTTONS.get(PLATES_BUTTONS.size() - 1);
+			PLATES_BUTTONS.get(PLATES_BUTTONS.size() - 1).setBackgroundResource(R.drawable.background_transparent_inside);// .setPadding(15, 15, 15, 15);
+		}
+	}
 
-     private void putProductsOnPlate() {
-          llAlreadyOnPlate.removeAllViews();
-          if ( null != CURRENT_MEAL ) {
-               List <Ingridient> ingridients = DataBaseUtils.getProductsOnPlate(CURRENT_MEAL);
-               for ( Ingridient ingridient : ingridients ) {
-                    OneProductOnPlateView view = OneProductOnPlateView_.build(getApplicationContext());
-                    view.ivProduct.setImageResource(R.drawable.ingridient);
-                    view.twProductDescription.setText(ingridient.productName + " meal date " + CURRENT_MEAL.date);
-                    llAlreadyOnPlate.addView(view);
-               }
-          }
-     }
+	private void putProductsOnPlate() {
+		llAlreadyOnPlate.removeAllViews();
+		if ( null != CURRENT_MEAL ) {
+			List <Ingridient> ingridients = DataBaseUtils.getProductsOnPlate(CURRENT_MEAL);
+			for ( Ingridient ingridient : ingridients ) {
+				OneProductOnPlateView view = OneProductOnPlateView_.build(getApplicationContext());
+				view.ivProduct.setImageResource(R.drawable.ingridient);
+				view.twProductDescription.setText(ingridient.productName + " meal date " + CURRENT_MEAL.date);
+				llAlreadyOnPlate.addView(view);
+			}
+		}
+	}
 
-     private void loadPlatesByDate(String date) {
-          List <Meal> meals = DataBaseUtils.getPlatesConsumedByDate(date);
-          llCreatedPlates.removeAllViews();
-          if ( null != meals && !meals.isEmpty() ) {
-               // set active meal last meal
-               CURRENT_MEAL = meals.get(meals.size() - 1);
-               for ( Meal meal : meals ) {
-                    createProductOnPlate(meal);
-               }
-          } else {
-               CURRENT_MEAL = null;
-          }
-     }
+	private void loadPlatesByDate(String date) {
+		List <Meal> meals = DataBaseUtils.getPlatesConsumedByDate(date);
+		llCreatedPlates.removeAllViews();
+		if ( null != meals && !meals.isEmpty() ) {
+			// set active meal last meal
+			CURRENT_MEAL = meals.get(meals.size() - 1);
+			for ( Meal meal : meals ) {
+				createProductOnPlate(meal);
+			}
+		} else {
+			CURRENT_MEAL = null;
+		}
+	}
 
-     @Click void ibCreatePlate() {
+	@Click void ibCreatePlate() {
 
-          llAlreadyOnPlate.removeAllViews();
-          User u = DataBaseUtils.getCurrentUser();
-          Meal meal = new Meal(getApplicationContext());
+		llAlreadyOnPlate.removeAllViews();
+		User u = DataBaseUtils.getCurrentUser();
+		Meal meal = new Meal(getApplicationContext());
 
-          // //////////////////////// Format proper date (Date from twCurrentDate + CURRENT_TIME) /////////////////////////////
-          String properDate = "";
-          properDate = Utils.formatDate(SELECTED_DATE, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD);
-          properDate += " " + Utils.formatDate(new Date(), DataBaseUtils.DATE_PATTERN_HH_MM_SS);
-          // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		// //////////////////////// Format proper date (Date from twCurrentDate + CURRENT_TIME) /////////////////////////////
+		String properDate = "";
+		properDate = Utils.formatDate(SELECTED_DATE, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD);
+		properDate += " " + Utils.formatDate(new Date(), DataBaseUtils.DATE_PATTERN_HH_MM_SS);
+		// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-          meal.date = properDate;
-          meal.user = u;
+		meal.date = properDate;
+		meal.user = u;
 
-          createProductOnPlate(meal);
+		createProductOnPlate(meal);
 
-          // save meal
-          meal.save();
-          this.CURRENT_MEAL = meal;
+		// save meal
+		meal.save();
+		this.CURRENT_MEAL = meal;
 
-          setLastPlateActive();
-          Utils.showCustomToast(this, "Plate has been created", R.drawable.plate);
-     }
+		setLastPlateActive();
+		Utils.showCustomToast(this, "Plate has been created", R.drawable.plate);
+	}
 
-     private void createProductOnPlate(Meal meal) {
-          SinglePlateItemView itemView = SinglePlateItemView_.build(getApplicationContext());
-          itemView.ivVolumeImage.setBackgroundResource(R.drawable.meal);
-          itemView.twIngridientsAmount.setText(String.valueOf(DataBaseUtils.getProductsOnPlate(meal).size()));
+	private void createProductOnPlate(Meal meal) {
+		SinglePlateItemView itemView = SinglePlateItemView_.build(getApplicationContext());
+		itemView.ivVolumeImage.setBackgroundResource(R.drawable.meal);
+		itemView.twIngridientsAmount.setText(String.valueOf(DataBaseUtils.getProductsOnPlate(meal).size()));
 
-          // Set Meal as property to this VEIW :TODO
-          itemView.setTag(meal);
+		// Set Meal as property to this VEIW :TODO
+		itemView.setTag(meal);
 
-          PLATES_BUTTONS.add(itemView);
-          CURRENT_MEAL_VIEW = itemView;
+		PLATES_BUTTONS.add(itemView);
+		CURRENT_MEAL_VIEW = itemView;
 
-          itemView.setOnClickListener(new OnClickListener() {
+		itemView.setOnClickListener(new OnClickListener() {
 
-               @Override public void onClick(View v) {
-                    CURRENT_MEAL = (Meal) v.getTag();
-                    CURRENT_MEAL_VIEW = v;
-                    Utils.log("CURRENT PLATE DATE :: " + CURRENT_MEAL.date);
-                    List <Ingridient> ingridients = DataBaseUtils.getProductsOnPlate(CURRENT_MEAL);
-                    if ( null != ingridients ) {
-                         for ( Ingridient ingridient : ingridients ) {
-                              Utils.log(String.format("Ingridient -> protein:%s , carbs:%s ", ingridient.protein, ingridient.carbohydrates));
-                         }
-                    }
+			@Override public void onClick(View v) {
+				CURRENT_MEAL = (Meal) v.getTag();
+				CURRENT_MEAL_VIEW = v;
+				Utils.log("CURRENT PLATE DATE :: " + CURRENT_MEAL.date);
+				List <Ingridient> ingridients = DataBaseUtils.getProductsOnPlate(CURRENT_MEAL);
+				if ( null != ingridients ) {
+					for ( Ingridient ingridient : ingridients ) {
+						Utils.log(String.format("Ingridient -> protein:%s , carbs:%s ", ingridient.protein, ingridient.carbohydrates));
+					}
+				}
 
-                    for ( View plateView : PLATES_BUTTONS ) {
-                         // plateView.setPadding(0, 0, 0, 0);
-                         // Unselect all
-                         plateView.setBackgroundColor(Color.TRANSPARENT);// Color(Color.BLACK);
-                    }
-                    v.setBackgroundResource(R.drawable.background_transparent_inside);
-                    // v.setPadding(15, 15, 15, 15);
+				for ( View plateView : PLATES_BUTTONS ) {
+					// Unselect all
+					plateView.setBackgroundColor(Color.TRANSPARENT);// Color(Color.BLACK);
+				}
+				v.setBackgroundResource(R.drawable.background_transparent_inside);
 
-                    putProductsOnPlate();
-               }
-          });
-          llCreatedPlates.addView(itemView);
-     }
+				putProductsOnPlate();
+			}
+		});
+		llCreatedPlates.addView(itemView);
+	}
 
-     /**
-      * A simple pager adapter
-      */
-     private class ViewPagerAdapter extends FragmentStatePagerAdapter {
+	/** 
+	 * A simple pager adapter
+	 */
+	private class ViewPagerAdapter extends FragmentStatePagerAdapter {
+ 
+		public FoodTypeExpListViewFragment	foodCategoryExpListViewFragment	= new FoodTypeExpListViewFragment_();
+		public FragmentIngridient		fragmentIngridient				= new FragmentIngridient_();
 
-          public FoodTypeExpListViewFragment          foodCategoryExpListViewFragment = new FoodTypeExpListViewFragment_();
-          public SpecificProductSpecificationFragment specificFoodFragment            = new SpecificProductSpecificationFragment_();
+		public ViewPagerAdapter ( FragmentManager fm ) {
+			super(fm);
+		}
 
-          public ViewPagerAdapter ( FragmentManager fm ) {
-               super(fm);
-          }
+		@Override public Fragment getItem(int position) {
+			Fragment returnFragment = null;
+			switch (position) {
+				case EXPANDABLE_LISTVIEW_FOOD_TYPES:
+					returnFragment = foodCategoryExpListViewFragment;
+					break;
 
-          @Override public Fragment getItem(int position) {
-               Fragment returnFragment = null;
-               switch (position) {
-                    case EXPANDABLE_LISTVIEW_FOOD_TYPES:
-                         returnFragment = foodCategoryExpListViewFragment;
-                         break;
+				case SPECIFIC_FOOD_SPECIFICATION:
+					returnFragment = fragmentIngridient;
+					break;
+			}
+			return returnFragment;
+		}
 
-                    case SPECIFIC_FOOD_SPECIFICATION:
-                         returnFragment = specificFoodFragment;
-                         break;
-               }
-               return returnFragment;
-          }
-
-          @Override public int getCount() {
-               return 2;
-          }
-     }
+		@Override public int getCount() {
+			return 2;
+		}
+	}
 }

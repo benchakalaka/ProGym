@@ -70,7 +70,7 @@ public class Utils {
 
                @SuppressWarnings ( "deprecation" ) @Override public void run() {
                     try {
-                         View layout = activity.getLayoutInflater().inflate(R.layout.toast_image_and_text, (ViewGroup) activity.findViewById(R.id.toast_layout_root));
+                         View layout = activity.getLayoutInflater().inflate(R.layout.custom_toast, (ViewGroup) activity.findViewById(R.id.toast_layout_root));
 
                          ImageView image = ((ImageView) layout.findViewById(R.id.toast_image_view));
                          TextView text = (TextView) layout.findViewById(R.id.toast_text_view);
@@ -125,7 +125,7 @@ public class Utils {
 
                @Override public void run() {
                     try {
-                         View layout = activity.getLayoutInflater().inflate(R.layout.toast_image_and_text, (ViewGroup) activity.findViewById(R.id.toast_layout_root));
+                         View layout = activity.getLayoutInflater().inflate(R.layout.custom_toast, (ViewGroup) activity.findViewById(R.id.toast_layout_root));
 
                          ImageView image = ((ImageView) layout.findViewById(R.id.toast_image_view));
                          TextView text = (TextView) layout.findViewById(R.id.toast_text_view);
@@ -155,7 +155,7 @@ public class Utils {
 
                @Override public void run() {
                     try {
-                         View layout = activity.getLayoutInflater().inflate(R.layout.toast_image_and_text, (ViewGroup) activity.findViewById(R.id.toast_layout_root));
+                         View layout = activity.getLayoutInflater().inflate(R.layout.custom_toast, (ViewGroup) activity.findViewById(R.id.toast_layout_root));
 
                          ImageView image = ((ImageView) layout.findViewById(R.id.toast_image_view));
                          TextView text = (TextView) layout.findViewById(R.id.toast_text_view);
