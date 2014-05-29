@@ -72,20 +72,20 @@ import com.progym.interfaces.IProgressActivity;
           switch (viewIdentifier) {
                case DAILY:
                     twDaily.setBackgroundColor(color.red);
-                    twMonthly.setBackgroundResource(drawable.background_transparent_inside);
-                    twYearly.setBackgroundResource(drawable.background_transparent_inside);
+                    twMonthly.setBackgroundResource(drawable.background_round_transparent_real);
+                    twYearly.setBackgroundResource(drawable.background_round_transparent_real);
                     break;
 
                case MONTHLY:
                     twMonthly.setBackgroundColor(color.red);
-                    twDaily.setBackgroundResource(drawable.background_transparent_inside);
-                    twYearly.setBackgroundResource(drawable.background_transparent_inside);
+                    twDaily.setBackgroundResource(drawable.background_round_transparent_real);
+                    twYearly.setBackgroundResource(drawable.background_round_transparent_real);
                     break;
 
                case YEARLY:
                     twYearly.setBackgroundColor(color.red);
-                    twMonthly.setBackgroundResource(drawable.background_transparent_inside);
-                    twDaily.setBackgroundResource(drawable.background_transparent_inside);
+                    twMonthly.setBackgroundResource(drawable.background_round_transparent_real);
+                    twDaily.setBackgroundResource(drawable.background_round_transparent_real);
                     break;
           }
      }

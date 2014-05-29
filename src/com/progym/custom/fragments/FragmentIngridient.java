@@ -26,11 +26,11 @@ import com.progym.activities.ActivityFoodManagment;
 @EFragment ( R.layout.fragment_ingridient )
 public class FragmentIngridient extends Fragment {
 
-	@ViewById Button	btnShowFoodTypes;
+	@ViewById ImageView	ivShowFoodTypes;
 	@ViewById ImageView	ivFoodImage;
-	@ViewById PieGraph pieGraph;
+	@ViewById PieGraph	pieGraph;
 
-	@Click void btnShowFoodTypes() {
+	@Click void ivShowFoodTypes() {
 		((ActivityFoodManagment) getActivity()).viewPager.setCurrentItem(ActivityFoodManagment.EXPANDABLE_LISTVIEW_FOOD_TYPES, true);
 	}
 
@@ -44,14 +44,14 @@ public class FragmentIngridient extends Fragment {
 		slice = new PieSlice();
 		slice.setColor(resources.getColor(R.color.orange));
 		slice.setValue(3);
-		pieGraph.addSlice(slice); 
+		pieGraph.addSlice(slice);
 		slice = new PieSlice();
 		slice.setColor(resources.getColor(R.color.purple));
 		slice.setValue(8);
 		pieGraph.addSlice(slice);
 		pieGraph.setOnSliceClickedListener(new OnSliceClickedListener() {
 			@Override public void onClick(int index) {
-				pieGraph.getSlice(index).setValue(pieGraph.getSlice(index).getValue()+1);
+				pieGraph.getSlice(index).setValue(pieGraph.getSlice(index).getValue() + 1);
 				Toast.makeText(getActivity(), "Slice " + index + " clicked", Toast.LENGTH_SHORT).show();
 			}
 		});

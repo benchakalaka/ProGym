@@ -23,7 +23,7 @@ import android.view.View.OnDragListener;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout; 
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
 import com.progym.R;
@@ -165,7 +165,7 @@ public class ActivityFoodManagment extends ProgymSuperActivity {
 			}
 			// Set CURRENT_PLATE_VIEW - > display amount of products on the meal
 			CURRENT_MEAL_VIEW = PLATES_BUTTONS.get(PLATES_BUTTONS.size() - 1);
-			PLATES_BUTTONS.get(PLATES_BUTTONS.size() - 1).setBackgroundResource(R.drawable.background_transparent_inside);// .setPadding(15, 15, 15, 15);
+			PLATES_BUTTONS.get(PLATES_BUTTONS.size() - 1).setBackgroundResource(R.drawable.background_round_transparent_real);// .setPadding(15, 15, 15, 15);
 		}
 	}
 
@@ -243,16 +243,16 @@ public class ActivityFoodManagment extends ProgymSuperActivity {
 					for ( Ingridient ingridient : ingridients ) {
 						Utils.log(String.format("Ingridient -> protein:%s , carbs:%s ", ingridient.protein, ingridient.carbohydrates));
 					}
-				}
+				} 
 
 				for ( View plateView : PLATES_BUTTONS ) {
 					// Unselect all
 					plateView.setBackgroundColor(Color.TRANSPARENT);// Color(Color.BLACK);
 				}
-				v.setBackgroundResource(R.drawable.background_transparent_inside);
+				v.setBackgroundResource(R.drawable.background_round_transparent_real);
 
 				putProductsOnPlate();
-			}
+			} 
 		});
 		llCreatedPlates.addView(itemView);
 	}
