@@ -22,7 +22,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.progym.R; 
+import com.progym.R;  
 import com.progym.custom.BodyTypeItemView;
 import com.progym.custom.BodyTypeItemView_;
 import com.progym.model.User;
