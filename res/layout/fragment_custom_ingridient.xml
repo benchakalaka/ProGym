@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical" >
+
+	
+	<LinearLayout
+		android:id="@+id/llCalories"
+		android:layout_width="match_parent"
+		android:layout_height="50dp"
+		android:layout_above="@+id/llFat"
+		android:orientation="horizontal" >
+
+		<TextView
+			android:id="@+id/textView1"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:text="30"
+			android:textAppearance="?android:attr/textAppearanceLarge" />
+
+		<it.sephiroth.android.wheel.view.Wheel
+			xmlns:sephiroth="http://schemas.android.com/apk/res-auto"
+			android:id="@+id/wheel"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			sephiroth:numRotations="6"
+			sephiroth:ticks="28" />
+	</LinearLayout>
+	
+	<LinearLayout
+		android:id="@+id/llFat"
+		android:layout_width="match_parent"
+		android:layout_height="50dp"
+		android:layout_above="@+id/llCarbs"
+		android:orientation="horizontal" >
+
+		<TextView
+			android:id="@+id/textView1"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:text="30"
+			android:textAppearance="?android:attr/textAppearanceLarge" />
+
+		<it.sephiroth.android.wheel.view.Wheel
+			xmlns:sephiroth="http://schemas.android.com/apk/res-auto"
+			android:id="@+id/wheel"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			sephiroth:numRotations="6"
+			sephiroth:ticks="28" />
+	</LinearLayout>
+	
+	
+	<LinearLayout
+		android:id="@+id/llCarbs"
+		android:layout_width="match_parent"
+		android:layout_height="50dp"
+		android:layout_above="@+id/llProtein"
+		android:orientation="horizontal" >
+
+		<TextView
+			android:id="@+id/textView1"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:text="30"
+			android:textAppearance="?android:attr/textAppearanceLarge" />
+
+		<it.sephiroth.android.wheel.view.Wheel
+			xmlns:sephiroth="http://schemas.android.com/apk/res-auto"
+			android:id="@+id/wheel2"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			sephiroth:numRotations="6"
+			sephiroth:ticks="28" />
+	</LinearLayout>
+	
+	 
+	
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="50dp"
+		android:id="@+id/llProtein"
+		android:layout_alignParentBottom="true"
+		android:orientation="horizontal" >
+
+		<TextView
+			android:id="@+id/textView1"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:text="30"
+			android:textAppearance="?android:attr/textAppearanceLarge" />
+
+		<it.sephiroth.android.wheel.view.Wheel
+			xmlns:sephiroth="http://schemas.android.com/apk/res-auto"
+			android:id="@+id/wheel"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			sephiroth:numRotations="6"
+			sephiroth:ticks="28" />
+	</LinearLayout>
+
+</RelativeLayout>

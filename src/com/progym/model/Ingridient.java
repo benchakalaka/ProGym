@@ -8,47 +8,53 @@ import com.orm.SugarRecord;
  * @author Karpachev Ihor
  */
 public class Ingridient extends SugarRecord <Ingridient> {
-	/**
-	 * Amount of protein in grams in this product
-	 */
-	public int	protein;
 
-	/**
-	 * Amount of carbohydrates in grams in this product
-	 */
-	public int	carbohydrates;
+     /**
+      * Amount of KKAL in 100 g in this product
+      */
+     public int    kkal;
 
-	/**
-	 * Amount of fat in grams in this product
-	 */
-	public int	fat;
+     /**
+      * Amount of protein in grams in this product
+      */
+     public int    protein;
 
-	/**
-	 * For instance - meat or porridge ...
-	 */
-	public String	typeOfProduct;
+     /**
+      * Amount of carbohydrates in grams in this product
+      */
+     public int    carbohydrates;
 
-	/**
-	 * Exact product name, for instance, chicken or oats or potatoes
-	 */
-	public String	productName;
+     /**
+      * Amount of fat in grams in this product
+      */
+     public int    fat;
 
-	/**
-	 * User who cunsumed this product
-	 */
-	public User	user;
+     /**
+      * For instance - meat or porridge ...
+      */
+     public String groupName;
 
-	/**
-	 * Meal which contains this product
-	 */
-	public Meal	meal;
-	/**
-	 * Date when meal has been created
-	 */
-	public String				date;
+     /**
+      * Exact product name, for instance, chicken or oats or potatoes
+      */
+     public String name;
 
-	public Ingridient ( Context ctx ) {
-		super(ctx);
-	}
+     /**
+      * User who cunsumed this product
+      */
+     public User   user;
+
+     /**
+      * Meal which contains this product
+      */
+     public Meal   meal;
+     /**
+      * Date when meal has been created
+      */
+     public String date;
+
+     public Ingridient ( Context ctx ) {
+          super(ctx);
+     }
 
 }

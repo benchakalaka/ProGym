@@ -28,18 +28,15 @@ public class Utils {
       * @param year
       * @return
       */
-     public static int getDaysInMonth(int monthNumber, int year)
-     {
+     public static int getDaysInMonth(int monthNumber, int year) {
           int days = 0;
           if ( monthNumber >= 0 && monthNumber < 12 ) {
-               try
-               {
+               try {
                     Calendar calendar = Calendar.getInstance();
                     int date = 1;
                     calendar.set(year, monthNumber, date);
                     days = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
-               } catch (Exception e)
-               {
+               } catch (Exception e) {
                     if ( e != null ) {
                          e.printStackTrace();
                     }
@@ -176,7 +173,6 @@ public class Utils {
                     }
                }
           });
-
      }
 
      public static int getImageIdByGroupPositionInExpListView(int groupPosition) {
@@ -205,6 +201,37 @@ public class Utils {
 
                case ExpandableListAdapter.VEGITABLES_CATALOGUE:
                     retResourceId = R.drawable.vegetables;
+                    break;
+          }
+
+          return retResourceId;
+     }
+
+     public static String getGroupNameByGroupPositionInExpListView(int groupPosition) {
+          String retResourceId = "";
+          switch (groupPosition) {
+               case ExpandableListAdapter.MEAT_CATALOGUE:
+                    retResourceId = "Meat";
+                    break;
+
+               case ExpandableListAdapter.FRUITS_CATALOGUE:
+                    retResourceId = "Fruits";
+                    break;
+
+               case ExpandableListAdapter.OTHER_CATALOGUE:
+                    retResourceId = "Other";
+                    break;
+
+               case ExpandableListAdapter.PORRIDGE_CATALOGUE:
+                    retResourceId = "Porridge";
+                    break;
+
+               case ExpandableListAdapter.READY_MEALS_CATALOGUE:
+                    retResourceId = "Ready meals";
+                    break;
+
+               case ExpandableListAdapter.VEGITABLES_CATALOGUE:
+                    retResourceId = "Vegetables";
                     break;
           }
 

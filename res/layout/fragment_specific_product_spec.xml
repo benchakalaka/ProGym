@@ -1,0 +1,52 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:android1="http://schemas.android.com/apk/res/android"
+	android1:id="@+id/linear_layout"
+	android1:layout_width="match_parent"
+	android1:layout_height="match_parent"
+	android1:orientation="vertical" >
+
+	 <LinearLayout
+            android:id="@+id/llRightPanelBody"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:background="@drawable/background_round_border"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/water_managment_root_relative_lasyout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="3dp" >
+
+            	<ImageView
+                	android:id="@+id/ivFoodImage"
+                	android:layout_width="100dp"
+                	android:layout_height="100dp"
+                	android:layout_alignParentLeft="true"
+                	android:layout_alignParentTop="true"
+                	android:background="@drawable/plate" />
+            	
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/ivFoodImage"
+                    android:text="Meat is a great protein source"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@android:color/background_light" />
+
+                <Button
+                	android1:id="@+id/btnShowFoodTypes"
+                	android1:layout_width="wrap_content"
+                	android1:layout_height="wrap_content"
+                	android1:layout_alignParentBottom="true"
+                	android1:layout_alignParentRight="true"
+                	android1:text="Back" />
+                
+            </RelativeLayout>
+        </LinearLayout>
+    
+
+</LinearLayout>

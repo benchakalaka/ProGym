@@ -2,6 +2,9 @@ package com.progym.utils;
 
 import java.util.List;
 
+import android.content.Context;
+import android.database.Cursor;
+
 import com.orm.query.Condition;
 import com.orm.query.Select;
 import com.progym.model.Ingridient;
@@ -16,14 +19,29 @@ import com.progym.model.WaterConsumed;
  */
 public class DataBaseUtils {
 
-     public static final String DATE_PATTERN_YYYY_MM_DD_HH_MM_SS = "yyyy/MM/dd HH:mm:ss";
-     public static final String DATE_PATTERN_HH_MM_SS            = "HH:mm:ss";
-     public static final String DATE_PATTERN_YYYY_MM_DD          = "yyyy/MM/dd";
-     public static final String DATE_PATTERN_YYYY_MM             = "yyyy/MM";
-     public static final String DATE_PATTERN_YYYY                = "yyyy";
+     public static final String    DATE_PATTERN_YYYY_MM_DD_HH_MM_SS = "yyyy/MM/dd HH:mm:ss";
+     public static final String    DATE_PATTERN_HH_MM_SS            = "HH:mm:ss";
+     public static final String    DATE_PATTERN_YYYY_MM_DD          = "yyyy/MM/dd";
+     public static final String    DATE_PATTERN_YYYY_MM             = "yyyy/MM";
+     public static final String    DATE_PATTERN_YYYY                = "yyyy";
 
-     private static User        CURRENT_USER;
+     private static User           CURRENT_USER;
+     private static SqlAssetHelper DB;
 
+     // ///////////////////////////////////////////////////////// INGRIDIENT DATABASE METHODS /////////////////////////////////////////////////////
+     public static void setUpIngridientsDatabase(Context ctx) {
+          DB = new SqlAssetHelper(ctx);
+     }
+
+     public static Cursor getByGroupName(String byGroupName) {
+          return DB.getReadableDatabase().rawQuery("select * from ingridient where groupName = ?", new String[] { byGroupName });
+     }
+
+     public static Cursor getByGroupNameAndIngridientName(String ingridientName) {
+          return DB.getReadableDatabase().rawQuery("select * from ingridient where name = ?", new String[] { ingridientName });
+     }
+
+     // /////////////////////////////////////////////////////////// USER DATABASE ///////////////////////////////////////////////////////////////////
      /**
       * Select all records, where date starts from yearMonth_YYYY_MM
       * example yearMonth_YYYY_MM = 2014/05, date = 2014/05/23 12:23:13,
@@ -35,7 +53,7 @@ public class DataBaseUtils {
 
      public static double getWaterUserShouldConsumePerDay() {
           double retValue = 0;
-          if ( null != CURRENT_USER ) {
+          if ( null != CURRENT_USER && CURRENT_USER.weight != 0 ) {
                // in ml
                retValue = (CURRENT_USER.weight / 30) * 1000;
           }

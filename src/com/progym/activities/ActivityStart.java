@@ -15,7 +15,7 @@ import android.view.MenuItem;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.animation.Animation;
 import android.widget.LinearLayout;
- 
+
 import com.progym.R;
 import com.progym.utils.DataBaseUtils;
 
@@ -56,6 +56,9 @@ import com.progym.utils.DataBaseUtils;
           params = (MarginLayoutParams) llProfile.getLayoutParams();
           params.leftMargin = marginLeft;
           llProfile.setLayoutParams(params);
+
+          // Set up ingridient database
+          DataBaseUtils.setUpIngridientsDatabase(getApplicationContext());
      }
 
      @Click void llNutrition() {
