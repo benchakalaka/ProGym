@@ -14,12 +14,12 @@ import com.progym.R;
      @ViewById RelativeLayout rlRoundImageWaterProgress;
      // @ViewById RelativeLayout rlRoundImageFoodProgress;
      @ViewById RelativeLayout rlRoundImageTraingingProgress;
-
+ 
      @Override public void displaySelectedDate() {
           // not using
      }
 
-     @Click void rlRoundImageWaterProgress() {
+     @Click void rlRoundImageWaterProgress() {  
           rlRoundImageWaterProgress.startAnimation(rightOut);
           startActivity(new Intent(ActivityChooseProgressType.this, ActivityWaterProgress_.class));
      }

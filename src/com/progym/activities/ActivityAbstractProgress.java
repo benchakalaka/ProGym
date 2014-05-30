@@ -18,11 +18,10 @@ import com.progym.interfaces.IProgressActivity;
 @EBean public abstract class ActivityAbstractProgress extends FragmentActivity implements IProgressActivity {
      static Date                                          SELECTED_DATE        = new Date();
      CaldroidFragmentCustom                               calendar;
-
+ 
      @ViewById public TextView                            twDaily;
      @ViewById public TextView                            twMonthly;
      @ViewById public TextView                            twYearly;
-     @ViewById public TextView                            twRange;
      @ViewById public NonSwipeableViewPager               viewPager;
      public int                                           FRAGMENT_TYPE;
      public static final int                              DAILY                = 0;
@@ -73,20 +72,20 @@ import com.progym.interfaces.IProgressActivity;
           switch (viewIdentifier) {
                case DAILY:
                     twDaily.setBackgroundColor(color.red);
-                    twMonthly.setBackgroundResource(drawable.background_transparent_inside);
-                    twYearly.setBackgroundResource(drawable.background_transparent_inside);
+                    twMonthly.setBackgroundResource(drawable.background_round_transparent_real);
+                    twYearly.setBackgroundResource(drawable.background_round_transparent_real);
                     break;
 
                case MONTHLY:
                     twMonthly.setBackgroundColor(color.red);
-                    twDaily.setBackgroundResource(drawable.background_transparent_inside);
-                    twYearly.setBackgroundResource(drawable.background_transparent_inside);
+                    twDaily.setBackgroundResource(drawable.background_round_transparent_real);
+                    twYearly.setBackgroundResource(drawable.background_round_transparent_real);
                     break;
 
                case YEARLY:
                     twYearly.setBackgroundColor(color.red);
-                    twMonthly.setBackgroundResource(drawable.background_transparent_inside);
-                    twDaily.setBackgroundResource(drawable.background_transparent_inside);
+                    twMonthly.setBackgroundResource(drawable.background_round_transparent_real);
+                    twDaily.setBackgroundResource(drawable.background_round_transparent_real);
                     break;
           }
      }

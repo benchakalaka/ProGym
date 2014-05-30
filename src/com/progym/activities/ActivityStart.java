@@ -15,11 +15,11 @@ import android.view.MenuItem;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.animation.Animation;
 import android.widget.LinearLayout;
-
+ 
 import com.progym.R;
 import com.progym.utils.DataBaseUtils;
 
-@EActivity ( R.layout.start_activity ) public class ActivityStart extends Activity {
+@EActivity ( R.layout.activity_start ) public class ActivityStart extends Activity {
 
      // Sugar basic usage - List<Book> books = Book.find(Book.class, "author = ?", new String{author.getId()});
      // Book.find(Note.class, "name = ? and title = ?", "satya", "title1");

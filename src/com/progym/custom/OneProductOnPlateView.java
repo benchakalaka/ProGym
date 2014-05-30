@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.progym.R;
 
-@EViewGroup ( R.layout.one_product_on_plate )
+@EViewGroup ( R.layout.ingridient_on_plate )
 public class OneProductOnPlateView extends RelativeLayout {
 
 	@ViewById public TextView	twProductDescription;

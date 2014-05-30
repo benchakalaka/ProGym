@@ -13,10 +13,10 @@ import android.view.Display;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.animation.Animation;
 import android.widget.LinearLayout;
-
+ 
 import com.progym.R;
 
-@EActivity ( R.layout.select_food_or_water_managment_activity ) public class ActivitySelectFoodOrWaterManagment extends Activity {
+@EActivity ( R.layout.activity_select_food_or_water_managment ) public class ActivitySelectFoodOrWaterManagment extends Activity {
 
      @ViewById LinearLayout                    llFoodTracking;
      @ViewById LinearLayout                    llWaterTracking;

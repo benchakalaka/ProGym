@@ -1,4 +1,4 @@
-package com.progym.activities;
+ package com.progym.activities;
 
 import java.text.ParseException;
 import java.util.Date;
@@ -11,12 +11,12 @@ import org.androidannotations.annotations.EActivity;
 import org.apache.commons.lang3.time.DateUtils;
 
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentManager; 
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.progym.R;
 import com.progym.R.color;
-import com.progym.constants.GlobalConstants;
+import com.progym.constants.GlobalConstants; 
 import com.progym.custom.CaldroidFragmentCustom;
 import com.progym.custom.fragments.WaterProgressDailyBarFragment;
 import com.progym.custom.fragments.WaterProgressDailyBarFragment_;
@@ -99,7 +99,7 @@ import com.progym.utils.Utils;
 
           public ProgressViewPagerAdapter ( FragmentManager fm ) {
                super(fm);
-          }
+          } 
 
           @Override public Fragment getItem(int position) {
                Fragment returnFragment = null;
