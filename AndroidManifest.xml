@@ -1,74 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="com.progym"
-	android:versionCode="1"
-	android:versionName="1.0" >
+    package="com.progym"
+    android:versionCode="1"
+    android:versionName="1.0" >
 
-	<uses-sdk
-		android:minSdkVersion="14"
-		android:targetSdkVersion="19" />
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="19" />
 
-	<application
-		android:name="com.orm.SugarApp"
-		android:allowBackup="true"
-		android:icon="@drawable/ic_launcher"
-		android:label="@string/app_name"
-		android:theme="@style/AppTheme" >
-		<meta-data
-			android:name="DATABASE"
-			android:value="progym21.db" />
-		<meta-data
-			android:name="VERSION"
-			android:value="1" />
-		<meta-data
-			android:name="QUERY_LOG"
-			android:value="true" />
-		<meta-data
-			android:name="DOMAIN_PACKAGE_NAME"
-			android:value="com.progym" />
+    <application
+        android:name="com.orm.SugarApp"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <meta-data
+            android:name="DATABASE"
+            android:value="progym23.db" />
+        <meta-data
+            android:name="VERSION"
+            android:value="1" />
+        <meta-data
+            android:name="QUERY_LOG"
+            android:value="true" />
+        <meta-data
+            android:name="DOMAIN_PACKAGE_NAME"
+            android:value="com.progym" />
 
-		<activity
-			android:name="com.progym.activities.ActivityStart_"
-			android:label="@string/app_name"
-			android:screenOrientation="sensorLandscape" >
-			<intent-filter>
-				<action android:name="android.intent.action.MAIN" />
+        <activity
+            android:name="com.progym.activities.ActivityStart_"
+            android:label="@string/app_name"
+            android:screenOrientation="sensorLandscape" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-				<category android:name="android.intent.category.LAUNCHER" />
-			</intent-filter>
-		</activity>
-		<activity
-			android:name="com.progym.activities.ActivityWaterManagement_"
-			android:windowSoftInputMode="adjustPan"
-			android:label="@string/app_name"
-			android:screenOrientation="sensorLandscape" >
-		</activity>
-		<activity
-			android:name="com.progym.activities.ActivityFoodManagment_"
-			android:label="@string/app_name"
-			android:screenOrientation="sensorLandscape" >
-		</activity>
-		<activity
-			android:name="com.progym.activities.ActivityChooseProgressType_"
-			android:label="@string/app_name"
-			android:screenOrientation="sensorLandscape" >
-		</activity>
-		<activity
-			android:name="com.progym.activities.ActivityWaterProgress_"
-			android:label="@string/app_name"
-			android:screenOrientation="sensorLandscape" >
-		</activity>
-		<activity
-			android:name="com.progym.activities.ActivityUserProfile_"
-			android:label="@string/app_name"
-			android:screenOrientation="sensorLandscape"
-			android:windowSoftInputMode="stateHidden" >
-		</activity>
-		<activity
-			android:name="com.progym.activities.ActivitySelectFoodOrWaterManagment_"
-			android:label="@string/app_name"
-			android:screenOrientation="sensorLandscape" >
-		</activity>
-	</application>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.progym.activities.ActivityWaterManagement_"
+            android:label="@string/app_name"
+            android:screenOrientation="sensorLandscape"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.progym.activities.ActivityFoodManagment_"
+            android:label="@string/app_name"
+            android:screenOrientation="sensorLandscape"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.progym.activities.ActivityChooseProgressType_"
+            android:label="@string/app_name"
+            android:screenOrientation="sensorLandscape" >
+        </activity>
+        <activity
+            android:name="com.progym.activities.ActivityWaterProgress_"
+            android:label="@string/app_name"
+            android:screenOrientation="sensorLandscape" >
+        </activity>
+        <activity
+            android:name="com.progym.activities.ActivityUserProfile_"
+            android:label="@string/app_name"
+            android:screenOrientation="sensorLandscape"
+            android:windowSoftInputMode="stateHidden" >
+        </activity>
+        <activity
+            android:name="com.progym.activities.ActivitySelectFoodOrWaterManagment_"
+            android:label="@string/app_name"
+            android:screenOrientation="sensorLandscape" >
+        </activity>
+    </application>
 
 </manifest>

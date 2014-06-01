@@ -13,7 +13,7 @@ import org.apache.commons.lang3.time.DateUtils;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-
+  
 import com.progym.R;
 import com.progym.R.color;
 import com.progym.constants.GlobalConstants;
@@ -44,7 +44,7 @@ import com.progym.utils.Utils;
                } catch (ParseException e) {
                     e.printStackTrace();
                     Utils.log(e.getMessage());
-               }
+               } 
           }
           // highlight dates in calendar with blue color
           calendar.setBackgroundResourceForDates(datesAndColour);
@@ -85,7 +85,7 @@ import com.progym.utils.Utils;
                     ((ProgressViewPagerAdapter) viewPager.getAdapter()).linegraphYearly.setLineData3(SELECTED_DATE);
                     break;
           }
-     }
+     } 
 
      /**
       * A simple pager adapter

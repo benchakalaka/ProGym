@@ -17,13 +17,6 @@ import com.progym.utils.Utils;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
-	public static final int						MEAT_CATALOGUE			= 0;
-	public static final int						PORRIDGE_CATALOGUE		= 1;
-	public static final int						VEGITABLES_CATALOGUE	= 2;
-	public static final int						FRUITS_CATALOGUE		= 3;
-	public static final int						READY_MEALS_CATALOGUE	= 4;
-	public static final int						OTHER_CATALOGUE		= 5;
-
 	private final Context						_context;
 	private final List <String>					_listDataHeader;			// header titles
 	// child data in format of header title, child title

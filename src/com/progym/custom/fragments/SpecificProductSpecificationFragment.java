@@ -16,7 +16,7 @@ import android.widget.ImageView;
 
 import com.progym.R;
 import com.progym.activities.ActivityFoodManagment;
-
+ 
 @EFragment ( R.layout.fragment_specific_product_spec ) public class SpecificProductSpecificationFragment extends Fragment {
 
      @ViewById Button    btnShowFoodTypes;

@@ -7,23 +7,45 @@ package com.progym.constants;
  */
 public class GlobalConstants {
 
-     public static final String TAG = "ProGym";
+	public static final String	TAG	= "ProGym";
 
-     /**
-      * Class represents different water volumes for
-      * water activity
-      * 
-      * @author Karpachev Ihor
-      */
-     public static interface WATER_VOLUMES {
-          public static final int    GLASS_250_ML  = 250;
-          public static final int    BOTTLE_500_ML = 500;
-          public static final int    BOTTLE_1_L    = 1000;
-          public static final int    BOTTLE_2_L    = 2000;
+	/**
+	 * Class represents different water volumes
+	 * 
+	 * @author Karpachev Ihor
+	 */
+	public static interface WATER_VOLUMES {
+		public static final int		INT_GLASS_250_ML	= 250;
+		public static final int		INT_BOTTLE_500_ML	= 500;
+		public static final int		INT_BOTTLE_1_L		= 1000;
+		public static final int		INT_BOTTLE_2_L		= 2000;
 
-          public static final String GLASS_250ML   = "250 ml";
-          public static final String BOTTLE_500ML  = "500 ml";
-          public static final String BOTTLE_1L     = "1 littre";
-          public static final String BOTTLE_2L     = "2 littres";
-     }
+		public static final String	STR_GLASS_250ML	= "250 ml";
+		public static final String	STR_BOTTLE_500ML	= "500 ml";
+		public static final String	STR_BOTTLE_1L		= "1 littre";
+		public static final String	STR_BOTTLE_2L		= "2 littres";
+	}
+
+	/**
+	 * Class represents ingridient group names
+	 * 
+	 * @author Karpachev Ihor
+	 */
+	public static interface GROUP_INGRIDIENT_NAME {
+		public static final int		INT_MEAT_CATALOGUE			= 0;
+		public static final int		INT_PORRIDGE_CATALOGUE		= 1;
+		public static final int		INT_VEGITABLES_CATALOGUE		= 2;
+		public static final int		INT_FRUITS_CATALOGUE		= 3;
+		public static final int		INT_READY_MEALS_CATALOGUE	= 4;
+		public static final int		INT_OTHER_CATALOGUE			= 5;
+
+		public static final String	STR_MEAT_CATALOGUE			= "Meat";
+		public static final String	STR_PORRIDGE_CATALOGUE		= "Porridge";
+		public static final String	STR_VEGITABLES_CATALOGUE		= "Vegetables";
+		public static final String	STR_FRUITS_CATALOGUE		= "Fruits";
+		public static final String	STR_READY_MEALS_CATALOGUE	= "Ready meals";
+		public static final String	STR_OTHER_CATALOGUE			= "Other";
+
+	}
+
 }

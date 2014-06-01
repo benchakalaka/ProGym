@@ -95,7 +95,7 @@
 			android:layout_height="match_parent"
 			android:layout_margin="3dp"
 			android:layout_weight="1"
-			android:background="@drawable/background_round_transparent_real"
+			android:background="@drawable/round_border_gray_gradient" 
 			android:orientation="vertical" >
 
 			<RelativeLayout
@@ -110,11 +110,10 @@
 					android:layout_height="wrap_content"
 					android:layout_alignParentBottom="true"
 					android:layout_alignParentTop="true"
-					android:background="@drawable/plate" />
+					android:background="@drawable/background_round_transparent_real"/>
 
 				<HorizontalScrollView
 					android:id="@+id/horizontalScrollView"
-					android:background="@drawable/round_border_gray_gradient"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_alignParentBottom="true" >

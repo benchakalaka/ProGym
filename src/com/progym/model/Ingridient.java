@@ -9,6 +9,10 @@ import com.orm.SugarRecord;
  */
 public class Ingridient extends SugarRecord <Ingridient> {
 
+	/**
+	 * Weight of product in grams, 100 g by default
+	 */
+	public int weight;
      /**
       * Amount of KKAL in 100 g in this product
       */
