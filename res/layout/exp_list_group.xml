@@ -4,12 +4,13 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="8dp" 
-    android:background="@drawable/background_round_border">
+    android:background="@drawable/round_border_gray_gradient">
 
  <ImageView
      android:id="@+id/image"
     	android:layout_width="40dp"
     	android:layout_height="40dp"
+    	android:layout_marginLeft="50dp"
     	android:layout_alignParentLeft="true"
     	android:layout_gravity="center_vertical"
     	/>

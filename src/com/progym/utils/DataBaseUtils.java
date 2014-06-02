@@ -37,6 +37,10 @@ public class DataBaseUtils {
           return DB.getReadableDatabase().rawQuery("select * from ingridient where groupName = ?", new String[] { byGroupName });
      }
 
+     public static Cursor test() {
+          return DB.getReadableDatabase().rawQuery("select * from ingridient where name = ?", new String[] { "kaba4ki" });
+     }
+
      public static Cursor getByGroupNameAndIngridientName(String ingridientName) {
           return DB.getReadableDatabase().rawQuery("select * from ingridient where name = ?", new String[] { ingridientName });
      }

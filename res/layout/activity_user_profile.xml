@@ -1,161 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/rl_user_profile"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+	android:id="@+id/rl_user_profile"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@drawable/round_border_gray_gradient" >
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true" >
+	<ScrollView
+		android:layout_width="match_parent"
+		android:layout_above="@+id/llSaveCancelButtons"
+		android:layout_height="wrap_content"
+		android:layout_alignParentTop="true" >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Name" />
+			<!-- name field -->
 
-            <EditText
-                android:id="@+id/etName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName" />
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:layout_weight="1"
+				android:gravity="center"
+				android:orientation="horizontal"
+				android:padding="3dp" >
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="5dp"
-                android:layout_marginTop="20dp"
-                android:text="Antropometric data" />
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center"
+					android:layout_weight="1"
+					android:text="Name"
+					android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/background_round_transparent_real"
-                android:orientation="horizontal" >
+				<EditText
+					android:id="@+id/etUserName"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:background="@drawable/background_round_transparent_real"
+					android:gravity="left"
+					android:inputType="number"
+					android:padding="3dp"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:textColor="@color/caldroid_white"
+					android:textStyle="bold" />
+			</LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical" >
+			<!-- weight field -->
 
-                    <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Weight" />
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:layout_weight="1"
+				android:gravity="center"
+				android:orientation="horizontal"
+				android:padding="3dp" >
 
-                    <kankan.wheel.widget.WheelView
-                        android:id="@+id/wheelWeight"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp" />
-                </LinearLayout>
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center"
+					android:layout_weight="1"
+					android:text="Weight (kg)"
+					android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical" >
+				<EditText
+					android:id="@+id/etUserWeight"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:background="@drawable/background_round_transparent_real"
+					android:gravity="left"
+					android:inputType="number"
+					android:padding="3dp"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:textColor="@color/caldroid_white"
+					android:textStyle="bold" />
+			</LinearLayout>
 
-                    <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Height" />
 
-                    <kankan.wheel.widget.WheelView
-                        android:id="@+id/wheelHeight"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp" />
-                </LinearLayout>
+			<!-- age field -->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical" >
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:layout_weight="1"
+				android:gravity="center"
+				android:orientation="horizontal"
+				android:padding="3dp" >
 
-                    <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Age" />
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center"
+					android:layout_weight="1"
+					android:text="Age"
+					android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                    <kankan.wheel.widget.WheelView
-                        android:id="@+id/wheelAge"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_weight="1" />
-                </LinearLayout>
+				<EditText
+					android:id="@+id/etUserAge"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:background="@drawable/background_round_transparent_real"
+					android:gravity="left"
+					android:inputType="number"
+					android:padding="3dp"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:textColor="@color/caldroid_white"
+					android:textStyle="bold" />
+			</LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical" >
+			<!-- spinner test -->
 
-                    <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Body type" />
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:layout_weight="1"
+				android:gravity="center"
+				android:orientation="vertical"
+				android:padding="3dp" >
 
-                    <kankan.wheel.widget.WheelView
-                        android:id="@+id/wheelBodyType"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_weight="1" />
-                </LinearLayout>
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center"
+					android:layout_weight="1"
+					android:text="Body type"
+					android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical" >
+				<Spinner
+					android:id="@+id/spinnerBodyType"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:background="@drawable/btn_dropdown" />
 
-                    <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Male/Female" />
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center"
+					android:layout_weight="1"
+					android:text="Gender"
+					android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                    <kankan.wheel.widget.WheelView
-                        android:id="@+id/wheelGender"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_weight="1" />
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
+				<Spinner
+					android:id="@+id/spinnerGender"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:background="@drawable/btn_dropdown" />
+			</LinearLayout>
+		</LinearLayout>
+	</ScrollView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal" >
+	<LinearLayout
+		android:id="@+id/llSaveCancelButtons"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:orientation="horizontal" >
 
-        <Button
-            android:id="@+id/btnSave"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Save profile" />
+		<Button
+			android:id="@+id/btnSave"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:text="Save profile" />
 
-        <Button
-            android:id="@+id/btnClearProfile"
-             android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Clear profile" />
-    </LinearLayout>
+		<Button
+			android:id="@+id/btnClearProfile"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:text="Clear profile" />
+	</LinearLayout>
 
 </RelativeLayout>

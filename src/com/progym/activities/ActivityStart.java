@@ -8,6 +8,7 @@ import org.androidannotations.annotations.res.AnimationRes;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Point;
 import android.view.Display;
 import android.view.Menu;
@@ -18,6 +19,7 @@ import android.widget.LinearLayout;
 
 import com.progym.R;
 import com.progym.utils.DataBaseUtils;
+import com.progym.utils.Utils;
 
 @EActivity ( R.layout.activity_start ) public class ActivityStart extends Activity {
 
@@ -28,7 +30,6 @@ import com.progym.utils.DataBaseUtils;
      // Select.from(TestRecord.class).where(Condition.prop("test").eq("satya"),Condition.prop("prop").eq(2)).list();
 
      @ViewById LinearLayout                    llNutrition;
-     @ViewById LinearLayout                    llTraining;
      @ViewById LinearLayout                    llProgress;
      @ViewById LinearLayout                    llProfile;
 
@@ -45,10 +46,6 @@ import com.progym.utils.DataBaseUtils;
           params.leftMargin = marginLeft;
           llNutrition.setLayoutParams(params);
 
-          params = (MarginLayoutParams) llTraining.getLayoutParams();
-          params.leftMargin = marginLeft;
-          llTraining.setLayoutParams(params);
-
           params = (MarginLayoutParams) llProgress.getLayoutParams();
           params.leftMargin = marginLeft;
           llProgress.setLayoutParams(params);
@@ -59,6 +56,15 @@ import com.progym.utils.DataBaseUtils;
 
           // Set up ingridient database
           DataBaseUtils.setUpIngridientsDatabase(getApplicationContext());
+
+          Cursor c = DataBaseUtils.test();
+          while ( c.moveToNext() ) {
+               float d = c.getFloat(1);
+               d = c.getFloat(2);
+               d = c.getFloat(3);
+               Utils.log(String.valueOf(d));
+          }
+
      }
 
      @Click void llNutrition() {
@@ -69,10 +75,6 @@ import com.progym.utils.DataBaseUtils;
      @Click void llProfile() {
           llProfile.startAnimation(fadeIn);
           startActivity(new Intent(ActivityStart.this, ActivityUserProfile_.class));
-     }
-
-     @Click void llTraining() {
-          llTraining.startAnimation(fadeIn);
      }
 
      @Click void llProgress() {
