@@ -13,7 +13,7 @@ import org.apache.commons.lang3.time.DateUtils;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-   
+    
 import com.progym.R;
 import com.progym.R.color;
 import com.progym.constants.GlobalConstants;

@@ -91,7 +91,7 @@ import com.progym.utils.Utils;
                               final String protein = event.getClipData().getItemAt(3).getText().toString();
                               final String carbs = event.getClipData().getItemAt(4).getText().toString();
                               final String fat = event.getClipData().getItemAt(5).getText().toString();
-                              final String kkal = event.getClipData().getItemAt(6).getText().toString();
+                               final String kkal = event.getClipData().getItemAt(6).getText().toString();
 
                               if ( null == CURRENT_MEAL ) {
                                    Utils.showCustomToast(ActivityFoodManagment.this, "Create plate", R.drawable.plate);

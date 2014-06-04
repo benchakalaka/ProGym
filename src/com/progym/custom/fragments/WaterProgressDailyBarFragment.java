@@ -44,7 +44,7 @@ import com.echo.holographlibrary.BarGraph.OnBarClickedListener;
 import com.progym.R;
 import com.progym.utils.DataBaseUtils;
 import com.progym.utils.Utils;
- 
+
 @EFragment ( R.layout.fragment_bargraph_daily ) public class WaterProgressDailyBarFragment extends Fragment {
 
      @ViewById RelativeLayout                   rlRootDailyBar;
@@ -78,8 +78,7 @@ import com.progym.utils.Utils;
 
      public void setBarData(Date d) {
           this.DATE = d;
-          twCurrentDay.setText(Utils.formatDate(d, "EEEE") + " - " + Utils.formatDate(d, "dd") + " of " + Utils.formatDate(d,
-                    "MMM"));
+          twCurrentDay.setText(Utils.formatDate(d, "EEEE") + " - " + Utils.formatDate(d, "dd") + " of " + Utils.formatDate(d, "MMM"));
           final String date = Utils.formatDate(this.DATE, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD);
           final double shouldDrink = DataBaseUtils.getWaterUserShouldConsumePerDay();
           final int consumed = DataBaseUtils.getConsumedPerDay(date);
