@@ -74,7 +74,7 @@
 
 			<RelativeLayout
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
+				android:layout_height="match_parent"
 				android:layout_margin="10dp"
 				android:background="@drawable/background_round_transparent_real"
 				android:orientation="horizontal" >
@@ -82,7 +82,7 @@
 				<com.progym.custom.NonSwipeableViewPager
 					android:id="@+id/viewPager"
 					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
+					android:layout_height="match_parent"
 					android:background="@drawable/background_round_transparent_real" />
 			</RelativeLayout>
 		</LinearLayout>

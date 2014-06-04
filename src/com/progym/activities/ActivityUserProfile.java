@@ -6,7 +6,7 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.res.StringArrayRes;
 
-import android.app.Activity;
+import android.app.Activity; 
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -74,7 +74,7 @@ import com.progym.utils.DataBaseUtils;
                userToSave = new User(getApplicationContext());
           }
           userToSave.name = etUserName.getText().toString();
-          userToSave.age = Integer.valueOf(etUserAge.getText().toString());
+          userToSave.age = 22; // Integer.valueOf(etUserAge.getText().toString());
           userToSave.gender = spinnerGender.getSelectedItemPosition(); // Static for now :TODO
           userToSave.height = 0; // Static for now :TODO
           userToSave.weight = Double.valueOf(etUserWeight.getText().toString());

@@ -46,10 +46,10 @@ import com.progym.utils.DataBaseUtils;
 import com.progym.utils.Utils;
 
 @EActivity ( R.layout.food_managment_activity ) public class ActivityFoodManagment extends ProgymSuperActivity {
-
+ 
      public static final int                EXPANDABLE_LISTVIEW_FOOD_TYPES = 0;
      public static final int                SPECIFIC_FOOD_SPECIFICATION    = 1;
-
+ 
      private Meal                           CURRENT_MEAL;
      private View                           CURRENT_MEAL_VIEW;
 
@@ -94,20 +94,20 @@ import com.progym.utils.Utils;
                               final String kkal = event.getClipData().getItemAt(6).getText().toString();
 
                               if ( null == CURRENT_MEAL ) {
-                                   Utils.showCustomToast(ActivityFoodManagment.this, "Plate has been created", R.drawable.plate);
+                                   Utils.showCustomToast(ActivityFoodManagment.this, "Create plate", R.drawable.plate);
                                    ibCreatePlate.startAnimation(fadeIn);
                                    return false;
                               }
 
                               Ingridient ingridient = new Ingridient(getApplicationContext());
-                              ingridient.protein = Integer.valueOf(protein);
-                              ingridient.carbohydrates = Integer.valueOf(carbs);
-                              ingridient.fat = Integer.valueOf(fat);
-                              ingridient.kkal = Integer.valueOf(kkal);
+                              ingridient.protein = Double.valueOf(protein);
+                              ingridient.carbohydrates = Double.valueOf(carbs);
+                              ingridient.fat = Double.valueOf(fat);
+                              ingridient.kkal = Double.valueOf(kkal);
                               ingridient.name = name;
                               ingridient.groupName = groupName;
 
-                              ingridient.weight = Integer.valueOf(weight);
+                              ingridient.weight = Double.valueOf(weight);
                               ingridient.meal = CURRENT_MEAL;
                               ingridient.date = CURRENT_MEAL.date;
                               ingridient.user = DataBaseUtils.getCurrentUser();
@@ -234,7 +234,7 @@ import com.progym.utils.Utils;
 
           setLastPlateActive();
           Utils.showCustomToast(this, "Plate has been created", R.drawable.plate);
-     }
+     }  
 
      private void createProductOnPlate(Meal meal) {
           SinglePlateItemView itemView = SinglePlateItemView_.build(getApplicationContext());
@@ -245,10 +245,10 @@ import com.progym.utils.Utils;
           itemView.setTag(meal);
 
           PLATES_BUTTONS.add(itemView);
-          CURRENT_MEAL_VIEW = itemView;
+          CURRENT_MEAL_VIEW = itemView; 
 
           itemView.setOnClickListener(new OnClickListener() {
-
+ 
                @Override public void onClick(View v) {
                     CURRENT_MEAL = (Meal) v.getTag();
                     CURRENT_MEAL_VIEW = v;

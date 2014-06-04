@@ -10,8 +10,8 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Touch;
 import org.androidannotations.annotations.ViewById;
-import org.apache.commons.lang3.time.DateUtils;
-
+import org.apache.commons.lang3.time.DateUtils; 
+ 
 import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.ClipDescription;
@@ -34,7 +34,7 @@ import com.progym.R;
 import com.progym.constants.GlobalConstants;
 import com.progym.custom.CaldroidFragmentCustom;
 import com.progym.custom.ConsumedWaterItemView;
-import com.progym.custom.ConsumedWaterItemView_;
+import com.progym.custom.ConsumedWaterItemView_;  
 import com.progym.custom.WaterLevelBodyView;
 import com.progym.model.CustomWaterVolume;
 import com.progym.model.User;
@@ -42,7 +42,7 @@ import com.progym.model.WaterConsumed;
 import com.progym.utils.DataBaseUtils;
 import com.progym.utils.Utils;
 import com.todddavies.components.progressbar.ProgressWheel;
-
+  
 @EActivity ( R.layout.activity_water_management ) public class ActivityWaterManagement extends ProgymSuperActivity {
 
      @ViewById ImageView            ivGlass250ML;

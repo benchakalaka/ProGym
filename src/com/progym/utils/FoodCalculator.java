@@ -13,8 +13,8 @@ public class FoodCalculator {
 	 * @param weight
 	 * @return
 	 */
-	public static int getKkal(double kkal_In_100G, int weight) {
-		return (int)(kkal_In_100G / 100 * weight);
+	public static double getKkal(double kkal_In_100G, double weight) {
+		return (kkal_In_100G / 100 * weight);
 	}
 
 	/**
@@ -22,8 +22,8 @@ public class FoodCalculator {
 	 * @param weight
 	 * @return
 	 */
-	public static int getFat(double fat_In_100G, int weight) {
-		return (int)(fat_In_100G / 100 * weight);
+	public static double getFat(double fat_In_100G, double weight) {
+		return (fat_In_100G / 100 * weight);
 	}
 
 	/**
@@ -31,8 +31,8 @@ public class FoodCalculator {
 	 * @param weight
 	 * @return
 	 */
-	public static int getProtein(double protein_In_100G, int weight) {
-		return (int)(protein_In_100G / 100 * weight);
+	public static double getProtein(double protein_In_100G, double weight) {
+		return (protein_In_100G / 100 * weight);
 	}
 
 	/**
@@ -40,8 +40,8 @@ public class FoodCalculator {
 	 * @param weight
 	 * @return
 	 */
-	public static int getCarbs(double carbs_In_100G, int weight) {
-		return (int)(carbs_In_100G / 100 * weight);
+	public static double getCarbs(double carbs_In_100G, double weight) {
+		return (carbs_In_100G / 100 * weight);
 	}
 
 }
