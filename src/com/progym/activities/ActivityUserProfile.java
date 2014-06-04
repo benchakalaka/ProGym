@@ -25,6 +25,7 @@ import com.progym.R;
 import com.progym.model.User;
 import com.progym.model.WaterConsumed;
 import com.progym.utils.DataBaseUtils;
+import com.progym.utils.Utils;
 
 @EActivity ( R.layout.activity_user_profile ) public class ActivityUserProfile extends Activity {
 
@@ -74,7 +75,13 @@ import com.progym.utils.DataBaseUtils;
                userToSave = new User(getApplicationContext());
           }
           userToSave.name = etUserName.getText().toString();
-          userToSave.age = Integer.valueOf(etUserAge.getText().toString());
+          try {
+               userToSave.age = Integer.valueOf(etUserAge.getText().toString());
+          } catch (Exception ex) {
+               ex.printStackTrace();
+               Utils.showCustomToast(ActivityUserProfile.this, "Wrong AGE", R.drawable.water);
+               return;
+          }
           userToSave.gender = spinnerGender.getSelectedItemPosition(); // Static for now :TODO
           userToSave.height = 0; // Static for now :TODO
           userToSave.weight = Double.valueOf(etUserWeight.getText().toString());
