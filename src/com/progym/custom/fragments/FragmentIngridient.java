@@ -1,7 +1,7 @@
 package com.progym.custom.fragments;
 
+import org.androidannotations.annotations.AfterTextChange;
 import org.androidannotations.annotations.AfterViews;
-import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.Touch;
 import org.androidannotations.annotations.ViewById;
@@ -12,6 +12,7 @@ import android.content.ClipDescription;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.DragShadowBuilder;
@@ -24,194 +25,187 @@ import com.echo.holographlibrary.PieGraph;
 import com.echo.holographlibrary.PieGraph.OnSliceClickedListener;
 import com.echo.holographlibrary.PieSlice;
 import com.progym.R;
-import com.progym.activities.ActivityFoodManagment;
 import com.progym.model.Ingridient;
 import com.progym.utils.DataBaseUtils;
 import com.progym.utils.FoodCalculator;
 import com.progym.utils.Utils;
 
-@EFragment ( R.layout.fragment_ingridient )
-public class FragmentIngridient extends Fragment {
+@EFragment ( R.layout.fragment_ingridient ) public class FragmentIngridient extends Fragment {
 
-	@ViewById ImageView	ivShowFoodTypes;
-	@ViewById ImageView	ivFoodImage;
-	@ViewById ImageView	ivEditIngridient;
-	@ViewById PieGraph	pieGraph;
-	@ViewById EditText	etWeight;
+     @ViewById ImageView ivFoodImage;
+     @ViewById ImageView ivEditIngridient;
+     @ViewById PieGraph  pieGraph;
+     @ViewById EditText  etWeight;
 
-	@ViewById TextView	twGroupNameAndIngridientName;
+     @ViewById TextView  twGroupNameAndIngridientName;
 
-	@ViewById EditText	etProtein;
-	@ViewById EditText	etFat;
-	@ViewById EditText	etKkal;
-	@ViewById EditText	etCarbs;
+     @ViewById EditText  etProtein;
+     @ViewById EditText  etFat;
+     @ViewById EditText  etKkal;
+     @ViewById EditText  etCarbs;
 
-	Ingridient		ingridient;
+     Ingridient          ingridient;
 
-	// protein, carbs, fat pie slices
-	PieSlice			sliceProtein	= new PieSlice();
-	PieSlice			sliceFat		= new PieSlice();
-	PieSlice			sliceCarbs	= new PieSlice();
+     // protein, carbs, fat pie slices
+     PieSlice            sliceProtein = new PieSlice();
+     PieSlice            sliceFat     = new PieSlice();
+     PieSlice            sliceCarbs   = new PieSlice();
 
-	public void setGroupAndProduct(int groupName, String ingridient) {
-		this.ingridient = new Ingridient(getActivity());
+     // ((ActivityFoodManagment) getActivity()).viewPager.setCurrentItem(ActivityFoodManagment.EXPANDABLE_LISTVIEW_FOOD_TYPES, true);
 
-		Cursor cursor = DataBaseUtils.getByGroupNameAndIngridientName(ingridient);
-		if ( null != cursor ) {
-			cursor.moveToNext();
+     public void setGroupAndProduct(int groupName, String ingridient) {
+          this.ingridient = new Ingridient(getActivity());
 
-			this.ingridient.protein = cursor.getDouble(1);
-			this.ingridient.carbohydrates = cursor.getDouble(2);
-			this.ingridient.fat = cursor.getDouble(3);
-			this.ingridient.kkal = cursor.getDouble(4);
-			
-			this.ingridient.groupName = Utils.getGroupNameByGroupPositionInExpListView(groupName);
-			this.ingridient.name = ingridient;
+          Cursor cursor = DataBaseUtils.getByGroupNameAndIngridientName(ingridient);
+          if ( null != cursor ) {
+               cursor.moveToNext();
 
-			etProtein.setText(String.format("%s", this.ingridient.protein));
-			etFat.setText(String.format("%s", this.ingridient.fat));
-			etKkal.setText(String.format("%s", this.ingridient.kkal));
-			etCarbs.setText(String.format("%s", this.ingridient.carbohydrates));
-			ivFoodImage.setImageResource(Utils.getImageIdByGroupPositionInExpListView(groupName));
-			twGroupNameAndIngridientName.setText(Utils.getGroupNameByGroupPositionInExpListView(groupName) + "  " + ingridient);
+               this.ingridient.protein = cursor.getDouble(1);
+               this.ingridient.carbohydrates = cursor.getDouble(2);
+               this.ingridient.fat = cursor.getDouble(3);
+               this.ingridient.kkal = cursor.getDouble(4);
 
-			setUpPieChart((int)this.ingridient.protein, (int)this.ingridient.fat, (int)this.ingridient.carbohydrates);
+               this.ingridient.groupName = Utils.getGroupNameByGroupPositionInExpListView(groupName);
+               this.ingridient.name = ingridient;
 
-			cursor.close();
-		}
-	}
+               etProtein.setText(String.format("%s", this.ingridient.protein));
+               etFat.setText(String.format("%s", this.ingridient.fat));
+               etKkal.setText(String.format("%s", this.ingridient.kkal));
+               etCarbs.setText(String.format("%s", this.ingridient.carbohydrates));
+               ivFoodImage.setImageResource(Utils.getImageIdByGroupPositionInExpListView(groupName));
+               twGroupNameAndIngridientName.setText(Utils.getGroupNameByGroupPositionInExpListView(groupName) + "  " + ingridient);
 
-	@Override public void onResume() {
-		super.onResume();
-		// Set default weight as 100 g
-		etWeight.setText("100");
-	}
+               setUpPieChart((int) this.ingridient.protein, (int) this.ingridient.fat, (int) this.ingridient.carbohydrates);
 
-	private void setUpPieChart(int protein, int fat, int carbs) {
-		// set up pie chart parameters
-		sliceFat.setValue(fat);
-		sliceProtein.setValue(protein);
-		sliceCarbs.setValue(carbs);
+               cursor.close();
+          }
+     }
 
-		// remove existing slices (if exists)
-		pieGraph.removeSlices();
-		// PROTEIN INDEX = 0
-		if ( 0 != protein ) {
-			pieGraph.addSlice(sliceProtein);
-		}
-		// CARBS INDEX = 1
-		if ( 0 != carbs ) {
-			pieGraph.addSlice(sliceCarbs);
-		}
-		// FAT INDEX = 2
-		if ( 0 != fat ) {
-			pieGraph.addSlice(sliceFat);
-		}
-	}
+     @Override public void onResume() {
+          super.onResume();
+          // Set default weight as 100 g
+          etWeight.setText("100");
+     }
 
-	/*
-	 * @AfterTextChange void etProtein(Editable text) {
-	 * checkProtCarbsFatValuesAndSetUpChart();
-	 * }
-	 * @AfterTextChange void etFat(Editable text) {
-	 * checkProtCarbsFatValuesAndSetUpChart();
-	 * }
-	 * @AfterTextChange void etCarbs(Editable text) {
-	 * checkProtCarbsFatValuesAndSetUpChart();
-	 * }
-	 */
+     private void setUpPieChart(int protein, int fat, int carbs) {
+          // set up pie chart parameters
+          fat = (fat == 0) ? 1 : fat;
+          protein = (protein == 0) ? 1 : protein;
+          carbs = (carbs == 0) ? 1 : carbs;
 
-	private void checkProtCarbsFatValuesAndSetUpChart() {
-		try {
-			ingridient.fat = StringUtils.isEmpty(etFat.getText().toString()) ? 0 : Double.valueOf(etFat.getText().toString());
-			ingridient.protein = StringUtils.isEmpty(etProtein.getText().toString()) ? 0 : Double.valueOf(etProtein.getText().toString());
-			ingridient.carbohydrates = StringUtils.isEmpty(etCarbs.getText().toString()) ? 0 : Double.valueOf(etCarbs.getText().toString());
-			setUpPieChart((int)ingridient.protein, (int)ingridient.fat, (int)ingridient.carbohydrates);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			Utils.showCustomToast(getActivity(), "Set proper fat value (0-100)g", R.drawable.facebook);
-		}
-	}
+          sliceFat.setValue(fat);
+          sliceProtein.setValue(protein);
+          sliceCarbs.setValue(carbs);
 
-	@Click void ivShowFoodTypes() {
-		((ActivityFoodManagment) getActivity()).viewPager.setCurrentItem(ActivityFoodManagment.EXPANDABLE_LISTVIEW_FOOD_TYPES, true);
-	}
+          // remove existing slices (if exists)
+          pieGraph.removeSlices();
+          // PROTEIN INDEX = 0
+          pieGraph.addSlice(sliceProtein);
+          // CARBS INDEX = 1
+          pieGraph.addSlice(sliceCarbs);
+          // FAT INDEX = 2
+          pieGraph.addSlice(sliceFat);
+     }
 
-	@AfterViews void afterViews() {
-		final Resources resources = getActivity().getResources();
+     @AfterTextChange void etProtein(Editable text) {
+          checkProtCarbsFatValuesAndSetUpChart();
+     }
 
-		sliceProtein.setColor(resources.getColor(R.color.green));
-		sliceFat.setColor(resources.getColor(R.color.orange));
-		sliceCarbs.setColor(resources.getColor(R.color.purple));
+     @AfterTextChange void etFat(Editable text) {
+          checkProtCarbsFatValuesAndSetUpChart();
+     }
 
-		sliceProtein.setSelectedColor(resources.getColor(R.color.caldroid_white));
-		sliceFat.setSelectedColor(resources.getColor(R.color.caldroid_white));
-		sliceCarbs.setSelectedColor(resources.getColor(R.color.caldroid_white));
+     @AfterTextChange void etCarbs(Editable text) {
+          checkProtCarbsFatValuesAndSetUpChart();
+     }
 
-		pieGraph.setOnSliceClickedListener(new OnSliceClickedListener() {
-			@Override public void onClick(int index) {
-				// pieGraph.getSlice(index).setValue(pieGraph.getSlice(index).getValue() + 1);
+     private void checkProtCarbsFatValuesAndSetUpChart() {
+          try {
+               ingridient.fat = StringUtils.isEmpty(etFat.getText().toString()) ? 0 : Double.valueOf(etFat.getText().toString());
+               ingridient.protein = StringUtils.isEmpty(etProtein.getText().toString()) ? 0 : Double.valueOf(etProtein.getText().toString());
+               ingridient.carbohydrates = StringUtils.isEmpty(etCarbs.getText().toString()) ? 0 : Double.valueOf(etCarbs.getText().toString());
+               setUpPieChart((int) ingridient.protein, (int) ingridient.fat, (int) ingridient.carbohydrates);
+          } catch (Exception ex) {
+               ex.printStackTrace();
+               // Utils.showCustomToast(getActivity(), "Set proper fat value (0-100)g", R.drawable.facebook);
+          }
+     }
 
-				// 0 -> prot | 1 -> carbs | 2 -> fat
-				switch (index) {
-					case 0:
-						Toast.makeText(getActivity(), ingridient.name + " contains " + ingridient.protein + " g of protein", Toast.LENGTH_SHORT).show();
-						break;
+     @AfterViews void afterViews() {
+          final Resources resources = getActivity().getResources();
 
-					case 1:
-						Toast.makeText(getActivity(), ingridient.name + " contains " + ingridient.carbohydrates + " g of carbohydrates", Toast.LENGTH_SHORT).show();
-						break;
+          sliceProtein.setColor(resources.getColor(R.color.green));
+          sliceFat.setColor(resources.getColor(R.color.orange));
+          sliceCarbs.setColor(resources.getColor(R.color.purple));
 
-					case 2:
-						Toast.makeText(getActivity(), ingridient.name + " contains " + ingridient.fat + " g of fat", Toast.LENGTH_SHORT).show();
-						break;
-				}
-			}
-		});
-	}
+          sliceProtein.setSelectedColor(resources.getColor(R.color.caldroid_white));
+          sliceFat.setSelectedColor(resources.getColor(R.color.caldroid_white));
+          sliceCarbs.setSelectedColor(resources.getColor(R.color.caldroid_white));
 
-	@Touch void ivFoodImage(MotionEvent event, View v) {
-		if ( event.getAction() == MotionEvent.ACTION_DOWN ) {
-			try {
-				ingridient.weight = Double.valueOf(etWeight.getText().toString());
-				ingridient.protein = Double.valueOf(etProtein.getText().toString());
-				ingridient.carbohydrates = Double.valueOf(etCarbs.getText().toString());
-				ingridient.fat = Double.valueOf(etFat.getText().toString());
-				ingridient.kkal = Double.valueOf(etKkal.getText().toString());
-			} catch (Exception ex) {
-				ex.printStackTrace();
-				// TODO: replace strings to resources!!!
-				// TODO: replace with separate message for each fields
-				Utils.showCustomToast(getActivity(), "Set proper weight,protein,carbs,fat,kkal", R.drawable.facebook);
-				return;
-			}
+          pieGraph.setOnSliceClickedListener(new OnSliceClickedListener() {
+               @Override public void onClick(int index) {
+                    // pieGraph.getSlice(index).setValue(pieGraph.getSlice(index).getValue() + 1);
 
-			// for debug only, create appropriate int value
-			double protein , fat , carbs , kkal;
- 
-			protein = FoodCalculator.getProtein(ingridient.protein, ingridient.weight);
-			fat = FoodCalculator.getFat(ingridient.fat, ingridient.weight);
-			carbs = FoodCalculator.getCarbs(ingridient.carbohydrates, ingridient.weight);
-			kkal = FoodCalculator.getKkal(ingridient.kkal, ingridient.weight);
+                    // 0 -> prot | 1 -> carbs | 2 -> fat
+                    switch (index) {
+                         case 0:
+                              Toast.makeText(getActivity(), ingridient.name + " contains " + ingridient.protein + " g of protein", Toast.LENGTH_SHORT).show();
+                              break;
 
-			// 0 - element name of product
-			ClipData dragData = new ClipData(ingridient.name, new String[] { ClipDescription.MIMETYPE_TEXT_PLAIN }, new ClipData.Item(ingridient.name));
-			// 1 - element weight of prodcut
-			dragData.addItem(new ClipData.Item(String.valueOf(ingridient.weight)));
-			// 2 - element groupName of prodcut
-			dragData.addItem(new ClipData.Item(String.valueOf(ingridient.groupName)));
-			// 3 - element protein of prodcut
-			dragData.addItem(new ClipData.Item(String.valueOf(protein)));
-			// 4 - element carbs of prodcut
-			dragData.addItem(new ClipData.Item(String.valueOf(carbs)));
-			// 5 - element fat of prodcut
-			dragData.addItem(new ClipData.Item(String.valueOf(fat)));
-			// 6 - element kkal of prodcut
-			dragData.addItem(new ClipData.Item(String.valueOf(kkal)));
+                         case 1:
+                              Toast.makeText(getActivity(), ingridient.name + " contains " + ingridient.carbohydrates + " g of carbohydrates", Toast.LENGTH_SHORT).show();
+                              break;
 
-			View.DragShadowBuilder shadow = new DragShadowBuilder(v);
-			v.startDrag(dragData, shadow, null, 0);
-		}
-	}
+                         case 2:
+                              Toast.makeText(getActivity(), ingridient.name + " contains " + ingridient.fat + " g of fat", Toast.LENGTH_SHORT).show();
+                              break;
+                    }
+               }
+          });
+     }
+
+     @Touch void ivFoodImage(MotionEvent event, View v) {
+          if ( event.getAction() == MotionEvent.ACTION_DOWN ) {
+               try {
+                    ingridient.weight = Double.valueOf(etWeight.getText().toString());
+                    ingridient.protein = Double.valueOf(etProtein.getText().toString());
+                    ingridient.carbohydrates = Double.valueOf(etCarbs.getText().toString());
+                    ingridient.fat = Double.valueOf(etFat.getText().toString());
+                    ingridient.kkal = Double.valueOf(etKkal.getText().toString());
+               } catch (Exception ex) {
+                    ex.printStackTrace();
+                    // TODO: replace strings to resources!!!
+                    // TODO: replace with separate message for each fields
+                    Utils.showCustomToast(getActivity(), "Set proper weight,protein,carbs,fat,kkal", R.drawable.facebook);
+                    return;
+               }
+
+               // for debug only, create appropriate int value
+               double protein , fat , carbs , kkal;
+
+               protein = FoodCalculator.getProtein(ingridient.protein, ingridient.weight);
+               fat = FoodCalculator.getFat(ingridient.fat, ingridient.weight);
+               carbs = FoodCalculator.getCarbs(ingridient.carbohydrates, ingridient.weight);
+               kkal = FoodCalculator.getKkal(ingridient.kkal, ingridient.weight);
+
+               // 0 - element name of product
+               ClipData dragData = new ClipData(ingridient.name, new String[] { ClipDescription.MIMETYPE_TEXT_PLAIN }, new ClipData.Item(ingridient.name));
+               // 1 - element weight of prodcut
+               dragData.addItem(new ClipData.Item(String.valueOf(ingridient.weight)));
+               // 2 - element groupName of prodcut
+               dragData.addItem(new ClipData.Item(String.valueOf(ingridient.groupName)));
+               // 3 - element protein of prodcut
+               dragData.addItem(new ClipData.Item(String.valueOf(protein)));
+               // 4 - element carbs of prodcut
+               dragData.addItem(new ClipData.Item(String.valueOf(carbs)));
+               // 5 - element fat of prodcut
+               dragData.addItem(new ClipData.Item(String.valueOf(fat)));
+               // 6 - element kkal of prodcut
+               dragData.addItem(new ClipData.Item(String.valueOf(kkal)));
+
+               View.DragShadowBuilder shadow = new DragShadowBuilder(v);
+               v.startDrag(dragData, shadow, null, 0);
+          }
+     }
 
 }

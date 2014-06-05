@@ -1,12 +1,15 @@
 package com.progym.activities;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.CheckedChange;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.res.StringArrayRes;
+import org.androidannotations.annotations.sharedpreferences.Pref;
 
-import android.app.Activity; 
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,33 +19,45 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.progym.R;
+import com.progym.custom.SetAlarmView_;
 import com.progym.model.User;
 import com.progym.model.WaterConsumed;
+import com.progym.receivers.AlarmWaterReceiver;
+import com.progym.utils.AppSharedPreferences_;
 import com.progym.utils.DataBaseUtils;
 import com.progym.utils.Utils;
 
 @EActivity ( R.layout.activity_user_profile ) public class ActivityUserProfile extends Activity {
 
-     @ViewById EditText       etUserName;
-     @ViewById EditText       etUserWeight;
-     @ViewById EditText       etUserAge;
-     @ViewById Spinner        spinnerBodyType;
-     @ViewById Spinner        spinnerGender;
+     @Pref AppSharedPreferences_       appPref;
 
-     @ViewById Button         btnSave;
+     @ViewById EditText                etUserName;
+     @ViewById EditText                etUserWeight;
+     @ViewById EditText                etUserAge;
+     @ViewById Spinner                 spinnerBodyType;
+     @ViewById Spinner                 spinnerGender;
+     @ViewById ToggleButton            tbAlarm;
 
-     @StringArrayRes String[] bodyTypes;
-     @StringArrayRes String[] genders;
+     @ViewById Button                  btnSave;
 
-     private User             userToSave;
+     @StringArrayRes String[]          bodyTypes;
+     @StringArrayRes String[]          genders;
+
+     private User                      userToSave;
+     private boolean                   SHOW_DIALOG_ON_START_ACTIVITY;
+
+     private static AlarmWaterReceiver alarm = new AlarmWaterReceiver();
 
      @AfterViews void afterViews() {
+          tbAlarm.setChecked(appPref.isAlarmSet().get());
           etUserName.setText("Eleonora Kosheleva");
           InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
           imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
@@ -51,6 +66,7 @@ import com.progym.utils.Utils;
           GenderAdapter genderAdpater = new GenderAdapter(ActivityUserProfile.this, android.R.layout.simple_spinner_item, new String[] { "Male", "Female" });
           spinnerBodyType.setAdapter(bodyTypeAdapter);
           spinnerGender.setAdapter(genderAdpater);
+          alarm.startAlarm(ActivityUserProfile.this);
      }
 
      private void setUpUser() {
@@ -62,6 +78,23 @@ import com.progym.utils.Utils;
                spinnerGender.setSelection(u.gender);
                etUserWeight.setText(String.valueOf(u.weight));
           }
+     }
+
+     @CheckedChange void tbAlarm(CompoundButton toggle, boolean isChecked) {
+
+          if ( isChecked ) {
+               // TURN ON ALARM NOTIFICATION
+               Dialog d = new Dialog(ActivityUserProfile.this);
+               d.setContentView(SetAlarmView_.build(getApplicationContext()));
+               d.setCanceledOnTouchOutside(true);
+               if ( false == SHOW_DIALOG_ON_START_ACTIVITY ) {
+                    SHOW_DIALOG_ON_START_ACTIVITY = true;
+                    return;
+               }
+               d.show();
+               // appPref.getSharedPreferences().edit().clear().commit();
+          }
+          appPref.isAlarmSet().put(isChecked);
      }
 
      @Override protected void onResume() {

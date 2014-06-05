@@ -7,7 +7,6 @@ import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.res.AnimationRes;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Point;
@@ -19,8 +18,6 @@ import android.view.animation.Animation;
 import android.widget.LinearLayout;
 
 import com.progym.R;
-import com.progym.custom.SetAlarmView_;
-import com.progym.receivers.AlarmWaterReceiver;
 import com.progym.utils.DataBaseUtils;
 import com.progym.utils.Utils;
 
@@ -52,7 +49,7 @@ import com.progym.utils.Utils;
           params = (MarginLayoutParams) llProgress.getLayoutParams();
           params.leftMargin = marginLeft;
           llProgress.setLayoutParams(params);
-  
+
           params = (MarginLayoutParams) llProfile.getLayoutParams();
           params.leftMargin = marginLeft;
           llProfile.setLayoutParams(params);
@@ -66,18 +63,7 @@ import com.progym.utils.Utils;
                d = c.getFloat(2);
                d = c.getFloat(3);
                Utils.log(String.valueOf(d));
-          } 
-
-          Dialog d = new Dialog(ActivityStart.this);
-
-          d.setContentView(SetAlarmView_.build(getApplicationContext()));
-          d.show();
-     }
-
-     @Override protected void onResume() {
-          super.onResume();
-          AlarmWaterReceiver a = new AlarmWaterReceiver();
-          a.SetAlarm(ActivityStart.this);
+          }
      }
 
      @Click void llNutrition() {

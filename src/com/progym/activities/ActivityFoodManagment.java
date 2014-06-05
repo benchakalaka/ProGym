@@ -46,10 +46,10 @@ import com.progym.utils.DataBaseUtils;
 import com.progym.utils.Utils;
 
 @EActivity ( R.layout.food_managment_activity ) public class ActivityFoodManagment extends ProgymSuperActivity {
- 
+
      public static final int                EXPANDABLE_LISTVIEW_FOOD_TYPES = 0;
      public static final int                SPECIFIC_FOOD_SPECIFICATION    = 1;
- 
+
      private Meal                           CURRENT_MEAL;
      private View                           CURRENT_MEAL_VIEW;
 
@@ -91,7 +91,7 @@ import com.progym.utils.Utils;
                               final String protein = event.getClipData().getItemAt(3).getText().toString();
                               final String carbs = event.getClipData().getItemAt(4).getText().toString();
                               final String fat = event.getClipData().getItemAt(5).getText().toString();
-                               final String kkal = event.getClipData().getItemAt(6).getText().toString();
+                              final String kkal = event.getClipData().getItemAt(6).getText().toString();
 
                               if ( null == CURRENT_MEAL ) {
                                    Utils.showCustomToast(ActivityFoodManagment.this, "Create plate", R.drawable.plate);
@@ -130,6 +130,15 @@ import com.progym.utils.Utils;
                     return true;
                }
           });
+     }
+
+     @Override public void onBackPressed() {
+          // 1 - ingridient specification, go back to expandable list view
+          if ( viewPager.getCurrentItem() == ActivityFoodManagment.SPECIFIC_FOOD_SPECIFICATION ) {
+               viewPager.setCurrentItem(ActivityFoodManagment.EXPANDABLE_LISTVIEW_FOOD_TYPES, true);
+          } else {
+               super.onBackPressed();
+          }
      }
 
      @Click void ibSavePlate() {
@@ -234,7 +243,7 @@ import com.progym.utils.Utils;
 
           setLastPlateActive();
           Utils.showCustomToast(this, "Plate has been created", R.drawable.plate);
-     }  
+     }
 
      private void createProductOnPlate(Meal meal) {
           SinglePlateItemView itemView = SinglePlateItemView_.build(getApplicationContext());
@@ -245,10 +254,10 @@ import com.progym.utils.Utils;
           itemView.setTag(meal);
 
           PLATES_BUTTONS.add(itemView);
-          CURRENT_MEAL_VIEW = itemView; 
+          CURRENT_MEAL_VIEW = itemView;
 
           itemView.setOnClickListener(new OnClickListener() {
- 
+
                @Override public void onClick(View v) {
                     CURRENT_MEAL = (Meal) v.getTag();
                     CURRENT_MEAL_VIEW = v;

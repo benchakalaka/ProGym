@@ -1,340 +1,332 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:android1="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res/com.progym"
-    android1:id="@+id/linear_layout"
-    android1:layout_width="match_parent"
-    android1:layout_height="match_parent"
-    android1:orientation="vertical" >
+	xmlns:android1="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res/com.progym"
+	android1:id="@+id/linear_layout"
+	android1:layout_width="match_parent"
+	android1:layout_height="match_parent"
+	android1:orientation="vertical" >
 
-    <LinearLayout
-        android:id="@+id/llRightPanelBody"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical" >
+	<LinearLayout
+		android:id="@+id/llRightPanelBody"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical" >
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="3dp" >
+		<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_margin="3dp" >
 
-            <LinearLayout
-                android:id="@+id/llNutritionInformation"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:background="@drawable/background_round_transparent_real"
-                android:orientation="horizontal" >
+			<LinearLayout
+				android:id="@+id/llNutritionInformation"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_alignParentBottom="true"
+				android:background="@drawable/background_round_transparent_real"
+				android:orientation="horizontal" >
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android1:layout_weight="1"
-                    android:background="@drawable/background_round_transparent_real"
-                    android:orientation="vertical"
-                    android1:padding="5dp" >
+				<RelativeLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android1:layout_weight="1"
+					android:background="@drawable/background_round_transparent_real"
+					android:orientation="vertical"
+					android1:padding="5dp" >
 
-                    <ImageView
-                        android:id="@+id/ivFoodImage"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentTop="true"
-                        android1:background="@drawable/circle_bg" />
+					<ImageView
+						android:id="@+id/ivFoodImage"
+						android:layout_width="100dp"
+						android:layout_height="100dp"
+						android:layout_alignParentLeft="true"
+						android:layout_alignParentTop="true"
+						android1:background="@drawable/circle_bg" />
 
-                    <TextView
-                        android1:id="@+id/twGroupNameAndIngridientName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android1:layout_toRightOf="@id/ivFoodImage"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android1:text="s" />
+					<TextView
+						android1:id="@+id/twGroupNameAndIngridientName"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android1:layout_toRightOf="@id/ivFoodImage"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android1:text="s" />
 
-                    <LinearLayout
-                        android:id="@+id/llKkalAndWeight"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="1dp"
-                        android1:layout_below="@+id/ivFoodImage"
-                        android1:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:padding="3dp" >
+					<LinearLayout
+						android:id="@+id/llKkalAndWeight"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_margin="1dp"
+						android1:layout_below="@+id/ivFoodImage"
+						android1:layout_weight="1"
+						android:gravity="center"
+						android:orientation="horizontal"
+						android:padding="3dp" >
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android1:layout_below="@+id/ivFoodImage"
-                            android1:layout_weight="1"
-                            android:text="Weight (g)"
-                            android:textAppearance="?android:attr/textAppearanceMedium" />
+						<TextView
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:layout_gravity="center"
+							android1:layout_below="@+id/ivFoodImage"
+							android1:layout_weight="1"
+							android:text="Weight (g)"
+							android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                        
-                         <EditText
-                                android1:id="@+id/etWeight"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:background="@drawable/background_round_transparent_real"
-                                android:gravity="left"
-                                android:padding="3dp"
-                                android:text="1s"
-                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                android:textColor="@color/caldroid_white"
-                                android:textStyle="bold"
-                                android1:inputType="number" />
-                    </LinearLayout>
+						<EditText
+							android1:id="@+id/etWeight"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:layout_weight="1"
+							android:background="@drawable/background_round_transparent_real"
+							android:gravity="left"
+							android:padding="3dp"
+							android:text="1s"
+							android:textAppearance="?android:attr/textAppearanceMedium"
+							android:textColor="@color/caldroid_white"
+							android:textStyle="bold"
+							android1:inputType="number" />
+					</LinearLayout>
 
-                    <LinearLayout
-                        android:id="@+id/llOn100gr"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="1dp"
-                        android1:layout_below="@+id/llKkalAndWeight"
-                        android1:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:padding="3dp" >
+					<LinearLayout
+						android:id="@+id/llOn100gr"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_margin="1dp"
+						android1:layout_below="@+id/llKkalAndWeight"
+						android1:layout_weight="1"
+						android:gravity="center"
+						android:orientation="horizontal"
+						android:padding="3dp" >
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android1:layout_weight="1"
-                            android:text="100g contains"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/caldroid_white" />
-                    </LinearLayout>
+						<TextView
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:layout_gravity="center"
+							android1:layout_weight="1"
+							android:text="100g contains"
+							android:textAppearance="?android:attr/textAppearanceMedium"
+							android:textColor="@color/caldroid_white" />
+					</LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="1dp"
-                        android1:layout_below="@+id/llOn100gr"
-                        android1:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="3dp" >
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_margin="1dp"
+						android1:layout_below="@+id/llOn100gr"
+						android1:layout_weight="1"
+						android:gravity="center"
+						android:orientation="vertical"
+						android:padding="3dp" >
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="1dp"
-                            android1:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="horizontal"
-                            android:padding="3dp" >
+						<LinearLayout
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:layout_margin="1dp"
+							android1:layout_weight="1"
+							android:gravity="center"
+							android:orientation="horizontal"
+							android:padding="3dp" >
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android1:layout_weight="1"
-                                android:text="Protein"
-                                android:textAppearance="?android:attr/textAppearanceMedium" />
+							<TextView
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_gravity="center"
+								android1:layout_weight="1"
+								android:text="Protein"
+								android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                            <EditText
-                                android:id="@+id/etProtein"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:background="@drawable/background_round_transparent_real"
-                                android:gravity="left"
-                                android:padding="3dp"
-                                android:text="1s"
-                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                android:textColor="@color/caldroid_white"
-                                android:textStyle="bold"
-                                android1:inputType="number" />
-                        </LinearLayout>
+							<EditText
+								android:id="@+id/etProtein"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"
+								android:background="@drawable/background_round_transparent_real"
+								android:gravity="left"
+								android:padding="3dp"
+								android:text="1s"
+								android:textAppearance="?android:attr/textAppearanceMedium"
+								android:textColor="@color/caldroid_white"
+								android:textStyle="bold"
+								android1:inputType="number" />
+						</LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="1dp"
-                            android1:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="horizontal"
-                            android:padding="3dp" >
+						<LinearLayout
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:layout_margin="1dp"
+							android1:layout_weight="1"
+							android:gravity="center"
+							android:orientation="horizontal"
+							android:padding="3dp" >
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android1:layout_weight="1"
-                                android:text="Fat"
-                                android:textAppearance="?android:attr/textAppearanceMedium" />
+							<TextView
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_gravity="center"
+								android1:layout_weight="1"
+								android:text="Fat"
+								android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                            <EditText
-                                android:id="@+id/etFat"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:background="@drawable/background_round_transparent_real"
-                                android:gravity="left"
-                                android:padding="3dp"
-                                android:text="1s"
-                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                android:textColor="@color/caldroid_white"
-                                android:textStyle="bold"
-                                android1:inputType="number" />
-                        </LinearLayout>
+							<EditText
+								android:id="@+id/etFat"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"
+								android:background="@drawable/background_round_transparent_real"
+								android:gravity="left"
+								android:padding="3dp"
+								android:text="1s"
+								android:textAppearance="?android:attr/textAppearanceMedium"
+								android:textColor="@color/caldroid_white"
+								android:textStyle="bold"
+								android1:inputType="number" />
+						</LinearLayout>
 
-                        <LinearLayout
-                            android:id="@+id/llKkalAndWeight"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="1dp"
-                            android1:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="horizontal"
-                            android:padding="3dp" >
+						<LinearLayout
+							android:id="@+id/llKkalAndWeight"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:layout_margin="1dp"
+							android1:layout_weight="1"
+							android:gravity="center"
+							android:orientation="horizontal"
+							android:padding="3dp" >
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android1:layout_below="@+id/ivFoodImage"
-                                android1:layout_weight="1"
-                                android:text="Carbs"
-                                android:textAppearance="?android:attr/textAppearanceMedium" />
+							<TextView
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_gravity="center"
+								android1:layout_below="@+id/ivFoodImage"
+								android1:layout_weight="1"
+								android:text="Carbs"
+								android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                            <EditText
-                                android:id="@+id/etCarbs"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:background="@drawable/background_round_transparent_real"
-                                android:gravity="left"
-                                android:padding="3dp"
-                                android:text="1s"
-                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                android:textColor="@color/caldroid_white"
-                                android:textStyle="bold"
-                                android1:inputType="number" />
-                        </LinearLayout>
+							<EditText
+								android:id="@+id/etCarbs"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"
+								android:background="@drawable/background_round_transparent_real"
+								android:gravity="left"
+								android:padding="3dp"
+								android:text="1s"
+								android:textAppearance="?android:attr/textAppearanceMedium"
+								android:textColor="@color/caldroid_white"
+								android:textStyle="bold"
+								android1:inputType="number" />
+						</LinearLayout>
 
-                        <LinearLayout
-                            android:id="@+id/llKkalAndWeight"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="1dp"
-                            android1:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="horizontal"
-                            android:padding="3dp" >
+						<LinearLayout
+							android:id="@+id/llKkalAndWeight"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:layout_margin="1dp"
+							android1:layout_weight="1"
+							android:gravity="center"
+							android:orientation="horizontal"
+							android:padding="3dp" >
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center"
-                                android1:layout_weight="1"
-                                android:text="Calories"
-                                android:textAppearance="?android:attr/textAppearanceMedium" />
+							<TextView
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:layout_gravity="center"
+								android1:layout_weight="1"
+								android:text="Calories"
+								android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                            <EditText
-                                android1:id="@+id/etKkal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:background="@drawable/background_round_transparent_real"
-                                android:gravity="left"
-                                android:padding="3dp"
-                                android:text="1s"
-                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                android:textColor="@color/caldroid_white"
-                                android:textStyle="bold"
-                                android1:inputType="number" />
-                        </LinearLayout>
-                    </LinearLayout>
+							<EditText
+								android1:id="@+id/etKkal"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"
+								android:background="@drawable/background_round_transparent_real"
+								android:gravity="left"
+								android:padding="3dp"
+								android:text="1s"
+								android:textAppearance="?android:attr/textAppearanceMedium"
+								android:textColor="@color/caldroid_white"
+								android:textStyle="bold"
+								android1:inputType="number" />
+						</LinearLayout>
+					</LinearLayout>
 
-                    <ImageView
-                        android1:id="@+id/ivEditIngridient"
-                        android1:layout_width="50dp"
-                        android1:layout_height="50dp"
-                        android1:layout_alignParentRight="true"
-                        android1:layout_alignParentTop="true"
-                        android1:background="@drawable/edit_custom_water"
-                        android1:textColor="@android:color/background_light" />
-                </RelativeLayout>
+					<ImageView
+						android1:id="@+id/ivEditIngridient"
+						android1:layout_width="50dp"
+						android1:layout_height="50dp"
+						android1:layout_alignParentRight="true"
+						android1:layout_alignParentTop="true"
+						android1:background="@drawable/edit_custom_water"
+						android1:textColor="@android:color/background_light" />
+				</RelativeLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android1:layout_weight="1"
-                    android:orientation="vertical"
-                    android1:padding="5dp" >
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android1:layout_weight="1"
+					android:orientation="vertical"
+					android1:padding="5dp" >
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:orientation="horizontal" >
+					<RelativeLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_margin="5dp"
+						android:orientation="horizontal" >
 
-                        <LinearLayout
-                            android:id="@+id/llPFCColorExplanation"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="1dp"
-                            android1:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="horizontal"
-                            android:padding="3dp" >
+						<LinearLayout
+							android:id="@+id/llPFCColorExplanation"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:layout_margin="1dp"
+							android1:layout_weight="1"
+							android:gravity="center"
+							android:orientation="horizontal"
+							android:padding="3dp" >
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:background="@drawable/background_round_transparent_real"
-                                android:gravity="center"
-                                android:padding="3dp"
-                                android:text="Protein"
-                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                android:textStyle="bold"
-                                android1:textColor="@color/green" />
+							<TextView
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"
+								android:background="@drawable/background_round_transparent_real"
+								android:gravity="center"
+								android:padding="3dp"
+								android:text="Protein"
+								android:textAppearance="?android:attr/textAppearanceMedium"
+								android:textStyle="bold"
+								android1:textColor="@color/green" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:background="@drawable/background_round_transparent_real"
-                                android:gravity="center"
-                                android:padding="3dp"
-                                android:text="Fat"
-                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                android:textStyle="bold"
-                                android1:textColor="@color/orange" />
+							<TextView
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"
+								android:background="@drawable/background_round_transparent_real"
+								android:gravity="center"
+								android:padding="3dp"
+								android:text="Fat"
+								android:textAppearance="?android:attr/textAppearanceMedium"
+								android:textStyle="bold"
+								android1:textColor="@color/orange" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:background="@drawable/background_round_transparent_real"
-                                android:gravity="center"
-                                android:padding="3dp"
-                                android:text="Carbs"
-                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                android:textStyle="bold"
-                                android1:textColor="@color/purple" />
-                        </LinearLayout>
+							<TextView
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"
+								android:background="@drawable/background_round_transparent_real"
+								android:gravity="center"
+								android:padding="3dp"
+								android:text="Carbs"
+								android:textAppearance="?android:attr/textAppearanceMedium"
+								android:textStyle="bold"
+								android1:textColor="@color/purple" />
+						</LinearLayout>
 
-                        <com.echo.holographlibrary.PieGraph
-                            android1:id="@+id/pieGraph"
-                            android1:layout_width="match_parent"
-                            android1:layout_height="match_parent"
-                            android1:layout_below="@+id/llPFCColorExplanation"
-                            app:pieInnerCircleRatio="120" />
-                    </RelativeLayout>
-                </LinearLayout>
-            </LinearLayout>
-        </RelativeLayout>
-
-        <ImageView
-            android:id="@+id/ivShowFoodTypes"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/back"
-            android1:padding="5dp" />
-    </LinearLayout>
+						<com.echo.holographlibrary.PieGraph
+							android1:id="@+id/pieGraph"
+							android1:layout_width="match_parent"
+							android1:layout_height="match_parent"
+							android1:layout_below="@+id/llPFCColorExplanation"
+							app:pieInnerCircleRatio="120" />
+					</RelativeLayout>
+				</LinearLayout>
+			</LinearLayout>
+		</RelativeLayout>
+	</LinearLayout>
 
 </ScrollView>
