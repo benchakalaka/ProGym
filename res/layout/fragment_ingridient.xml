@@ -81,7 +81,7 @@
 							android:textAppearance="?android:attr/textAppearanceMedium"
 							android:textColor="@color/caldroid_white"
 							android:textStyle="bold"
-							android1:inputType="number" />
+							android1:inputType="numberDecimal" />
 					</LinearLayout>
 
 					<LinearLayout
@@ -144,7 +144,7 @@
 								android:textAppearance="?android:attr/textAppearanceMedium"
 								android:textColor="@color/caldroid_white"
 								android:textStyle="bold"
-								android1:inputType="number" />
+								android1:inputType="numberDecimal" />
 						</LinearLayout>
 
 						<LinearLayout
@@ -176,7 +176,7 @@
 								android:textAppearance="?android:attr/textAppearanceMedium"
 								android:textColor="@color/caldroid_white"
 								android:textStyle="bold"
-								android1:inputType="number" />
+								android1:inputType="numberDecimal" />
 						</LinearLayout>
 
 						<LinearLayout
@@ -243,7 +243,7 @@
 								android:textAppearance="?android:attr/textAppearanceMedium"
 								android:textColor="@color/caldroid_white"
 								android:textStyle="bold"
-								android1:inputType="number" />
+								android1:inputType="numberDecimal" />
 						</LinearLayout>
 					</LinearLayout>
 

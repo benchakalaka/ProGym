@@ -2,13 +2,16 @@ package com.progym.custom.fragments;
 
 import org.androidannotations.annotations.AfterTextChange;
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.Touch;
 import org.androidannotations.annotations.ViewById;
 import org.apache.commons.lang3.StringUtils;
 
+import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.ClipDescription;
+import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.support.v4.app.Fragment;
@@ -79,6 +82,38 @@ import com.progym.utils.Utils;
 
                cursor.close();
           }
+     }
+
+     @Click void ivEditIngridient() {
+          AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+
+          alert.setTitle("Custom ingridient name");
+          alert.setMessage("name");
+
+          // Set an EditText view to get user input
+          final EditText input = new EditText(getActivity());
+          input.setText(ingridient.name);
+          alert.setView(input);
+
+          alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+               @Override public void onClick(DialogInterface dialog, int whichButton) {
+
+                    String value = input.getText().toString();
+                    if ( !StringUtils.isEmpty(value) ) {
+                         ingridient.name = value;
+                         twGroupNameAndIngridientName.setText(ingridient.groupName + " " + ingridient.name);
+                    } else {
+                         Utils.showCustomToast(getActivity(), "Canot be empty", R.drawable.food);
+                    }
+               }
+          });
+
+          alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+               @Override public void onClick(DialogInterface dialog, int whichButton) {
+                    // Canceled.
+               }
+          });
+          alert.show();
      }
 
      @Override public void onResume() {

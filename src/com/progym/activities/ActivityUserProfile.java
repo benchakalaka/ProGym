@@ -17,6 +17,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -27,6 +29,8 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.progym.R;
+import com.progym.custom.DialogBodyTypeExplanation;
+import com.progym.custom.DialogBodyTypeExplanation_;
 import com.progym.custom.SetAlarmView_;
 import com.progym.model.User;
 import com.progym.model.WaterConsumed;
@@ -52,9 +56,9 @@ import com.progym.utils.Utils;
      @StringArrayRes String[]          genders;
 
      private User                      userToSave;
-     private boolean                   SHOW_DIALOG_ON_START_ACTIVITY;
+     private boolean                   SHOW_DIALOG_ON_START_ACTIVITY = false;
 
-     private static AlarmWaterReceiver alarm = new AlarmWaterReceiver();
+     private static AlarmWaterReceiver alarm                         = new AlarmWaterReceiver();
 
      @AfterViews void afterViews() {
           tbAlarm.setChecked(appPref.isAlarmSet().get());
@@ -65,6 +69,24 @@ import com.progym.utils.Utils;
           BodyTypeAdapter bodyTypeAdapter = new BodyTypeAdapter(ActivityUserProfile.this, android.R.layout.simple_spinner_item, new String[] { "Ektomorf", "Mezo", "Endo" });
           GenderAdapter genderAdpater = new GenderAdapter(ActivityUserProfile.this, android.R.layout.simple_spinner_item, new String[] { "Male", "Female" });
           spinnerBodyType.setAdapter(bodyTypeAdapter);
+
+          // Dialog body rype explanation
+          final Dialog d = new Dialog(ActivityUserProfile.this);
+          d.setTitle("Body type explanation");
+          final DialogBodyTypeExplanation view = DialogBodyTypeExplanation_.build(ActivityUserProfile.this);
+          d.setContentView(view);
+          d.setCanceledOnTouchOutside(true);
+          spinnerBodyType.setOnItemSelectedListener(new OnItemSelectedListener() {
+               @Override public void onItemSelected(AdapterView <?> adapter, View v, int pos, long lng) {
+                    view.setBodyTypeToExplain(pos);
+                    d.show();
+               }
+
+               @Override public void onNothingSelected(AdapterView <?> parentView) {
+                    d.show();
+               }
+          });
+
           spinnerGender.setAdapter(genderAdpater);
           alarm.startAlarm(ActivityUserProfile.this);
      }

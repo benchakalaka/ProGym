@@ -14,18 +14,23 @@ import com.progym.custom.roundimageview.RoundedImageView;
      @ViewById RoundedImageView roundImageWaterProgress;
      @ViewById RoundedImageView roundImageFoodProgress;
 
-     // @ViewById RelativeLayout rlRoundImageTraingingProgress;
-
      @Override public void displaySelectedDate() {
           // not using
      }
 
+     /**
+      * Show water progress activity
+      */
      @Click void roundImageWaterProgress() {
           roundImageWaterProgress.startAnimation(rightOut);
           startActivity(new Intent(ActivityChooseProgressType.this, ActivityWaterProgress_.class));
      }
 
+     /**
+      * Show food progress activity
+      */
      @Click void roundImageFoodProgress() {
           roundImageFoodProgress.startAnimation(rightOut);
+          startActivity(new Intent(ActivityChooseProgressType.this, ActivityFoodProgress_.class));
      }
 }

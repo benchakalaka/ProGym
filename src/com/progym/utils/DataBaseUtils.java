@@ -55,6 +55,16 @@ public class DataBaseUtils {
           return Select.from(WaterConsumed.class).where(Condition.prop("date").like(yearMonth_YYYY_MM + "%")).list();
      }
 
+     // /////////////////////////////////////////////////////////// USER DATABASE ///////////////////////////////////////////////////////////////////
+     /**
+      * Select all records, where date starts from yearMonth_YYYY_MM
+      * example yearMonth_YYYY_MM = 2014/05, date = 2014/05/23 12:23:13,
+      * query = SELECT * FROM WATER_CONSUMED WHERE date like='2013/05%'
+      */
+     public static List <Ingridient> getAllFoodConsumedInMonth(String yearMonth_YYYY_MM) {
+          return Select.from(Ingridient.class).where(Condition.prop("date").like(yearMonth_YYYY_MM + "%")).list();
+     }
+
      public static double getWaterUserShouldConsumePerDay() {
           double retValue = 0;
           if ( null != CURRENT_USER && CURRENT_USER.weight != 0 ) {

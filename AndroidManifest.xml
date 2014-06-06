@@ -17,7 +17,7 @@
         android:theme="@style/AppTheme" >
         <meta-data
             android:name="DATABASE"
-            android:value="progym25.db" />
+            android:value="progym28.db" />
         <meta-data
             android:name="VERSION"
             android:value="1" />
@@ -44,6 +44,7 @@
             android:screenOrientation="sensorLandscape"
             android:windowSoftInputMode="adjustPan" >
         </activity>
+        
         <activity
             android:name="com.progym.activities.ActivityFoodManagment_"
             android:label="@string/app_name"
@@ -60,6 +61,13 @@
             android:label="@string/app_name"
             android:screenOrientation="sensorLandscape" >
         </activity>
+         
+          <activity
+            android:name="com.progym.activities.ActivityFoodProgress_"
+            android:label="@string/app_name"
+            android:screenOrientation="sensorLandscape" >
+        </activity>
+        
         <activity
             android:name="com.progym.activities.ActivityUserProfile_"
             android:label="@string/app_name"
