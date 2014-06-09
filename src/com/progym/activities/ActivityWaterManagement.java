@@ -1,6 +1,7 @@
 package com.progym.activities;
 
 import java.text.ParseException;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -10,8 +11,8 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Touch;
 import org.androidannotations.annotations.ViewById;
-import org.apache.commons.lang3.time.DateUtils; 
-  
+import org.apache.commons.lang3.time.DateUtils;
+
 import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.ClipDescription;
@@ -34,7 +35,7 @@ import com.progym.R;
 import com.progym.constants.GlobalConstants;
 import com.progym.custom.CaldroidFragmentCustom;
 import com.progym.custom.ConsumedWaterItemView;
-import com.progym.custom.ConsumedWaterItemView_;  
+import com.progym.custom.ConsumedWaterItemView_;
 import com.progym.custom.WaterLevelBodyView;
 import com.progym.model.CustomWaterVolume;
 import com.progym.model.User;
@@ -42,250 +43,254 @@ import com.progym.model.WaterConsumed;
 import com.progym.utils.DataBaseUtils;
 import com.progym.utils.Utils;
 import com.todddavies.components.progressbar.ProgressWheel;
-  
-@EActivity ( R.layout.activity_water_management ) public class ActivityWaterManagement extends ProgymSuperActivity {
 
-     @ViewById ImageView            ivGlass250ML;
-     @ViewById ImageView            ivBottle500ML;
-     @ViewById ImageView            ivBottle1L;
-     @ViewById ImageView            ivBottle2L;
-     @ViewById ImageView            ivCustomWaterVolume;
+@EActivity ( R.layout.activity_water_management )
+public class ActivityWaterManagement extends ProgymSuperActivity {
 
-     @ViewById TextView             twPercentComplete;
+	@ViewById ImageView				ivGlass250ML;
+	@ViewById ImageView				ivBottle500ML;
+	@ViewById ImageView				ivBottle1L;
+	@ViewById ImageView				ivBottle2L;
+	@ViewById ImageView				ivCustomWaterVolume;
 
-     @ViewById LinearLayout         llAlreadyConsumedWaterList;
-     @ViewById LinearLayout         llRightPanelBody;
-     @ViewById LinearLayout         llEditCustomWater;
+	@ViewById TextView				twPercentComplete;
 
-     @ViewById HorizontalScrollView horizontalScrollView;
+	@ViewById LinearLayout			llAlreadyConsumedWaterList;
+	@ViewById LinearLayout			llRightPanelBody;
+	@ViewById LinearLayout			llEditCustomWater;
 
-     @ViewById ProgressWheel        pwConsumedCircleProgress;
-     @ViewById ProgressBar          pbConsumedLeft;
-     @ViewById WaterLevelBodyView   ivBodyWaterLevel;
+	@ViewById HorizontalScrollView	horizontalScrollView;
 
-     private MediaPlayer            mediaPlayer;
+	@ViewById ProgressWheel			pwConsumedCircleProgress;
+	@ViewById ProgressBar			pbConsumedLeft;
+	@ViewById WaterLevelBodyView		ivBodyWaterLevel;
 
-     @Click void llEditCustomWater() {
-          AlertDialog.Builder alert = new AlertDialog.Builder(this);
+	private MediaPlayer				mediaPlayer;
 
-          alert.setTitle("Custom water volume");
-          alert.setMessage("Volume in ML");
+	@Click void llEditCustomWater() {
+		AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
-          // Set an EditText view to get user input
-          final EditText input = new EditText(this);
-          alert.setView(input);
+		alert.setTitle("Custom water volume");
+		alert.setMessage("Volume in ML");
 
-          final CustomWaterVolume cwv;
-          List <CustomWaterVolume> customVolumes = CustomWaterVolume.listAll(CustomWaterVolume.class);
-          if ( customVolumes.isEmpty() ) {
-               cwv = new CustomWaterVolume(getApplicationContext());
-          } else {
-               cwv = customVolumes.get(0);
-               input.setText(String.valueOf(cwv.customVolume));
-          }
+		// Set an EditText view to get user input
+		final EditText input = new EditText(this);
+		alert.setView(input);
 
-          alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-               @Override public void onClick(DialogInterface dialog, int whichButton) {
+		final CustomWaterVolume cwv;
+		List <CustomWaterVolume> customVolumes = CustomWaterVolume.listAll(CustomWaterVolume.class);
+		if ( customVolumes.isEmpty() ) {
+			cwv = new CustomWaterVolume(getApplicationContext());
+		} else {
+			cwv = customVolumes.get(0);
+			input.setText(String.valueOf(cwv.customVolume));
+		}
 
-                    String value = input.getText().toString();
-                    cwv.customVolume = Integer.valueOf(value);
-                    cwv.user = User.find(User.class, "name = ?", "Eleonora Kosheleva").get(0);
-                    cwv.save();
-               }
-          });
+		alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+			@Override public void onClick(DialogInterface dialog, int whichButton) {
 
-          alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-               @Override public void onClick(DialogInterface dialog, int whichButton) {
-                    // Canceled.
-               }
-          });
-          alert.show();
-     }
+				String value = input.getText().toString();
+				cwv.customVolume = Integer.valueOf(value);
+				cwv.user = User.find(User.class, "name = ?", "Eleonora Kosheleva").get(0);
+				cwv.save();
+			}
+		});
 
-     @Click void llLeftPanelDateWithCalendar() {
-          List <WaterConsumed> list = DataBaseUtils.getAllWaterConsumed();
+		alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+			@Override public void onClick(DialogInterface dialog, int whichButton) {
+				// Canceled.
+			}
+		});
+		alert.show();
+	}
 
-          HashMap <Date, Integer> datesAndColour = new HashMap <Date, Integer>();
-          for ( WaterConsumed singleDate : list ) {
-               try {
-                    datesAndColour.put(DateUtils.parseDate(singleDate.date, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD_HH_MM_SS), R.color.caldroid_sky_blue);
-               } catch (ParseException e) {
-                    e.printStackTrace();
-               }
-          }
-          // highlight dates in calendar with blue color
-          calendar.setBackgroundResourceForDates(datesAndColour);
-          calendar.show(getSupportFragmentManager(), GlobalConstants.TAG);
-     }
+	@Click void llLeftPanelDateWithCalendar() {
+		List <WaterConsumed> list = DataBaseUtils.getAllWaterConsumed();
 
-     @Override public void displaySelectedDate() {
-          // Apply pattern for displaying into left panel without time
-          twCurrentDate.setText(Utils.formatDate(SELECTED_DATE, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD));
-          loadVolumesByDate(twCurrentDate.getText().toString());
+		HashMap <Date, Integer> datesAndColour = new HashMap <Date, Integer>();
+		for ( WaterConsumed singleDate : list ) {
+			try {
+				datesAndColour.put(DateUtils.parseDate(singleDate.date, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD_HH_MM_SS), R.color.caldroid_sky_blue);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+		}
+		// highlight dates in calendar with blue color
+		calendar.setBackgroundResourceForDates(datesAndColour);
+		calendar.show(getSupportFragmentManager(), GlobalConstants.TAG);
+	}
 
-          int alreadyDrinked = DataBaseUtils.getConsumedPerDay(twCurrentDate.getText().toString());
+	@Override public void displaySelectedDate() {
+		// Apply pattern for displaying into left panel without time
+		twCurrentDate.setText(Utils.formatDate(SELECTED_DATE, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD));
+		loadVolumesByDate(twCurrentDate.getText().toString());
 
-          User u = DataBaseUtils.getCurrentUser();
-          // in ml
-          double shouldDring = (u.weight / 30) * 1000;
-          double onePercent = shouldDring / 100;
-          displayStatistic(alreadyDrinked, shouldDring - alreadyDrinked, alreadyDrinked / onePercent);
+		int alreadyDrinked = DataBaseUtils.getConsumedPerDay(twCurrentDate.getText().toString());
 
-          ivBodyWaterLevel.PERCENT_COMPLETE = (int) (alreadyDrinked / onePercent);
-          ivBodyWaterLevel.invalidate();
-     }
+		User u = DataBaseUtils.getCurrentUser();
+		// in ml
+		double shouldDring = (u.weight / 30) * 1000;
+		double onePercent = shouldDring / 100;
+		displayStatistic(alreadyDrinked, shouldDring - alreadyDrinked, alreadyDrinked / onePercent);
 
-     private void displayStatistic(int consumed, double leftToConsume, double percent) {
-          int consumedIn_360_DegreeFormat = (int) (3.6 * percent);
-          twPercentComplete.setText(String.valueOf(String.format("%.2f", percent)) + "% done");
+		ivBodyWaterLevel.PERCENT_COMPLETE = (int) (alreadyDrinked / onePercent);
+		ivBodyWaterLevel.invalidate();
+	}
 
-          pwConsumedCircleProgress.setProgress(consumedIn_360_DegreeFormat > 360 ? 360 : consumedIn_360_DegreeFormat);
-          // pwConsumedCircleProgress.setText();
-          pwConsumedCircleProgress.setText(String.valueOf(String.format("%.2f L", consumed / 1000f)));
+	private void displayStatistic(int consumed, double leftToConsume, double percent) {
+		int consumedIn_360_DegreeFormat = (int) (3.6 * percent);
+		twPercentComplete.setText(String.valueOf(String.format("%.2f", percent)) + "% done");
 
-          pbConsumedLeft.setProgress((int) (percent));
+		pwConsumedCircleProgress.setProgress(consumedIn_360_DegreeFormat > 360 ? 360 : consumedIn_360_DegreeFormat);
+		// pwConsumedCircleProgress.setText();
+		pwConsumedCircleProgress.setText(String.valueOf(String.format("%.2f L", consumed / 1000f)));
 
-          /*
-           * int barColor = color.caldroid_darker_gray;
-           * if ( percent > 50 && percent < 75 ) {
-           * barColor = android.R.color.holo_green_light;
-           * } else {
-           * if ( percent >= 75 ) {
-           * barColor = color.caldroid_holo_blue_dark;
-           * }
-           * }
-           * pwConsumedCircleProgress.setRimColor(barColor);
-           * pwConsumedCircleProgress.setBackgroundColor(barColor);
-           * pwConsumedCircleProgress.setTextColor(barColor);
-           */
-     }
+		pbConsumedLeft.setProgress((int) (percent));
 
-     @Override protected void onDestroy() {
-          super.onDestroy();
-          if ( mediaPlayer != null ) {
-               mediaPlayer.stop();
-               mediaPlayer.release();
-               mediaPlayer = null;
-          }
-     }
+		/*
+		 * int barColor = color.caldroid_darker_gray;
+		 * if ( percent > 50 && percent < 75 ) {
+		 * barColor = android.R.color.holo_green_light;
+		 * } else {
+		 * if ( percent >= 75 ) {
+		 * barColor = color.caldroid_holo_blue_dark;
+		 * }
+		 * }
+		 * pwConsumedCircleProgress.setRimColor(barColor);
+		 * pwConsumedCircleProgress.setBackgroundColor(barColor);
+		 * pwConsumedCircleProgress.setTextColor(barColor);
+		 */
+	}
 
-     private void loadVolumesByDate(String date) {
-          // Display volumes consumed only in this day
-          List <WaterConsumed> list = DataBaseUtils.getWaterConsumedByDate(date);
-          llAlreadyConsumedWaterList.removeAllViews();
-          for ( WaterConsumed w : list ) {
-               ConsumedWaterItemView itemView = ConsumedWaterItemView_.build(getApplicationContext());
-               itemView.ivVolumeImage.setBackgroundResource(Utils.getImageIdByVolume(Integer.valueOf(w.volumeConsumed)));
-               // itemView.twWaterVolume.setText(String.valueOf(w.volumeConsumed));
-               llAlreadyConsumedWaterList.addView(itemView);
-          }
-     }
+	@Override protected void onDestroy() {
+		super.onDestroy();
+		if ( mediaPlayer != null ) {
+			mediaPlayer.stop();
+			mediaPlayer.release();
+			mediaPlayer = null;
+		}
+	}
 
-     @Override @AfterViews void afterViews() {
-          calendar = new CaldroidFragmentCustom();
-          calendar.setCaldroidListener(onDateChangeListener);
-          displaySelectedDate();
-          loadVolumesByDate(twCurrentDate.getText().toString());
-          // init player
-          mediaPlayer = MediaPlayer.create(ActivityWaterManagement.this, R.raw.pouring_liquid);
+	private void loadVolumesByDate(String date) {
+		// Display volumes consumed only in this day
+		List <WaterConsumed> list = DataBaseUtils.getWaterConsumedByDate(date);
+		llAlreadyConsumedWaterList.removeAllViews();
+		for ( WaterConsumed w : list ) {
+			ConsumedWaterItemView itemView = ConsumedWaterItemView_.build(getApplicationContext());
+			itemView.ivVolumeImage.setBackgroundResource(Utils.getImageIdByVolume(Integer.valueOf(w.volumeConsumed)));
+			// itemView.twWaterVolume.setText(String.valueOf(w.volumeConsumed));
+			llAlreadyConsumedWaterList.addView(itemView);
+		}
+	}
 
-          llRightPanelBody.setOnDragListener(new OnDragListener() {
+	@Override @AfterViews void afterViews() {
+		calendar = new CaldroidFragmentCustom();
+		calendar.setCaldroidListener(onDateChangeListener);
+		displaySelectedDate();
+		loadVolumesByDate(twCurrentDate.getText().toString());
+		// init player
+		mediaPlayer = MediaPlayer.create(ActivityWaterManagement.this, R.raw.pouring_liquid);
 
-               @Override public boolean onDrag(View v, final DragEvent event) {
-                    switch (event.getAction()) {
-                         case DragEvent.ACTION_DROP:
-                              if ( null != mediaPlayer ) {
-                                   mediaPlayer.start();
-                              }
+		llRightPanelBody.setOnDragListener(new OnDragListener() {
 
-                              final String tag = event.getClipData().getDescription().getLabel().toString();
+			@Override public boolean onDrag(View v, final DragEvent event) {
+				switch (event.getAction()) {
+					case DragEvent.ACTION_DROP:
+						if ( null != mediaPlayer ) {
+							mediaPlayer.start();
+						}
 
-                              ConsumedWaterItemView itemView = ConsumedWaterItemView_.build(getApplicationContext());
-                              itemView.ivVolumeImage.setBackgroundResource(Utils.getImageIdByTag(tag));
-                              // itemView.twWaterVolume.setText(String.valueOf(Utils.getVolumeByTag(tag)));
-                              llAlreadyConsumedWaterList.addView(itemView);
+						final String tag = event.getClipData().getDescription().getLabel().toString();
 
-                              horizontalScrollView.postDelayed(new Runnable() {
-                                   @Override public void run() {
-                                        horizontalScrollView.smoothScrollTo(llAlreadyConsumedWaterList.getRight(), llAlreadyConsumedWaterList.getTop());
-                                   }
-                              }, 100L);
+						ConsumedWaterItemView itemView = ConsumedWaterItemView_.build(getApplicationContext());
+						itemView.ivVolumeImage.setBackgroundResource(Utils.getImageIdByTag(tag));
+						// itemView.twWaterVolume.setText(String.valueOf(Utils.getVolumeByTag(tag)));
+						llAlreadyConsumedWaterList.addView(itemView);
 
-                              itemView.startAnimation(leftIn);
+						horizontalScrollView.postDelayed(new Runnable() {
+							@Override public void run() {
+								horizontalScrollView.smoothScrollTo(llAlreadyConsumedWaterList.getRight(), llAlreadyConsumedWaterList.getTop());
+							}
+						}, 100L);
 
-                              User u = DataBaseUtils.getCurrentUser();
-                              WaterConsumed waterToLog = new WaterConsumed(getApplicationContext());
-                              waterToLog.user = u;
-                              waterToLog.volumeConsumed = Utils.getVolumeByTag(tag);
-                              waterToLog.date = Utils.formatDate(SELECTED_DATE, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD_HH_MM_SS);
-                              waterToLog.save();
+						itemView.startAnimation(leftIn);
 
-                              int alreadyDrinked = DataBaseUtils.getConsumedPerDay(twCurrentDate.getText().toString());
+						User u = DataBaseUtils.getCurrentUser();
+						WaterConsumed waterToLog = new WaterConsumed(getApplicationContext());
+						waterToLog.user = u;
+						waterToLog.volumeConsumed = Utils.getVolumeByTag(tag);
+						SELECTED_DATE.setHours(Calendar.getInstance().get(Calendar.HOUR_OF_DAY));
+						SELECTED_DATE.setMinutes(Calendar.getInstance().get(Calendar.MINUTE));
+						SELECTED_DATE.setSeconds(Calendar.getInstance().get(Calendar.SECOND));
+						waterToLog.date = Utils.formatDate(SELECTED_DATE, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD_HH_MM_SS);
+						waterToLog.save();
 
-                              // in ml
-                              double shouldDring = (u.weight / 30) * 1000;
-                              double onePercent = shouldDring / 100;
+						int alreadyDrinked = DataBaseUtils.getConsumedPerDay(twCurrentDate.getText().toString());
 
-                              displayStatistic(alreadyDrinked, shouldDring - alreadyDrinked, alreadyDrinked / onePercent);
-                              ivBodyWaterLevel.PERCENT_COMPLETE = (int) (alreadyDrinked / onePercent);
-                              ivBodyWaterLevel.invalidate();
-                              break;
-                    }
-                    return true;
-               }
-          });
+						// in ml
+						double shouldDring = (u.weight / 30) * 1000;
+						double onePercent = shouldDring / 100;
 
-     }
+						displayStatistic(alreadyDrinked, shouldDring - alreadyDrinked, alreadyDrinked / onePercent);
+						ivBodyWaterLevel.PERCENT_COMPLETE = (int) (alreadyDrinked / onePercent);
+						ivBodyWaterLevel.invalidate();
+						break;
+				}
+				return true;
+			}
+		});
 
-     private void dragView(View v) {
-          String tag = v.getTag().toString();
-          String[] mimeTypes = { ClipDescription.MIMETYPE_TEXT_PLAIN };
-          ClipData dragData = new ClipData(tag, mimeTypes, new ClipData.Item(tag));
-          View.DragShadowBuilder shadow = new DragShadowBuilder(v);
-          v.startDrag(dragData, shadow, null, 0);
-     }
+	}
 
-     @Touch void ivGlass250ML(MotionEvent event, View v) {
-          if ( event.getAction() == MotionEvent.ACTION_DOWN ) {
-               Toast.makeText(getApplicationContext(), "250 ml", Toast.LENGTH_SHORT).show();
-               dragView(v);
-          }
-     }
+	private void dragView(View v) {
+		String tag = v.getTag().toString();
+		String[] mimeTypes = { ClipDescription.MIMETYPE_TEXT_PLAIN };
+		ClipData dragData = new ClipData(tag, mimeTypes, new ClipData.Item(tag));
+		View.DragShadowBuilder shadow = new DragShadowBuilder(v);
+		v.startDrag(dragData, shadow, null, 0);
+	}
 
-     @Touch void ivBottle500ML(MotionEvent event, View v) {
-          if ( event.getAction() == MotionEvent.ACTION_DOWN ) {
+	@Touch void ivGlass250ML(MotionEvent event, View v) {
+		if ( event.getAction() == MotionEvent.ACTION_DOWN ) {
+			Toast.makeText(getApplicationContext(), "250 ml", Toast.LENGTH_SHORT).show();
+			dragView(v);
+		}
+	}
 
-               dragView(v);
-               Toast.makeText(getApplicationContext(), "500 ml", Toast.LENGTH_SHORT).show();
-          }
-     }
+	@Touch void ivBottle500ML(MotionEvent event, View v) {
+		if ( event.getAction() == MotionEvent.ACTION_DOWN ) {
 
-     @Touch void ivBottle1L(MotionEvent event, View v) {
-          if ( event.getAction() == MotionEvent.ACTION_DOWN ) {
+			dragView(v);
+			Toast.makeText(getApplicationContext(), "500 ml", Toast.LENGTH_SHORT).show();
+		}
+	}
 
-               dragView(v);
-               Toast.makeText(getApplicationContext(), "1 L", Toast.LENGTH_SHORT).show();
-          }
-     }
+	@Touch void ivBottle1L(MotionEvent event, View v) {
+		if ( event.getAction() == MotionEvent.ACTION_DOWN ) {
 
-     @Touch void ivBottle2L(MotionEvent event, View v) {
-          if ( event.getAction() == MotionEvent.ACTION_DOWN ) {
+			dragView(v);
+			Toast.makeText(getApplicationContext(), "1 L", Toast.LENGTH_SHORT).show();
+		}
+	}
 
-               dragView(v);
-               Toast.makeText(getApplicationContext(), "2 L", Toast.LENGTH_SHORT).show();
-          }
-     }
+	@Touch void ivBottle2L(MotionEvent event, View v) {
+		if ( event.getAction() == MotionEvent.ACTION_DOWN ) {
 
-     @Touch void ivCustomWaterVolume(MotionEvent event, View v) {
-          if ( event.getAction() == MotionEvent.ACTION_DOWN ) {
+			dragView(v);
+			Toast.makeText(getApplicationContext(), "2 L", Toast.LENGTH_SHORT).show();
+		}
+	}
 
-               List <CustomWaterVolume> customVolumes = CustomWaterVolume.listAll(CustomWaterVolume.class);
-               if ( !customVolumes.isEmpty() ) {
-                    ivCustomWaterVolume.setTag(String.valueOf(customVolumes.get(0).customVolume));
-                    dragView(v);
-               } else {
-                    Toast.makeText(getApplicationContext(), "There is no custom water value found", Toast.LENGTH_SHORT).show();
-               }
-          }
-     }
+	@Touch void ivCustomWaterVolume(MotionEvent event, View v) {
+		if ( event.getAction() == MotionEvent.ACTION_DOWN ) {
+
+			List <CustomWaterVolume> customVolumes = CustomWaterVolume.listAll(CustomWaterVolume.class);
+			if ( !customVolumes.isEmpty() ) {
+				ivCustomWaterVolume.setTag(String.valueOf(customVolumes.get(0).customVolume));
+				dragView(v);
+			} else {
+				Toast.makeText(getApplicationContext(), "There is no custom water value found", Toast.LENGTH_SHORT).show();
+			}
+		}
+	}
 }

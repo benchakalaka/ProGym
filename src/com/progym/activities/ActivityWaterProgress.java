@@ -77,9 +77,8 @@ public class ActivityWaterProgress extends ActivityAbstractProgress implements I
 				((ProgressViewPagerAdapter) viewPager.getAdapter()).bargraphDaily.setBarData(SELECTED_DATE);
 				break;
 			case MONTHLY:
-
 				viewPager.setCurrentItem(MONTHLY, true);
-				((ProgressViewPagerAdapter) viewPager.getAdapter()).linegraphMonthly.setLineData2(SELECTED_DATE);
+				((ProgressViewPagerAdapter) viewPager.getAdapter()).linegraphMonthly.setLineData2(new Date());
 				break;
 			case YEARLY:
 				viewPager.setCurrentItem(YEARLY, true);

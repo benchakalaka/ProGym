@@ -102,8 +102,8 @@ import com.progym.utils.Utils;
                               Ingridient ingridient = new Ingridient(getApplicationContext());
                               ingridient.protein = Double.valueOf(protein);
                               ingridient.carbohydrates = Double.valueOf(carbs);
-                              ingridient.fat = Double.valueOf(fat);
-                              ingridient.kkal = Double.valueOf(kkal);
+                              ingridient.fat = Double.valueOf(fat);  
+                              ingridient.kkal = Integer.valueOf(kkal);
                               ingridient.name = name;
                               ingridient.groupName = groupName;
 

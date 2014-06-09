@@ -66,7 +66,7 @@ import com.progym.utils.Utils;
                this.ingridient.protein = cursor.getDouble(1);
                this.ingridient.carbohydrates = cursor.getDouble(2);
                this.ingridient.fat = cursor.getDouble(3);
-               this.ingridient.kkal = cursor.getDouble(4);
+               this.ingridient.kkal = cursor.getInt(4);
 
                this.ingridient.groupName = Utils.getGroupNameByGroupPositionInExpListView(groupName);
                this.ingridient.name = ingridient;
@@ -206,7 +206,7 @@ import com.progym.utils.Utils;
                     ingridient.protein = Double.valueOf(etProtein.getText().toString());
                     ingridient.carbohydrates = Double.valueOf(etCarbs.getText().toString());
                     ingridient.fat = Double.valueOf(etFat.getText().toString());
-                    ingridient.kkal = Double.valueOf(etKkal.getText().toString());
+                    ingridient.kkal = Integer.valueOf(etKkal.getText().toString());
                } catch (Exception ex) {
                     ex.printStackTrace();
                     // TODO: replace strings to resources!!!
@@ -216,7 +216,8 @@ import com.progym.utils.Utils;
                }
 
                // for debug only, create appropriate int value
-               double protein , fat , carbs , kkal;
+               double protein , fat , carbs ;
+               int kkal;
 
                protein = FoodCalculator.getProtein(ingridient.protein, ingridient.weight);
                fat = FoodCalculator.getFat(ingridient.fat, ingridient.weight);

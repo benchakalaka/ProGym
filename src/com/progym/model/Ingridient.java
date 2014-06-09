@@ -16,7 +16,7 @@ public class Ingridient extends SugarRecord <Ingridient> {
 	/**
 	 * Amount of KKAL in 100 g in this product
 	 */
-	public double	kkal;
+	public int	kkal;
 
 	/**
 	 * Amount of protein in grams in this product

@@ -24,10 +24,11 @@ import java.util.Date;
 import java.util.List;
 
 import org.achartengine.ChartFactory;
+import org.achartengine.chart.BarChart.Type;
 import org.achartengine.model.CategorySeries;
 import org.achartengine.model.XYMultipleSeriesDataset;
+import org.achartengine.renderer.SimpleSeriesRenderer;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
-import org.achartengine.renderer.XYSeriesRenderer;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
@@ -49,8 +50,8 @@ import com.progym.model.Ingridient;
 import com.progym.utils.DataBaseUtils;
 import com.progym.utils.Utils;
 
-@EFragment ( R.layout.fragment_linegraph_yearly )
-public class FoodProgressYearlyLineFragment extends Fragment {
+@EFragment ( R.layout.fragment_food_progress_yearly )
+public class FoodCalloriesProgressYearlyLineFragment extends Fragment {
 
 	/**
 	 * 
@@ -79,8 +80,6 @@ public class FoodProgressYearlyLineFragment extends Fragment {
 	@ViewById RelativeLayout					rlRootGraphLayout;
 	@ViewById ImageView						ivPrevYear;
 	@ViewById ImageView						ivNextYear;
-	@ViewById ImageView						ivCalloriesProgress;
-	@ViewById ImageView						ivProteinCarbsFatProgress;
 
 	/*
 	 * create graph
@@ -92,69 +91,6 @@ public class FoodProgressYearlyLineFragment extends Fragment {
 
 	@AnimationRes ( R.anim.fadein ) Animation	fadeIn;
 	@AnimationRes ( R.anim.fadein ) Animation	fadeOut;
-
-	@Click void ivCalloriesProgress() {
-		Date date = DATE;
-		int yMaxAxisValue = 0;
-		try {
-			rlRootGraphLayout.removeView(viewChart);
-		} catch (Exception edsx) {
-			edsx.printStackTrace();
-		}
-		DATE = date;
-		// Get amount of days in a month to find out average
-		int daysInMonth = Utils.getDaysInMonth(date.getMonth(), Integer.valueOf(Utils.formatDate(date, DataBaseUtils.DATE_PATTERN_YYYY)));
-		// set January as first month
-		date.setMonth(0);
-		date.setDate(1);
-
-		int[] x = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
-
-		XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
-		CategorySeries seriesCallories = new CategorySeries("Callories");
-
-		List <Ingridient> list;
-		for ( int i = 0; i < x.length; i++ ) {
-			list = DataBaseUtils.getAllFoodConsumedInMonth(Utils.formatDate(date, DataBaseUtils.DATE_PATTERN_YYYY_MM));
-
-			// init "average" data
-			int totalCallories = 0;
-			for ( Ingridient ingridient : list ) {
-				totalCallories += ingridient.kkal;
-			}
-			// add value to series
-			seriesCallories.add(totalCallories / daysInMonth);
-			// calculate maximum Y axis values
-			yMaxAxisValue = Math.max(yMaxAxisValue, totalCallories / daysInMonth);
-			// increment month
-			date = DateUtils.addMonths(date, 1);
-		}
-
-		int[] colors = new int[] { getActivity().getResources().getColor(R.color.purple) };
-		XYMultipleSeriesRenderer renderer = buildBarRenderer(colors);
-		setChartSettings(renderer, String.format("Protein/Carbohydrates/Fat statistic for %s year", Utils.getSpecificDateValue(DATE, "yyyy")), "Months", "Amount (g)", 0.7, 12.3, 0, yMaxAxisValue + 30, Color.GRAY, Color.LTGRAY);
-
-		renderer.getSeriesRendererAt(0).setDisplayChartValues(true);
-		renderer.getSeriesRendererAt(0).setChartValuesTextSize(15f);
-		renderer.setXLabels(0);
-		renderer.setClickEnabled(false);
-		renderer.setZoomEnabled(false);
-		renderer.setPanEnabled(false, false);
-		renderer.setZoomButtonsVisible(false);
-		renderer.setPanLimits(new double[] { 1, 11 });
-		renderer.setShowGrid(true);
-		renderer.setShowLegend(true);
-		renderer.setFitLegend(true);
-
-		for ( int i = 0; i < ActivityWaterProgress.months_short.length; i++ ) {
-			renderer.addXTextLabel(i + 1, ActivityWaterProgress.months_short[i]);
-
-		}
-		dataset.addSeries(seriesCallories.toXYSeries());
-
-		viewChart = ChartFactory.getLineChartView(getActivity(), dataset, renderer);
-		rlRootGraphLayout.addView(viewChart, 0);
-	}
 
 	@Click void ivProteinCarbsFatProgress() {
 		setYearProgressData(new Date());
@@ -189,8 +125,8 @@ public class FoodProgressYearlyLineFragment extends Fragment {
 		renderer.setLegendTextSize(15);
 		int length = colors.length;
 		for ( int i = 0; i < length; i++ ) {
-			// SimpleSeriesRenderer r = new SimpleSeriesRenderer();
-			XYSeriesRenderer r = new XYSeriesRenderer();
+			SimpleSeriesRenderer r = new SimpleSeriesRenderer();
+			// XYSeriesRenderer r = new XYSeriesRenderer();
 			r.setColor(colors[i]);
 			renderer.addSeriesRenderer(r);
 		}
@@ -250,64 +186,37 @@ public class FoodProgressYearlyLineFragment extends Fragment {
 		int[] x = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
 
 		XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
-		CategorySeries seriesProtein = new CategorySeries("Protein");
-		CategorySeries seriesFat = new CategorySeries("Fat");
-		CategorySeries seriesCarbs = new CategorySeries("Carbs");
+		CategorySeries seriesCallories = new CategorySeries("Callories");
 
 		List <Ingridient> list;
 		for ( int i = 0; i < x.length; i++ ) {
 			list = DataBaseUtils.getAllFoodConsumedInMonth(Utils.formatDate(date, DataBaseUtils.DATE_PATTERN_YYYY_MM));
 
 			// init "average" data
-			double totalProtein = 0 , totalFat = 0 , totalCarbs = 0 , totalCallories = 0;
+			int totalCallories = 0;
 			for ( Ingridient ingridient : list ) {
-				totalProtein += ingridient.protein;
-				totalFat += ingridient.fat;
-				totalCarbs += ingridient.carbohydrates;
 				totalCallories += ingridient.kkal;
 			}
-
-			seriesProtein.add((double) Math.round(totalProtein * 100) / 100);
-			seriesFat.add((double) Math.round(totalFat * 100) / 100);
-			seriesCarbs.add((double) Math.round(totalCarbs * 100) / 100);
-
+			// add value to series
+			seriesCallories.add(totalCallories / daysInMonth);
 			// calculate maximum Y axis values
-			yMaxAxisValue = Math.max(yMaxAxisValue, (int) totalProtein);
-			yMaxAxisValue = Math.max(yMaxAxisValue, (int) totalFat);
-			yMaxAxisValue = Math.max(yMaxAxisValue, (int) totalCarbs);
-
+			yMaxAxisValue = Math.max(yMaxAxisValue, totalCallories / daysInMonth);
 			// increment month
 			date = DateUtils.addMonths(date, 1);
 		}
 
-		int[] colors = new int[] { getActivity().getResources().getColor(R.color.green), getActivity().getResources().getColor(R.color.orange), getActivity().getResources().getColor(R.color.purple) };
+		int[] colors = new int[] { getActivity().getResources().getColor(R.color.purple) };
 		XYMultipleSeriesRenderer renderer = buildBarRenderer(colors);
-		setChartSettings(renderer, String.format("Protein/Carbohydrates/Fat statistic for %s year", Utils.getSpecificDateValue(DATE, "yyyy")), "Months", "Amount (g)", 0.7, 12.3, 0, yMaxAxisValue + 30, Color.GRAY, Color.LTGRAY);
+		setChartSettings(renderer, String.format("Callories statistic for %s year", Utils.getSpecificDateValue(DATE, "yyyy")), "Months", "Amount (g)", 0.7, 12.3, 0, yMaxAxisValue + 30, Color.GRAY, Color.LTGRAY);
 
 		renderer.getSeriesRendererAt(0).setDisplayChartValues(true);
-		renderer.getSeriesRendererAt(1).setDisplayChartValues(true);
-		renderer.getSeriesRendererAt(2).setDisplayChartValues(true);
-
 		renderer.getSeriesRendererAt(0).setChartValuesTextSize(15f);
-		renderer.getSeriesRendererAt(1).setChartValuesTextSize(15f);
-		renderer.getSeriesRendererAt(2).setChartValuesTextSize(15f);
-
-		// renderer.getSeriesRendererAt(0).setChartValuesTextAlign(Align.CENTER);
-		// renderer.getSeriesRendererAt(1).setChartValuesTextAlign(Align.LEFT);
-		// renderer.getSeriesRendererAt(2).setChartValuesTextAlign(Align.RIGHT);
-
 		renderer.setXLabels(0);
-		// renderer.setYLabels(10);
-		// renderer.setXLabelsAlign(Align.LEFT);
-		// renderer.setYLabelsAlign(Align.LEFT);
-		// renderer.setPanEnabled(true, false);
 		renderer.setClickEnabled(false);
 		renderer.setZoomEnabled(false);
 		renderer.setPanEnabled(false, false);
 		renderer.setZoomButtonsVisible(false);
 		renderer.setPanLimits(new double[] { 1, 11 });
-		// renderer.setZoomEnabled(false);
-		// renderer.setZoomRate(1.1f);
 		renderer.setShowGrid(true);
 		renderer.setShowLegend(true);
 		renderer.setFitLegend(true);
@@ -316,12 +225,9 @@ public class FoodProgressYearlyLineFragment extends Fragment {
 			renderer.addXTextLabel(i + 1, ActivityWaterProgress.months_short[i]);
 
 		}
+		dataset.addSeries(seriesCallories.toXYSeries());
 
-		dataset.addSeries(seriesProtein.toXYSeries());
-		dataset.addSeries(seriesFat.toXYSeries());
-		dataset.addSeries(seriesCarbs.toXYSeries());
-
-		viewChart = ChartFactory.getLineChartView(getActivity(), dataset, renderer/* , Type.STACKED */);
+		viewChart = ChartFactory.getBarChartView(getActivity(), dataset, renderer, Type.DEFAULT);
 		rlRootGraphLayout.addView(viewChart, 0);
 	}
 }

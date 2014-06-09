@@ -11,8 +11,9 @@ import com.progym.custom.roundimageview.RoundedImageView;
 
 @EActivity ( R.layout.choose_type_of_progress ) public class ActivityChooseProgressType extends ProgymSuperActivity {
 
-     @ViewById RoundedImageView roundImageWaterProgress;
+     @ViewById RoundedImageView roundImageWaterProgress; 
      @ViewById RoundedImageView roundImageFoodProgress;
+     @ViewById RoundedImageView roundImageFoodCalloriesProgress;
 
      @Override public void displaySelectedDate() {
           // not using
@@ -33,4 +34,15 @@ import com.progym.custom.roundimageview.RoundedImageView;
           roundImageFoodProgress.startAnimation(rightOut);
           startActivity(new Intent(ActivityChooseProgressType.this, ActivityFoodProgress_.class));
      }
+     
+     /**
+      * Show food progress callories activity
+      */
+     @Click void roundImageFoodCalloriesProgress() {
+     	roundImageFoodCalloriesProgress.startAnimation(rightOut);
+          startActivity(new Intent(ActivityChooseProgressType.this, ActivityCalloriesProgress_.class));
+     }
+     
+     
+     
 }

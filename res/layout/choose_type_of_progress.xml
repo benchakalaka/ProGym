@@ -1,53 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-	android:id="@+id/roootScrill"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:background="@drawable/round_border_gray_gradient" >
+    android:id="@+id/roootScrill"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/round_border_gray_gradient" >
 
-	<RelativeLayout
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content" >
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
 
-		<RelativeLayout
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content" >
+        
+          
+        <com.progym.custom.roundimageview.RoundedImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/roundImageFoodCalloriesProgress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingBottom="20dip"
+            android:paddingLeft="20dip"
+            android:paddingRight="40dip"
+            android:paddingTop="20dip"
+            android:scaleType="center"
+            android:src="@drawable/calendar"
+            app:border_color="@color/caldroid_black"
+            app:border_width="3dip"
+            app:corner_radius="30dip"
+            app:oval="false" />
+        
+        <com.progym.custom.roundimageview.RoundedImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/roundImageWaterProgress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingBottom="20dip"
+            android:paddingLeft="20dip"
+            android:paddingRight="40dip"
+            android:paddingTop="20dip"
+            android:scaleType="center"
+            android:src="@drawable/water_progress"
+            app:border_color="@color/caldroid_black"
+            app:border_width="3dip"
+            app:corner_radius="30dip"
+            app:oval="false" />
 
-			<com.progym.custom.roundimageview.RoundedImageView
-				xmlns:app="http://schemas.android.com/apk/res-auto"
-				android:id="@+id/roundImageWaterProgress"
-				android:layout_width="match_parent"
-				android:layout_height="200dp"
-				android:layout_alignParentLeft="true"
-				android:paddingBottom="20dip"
-				android:paddingLeft="20dip"
-				android:paddingRight="40dip"
-				android:paddingTop="20dip"
-				android:scaleType="center"
-				android:src="@drawable/water_progress"
-				app:border_color="@color/caldroid_black"
-				app:border_width="3dip"
-				app:corner_radius="30dip"
-				app:oval="false" />
-
-			<com.progym.custom.roundimageview.RoundedImageView
-				xmlns:app="http://schemas.android.com/apk/res-auto"
-				android:id="@+id/roundImageFoodProgress"
-				android:layout_width="match_parent"
-				android:layout_height="200dp"
-				android:layout_alignParentRight="true"
-				android:layout_below="@+id/roundImageWaterProgress"
-				android:paddingBottom="20dip"
-				android:paddingLeft="40dip"
-				android:paddingRight="20dip"
-				android:paddingTop="20dip"
-				android:scaleType="center"
-				android:src="@drawable/food_progress"
-				app:border_color="@color/caldroid_black"
-				app:border_width="3dip"
-				app:corner_radius="30dip"
-				app:oval="false" />
-		</RelativeLayout>
-	</RelativeLayout>
+        <com.progym.custom.roundimageview.RoundedImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/roundImageFoodProgress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingBottom="20dip"
+            android:paddingLeft="40dip"
+            android:paddingRight="20dip"
+            android:paddingTop="20dip"
+            android:scaleType="center"
+            android:src="@drawable/food_progress"
+            app:border_color="@color/caldroid_black"
+            app:border_width="3dip"
+            app:corner_radius="30dip"
+            app:oval="false" />
+    </LinearLayout>
 
 </ScrollView>

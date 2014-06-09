@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-	<string name="app_name">ProGym</string>
-	<string name="hello_world">Hello world!</string>
-	<string name="action_settings">Settings</string>
+    <string name="app_name">ProGym</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="app_id">330369713784050</string>
 
-	<string-array name="bodyTypes">
-		<item>Ektomorf</item>
-		<item>Mezomorf</item>
-		<item>Endomorf</item>
-		<item>Ekto-Mezo</item>
-		<item>Endo-Mezo</item>
-	</string-array>
-	<string-array name="genders">
-		<item>Male</item>
-		<item>Female</item>
-	</string-array>
+    <string-array name="bodyTypes">
+        <item>Ektomorf</item>
+        <item>Mezomorf</item>
+        <item>Endomorf</item>
+        <item>Ekto-Mezo</item>
+        <item>Endo-Mezo</item>
+    </string-array>
+    <string-array name="genders">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
 
-	<string name="food">food</string>
-	<string name="ektomorf">Ectomorphs are the naturally skinny body type. These are the men and women who were likely skinny their entire lives without actually having to put much (if any) effort into their diet or workout. These are the people who seem to be able to eat as much as they want and never gain weight.
+    <string name="food">food</string>
+    <string name="ektomorf">Ectomorphs are the naturally skinny body type. These are the men and women who were likely skinny their entire lives without actually having to put much (if any) effort into their diet or workout. These are the people who seem to be able to eat as much as they want and never gain weight.
 This isn’t true of course (anyone who eats too much will always gain weight), it’s just the genetics of an ectomorph make it a whole lot harder to reach that point for weight gain to occur, especially when compared to the other different body types.
 Common Genetic Traits of Ectomorphs:\n 
     Lightning fast metabolism.\n
@@ -27,7 +28,7 @@ Common Genetic Traits of Ectomorphs:\n
     Often picky eaters who don’t always possess a huge appetite.\n
     Naturally lacking muscle and strength.\n
     Naturally skinny, although not naturally lean (there’s a difference).\n</string>
-	<string name="mezomorf">Mesomorphs are considered the genetic elite. These are the people who we consider to have won the genetic lottery, so to speak. This is the prototypical athlete, fitness model and bodybuilder. Where the ectomorph and the endomorph both have a positive and negative side, the mesomorph has pretty much the best of both worlds.
+    <string name="mezomorf">Mesomorphs are considered the genetic elite. These are the people who we consider to have won the genetic lottery, so to speak. This is the prototypical athlete, fitness model and bodybuilder. Where the ectomorph and the endomorph both have a positive and negative side, the mesomorph has pretty much the best of both worlds.
 Common Genetic Traits of Mesomorphs:\n
     Ideal metabolic rate (not too fast, not too slow).\n
     Ideal bone structure (not too thick, not too thin).\n
@@ -35,7 +36,7 @@ Common Genetic Traits of Mesomorphs:\n
     Naturally muscular (instead of naturally “big” like an endomorph).\n
     Naturally athletic.\n
 Mesomorphs gain muscle almost as well as an endomorph, and lose fat almost as well as an ectomorph. In fact, mesomorphs are the people who are often just naturally muscular and lean without putting any time or effort into a diet or workout. And when they do? Their rate and degree of improvement blows the rest of us away.</string>
-	<string name="endomorf">Endomorphs are the naturally fat body type. These are the men and women who were likely always at least a little bit bigger, thicker and often fatter than everyone else most of their lives. These are the people who, despite their diet or workout, seem to gain weight just thinking about food and find it nearly impossible to lose it and keep it off.
+    <string name="endomorf">Endomorphs are the naturally fat body type. These are the men and women who were likely always at least a little bit bigger, thicker and often fatter than everyone else most of their lives. These are the people who, despite their diet or workout, seem to gain weight just thinking about food and find it nearly impossible to lose it and keep it off.
 
 This isn’t true of course (anyone who eats fewer calories than they burn will always lose weight), it’s just the genetics of an endomorph make it a whole lot harder to reach that point for weight loss to occur, especially when compared to the other body types.
 For example, I’ve seen endomorphs who gain weight eating significantly less than ectomorphs (who weigh 20-50lbs less than them) will actually lose weight eating.

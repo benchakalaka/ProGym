@@ -25,7 +25,6 @@ import java.util.List;
 
 import org.achartengine.ChartFactory;
 import org.achartengine.GraphicalView;
-import org.achartengine.chart.BarChart.Type;
 import org.achartengine.model.XYMultipleSeriesDataset;
 import org.achartengine.model.XYSeries;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
@@ -38,26 +37,22 @@ import org.androidannotations.annotations.res.AnimationRes;
 import org.apache.commons.lang3.time.DateUtils;
 
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.View;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.GraphViewSeries;
 import com.progym.R;
-import com.progym.activities.ActivityWaterProgress;
-import com.progym.model.WaterConsumed;
+import com.progym.model.Ingridient;
 import com.progym.utils.DataBaseUtils;
 import com.progym.utils.Utils;
 
-@EFragment ( R.layout.fragment_linegraph_yearly )
-public class WaterProgressYearlyLineFragment extends Fragment {
+@EFragment ( R.layout.fragment_callories_monthly )
+public class CalloriesProgressMonthlyLineFragment extends Fragment {
 
 	/**
-	 * 
-	 100% — FF
+	 * 100% — FF
 	 * 95% — F2
 	 * 90% — E6
 	 * 85% — D9
@@ -83,27 +78,29 @@ public class WaterProgressYearlyLineFragment extends Fragment {
 	@ViewById ImageView						ivPrevYear;
 	@ViewById ImageView						ivNextYear;
 
-	/*
-	 * create graph
-	 */
-	GraphView								graphView;
-	GraphViewSeries						singleMonthBar;
 	private static Date						DATE;
 
 	@AnimationRes ( R.anim.fadein ) Animation	fadeIn;
 	@AnimationRes ( R.anim.fadein ) Animation	fadeOut;
 
+	@Override public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		setLineData3(new Date());
+	}
+
 	@Click void ivPrevYear() {
 		ivNextYear.startAnimation(fadeIn);
 		rlRootGraphLayout.startAnimation(fadeOut);
-		DATE = DateUtils.addYears(DATE, -1);
+		DATE = DateUtils.addMonths(DATE, -1);
+		// invert TYPE OF GRAPH flag
 		setLineData3(DATE);
 	}
 
 	@Click void ivNextYear() {
 		ivNextYear.startAnimation(fadeIn);
 		rlRootGraphLayout.startAnimation(fadeOut);
-		DATE = DateUtils.addYears(DATE, 1);
+		// invert TYPE OF GRAPH flag
+		DATE = DateUtils.addMonths(DATE, 1);
 		setLineData3(DATE);
 	}
 
@@ -116,96 +113,74 @@ public class WaterProgressYearlyLineFragment extends Fragment {
 		} catch (Exception edsx) {
 			edsx.printStackTrace();
 		}
-		DATE = date;
-		// 31 - Amount of days in a month
-		int daysInMonth = Utils.getDaysInMonth(date.getMonth(), Integer.valueOf(Utils.formatDate(date, DataBaseUtils.DATE_PATTERN_YYYY)));
-		// set January as first month
-		date.setMonth(0);
 		date.setDate(1);
+		DATE = date;
+		// Get amount of days in a month to find out average
+		int daysInMonth = Utils.getDaysInMonth(date.getMonth(), Integer.valueOf(Utils.formatDate(date, DataBaseUtils.DATE_PATTERN_YYYY)));
+		// set First day of the month as first month
 
-		int[] x = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+		int[] x = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31 };
 
 		// Creating an XYSeries for Consumed water
-		XYSeries consumedSeries = new XYSeries("Consumed");
+		XYSeries callories = new XYSeries("Callories");
 
-		List <WaterConsumed> list;
-		int userShouldConsume = (int) DataBaseUtils.getWaterUserShouldConsumePerDay();
+		List <Ingridient> list;
 		// Adding data to Income and Expense Series
-		for ( int i = 0; i < x.length; i++ ) {
+		for ( int i = 1; i <= daysInMonth; i++ ) {
 			// get all water records consumed per this month
-			list = DataBaseUtils.getAllWaterConsumedInMonth(Utils.formatDate(date, DataBaseUtils.DATE_PATTERN_YYYY_MM));
+			list = DataBaseUtils.getAllFoodConsumedInMonth(Utils.formatDate(date, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD));
 			// init "average" data
-			int averageWaterConsumedOnYaxis = 0;
-			for ( int j = 0; j < list.size(); j++ ) {
-				// calculate sum of all water consumed by user in a month
-				averageWaterConsumedOnYaxis += list.get(j).volumeConsumed;
+			int totalCallories = 0;
+			for ( Ingridient ingridient : list ) {
+				totalCallories += ingridient.kkal;
 			}
-			averageWaterConsumedOnYaxis = averageWaterConsumedOnYaxis / daysInMonth;
-			consumedSeries.add(i, averageWaterConsumedOnYaxis);
-			// normaSeries.add(i, userShouldConsume);
-			date = DateUtils.addMonths(date, 1);
-			yMaxAxisValue = Math.max(yMaxAxisValue, averageWaterConsumedOnYaxis);
+			callories.add(i, totalCallories);
+			date = DateUtils.addDays(date, 1);
+			yMaxAxisValue = Math.max(yMaxAxisValue, totalCallories);
 		}
 
 		// Creating a dataset to hold each series
 		XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
-		// Adding Expense Series to dataset
-		// dataset.addSeries(normaSeries);
 		// Adding Income Series to the dataset
-		dataset.addSeries(consumedSeries);
+		dataset.addSeries(callories);
 
-		// Creating XYSeriesRenderer to customize incomeSeries
-		XYSeriesRenderer incomeRenderer = new XYSeriesRenderer();
-		incomeRenderer.setColor(Color.rgb(50, 255, 50));
-		incomeRenderer.setFillPoints(true);
-		incomeRenderer.setLineWidth(2);
-		incomeRenderer.setDisplayChartValues(true);
-
-		/*
-		 * // Creating XYSeriesRenderer to customize expenseSeries
-		 * XYSeriesRenderer expenseRenderer = new XYSeriesRenderer();
-		 * expenseRenderer.setColor(Color.rgb(80, 220, 80));
-		 * expenseRenderer.setFillPoints(true);
-		 * expenseRenderer.setLineWidth(2);
-		 * expenseRenderer.setDisplayChartValues(true);
-		 */
+		// Creating XYSeriesRenderer to customize protein series
+		XYSeriesRenderer calloriesRenderer = new XYSeriesRenderer();
+		calloriesRenderer.setColor(Color.rgb(220, 255, 110));
+		calloriesRenderer.setFillPoints(true);
+		calloriesRenderer.setLineWidth(3);
+		calloriesRenderer.setDisplayChartValues(true);
 
 		// Creating a XYMultipleSeriesRenderer to customize the whole chart
 		XYMultipleSeriesRenderer multiRenderer = new XYMultipleSeriesRenderer();
-		multiRenderer.setXLabels(0);
+		// multiRenderer.setXLabels(0);
 
 		for ( int i = 0; i < x.length; i++ ) {
-			multiRenderer.addXTextLabel(i, ActivityWaterProgress.months_short[i]);
+			multiRenderer.addXTextLabel(i, String.valueOf(x[i]));
 		}
 
 		// Adding incomeRenderer and expenseRenderer to multipleRenderer
 		// Note: The order of adding dataseries to dataset and renderers to multipleRenderer
 		// should be same
-		multiRenderer.setChartTitle(String.format("Water statistic for %s year", Utils.formatDate(DATE, DataBaseUtils.DATE_PATTERN_YYYY)));
-		multiRenderer.setXTitle("Months");
-		multiRenderer.setYTitle("Water volume (ml)");
+		multiRenderer.setChartTitle(String.format("Callories statistic"));
+		multiRenderer.setXTitle(Utils.getSpecificDateValue(DATE, "MMM") + " of " + Utils.formatDate(DATE, DataBaseUtils.DATE_PATTERN_YYYY));
+		multiRenderer.setYTitle("Callories consumption     ");
 		multiRenderer.setAxesColor(Color.WHITE);
 		multiRenderer.setShowLegend(true);
-		multiRenderer.addSeriesRenderer(incomeRenderer);
+		multiRenderer.addSeriesRenderer(calloriesRenderer);
 		multiRenderer.setShowGrid(true);
 		multiRenderer.setClickEnabled(true);
-		// multiRenderer.addSeriesRenderer(expenseRenderer);
-		multiRenderer.setXLabelsAngle(30);
-		// multiRenderer.setBackgroundColor(Color.parseColor("#B3FFFFFF"));
-		// multiRenderer.setApplyBackgroundColor(true);
+		multiRenderer.setXLabelsAngle(20);
+		multiRenderer.setYAxisMax(yMaxAxisValue + 200);
 		multiRenderer.setXLabelsColor(Color.WHITE);
 		multiRenderer.setZoomButtonsVisible(false);
 		// configure visible area
-		multiRenderer.setXAxisMax(11.5);
-		multiRenderer.setXAxisMin(-0.5);
-		multiRenderer.setYAxisMax(yMaxAxisValue + (yMaxAxisValue / 5));
-		multiRenderer.setYAxisMin(-0.1);
-
+		multiRenderer.setXAxisMax(31);
+		multiRenderer.setXAxisMin(1);
 		multiRenderer.setAxisTitleTextSize(15);
-		multiRenderer.setBarSpacing(0.1);
 		multiRenderer.setZoomEnabled(true);
 
-		GraphicalView mChartView = ChartFactory.getBarChartView(getActivity(), dataset, multiRenderer, Type.DEFAULT);
+		GraphicalView mChartView = ChartFactory.getLineChartView(getActivity(), dataset, multiRenderer);
 		rlRootGraphLayout.addView(mChartView, 0);
 	}
 }

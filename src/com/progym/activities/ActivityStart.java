@@ -21,79 +21,86 @@ import com.progym.R;
 import com.progym.utils.DataBaseUtils;
 import com.progym.utils.Utils;
 
-@EActivity ( R.layout.activity_start ) public class ActivityStart extends Activity {
+@EActivity ( R.layout.activity_start )
+public class ActivityStart extends Activity {
 
-     // Sugar basic usage - List<Book> books = Book.find(Book.class, "author = ?", new String{author.getId()});
-     // Book.find(Note.class, "name = ? and title = ?", "satya", "title1");
-     // http://satyan.github.io/sugar/query.html - query for sugar
-     // List<Note> notes = Note.findWithQuery(Note.class, "Select * from Note where name = ?", "satya");
-     // Select.from(TestRecord.class).where(Condition.prop("test").eq("satya"),Condition.prop("prop").eq(2)).list();
+	// Sugar basic usage - List<Book> books = Book.find(Book.class, "author = ?", new String{author.getId()});
+	// Book.find(Note.class, "name = ? and title = ?", "satya", "title1");
+	// http://satyan.github.io/sugar/query.html - query for sugar
+	// List<Note> notes = Note.findWithQuery(Note.class, "Select * from Note where name = ?", "satya");
+	// Select.from(TestRecord.class).where(Condition.prop("test").eq("satya"),Condition.prop("prop").eq(2)).list();
 
-     @ViewById LinearLayout                    llNutrition;
-     @ViewById LinearLayout                    llProgress;
-     @ViewById LinearLayout                    llProfile;
+	@ViewById LinearLayout					llNutrition;
+	@ViewById LinearLayout					llProgress;
+	@ViewById LinearLayout					llProfile;
 
-     @AnimationRes ( R.anim.fadein ) Animation fadeIn;
+	@AnimationRes ( R.anim.fadein ) Animation	fadeIn;
 
-     @AfterViews void afterViews() {
-          DataBaseUtils.setCurrentUser(DataBaseUtils.getUserByName("Eleonora Kosheleva"));
-          Display display = getWindowManager().getDefaultDisplay();
-          Point size = new Point();
-          display.getSize(size);
-          int marginLeft = size.x / 4;
+	@AfterViews void afterViews() {
+		// TODO: set up ability of using multiply users
+		if ( DataBaseUtils.getUsers().size() == 0 ) {
+			Utils.showToast(getApplicationContext(), "Go to -Your profile- and create user before continue", true);
+		} else {
+			DataBaseUtils.setCurrentUser(DataBaseUtils.getUsers().get(0));
+		}
+		Display display = getWindowManager().getDefaultDisplay();
+		Point size = new Point();
+		display.getSize(size);
+		int marginLeft = size.x / 4;
 
-          MarginLayoutParams params = (MarginLayoutParams) llNutrition.getLayoutParams();
-          params.leftMargin = marginLeft;
-          llNutrition.setLayoutParams(params);
+		MarginLayoutParams params = (MarginLayoutParams) llNutrition.getLayoutParams();
+		params.leftMargin = marginLeft;
+		llNutrition.setLayoutParams(params);
 
-          params = (MarginLayoutParams) llProgress.getLayoutParams();
-          params.leftMargin = marginLeft;
-          llProgress.setLayoutParams(params);
+		params = (MarginLayoutParams) llProgress.getLayoutParams();
+		params.leftMargin = marginLeft;
+		llProgress.setLayoutParams(params);
 
-          params = (MarginLayoutParams) llProfile.getLayoutParams();
-          params.leftMargin = marginLeft;
-          llProfile.setLayoutParams(params);
+		params = (MarginLayoutParams) llProfile.getLayoutParams();
+		params.leftMargin = marginLeft;
+		llProfile.setLayoutParams(params);
 
-          // Set up ingridient database
-          DataBaseUtils.setUpIngridientsDatabase(getApplicationContext());
+		// Set up ingridient database
+		DataBaseUtils.setUpIngridientsDatabase(getApplicationContext());
+		// startActivity(new Intent(ActivityStart.this, LoginActivity.class));
+	}
 
-          Cursor c = DataBaseUtils.test();
-          while ( c.moveToNext() ) {
-               float d = c.getFloat(1);
-               d = c.getFloat(2);
-               d = c.getFloat(3);
-               Utils.log(String.valueOf(d));
-          }
-     }
+	@Click void llNutrition() {
+		llNutrition.startAnimation(fadeIn);
+		if ( null == DataBaseUtils.getCurrentUser() ) {
+			Utils.showToast(getApplicationContext(), "Go to -Your profile- and create user before continue", true);
+			return;
+		}
+		startActivity(new Intent(ActivityStart.this, ActivitySelectFoodOrWaterManagment_.class));
+	}
 
-     @Click void llNutrition() {
-          llNutrition.startAnimation(fadeIn);
-          startActivity(new Intent(ActivityStart.this, ActivitySelectFoodOrWaterManagment_.class));
-     }
+	@Click void llProfile() {
+		llProfile.startAnimation(fadeIn);
+		startActivity(new Intent(ActivityStart.this, ActivityUserProfile_.class));
+	}
 
-     @Click void llProfile() {
-          llProfile.startAnimation(fadeIn);
-          startActivity(new Intent(ActivityStart.this, ActivityUserProfile_.class));
-     }
+	@Click void llProgress() {
+		llProgress.startAnimation(fadeIn);
+		if ( null == DataBaseUtils.getCurrentUser() ) {
+			Utils.showToast(getApplicationContext(), "Go to -Your profile- and create user before continue", true);
+			return;
+		}
+		startActivity(new Intent(ActivityStart.this, ActivityChooseProgressType_.class));
+	}
 
-     @Click void llProgress() {
-          llProgress.startAnimation(fadeIn);
-          startActivity(new Intent(ActivityStart.this, ActivityChooseProgressType_.class));
-     }
+	@Override public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		// commmited from home
+		getMenuInflater().inflate(R.menu.start, menu);
+		return true;
+	}
 
-     @Override public boolean onCreateOptionsMenu(Menu menu) {
-          // Inflate the menu; this adds items to the action bar if it is present.
-          // commmited from home
-          getMenuInflater().inflate(R.menu.start, menu);
-          return true;
-     }
-
-     @Override public boolean onOptionsItemSelected(MenuItem item) {
-          // Handle action bar item clicks here. The action bar will
-          // automatically handle clicks on the Home/Up button, so long
-          // as you specify a parent activity in AndroidManifest.xml.
-          int id = item.getItemId();
-          if ( id == R.id.action_settings ) { return true; }
-          return super.onOptionsItemSelected(item);
-     }
+	@Override public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if ( id == R.id.action_settings ) { return true; }
+		return super.onOptionsItemSelected(item);
+	}
 }

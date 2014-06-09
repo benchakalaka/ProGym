@@ -45,120 +45,122 @@ import com.progym.model.Ingridient;
 import com.progym.utils.DataBaseUtils;
 import com.progym.utils.Utils;
 
-@EFragment ( R.layout.fragment_foodprogress_piechart_daily ) public class FoodProgressDailyPieFragment extends Fragment {
+@EFragment ( R.layout.fragment_foodprogress_piechart_daily )
+public class FoodProgressDailyPieFragment extends Fragment {
 
-     @ViewById RelativeLayout                   rlRootDailyBar;
-     @ViewById ImageView                        ivPrevYear;
-     @ViewById ImageView                        ivNextYear;
-     @ViewById PieGraph                         pieGraphFoodStats;
-     @ViewById TextView                         twCurrentDay;
-     @ViewById TextView                         twProtein;
-     @ViewById TextView                         twFat;
-     @ViewById TextView                         twCarbs;
-     @ViewById TextView                         twCalories;
+	@ViewById RelativeLayout					rlRootDailyBar;
+	@ViewById ImageView						ivPrevYear;
+	@ViewById ImageView						ivNextYear;
+	@ViewById PieGraph						pieGraphFoodStats;
+	@ViewById TextView						twCurrentDay;
+	@ViewById TextView						twProtein;
+	@ViewById TextView						twFat;
+	@ViewById TextView						twCarbs;
+	@ViewById TextView						twCalories;
 
-     // protein, carbs, fat pie slices
-     PieSlice                                   sliceProtein = new PieSlice();
-     PieSlice                                   sliceFat     = new PieSlice();
-     PieSlice                                   sliceCarbs   = new PieSlice();
+	// protein, carbs, fat pie slices
+	PieSlice								sliceProtein	= new PieSlice();
+	PieSlice								sliceFat		= new PieSlice();
+	PieSlice								sliceCarbs	= new PieSlice();
 
-     @AnimationRes ( R.anim.fadein ) Animation  fadeIn;
-     @AnimationRes ( R.anim.fadeout ) Animation fadeOut;
-     private Date                               DATE;
-     double                                     totalProtein = 0 , totalFat = 0 , totalCarbs = 0 , totalCallories = 0;
+	@AnimationRes ( R.anim.fadein ) Animation	fadeIn;
+	@AnimationRes ( R.anim.fadeout ) Animation	fadeOut;
+	private Date							DATE;
+	double								totalProtein	= 0 , totalFat = 0 , totalCarbs = 0;
+	int									totalCallories	= 0;
 
-     @Override public void onActivityCreated(Bundle savedInstanceState) {
-          super.onActivityCreated(savedInstanceState);
-          sliceProtein.setColor(getActivity().getResources().getColor(R.color.green));
-          sliceFat.setColor(getActivity().getResources().getColor(R.color.orange));
-          sliceCarbs.setColor(getActivity().getResources().getColor(R.color.purple));
+	@Override public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		sliceProtein.setColor(getActivity().getResources().getColor(R.color.green));
+		sliceFat.setColor(getActivity().getResources().getColor(R.color.orange));
+		sliceCarbs.setColor(getActivity().getResources().getColor(R.color.purple));
 
-          sliceProtein.setSelectedColor(getActivity().getResources().getColor(R.color.caldroid_white));
-          sliceFat.setSelectedColor(getActivity().getResources().getColor(R.color.caldroid_white));
-          sliceCarbs.setSelectedColor(getActivity().getResources().getColor(R.color.caldroid_white));
-          setPieData(new Date());
-          pieGraphFoodStats.setOnSliceClickedListener(new OnSliceClickedListener() {
-               @Override public void onClick(int index) {
-                    // pieGraph.getSlice(index).setValue(pieGraph.getSlice(index).getValue() + 1);
+		sliceProtein.setSelectedColor(getActivity().getResources().getColor(R.color.caldroid_white));
+		sliceFat.setSelectedColor(getActivity().getResources().getColor(R.color.caldroid_white));
+		sliceCarbs.setSelectedColor(getActivity().getResources().getColor(R.color.caldroid_white));
+		setPieData(new Date());
+		pieGraphFoodStats.setOnSliceClickedListener(new OnSliceClickedListener() {
+			@Override public void onClick(int index) {
+				// pieGraph.getSlice(index).setValue(pieGraph.getSlice(index).getValue() + 1);
 
-                    // 0 -> prot | 1 -> carbs | 2 -> fat
-                    switch (index) {
-                         case 0:
-                              Toast.makeText(getActivity(), " You consumed " + totalProtein + " g of protein", Toast.LENGTH_SHORT).show();
-                              break;
+				// 0 -> prot | 1 -> carbs | 2 -> fat
+				switch (index) {
+					case 0:
+						Toast.makeText(getActivity(), " You consumed " + String.format("%.2f", totalProtein) + " g of protein", Toast.LENGTH_SHORT).show();
+						break;
 
-                         case 1:
-                              Toast.makeText(getActivity(), " You consumed " + totalCarbs + " g of carbohydrates", Toast.LENGTH_SHORT).show();
-                              break;
+					case 1:
+						Toast.makeText(getActivity(), " You consumed " + String.format("%.2f", totalCarbs) + " g of carbohydrates", Toast.LENGTH_SHORT).show();
+						break;
 
-                         case 2:
-                              Toast.makeText(getActivity(), " You consumed " + totalFat + " g of fat", Toast.LENGTH_SHORT).show();
-                              break;
-                    }
-               }
-          });
-     }
+					case 2:
+						Toast.makeText(getActivity(), " You consumed " + String.format("%.2f", totalFat) + " g of fat", Toast.LENGTH_SHORT).show();
+						break;
+				}
+			}
+		});
+	}
 
-     @Click void ivPrevYear() {
-          ivNextYear.startAnimation(fadeIn);
-          rlRootDailyBar.startAnimation(fadeOut);
-          DATE = DateUtils.addDays(DATE, -1);
-          setPieData(DATE);
-     }
+	@Click void ivPrevYear() {
+		ivNextYear.startAnimation(fadeIn);
+		rlRootDailyBar.startAnimation(fadeOut);
+		DATE = DateUtils.addDays(DATE, -1);
+		setPieData(DATE);
+	}
 
-     @Click void ivNextYear() {
-          ivNextYear.startAnimation(fadeIn);
-          rlRootDailyBar.startAnimation(fadeOut);
-          DATE = DateUtils.addDays(DATE, 1);
-          setPieData(DATE);
-     }
+	@Click void ivNextYear() {
+		ivNextYear.startAnimation(fadeIn);
+		rlRootDailyBar.startAnimation(fadeOut);
+		DATE = DateUtils.addDays(DATE, 1);
+		setPieData(DATE);
+	}
 
-     public void setPieData(Date d) {
-          this.DATE = d;
-          totalProtein = 0;
-          totalFat = 0;
-          totalCarbs = 0;
-          totalCallories = 0;
-          final String date = Utils.formatDate(this.DATE, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD);
-          List <Ingridient> ingridients = DataBaseUtils.getProductsOnPlate(date);
-          if ( null != ingridients ) {
-               for ( Ingridient ingridient : ingridients ) {
-                    totalProtein += ingridient.protein;
-                    totalFat += ingridient.fat;
-                    totalCarbs += ingridient.carbohydrates;
-                    totalCallories += ingridient.kkal;
-                    Utils.log(String.format("==========prot:%s == carbs:%s == name:%s == fat %s============", ingridient.protein, ingridient.carbohydrates, ingridient.name, ingridient.fat));
-               }
+	public void setPieData(Date dateToSetUp) {
+		this.DATE = dateToSetUp;
+		totalProtein = 0;
+		totalFat = 0;
+		totalCarbs = 0;
+		totalCallories = 0;
+		final String date = Utils.formatDate(this.DATE, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD);
+		List <Ingridient> ingridients = DataBaseUtils.getProductsOnPlate(date);
+		if ( null != ingridients ) {
+			for ( Ingridient ingridient : ingridients ) {
+				totalProtein += ingridient.protein;
+				totalFat += ingridient.fat;
+				totalCarbs += ingridient.carbohydrates;
+				totalCallories += ingridient.kkal;
+				Utils.log(String.format("==========prot:%s == carbs:%s == name:%s == fat %s============", ingridient.protein, ingridient.carbohydrates, ingridient.name, ingridient.fat));
+			}
 
-               twCurrentDay.setText(Utils.formatDate(d, "EEEE") + " - " + Utils.formatDate(d, "dd") + " of " + Utils.formatDate(d, "MMM"));
-               setUpPieChart((int) totalProtein, (int) totalFat, (int) totalCarbs);
-          }
+			twCurrentDay.setText(Utils.formatDate(dateToSetUp, "EEEE") + " - " + Utils.formatDate(dateToSetUp, "dd") + " of " + Utils.formatDate(dateToSetUp, "MMM"));
+			setUpPieChart(totalProtein, totalFat, totalCarbs);
+		}
 
-     }
+	}
 
-     private void setUpPieChart(int protein, int fat, int carbs) {
+	private void setUpPieChart(double protein, double fat, double carbs) {
 
-          twProtein.setText(String.valueOf(protein));
-          twFat.setText(String.valueOf(fat));
-          twCarbs.setText(String.valueOf(carbs));
-          twCalories.setText(String.valueOf("Calories per day " + totalCallories));
+		twProtein.setText(String.format("%.2f", protein));
+		twFat.setText(String.format("%.2f", fat));
+		twCarbs.setText(String.format("%.2f", carbs));
+		twCalories.setText(String.valueOf("Calories per day " + totalCallories));
 
-          // set up pie chart parameters
-          fat = (fat == 0) ? 1 : fat;
-          protein = (protein == 0) ? 1 : protein;
-          carbs = (carbs == 0) ? 1 : carbs;
+		// set up pie chart parameters
+		fat = (fat < 1) ? 1 : fat;
+		protein = (protein < 1) ? 1 : protein;
+		carbs = (carbs < 1) ? 1 : carbs;
 
-          sliceFat.setValue(fat);
-          sliceProtein.setValue(protein);
-          sliceCarbs.setValue(carbs);
+		sliceFat.setValue((int) fat);
+		sliceProtein.setValue((int) protein);
+		sliceCarbs.setValue((int) carbs);
 
-          // remove existing slices (if exists)
-          pieGraphFoodStats.removeSlices();
-          // PROTEIN INDEX = 0
-          pieGraphFoodStats.addSlice(sliceProtein);
-          // CARBS INDEX = 1
-          pieGraphFoodStats.addSlice(sliceCarbs);
-          // FAT INDEX = 2
-          pieGraphFoodStats.addSlice(sliceFat);
-     }
+		// remove existing slices (if exists)
+		pieGraphFoodStats.removeSlices();
+		// PROTEIN INDEX = 0
+		pieGraphFoodStats.addSlice(sliceProtein);
+		// CARBS INDEX = 1
+		pieGraphFoodStats.addSlice(sliceCarbs);
+		// FAT INDEX = 2
+		pieGraphFoodStats.addSlice(sliceFat);
+	}
 }

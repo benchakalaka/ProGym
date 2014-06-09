@@ -13,8 +13,8 @@ public class FoodCalculator {
 	 * @param weight
 	 * @return
 	 */
-	public static double getKkal(double kkal_In_100G, double weight) {
-		return (kkal_In_100G / 100 * weight);
+	public static int getKkal(double kkal_In_100G, double weight) {
+		return (int)(kkal_In_100G / 100 * weight);
 	}
 
 	/**
