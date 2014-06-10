@@ -68,7 +68,7 @@ import com.progym.utils.Utils;
                this.ingridient.fat = cursor.getDouble(3);
                this.ingridient.kkal = cursor.getInt(4);
 
-               this.ingridient.groupName = Utils.getGroupNameByGroupPositionInExpListView(groupName);
+               this.ingridient.groupName = Utils.getGroupNameByCataloguePosition(groupName);
                this.ingridient.name = ingridient;
 
                etProtein.setText(String.format("%s", this.ingridient.protein));
@@ -76,7 +76,7 @@ import com.progym.utils.Utils;
                etKkal.setText(String.format("%s", this.ingridient.kkal));
                etCarbs.setText(String.format("%s", this.ingridient.carbohydrates));
                ivFoodImage.setImageResource(Utils.getImageIdByGroupPositionInExpListView(groupName));
-               twGroupNameAndIngridientName.setText(Utils.getGroupNameByGroupPositionInExpListView(groupName) + "  " + ingridient);
+               twGroupNameAndIngridientName.setText(Utils.getGroupNameByCataloguePosition(groupName) + "  " + ingridient);
 
                setUpPieChart((int) this.ingridient.protein, (int) this.ingridient.fat, (int) this.ingridient.carbohydrates);
 

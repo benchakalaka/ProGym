@@ -17,20 +17,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.progym.R;
 import com.progym.custom.DialogBodyTypeExplanation;
 import com.progym.custom.DialogBodyTypeExplanation_;
+import com.progym.custom.NDSpinner;
 import com.progym.custom.SetAlarmView_;
 import com.progym.model.User;
 import com.progym.model.WaterConsumed;
@@ -46,11 +44,12 @@ import com.progym.utils.Utils;
      @ViewById EditText                etUserName;
      @ViewById EditText                etUserWeight;
      @ViewById EditText                etUserAge;
-     @ViewById Spinner                 spinnerBodyType;
-     @ViewById Spinner                 spinnerGender;
+     @ViewById NDSpinner               spinnerBodyType;
+     @ViewById NDSpinner               spinnerGender;
      @ViewById ToggleButton            tbAlarm;
 
      @ViewById Button                  btnSave;
+     @ViewById Button                  btnCreateUser;
 
      @StringArrayRes String[]          bodyTypes;
      @StringArrayRes String[]          genders;
@@ -59,36 +58,39 @@ import com.progym.utils.Utils;
      private boolean                   SHOW_DIALOG_ON_START_ACTIVITY = false;
 
      private static AlarmWaterReceiver alarm                         = new AlarmWaterReceiver();
+     // Dialog body rype explanation
+     Dialog                            dialog;
 
      @AfterViews void afterViews() {
+          dialog = new Dialog(ActivityUserProfile.this);
           tbAlarm.setChecked(appPref.isAlarmSet().get());
-          etUserName.setText("Eleonora Kosheleva");
           InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
           imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
 
           BodyTypeAdapter bodyTypeAdapter = new BodyTypeAdapter(ActivityUserProfile.this, android.R.layout.simple_spinner_item, new String[] { "Ektomorf", "Mezo", "Endo" });
           GenderAdapter genderAdpater = new GenderAdapter(ActivityUserProfile.this, android.R.layout.simple_spinner_item, new String[] { "Male", "Female" });
-          spinnerBodyType.setAdapter(bodyTypeAdapter);
-
-          // Dialog body rype explanation
-          final Dialog d = new Dialog(ActivityUserProfile.this);
-          d.setTitle("Body type explanation");
-          final DialogBodyTypeExplanation view = DialogBodyTypeExplanation_.build(ActivityUserProfile.this);
-          d.setContentView(view);
-          d.setCanceledOnTouchOutside(true);
-          spinnerBodyType.setOnItemSelectedListener(new OnItemSelectedListener() {
-               @Override public void onItemSelected(AdapterView <?> adapter, View v, int pos, long lng) {
-                    view.setBodyTypeToExplain(pos);
-                    d.show();
-               }
-
-               @Override public void onNothingSelected(AdapterView <?> parentView) {
-                    d.show();
-               }
-          });
-
           spinnerGender.setAdapter(genderAdpater);
+          spinnerBodyType.setAdapter(bodyTypeAdapter);
           alarm.startAlarm(ActivityUserProfile.this);
+          dialog.setTitle("Body type explanation");
+          final DialogBodyTypeExplanation view = DialogBodyTypeExplanation_.build(ActivityUserProfile.this);
+          dialog.setContentView(view);
+          dialog.setCanceledOnTouchOutside(true);
+          /*
+           * spinnerBodyType.setOnItemSelectedListener(new OnItemSelectedListener() {
+           * @Override public void onItemSelected(AdapterView <?> adapter, View v, int pos, long lng) {
+           * view.setBodyTypeToExplain(pos);
+           * dialog.show();
+           * }
+           * @Override public void onNothingSelected(AdapterView <?> arg0) {
+           * }
+           * });
+           */
+     }
+
+     @Click void btnCreateUser() {
+          DataBaseUtils.setCurrentUser(new User(getApplicationContext()));
+          setUpUser();
      }
 
      private void setUpUser() {
@@ -96,9 +98,15 @@ import com.progym.utils.Utils;
           if ( null != u ) {
                etUserName.setText(u.name);
                etUserAge.setText(String.valueOf(u.age));
-               spinnerBodyType.setSelection(u.bodyType);
+               spinnerBodyType.setSelection(u.bodyType, false);
                spinnerGender.setSelection(u.gender);
                etUserWeight.setText(String.valueOf(u.weight));
+          } else {
+               etUserName.setText("");
+               etUserAge.setText("");
+               spinnerBodyType.setSelection(0, false);
+               spinnerGender.setSelection(0);
+               etUserWeight.setText(String.valueOf(0));
           }
      }
 
@@ -122,6 +130,9 @@ import com.progym.utils.Utils;
      @Override protected void onResume() {
           super.onResume();
           setUpUser();
+          if ( null != dialog ) {
+               dialog.dismiss();
+          }
      }
 
      @Click void btnSave() {

@@ -41,19 +41,6 @@
 					android:padding="3dp" >
 
 					<TextView
-						android:id="@+id/twDaily"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_weight="1"
-						android:background="@drawable/background_round_transparent_real"
-						android:gravity="center"
-						android:padding="6dp"
-						android:text="Daily"
-						android:textAppearance="?android:attr/textAppearanceSmall"
-						android:textColor="@android:color/white"
-						android:textStyle="bold" />
-
-					<TextView
 						android:id="@+id/twMonthly"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
