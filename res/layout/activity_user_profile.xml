@@ -161,7 +161,7 @@
 					android:text="Body type"
 					android:textAppearance="?android:attr/textAppearanceMedium" />
 
-				<Spinner
+				<com.progym.custom.NDSpinner
 					android:id="@+id/spinnerBodyType"
 					android:layout_width="fill_parent"
 					android:layout_height="wrap_content"
@@ -175,7 +175,7 @@
 					android:text="Gender"
 					android:textAppearance="?android:attr/textAppearanceMedium" />
 
-				<Spinner
+				<com.progym.custom.NDSpinner
 					android:id="@+id/spinnerGender"
 					android:layout_width="fill_parent"
 					android:layout_height="wrap_content"
@@ -200,12 +200,12 @@
 			android:text="Save profile" />
 
 		<Button
-			android:id="@+id/btnClearProfile"
+			android:id="@+id/btnCreateUser"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_weight="1"
 			android:background="@drawable/round_border_gray_gradient"
-			android:text="Clear profile" />
+			android:text="Create User" />
 	</LinearLayout>
 
 </RelativeLayout>

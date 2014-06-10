@@ -9,9 +9,9 @@ import android.content.Intent;
 import com.progym.R;
 import com.progym.custom.roundimageview.RoundedImageView;
 
-@EActivity ( R.layout.choose_type_of_progress ) public class ActivityChooseProgressType extends ProgymSuperActivity {
+@EActivity ( R.layout.activity_choose_type_of_progress ) public class ActivityChooseProgressType extends ProgymSuperActivity {
 
-     @ViewById RoundedImageView roundImageWaterProgress; 
+     @ViewById RoundedImageView roundImageWaterProgress;
      @ViewById RoundedImageView roundImageFoodProgress;
      @ViewById RoundedImageView roundImageFoodCalloriesProgress;
 
@@ -19,11 +19,15 @@ import com.progym.custom.roundimageview.RoundedImageView;
           // not using
      }
 
+     @Override void afterViews() {
+          fade.setDuration(300);
+     }
+
      /**
       * Show water progress activity
       */
      @Click void roundImageWaterProgress() {
-          roundImageWaterProgress.startAnimation(rightOut);
+          roundImageWaterProgress.startAnimation(fade);
           startActivity(new Intent(ActivityChooseProgressType.this, ActivityWaterProgress_.class));
      }
 
@@ -31,18 +35,16 @@ import com.progym.custom.roundimageview.RoundedImageView;
       * Show food progress activity
       */
      @Click void roundImageFoodProgress() {
-          roundImageFoodProgress.startAnimation(rightOut);
+          roundImageFoodProgress.startAnimation(fade);
           startActivity(new Intent(ActivityChooseProgressType.this, ActivityFoodProgress_.class));
      }
-     
+
      /**
       * Show food progress callories activity
       */
      @Click void roundImageFoodCalloriesProgress() {
-     	roundImageFoodCalloriesProgress.startAnimation(rightOut);
+          roundImageFoodCalloriesProgress.startAnimation(fade);
           startActivity(new Intent(ActivityChooseProgressType.this, ActivityCalloriesProgress_.class));
      }
-     
-     
-     
+
 }

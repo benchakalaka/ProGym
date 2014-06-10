@@ -1,8 +1,10 @@
 package com.progym.utils;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import android.app.Activity;
@@ -226,7 +228,7 @@ public class Utils {
           return retResourceId;
      }
 
-     public static String getGroupNameByGroupPositionInExpListView(int groupPosition) {
+     public static String getGroupNameByCataloguePosition(int groupPosition) {
           String retResourceId = "";
           switch (groupPosition) {
                case GlobalConstants.GROUP_INGRIDIENT_NAME.INT_MEAT_CATALOGUE:
@@ -361,6 +363,7 @@ public class Utils {
           }
           return "";
      }
+
      /*
       * Working copy
       * public static boolean isNeedToAddAlarm(SharedPreferences appPref) {
@@ -375,4 +378,21 @@ public class Utils {
       * }
       */
 
+     public static List <String> getIngridientsListByCatalogue(int cataloguePosition) {
+          switch (cataloguePosition) {
+               case GlobalConstants.GROUP_INGRIDIENT_NAME.INT_MEAT_CATALOGUE:
+                    return GlobalConstants.INGRIDIENTS.MEAT_LIST;
+               case GlobalConstants.GROUP_INGRIDIENT_NAME.INT_FRUITS_CATALOGUE:
+                    return GlobalConstants.INGRIDIENTS.FRUITS_LIST;
+               case GlobalConstants.GROUP_INGRIDIENT_NAME.INT_PORRIDGE_CATALOGUE:
+                    return GlobalConstants.INGRIDIENTS.PORRIDGE_LIST;
+               case GlobalConstants.GROUP_INGRIDIENT_NAME.INT_VEGITABLES_CATALOGUE:
+                    return GlobalConstants.INGRIDIENTS.VEGITABLES_LIST;
+               case GlobalConstants.GROUP_INGRIDIENT_NAME.INT_READY_MEALS_CATALOGUE:
+                    return GlobalConstants.INGRIDIENTS.READY_MEALS;
+               case GlobalConstants.GROUP_INGRIDIENT_NAME.INT_OTHER_CATALOGUE:
+                    return GlobalConstants.INGRIDIENTS.OTHER_LIST;
+          }
+          return new ArrayList <String>();
+     }
 }
