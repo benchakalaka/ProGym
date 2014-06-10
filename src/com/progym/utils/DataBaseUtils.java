@@ -132,4 +132,8 @@ public class DataBaseUtils {
 		}
 		return alreadyDrinked;
 	}
+
+	public static User findUserById(long id) {
+		return User.findById(User.class, id);
+	}
 }

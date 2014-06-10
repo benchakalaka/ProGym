@@ -22,7 +22,7 @@
             android:value="@string/app_id" />
         <meta-data
             android:name="DATABASE"
-            android:value="progym33.db" />
+            android:value="progym34.db" />
         <meta-data
             android:name="VERSION"
             android:value="1" />
