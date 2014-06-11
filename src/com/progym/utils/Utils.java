@@ -179,7 +179,7 @@ public class Utils {
      }
 
      public static int getImageIdByGroupName(String groupName) {
-          int retResourceId = R.drawable.ingridient;
+          int retResourceId = R.drawable.ready;
           if ( groupName.equals(GlobalConstants.GROUP_INGRIDIENT_NAME.STR_MEAT_CATALOGUE) ) {
                retResourceId = R.drawable.meat;
           } else if ( groupName.equals(GlobalConstants.GROUP_INGRIDIENT_NAME.STR_PORRIDGE_CATALOGUE) ) {

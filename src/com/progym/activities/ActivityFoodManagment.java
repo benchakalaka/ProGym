@@ -34,12 +34,13 @@ import com.progym.custom.OneProductOnPlateView;
 import com.progym.custom.OneProductOnPlateView_;
 import com.progym.custom.SinglePlateItemView;
 import com.progym.custom.SinglePlateItemView_;
-import com.progym.custom.fragments.FoodTypeExpListViewFragment;
-import com.progym.custom.fragments.FoodTypeExpListViewFragment_;
+import com.progym.custom.fragments.FoodTypeFragment;
+import com.progym.custom.fragments.FoodTypeFragment_;
 import com.progym.custom.fragments.FragmentIngridient;
 import com.progym.custom.fragments.FragmentIngridient_;
 import com.progym.model.Ingridient;
 import com.progym.model.Meal;
+import com.progym.model.ReadyIngridient;
 import com.progym.model.ReadyMeal;
 import com.progym.model.User;
 import com.progym.utils.DataBaseUtils;
@@ -94,7 +95,7 @@ import com.progym.utils.Utils;
                               final String kkal = event.getClipData().getItemAt(6).getText().toString();
 
                               if ( null == CURRENT_MEAL ) {
-                                   Utils.showCustomToast(ActivityFoodManagment.this, "Create plate", R.drawable.plate);
+                                   Utils.showCustomToast(ActivityFoodManagment.this, "Create plate", R.drawable.meal_title);
                                    ibCreatePlate.startAnimation(fadeIn);
                                    return false;
                               }
@@ -102,7 +103,7 @@ import com.progym.utils.Utils;
                               Ingridient ingridient = new Ingridient(getApplicationContext());
                               ingridient.protein = Double.valueOf(protein);
                               ingridient.carbohydrates = Double.valueOf(carbs);
-                              ingridient.fat = Double.valueOf(fat);  
+                              ingridient.fat = Double.valueOf(fat);
                               ingridient.kkal = Integer.valueOf(kkal);
                               ingridient.name = name;
                               ingridient.groupName = groupName;
@@ -114,7 +115,7 @@ import com.progym.utils.Utils;
                               ingridient.save();
 
                               OneProductOnPlateView view = OneProductOnPlateView_.build(getApplicationContext());
-                              view.ivProduct.setImageResource(Utils.getImageIdByGroupPositionInExpListView(FoodTypeExpListViewFragment.CURRENT_GROUPNAME_CATALOGUE));
+                              view.ivProduct.setImageResource(Utils.getImageIdByGroupPositionInExpListView(FoodTypeFragment.CURRENT_GROUPNAME_CATALOGUE));
                               view.twProductDescription.setText(String.format("%s : %sg (%skkal)", ingridient.name, ingridient.weight, ingridient.kkal));
                               llAlreadyOnPlate.addView(view);
 
@@ -148,30 +149,66 @@ import com.progym.utils.Utils;
                readyMeal.date = CURRENT_MEAL.date;
                readyMeal.save();
 
+               // GET ALL READY_MEAL_CATALOGUE INGRIDIENTS
+               List <ReadyMeal> meals = ReadyMeal.listAll(ReadyMeal.class);
+               if ( !GlobalConstants.INGRIDIENTS.READY_MEALS.isEmpty() ) {
+                    GlobalConstants.INGRIDIENTS.READY_MEALS.clear();
+               }
+               for ( ReadyMeal meal : meals ) {
+                    GlobalConstants.INGRIDIENTS.READY_MEALS.add(meal.date);
+               }
+
+               List <Ingridient> ingridients = DataBaseUtils.getProductsOnPlate(CURRENT_MEAL);
+               for ( Ingridient i : ingridients ) {
+                    ReadyIngridient readiIngridien = new ReadyIngridient(ActivityFoodManagment.this);
+                    readiIngridien.carbohydrates = i.carbohydrates;
+                    readiIngridien.fat = i.fat;
+                    readiIngridien.protein = i.protein;
+                    readiIngridien.groupName = i.groupName;
+                    readiIngridien.name = i.name;
+                    readiIngridien.kkal = i.kkal;
+                    readiIngridien.user = DataBaseUtils.getCurrentUser();
+                    readiIngridien.meal = CURRENT_MEAL;
+                    readiIngridien.weight = i.weight;
+                    readiIngridien.date = CURRENT_MEAL.date;
+                    readiIngridien.save();
+               }
+
                // Add to expandable list view ready meal date
                ((ViewPagerAdapter) viewPager.getAdapter()).foodCategoryExpListViewFragment.addToReadyMeal(CURRENT_MEAL.date);
-               Utils.showCustomToast(ActivityFoodManagment.this, "Plate has been saved", R.drawable.plate);
+               Utils.showCustomToast(ActivityFoodManagment.this, "Plate has been saved", R.drawable.meal_title);
           } else {
-               Utils.showCustomToast(this, "Create plate before saving it", R.drawable.plate);
+               Utils.showCustomToast(this, "Create plate before saving it", R.drawable.meal_title);
                ibCreatePlate.startAnimation(leftIn);
           }
      }
 
      @Click void llLeftPanelDateWithCalendar() {
-          List <Meal> meals = DataBaseUtils.getAllPlates();
-          if ( null != meals && !meals.isEmpty() ) {
-               HashMap <Date, Integer> datesToHighligt = new HashMap <Date, Integer>();
-               for ( Meal meal : meals ) {
-                    try {
-                         datesToHighligt.put(DateUtils.parseDate(meal.date, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD_HH_MM_SS), com.caldroid.R.color.caldroid_sky_blue);
-                    } catch (ParseException e) {
-                         e.printStackTrace();
+
+          showProgressBar(ActivityFoodManagment.this);
+
+          Thread t = new Thread(new Runnable() {
+
+               @Override public void run() {
+                    List <Meal> meals = DataBaseUtils.getAllPlates();
+                    if ( null != meals && !meals.isEmpty() ) {
+                         HashMap <Date, Integer> datesToHighligt = new HashMap <Date, Integer>();
+                         for ( Meal meal : meals ) {
+                              try {
+                                   datesToHighligt.put(DateUtils.parseDate(meal.date, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD_HH_MM_SS), com.caldroid.R.color.caldroid_sky_blue);
+                              } catch (ParseException e) {
+                                   e.printStackTrace();
+                              }
+                         }
+                         // highlight dates in calendar with blue color
+                         calendar.setBackgroundResourceForDates(datesToHighligt);
                     }
+                    calendar.show(getSupportFragmentManager(), GlobalConstants.TAG);
+                    hideProgressBar(ActivityFoodManagment.this);
                }
-               // highlight dates in calendar with blue color
-               calendar.setBackgroundResourceForDates(datesToHighligt);
-          }
-          calendar.show(getSupportFragmentManager(), GlobalConstants.TAG);
+          });
+          t.start();
+
      }
 
      @Override public void displaySelectedDate() {
@@ -242,12 +279,102 @@ import com.progym.utils.Utils;
           this.CURRENT_MEAL = meal;
 
           setLastPlateActive();
-          Utils.showCustomToast(this, "Plate has been created", R.drawable.plate);
+          Utils.showCustomToast(this, "Plate has been created", R.drawable.meal_title);
+     }
+
+     public void ibReadyMealPlate(List <ReadyIngridient> ingridientsOfReadyMeal) {
+
+          llAlreadyOnPlate.removeAllViews();
+          User u = DataBaseUtils.getCurrentUser();
+          Meal meal = new Meal(getApplicationContext());
+
+          // //////////////////////// Format proper date (Date from twCurrentDate + CURRENT_TIME) /////////////////////////////
+          String properDate = "";
+          properDate = Utils.formatDate(SELECTED_DATE, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD);
+          properDate += " " + Utils.formatDate(new Date(), DataBaseUtils.DATE_PATTERN_HH_MM_SS);
+          // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+          for ( ReadyIngridient i : ingridientsOfReadyMeal ) {
+               Ingridient ingridientToLog = new Ingridient(getApplicationContext());
+               ingridientToLog.carbohydrates = i.carbohydrates;
+               ingridientToLog.fat = i.fat;
+               ingridientToLog.protein = i.protein;
+               ingridientToLog.groupName = i.groupName;
+               ingridientToLog.name = i.name;
+               ingridientToLog.kkal = i.kkal;
+               ingridientToLog.user = u;
+               ingridientToLog.meal = meal;
+               ingridientToLog.weight = i.weight;
+               ingridientToLog.date = properDate;
+               ingridientToLog.save();
+          }
+
+          meal.date = properDate;
+          meal.user = u;
+          // save meal
+          meal.save();
+          this.CURRENT_MEAL = meal;
+
+          createProductOnPlate(meal);
+
+          setLastPlateActive();
+          Utils.showCustomToast(this, "Plate has been created", R.drawable.meal_title);
+     }
+
+     public void addReadyMealToCurrentPlate(List <ReadyIngridient> ingridientsOfReadyMeal) {
+          User u = DataBaseUtils.getCurrentUser();
+          if ( null == CURRENT_MEAL ) {
+               Utils.showCustomToast(this, "Create plate before", R.drawable.meal_title);
+               ibCreatePlate.startAnimation(fade);
+               return;
+          }
+          Meal meal = CURRENT_MEAL;
+
+          for ( ReadyIngridient i : ingridientsOfReadyMeal ) {
+               Ingridient ingridientToLog = new Ingridient(getApplicationContext());
+               ingridientToLog.carbohydrates = i.carbohydrates;
+               ingridientToLog.fat = i.fat;
+               ingridientToLog.protein = i.protein;
+               ingridientToLog.groupName = i.groupName;
+               ingridientToLog.name = i.name;
+               ingridientToLog.kkal = i.kkal;
+               ingridientToLog.user = u;
+               ingridientToLog.meal = meal;
+               ingridientToLog.weight = i.weight;
+               ingridientToLog.date = meal.date;
+               ingridientToLog.save();
+               OneProductOnPlateView view = OneProductOnPlateView_.build(getApplicationContext());
+               view.ivProduct.setImageResource(Utils.getImageIdByGroupName(ingridientToLog.groupName));
+               view.twProductDescription.setText(String.format("%s : %sg (%skkal)", ingridientToLog.name, ingridientToLog.weight, ingridientToLog.kkal));
+               llAlreadyOnPlate.addView(view);
+
+               int currentAmountOfIngridients = Integer.valueOf(((SinglePlateItemView) CURRENT_MEAL_VIEW).twIngridientsAmount.getText().toString());
+               ((SinglePlateItemView) CURRENT_MEAL_VIEW).twIngridientsAmount.setText(String.valueOf(currentAmountOfIngridients + 1));
+               svListOfConsumedMeals.post(new Runnable() {
+                    @Override public void run() {
+                         // This method works even better because there are no animations.
+                         svListOfConsumedMeals.smoothScrollTo(0, svListOfConsumedMeals.getBottom());
+                    }
+               });
+          }
+
+          // meal.date = properDate;
+          // meal.user = u;
+
+          // createProductOnPlate(meal);
+
+          // save meal
+          // meal.save();
+          this.CURRENT_MEAL = meal;
+
+          setLastPlateActive();
+          Utils.showCustomToast(this, "Plate has been created", R.drawable.meal_title);
+
      }
 
      private void createProductOnPlate(Meal meal) {
           SinglePlateItemView itemView = SinglePlateItemView_.build(getApplicationContext());
-          itemView.ivVolumeImage.setBackgroundResource(R.drawable.meal);
+          itemView.ivVolumeImage.setBackgroundResource(R.drawable.meal_title);
           itemView.twIngridientsAmount.setText(String.valueOf(DataBaseUtils.getProductsOnPlate(meal).size()));
 
           // Set Meal as property to this VEIW :TODO
@@ -261,17 +388,24 @@ import com.progym.utils.Utils;
                @Override public void onClick(View v) {
                     CURRENT_MEAL = (Meal) v.getTag();
                     CURRENT_MEAL_VIEW = v;
-                    Utils.log("CURRENT PLATE DATE :: " + CURRENT_MEAL.date);
-                    List <Ingridient> ingridients = DataBaseUtils.getProductsOnPlate(CURRENT_MEAL);
-                    if ( null != ingridients ) {
-                         for ( Ingridient ingridient : ingridients ) {
-                              Utils.log(String.format("==========prot:%s == carbs:%s == name:%s == fat %s============", ingridient.protein, ingridient.carbohydrates, ingridient.name, ingridient.fat));
-                         }
-                    }
+
+                    CURRENT_MEAL_VIEW.startAnimation(fade);
+                    Utils.showCustomToast(ActivityFoodManagment.this, String.format("Created %s", CURRENT_MEAL.date), R.drawable.meal_title);
+
+                    /*
+                     * Utils.log("CURRENT PLATE DATE :: " + CURRENT_MEAL.date);
+                     * List <Ingridient> ingridients = DataBaseUtils.getProductsOnPlate(CURRENT_MEAL);
+                     * if ( null != ingridients ) {
+                     * for ( Ingridient ingridient : ingridients ) {
+                     * Utils.log(String.format("==========prot:%s == carbs:%s == name:%s == fat %s============", ingridient.protein, ingridient.carbohydrates,
+                     * ingridient.name, ingridient.fat));
+                     * }
+                     * }
+                     */
 
                     for ( View plateView : PLATES_BUTTONS ) {
                          // Unselect all
-                         plateView.setBackgroundColor(Color.TRANSPARENT);// Color(Color.BLACK);
+                         plateView.setBackgroundColor(Color.TRANSPARENT);
                     }
                     v.setBackgroundResource(R.drawable.background_round_transparent_real);
 
@@ -285,9 +419,10 @@ import com.progym.utils.Utils;
       * A simple pager adapter
       */
      public static class ViewPagerAdapter extends FragmentStatePagerAdapter {
+          int                       NUM_OF_FRAGMENTS                = 2;
 
-          public FoodTypeExpListViewFragment foodCategoryExpListViewFragment = new FoodTypeExpListViewFragment_();
-          public FragmentIngridient          fragmentIngridient              = new FragmentIngridient_();
+          public FoodTypeFragment   foodCategoryExpListViewFragment = new FoodTypeFragment_();
+          public FragmentIngridient fragmentIngridient              = new FragmentIngridient_();
 
           public ViewPagerAdapter ( FragmentManager fm ) {
                super(fm);
@@ -308,7 +443,7 @@ import com.progym.utils.Utils;
           }
 
           @Override public int getCount() {
-               return 2;
+               return NUM_OF_FRAGMENTS;
           }
      }
 }

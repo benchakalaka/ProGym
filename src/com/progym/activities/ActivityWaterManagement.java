@@ -18,6 +18,7 @@ import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.DialogInterface;
 import android.media.MediaPlayer;
+import android.text.InputType;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -28,6 +29,7 @@ import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -58,6 +60,12 @@ import com.todddavies.components.progressbar.ProgressWheel;
      @ViewById LinearLayout         llRightPanelBody;
      @ViewById LinearLayout         llEditCustomWater;
 
+     @ViewById LinearLayout         ll250ml;
+     @ViewById LinearLayout         ll500ml;
+     @ViewById LinearLayout         ll1L;
+     @ViewById LinearLayout         ll2L;
+     @ViewById RelativeLayout       rlCustomMl;
+
      @ViewById HorizontalScrollView horizontalScrollView;
 
      @ViewById ProgressWheel        pwConsumedCircleProgress;
@@ -65,6 +73,7 @@ import com.todddavies.components.progressbar.ProgressWheel;
      @ViewById WaterLevelBodyView   ivBodyWaterLevel;
 
      private MediaPlayer            mediaPlayer;
+     private final double           USER_SHOULD_CONSUME = DataBaseUtils.getWaterUserShouldConsumePerDay();
 
      @Click void llEditCustomWater() {
           AlertDialog.Builder alert = new AlertDialog.Builder(this);
@@ -75,6 +84,7 @@ import com.todddavies.components.progressbar.ProgressWheel;
           // Set an EditText view to get user input
           final EditText input = new EditText(this);
           alert.setView(input);
+          input.setInputType(InputType.TYPE_CLASS_NUMBER);
 
           final CustomWaterVolume cwv;
           List <CustomWaterVolume> customVolumes = CustomWaterVolume.listAll(CustomWaterVolume.class);
@@ -87,9 +97,20 @@ import com.todddavies.components.progressbar.ProgressWheel;
 
           alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                @Override public void onClick(DialogInterface dialog, int whichButton) {
+                    int value = 0;
+                    try {
+                         value = Integer.valueOf(input.getText().toString());
+                    } catch (Exception ex) {
+                         ex.printStackTrace();
+                         Utils.showCustomToast(ActivityWaterManagement.this, "Please input proper value", R.drawable.unhappy);
+                         return;
+                    }
+                    if ( value <= 0 ) {
+                         Utils.showCustomToast(ActivityWaterManagement.this, "Value should be greater 0", R.drawable.unhappy);
+                         return;
+                    }
 
-                    String value = input.getText().toString();
-                    cwv.customVolume = Integer.valueOf(value);
+                    cwv.customVolume = value;
                     cwv.user = DataBaseUtils.getCurrentUser();
                     cwv.save();
                }
@@ -104,19 +125,30 @@ import com.todddavies.components.progressbar.ProgressWheel;
      }
 
      @Click void llLeftPanelDateWithCalendar() {
-          List <WaterConsumed> list = DataBaseUtils.getAllWaterConsumed();
 
-          HashMap <Date, Integer> datesAndColour = new HashMap <Date, Integer>();
-          for ( WaterConsumed singleDate : list ) {
-               try {
-                    datesAndColour.put(DateUtils.parseDate(singleDate.date, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD_HH_MM_SS), R.color.caldroid_sky_blue);
-               } catch (ParseException e) {
-                    e.printStackTrace();
+          showProgressBar(ActivityWaterManagement.this);
+
+          Thread t = new Thread(new Runnable() {
+
+               @Override public void run() {
+                    List <WaterConsumed> list = DataBaseUtils.getAllWaterConsumed();
+
+                    HashMap <Date, Integer> datesAndColour = new HashMap <Date, Integer>();
+                    for ( WaterConsumed singleDate : list ) {
+                         try {
+                              datesAndColour.put(DateUtils.parseDate(singleDate.date, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD_HH_MM_SS), R.color.caldroid_sky_blue);
+                         } catch (ParseException e) {
+                              e.printStackTrace();
+                         }
+                    }
+                    // highlight dates in calendar with blue color
+                    calendar.setBackgroundResourceForDates(datesAndColour);
+                    calendar.show(getSupportFragmentManager(), GlobalConstants.TAG);
+                    hideProgressBar(ActivityWaterManagement.this);
                }
-          }
-          // highlight dates in calendar with blue color
-          calendar.setBackgroundResourceForDates(datesAndColour);
-          calendar.show(getSupportFragmentManager(), GlobalConstants.TAG);
+          });
+          t.start();
+
      }
 
      @Override public void displaySelectedDate() {
@@ -126,11 +158,9 @@ import com.todddavies.components.progressbar.ProgressWheel;
 
           int alreadyDrinked = DataBaseUtils.getConsumedPerDay(twCurrentDate.getText().toString());
 
-          User u = DataBaseUtils.getCurrentUser();
           // in ml
-          double shouldDring = (u.weight / 30) * 1000;
-          double onePercent = shouldDring / 100;
-          displayStatistic(alreadyDrinked, shouldDring - alreadyDrinked, alreadyDrinked / onePercent);
+          double onePercent = USER_SHOULD_CONSUME / 100;
+          displayStatistic(alreadyDrinked, USER_SHOULD_CONSUME - alreadyDrinked, alreadyDrinked / onePercent);
 
           ivBodyWaterLevel.PERCENT_COMPLETE = (int) (alreadyDrinked / onePercent);
           ivBodyWaterLevel.invalidate();
@@ -145,6 +175,10 @@ import com.todddavies.components.progressbar.ProgressWheel;
           pwConsumedCircleProgress.setText(String.valueOf(String.format("%.2f L", consumed / 1000f)));
 
           pbConsumedLeft.setProgress((int) (percent));
+
+          if ( percent >= 100 ) {
+               Utils.showCustomToast(ActivityWaterManagement.this, "Well done " + DataBaseUtils.getCurrentUser().name + ", keep it up!", R.drawable.happy);
+          }
 
           /*
            * int barColor = color.caldroid_darker_gray;
@@ -241,6 +275,11 @@ import com.todddavies.components.progressbar.ProgressWheel;
 
      }
 
+     private void animateBody() {
+          fade.setDuration(500);
+          ivBodyWaterLevel.startAnimation(fade);
+     }
+
      private void dragView(View v) {
           String tag = v.getTag().toString();
           String[] mimeTypes = { ClipDescription.MIMETYPE_TEXT_PLAIN };
@@ -249,34 +288,72 @@ import com.todddavies.components.progressbar.ProgressWheel;
           v.startDrag(dragData, shadow, null, 0);
      }
 
+     @Click void ll250ml() {
+          animateBody();
+          double onePercent = USER_SHOULD_CONSUME / 100;
+          Utils.showCustomToast(ActivityWaterManagement.this, "250 ml is " + String.format("%.2f", 250 / onePercent) + "% of your body norma!", R.drawable.info);
+     }
+
+     @Click void ll500ml() {
+          animateBody();
+          double onePercent = USER_SHOULD_CONSUME / 100;
+          Utils.showCustomToast(ActivityWaterManagement.this, "500 ml is " + String.format("%.2f", 500 / onePercent) + "% of your body norma!", R.drawable.info);
+
+     }
+
+     @Click void ll1L() {
+          animateBody();
+          double onePercent = USER_SHOULD_CONSUME / 100;
+          Utils.showCustomToast(ActivityWaterManagement.this, "1L is " + String.format("%.2f", 1000 / onePercent) + "% of your body norma!", R.drawable.info);
+
+     }
+
+     @Click void ll2L() {
+          animateBody();
+          double onePercent = USER_SHOULD_CONSUME / 100;
+          Utils.showCustomToast(ActivityWaterManagement.this, "2L is " + String.format("%.2f", 2000 / onePercent) + "% of your body norma!", R.drawable.info);
+
+     }
+
+     @Click void rlCustomMl() {
+          animateBody();
+          List <CustomWaterVolume> customVolumes = CustomWaterVolume.listAll(CustomWaterVolume.class);
+          if ( !customVolumes.isEmpty() ) {
+
+               double onePercent = USER_SHOULD_CONSUME / 100;
+               Utils.showCustomToast(ActivityWaterManagement.this, customVolumes.get(0).customVolume + "ml is " + String.format("%.2f", customVolumes.get(0).customVolume / onePercent) + "% of your body norma!", R.drawable.info);
+
+          } else {
+               Toast.makeText(getApplicationContext(), "There is no custom water value found", Toast.LENGTH_SHORT).show();
+          }
+
+     }
+
      @Touch void ivGlass250ML(MotionEvent event, View v) {
           if ( event.getAction() == MotionEvent.ACTION_DOWN ) {
-               Toast.makeText(getApplicationContext(), "250 ml", Toast.LENGTH_SHORT).show();
+               animateBody();
                dragView(v);
           }
      }
 
      @Touch void ivBottle500ML(MotionEvent event, View v) {
           if ( event.getAction() == MotionEvent.ACTION_DOWN ) {
-
+               animateBody();
                dragView(v);
-               Toast.makeText(getApplicationContext(), "500 ml", Toast.LENGTH_SHORT).show();
           }
      }
 
      @Touch void ivBottle1L(MotionEvent event, View v) {
           if ( event.getAction() == MotionEvent.ACTION_DOWN ) {
-
+               animateBody();
                dragView(v);
-               Toast.makeText(getApplicationContext(), "1 L", Toast.LENGTH_SHORT).show();
           }
      }
 
      @Touch void ivBottle2L(MotionEvent event, View v) {
           if ( event.getAction() == MotionEvent.ACTION_DOWN ) {
-
+               animateBody();
                dragView(v);
-               Toast.makeText(getApplicationContext(), "2 L", Toast.LENGTH_SHORT).show();
           }
      }
 
@@ -287,6 +364,7 @@ import com.todddavies.components.progressbar.ProgressWheel;
                if ( !customVolumes.isEmpty() ) {
                     ivCustomWaterVolume.setTag(String.valueOf(customVolumes.get(0).customVolume));
                     dragView(v);
+                    animateBody();
                } else {
                     Toast.makeText(getApplicationContext(), "There is no custom water value found", Toast.LENGTH_SHORT).show();
                }

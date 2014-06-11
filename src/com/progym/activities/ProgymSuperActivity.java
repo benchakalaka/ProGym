@@ -9,6 +9,8 @@ import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.res.AnimationRes;
 import org.apache.commons.lang3.time.DateUtils;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.animation.Animation;
@@ -36,6 +38,7 @@ import com.progym.interfaces.ISuperActivity;
      @AnimationRes Animation                              fade;
 
      @ViewById LinearLayout                               llLeftPanelDateWithCalendar;
+     ProgressDialog                                       pb;
 
      // Setup listener
      public final com.roomorama.caldroid.CaldroidListener onDateChangeListener = new com.roomorama.caldroid.CaldroidListener() {
@@ -61,6 +64,30 @@ import com.progym.interfaces.ISuperActivity;
           rightIn.setDuration(1000);
           rightOut.setDuration(1000);
           fadeIn.setDuration(1000);
+     }
+
+     protected void showProgressBar(Activity activity) {
+          if ( null != pb ) {
+               pb.show();
+          } else {
+               initProgressBar(activity);
+          }
+     }
+
+     private void initProgressBar(Activity activity) {
+          pb = new ProgressDialog(activity);
+          pb.setIndeterminate(true);
+          pb.setTitle("Please wait...");
+          pb.setMessage("Populating data");
+          pb.show();
+     }
+
+     protected void hideProgressBar(Activity activity) {
+          if ( null != pb ) {
+               pb.dismiss();
+          } else {
+               initProgressBar(activity);
+          }
      }
 
      /**

@@ -24,10 +24,11 @@ import java.util.Date;
 import java.util.List;
 
 import org.achartengine.ChartFactory;
+import org.achartengine.chart.BarChart.Type;
 import org.achartengine.model.CategorySeries;
 import org.achartengine.model.XYMultipleSeriesDataset;
+import org.achartengine.renderer.SimpleSeriesRenderer;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
-import org.achartengine.renderer.XYSeriesRenderer;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
@@ -48,7 +49,7 @@ import com.progym.model.Ingridient;
 import com.progym.utils.DataBaseUtils;
 import com.progym.utils.Utils;
 
-@EFragment ( R.layout.fragment_linegraph_yearly ) public class FoodProgressYearlyLineFragment extends Fragment {
+@EFragment ( R.layout.fragment_food_progress_yearly ) public class CalloriesProgressYearlyLineFragment extends Fragment {
 
      /**
       * 
@@ -78,10 +79,10 @@ import com.progym.utils.Utils;
      @ViewById ImageView                               ivPrevYear;
      @ViewById ImageView                               ivNextYear;
 
-     private static Date                               DATE;
      /*
       * create graph
       */
+     private static Date                               DATE;
      View                                              viewChart = null;
 
      @AnimationRes ( R.anim.fadein ) Animation         fadeIn;
@@ -91,6 +92,11 @@ import com.progym.utils.Utils;
      @AnimationRes ( R.anim.push_right_in ) Animation  rightIn;
      @AnimationRes ( R.anim.push_right_out ) Animation rightOut;
 
+     /*
+      * @Click void ivProteinCarbsFatProgress() {
+      * setYearProgressData(new Date());
+      * }
+      */
      @Click void ivPrevYear() {
           ivPrevYear.startAnimation(fadeIn);
 
@@ -99,6 +105,7 @@ import com.progym.utils.Utils;
 
                @Override public void onAnimationStart(Animation animation) {
                     DATE = DateUtils.addYears(DATE, -1);
+
                }
 
                @Override public void onAnimationRepeat(Animation animation) {
@@ -106,6 +113,7 @@ import com.progym.utils.Utils;
 
                @Override public void onAnimationEnd(Animation animation) {
                     setYearProgressData(DATE, true);
+
                }
           });
           viewChart.startAnimation(rightOut);
@@ -114,6 +122,8 @@ import com.progym.utils.Utils;
 
      @Click void ivNextYear() {
           ivNextYear.startAnimation(fadeIn);
+
+          leftOut.setDuration(1000);
           leftOut.setAnimationListener(new AnimationListener() {
 
                @Override public void onAnimationStart(Animation animation) {
@@ -128,7 +138,6 @@ import com.progym.utils.Utils;
                }
           });
           viewChart.startAnimation(leftOut);
-
      }
 
      /**
@@ -146,8 +155,8 @@ import com.progym.utils.Utils;
           renderer.setLegendTextSize(15);
           int length = colors.length;
           for ( int i = 0; i < length; i++ ) {
-               // SimpleSeriesRenderer r = new SimpleSeriesRenderer();
-               XYSeriesRenderer r = new XYSeriesRenderer();
+               SimpleSeriesRenderer r = new SimpleSeriesRenderer();
+               // XYSeriesRenderer r = new XYSeriesRenderer();
                r.setColor(colors[i]);
                renderer.addSeriesRenderer(r);
           }
@@ -207,64 +216,37 @@ import com.progym.utils.Utils;
           int[] x = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
 
           XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
-          CategorySeries seriesProtein = new CategorySeries("Protein");
-          CategorySeries seriesFat = new CategorySeries("Fat");
-          CategorySeries seriesCarbs = new CategorySeries("Carbs");
+          CategorySeries seriesCallories = new CategorySeries("Callories");
 
           List <Ingridient> list;
           for ( int element : x ) {
                list = DataBaseUtils.getAllFoodConsumedInMonth(Utils.formatDate(date, DataBaseUtils.DATE_PATTERN_YYYY_MM));
 
                // init "average" data
-               double totalProtein = 0 , totalFat = 0 , totalCarbs = 0 , totalCallories = 0;
+               int totalCallories = 0;
                for ( Ingridient ingridient : list ) {
-                    totalProtein += ingridient.protein;
-                    totalFat += ingridient.fat;
-                    totalCarbs += ingridient.carbohydrates;
                     totalCallories += ingridient.kkal;
                }
-
-               seriesProtein.add((double) Math.round(totalProtein * 100) / 100);
-               seriesFat.add((double) Math.round(totalFat * 100) / 100);
-               seriesCarbs.add((double) Math.round(totalCarbs * 100) / 100);
-
+               // add value to series
+               seriesCallories.add(totalCallories / daysInMonth);
                // calculate maximum Y axis values
-               yMaxAxisValue = Math.max(yMaxAxisValue, (int) totalProtein);
-               yMaxAxisValue = Math.max(yMaxAxisValue, (int) totalFat);
-               yMaxAxisValue = Math.max(yMaxAxisValue, (int) totalCarbs);
-
+               yMaxAxisValue = Math.max(yMaxAxisValue, totalCallories / daysInMonth);
                // increment month
                date = DateUtils.addMonths(date, 1);
           }
 
-          int[] colors = new int[] { getActivity().getResources().getColor(R.color.green), getActivity().getResources().getColor(R.color.orange), getActivity().getResources().getColor(R.color.purple) };
+          int[] colors = new int[] { getActivity().getResources().getColor(R.color.purple) };
           XYMultipleSeriesRenderer renderer = buildBarRenderer(colors);
-          setChartSettings(renderer, String.format("Protein/Carbohydrates/Fat statistic for %s year", Utils.getSpecificDateValue(DATE, "yyyy")), "Months", "Amount (g)", 0.7, 12.3, 0, yMaxAxisValue + 30, Color.GRAY, Color.LTGRAY);
+          setChartSettings(renderer, String.format("Callories statistic for %s year", Utils.getSpecificDateValue(DATE, "yyyy")), "Months", "Amount (g)", 0.7, 12.3, 0, yMaxAxisValue + 30, Color.GRAY, Color.LTGRAY);
 
           renderer.getSeriesRendererAt(0).setDisplayChartValues(true);
-          renderer.getSeriesRendererAt(1).setDisplayChartValues(true);
-          renderer.getSeriesRendererAt(2).setDisplayChartValues(true);
-
           renderer.getSeriesRendererAt(0).setChartValuesTextSize(15f);
-          renderer.getSeriesRendererAt(1).setChartValuesTextSize(15f);
-          renderer.getSeriesRendererAt(2).setChartValuesTextSize(15f);
-
-          // renderer.getSeriesRendererAt(0).setChartValuesTextAlign(Align.CENTER);
-          // renderer.getSeriesRendererAt(1).setChartValuesTextAlign(Align.LEFT);
-          // renderer.getSeriesRendererAt(2).setChartValuesTextAlign(Align.RIGHT);
-
           renderer.setXLabels(0);
-          // renderer.setYLabels(10);
-          // renderer.setXLabelsAlign(Align.LEFT);
-          // renderer.setYLabelsAlign(Align.LEFT);
-          // renderer.setPanEnabled(true, false);
           renderer.setClickEnabled(false);
           renderer.setZoomEnabled(false);
           renderer.setPanEnabled(false, false);
           renderer.setZoomButtonsVisible(false);
           renderer.setPanLimits(new double[] { 1, 11 });
-          // renderer.setZoomEnabled(false);
-          // renderer.setZoomRate(1.1f);
           renderer.setShowGrid(true);
           renderer.setShowLegend(true);
           renderer.setFitLegend(true);
@@ -273,13 +255,11 @@ import com.progym.utils.Utils;
                renderer.addXTextLabel(i + 1, ActivityWaterProgress.months_short[i]);
 
           }
+          dataset.addSeries(seriesCallories.toXYSeries());
 
-          dataset.addSeries(seriesProtein.toXYSeries());
-          dataset.addSeries(seriesFat.toXYSeries());
-          dataset.addSeries(seriesCarbs.toXYSeries());
-
-          viewChart = ChartFactory.getLineChartView(getActivity(), dataset, renderer/* , Type.STACKED */);
+          viewChart = ChartFactory.getBarChartView(getActivity(), dataset, renderer, Type.DEFAULT);
           rlRootGraphLayout.addView(viewChart, 0);
+
           if ( isLeftIn ) {
                rightIn.setDuration(1000);
                viewChart.startAnimation(rightIn);

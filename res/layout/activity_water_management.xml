@@ -122,6 +122,7 @@
                         <!-- 250 ml LL -->
 
                         <LinearLayout
+                        	android:id="@+id/ll250ml"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
@@ -148,6 +149,7 @@
                         <!-- 500ml LL -->
 
                         <LinearLayout
+                        	android:id="@+id/ll500ml"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
@@ -174,6 +176,7 @@
                         <!-- 1L LL -->
 
                         <LinearLayout
+                        	android:id="@+id/ll1L"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
@@ -200,6 +203,7 @@
                         <!-- 2L LL -->
 
                         <LinearLayout
+                        	android:id="@+id/ll2L"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
@@ -226,6 +230,7 @@
                         <!-- CUSTOM AMOUNT OF WATER LL -->
 
                         <RelativeLayout
+                        	android:id="@+id/rlCustomMl"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"

@@ -57,8 +57,19 @@ import com.progym.utils.Utils;
      // ((ActivityFoodManagment) getActivity()).viewPager.setCurrentItem(ActivityFoodManagment.EXPANDABLE_LISTVIEW_FOOD_TYPES, true);
 
      public void setGroupAndProduct(int groupName, String ingridient) {
-          this.ingridient = new Ingridient(getActivity());
-
+          try {
+               this.ingridient = new Ingridient(getActivity());
+          } catch (Exception ex) {
+               ex.printStackTrace();
+               try {
+                    Utils.showCustomToast(getActivity(), "Error occured :(", R.drawable.unhappy);
+                    getActivity().finish();
+               } catch (Exception ee) {
+                    ee.printStackTrace();
+                    return;
+               }
+               return;
+          }
           Cursor cursor = DataBaseUtils.getByGroupNameAndIngridientName(ingridient);
           if ( null != cursor ) {
                cursor.moveToNext();
@@ -211,12 +222,12 @@ import com.progym.utils.Utils;
                     ex.printStackTrace();
                     // TODO: replace strings to resources!!!
                     // TODO: replace with separate message for each fields
-                    Utils.showCustomToast(getActivity(), "Set proper weight,protein,carbs,fat,kkal", R.drawable.facebook);
+                    Utils.showCustomToast(getActivity(), "Set proper weight,protein,carbs,fat,kkal", R.drawable.warning);
                     return;
                }
 
                // for debug only, create appropriate int value
-               double protein , fat , carbs ;
+               double protein , fat , carbs;
                int kkal;
 
                protein = FoodCalculator.getProtein(ingridient.protein, ingridient.weight);

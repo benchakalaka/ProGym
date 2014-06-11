@@ -33,6 +33,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -47,36 +48,69 @@ import com.progym.utils.Utils;
 
 @EFragment ( R.layout.fragment_bargraph_daily ) public class WaterProgressDailyBarFragment extends Fragment {
 
-     @ViewById RelativeLayout                   rlRootDailyBar;
-     @ViewById ImageView                        ivPrevYear;
-     @ViewById ImageView                        ivNextYear;
-     @ViewById BarGraph                         bargraph;
-     @ViewById TextView                         twCurrentDay;
+     @ViewById RelativeLayout                          rlRootDailyBar;
+     @ViewById ImageView                               ivPrevYear;
+     @ViewById ImageView                               ivNextYear;
+     @ViewById BarGraph                                bargraph;
+     @ViewById TextView                                twCurrentDay;
 
-     @AnimationRes ( R.anim.fadein ) Animation  fadeIn;
-     @AnimationRes ( R.anim.fadeout ) Animation fadeOut;
-     private Date                               DATE;
+     @AnimationRes ( R.anim.fadein ) Animation         fadeIn;
+     @AnimationRes ( R.anim.fadeout ) Animation        fadeOut;
+     @AnimationRes ( R.anim.push_left_in ) Animation   leftIn;
+     @AnimationRes ( R.anim.push_left_out ) Animation  leftOut;
+     @AnimationRes ( R.anim.push_right_in ) Animation  rightIn;
+     @AnimationRes ( R.anim.push_right_out ) Animation rightOut;
+
+     private Date                                      DATE;
 
      @Override public void onActivityCreated(Bundle savedInstanceState) {
           super.onActivityCreated(savedInstanceState);
-          setBarData(new Date());
+          setBarData(new Date(), true);
      }
 
      @Click void ivPrevYear() {
-          ivNextYear.startAnimation(fadeIn);
-          rlRootDailyBar.startAnimation(fadeOut);
-          DATE = DateUtils.addDays(DATE, -1);
-          setBarData(DATE);
+          ivPrevYear.startAnimation(fadeIn);
+
+          rightOut.setDuration(1000);
+          rightOut.setAnimationListener(new AnimationListener() {
+
+               @Override public void onAnimationStart(Animation animation) {
+                    DATE = DateUtils.addDays(DATE, -1);
+               }
+
+               @Override public void onAnimationRepeat(Animation animation) {
+               }
+
+               @Override public void onAnimationEnd(Animation animation) {
+                    setBarData(DATE, true);
+               }
+          });
+          bargraph.startAnimation(rightOut);
+
      }
 
      @Click void ivNextYear() {
           ivNextYear.startAnimation(fadeIn);
-          rlRootDailyBar.startAnimation(fadeOut);
-          DATE = DateUtils.addDays(DATE, 1);
-          setBarData(DATE);
+
+          leftOut.setDuration(1000);
+          leftOut.setAnimationListener(new AnimationListener() {
+
+               @Override public void onAnimationStart(Animation animation) {
+                    DATE = DateUtils.addDays(DATE, 1);
+               }
+
+               @Override public void onAnimationRepeat(Animation animation) {
+               }
+
+               @Override public void onAnimationEnd(Animation animation) {
+                    setBarData(DATE, false);
+               }
+          });
+          bargraph.startAnimation(leftOut);
+
      }
 
-     public void setBarData(Date d) {
+     public void setBarData(Date d, boolean isLeftIn) {
           this.DATE = d;
           twCurrentDay.setText(Utils.formatDate(d, "EEEE") + " - " + Utils.formatDate(d, "dd") + " of " + Utils.formatDate(d, "MMM"));
           final String date = Utils.formatDate(this.DATE, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD);
@@ -116,6 +150,14 @@ import com.progym.utils.Utils;
 
                }
           });
+
+          if ( isLeftIn ) {
+               rightIn.setDuration(1000);
+               bargraph.startAnimation(rightIn);
+          } else {
+               leftIn.setDuration(1000);
+               bargraph.startAnimation(leftIn);
+          }
 
      }
 }

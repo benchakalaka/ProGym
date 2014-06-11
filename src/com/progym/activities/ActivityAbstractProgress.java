@@ -5,6 +5,8 @@ import java.util.Date;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.ViewById;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.TextView;
@@ -18,7 +20,7 @@ import com.progym.interfaces.IProgressActivity;
 @EBean public abstract class ActivityAbstractProgress extends FragmentActivity implements IProgressActivity {
      static Date                                          SELECTED_DATE        = new Date();
      CaldroidFragmentCustom                               calendar;
- 
+
      @ViewById public TextView                            twDaily;
      @ViewById public TextView                            twMonthly;
      @ViewById public TextView                            twYearly;
@@ -28,6 +30,7 @@ import com.progym.interfaces.IProgressActivity;
      public static final int                              MONTHLY              = 1;
      public static final int                              YEARLY               = 2;
      public static final int                              RANGE                = 3;
+     ProgressDialog                                       pb;
 
      // Setup listener
      public final com.roomorama.caldroid.CaldroidListener onDateChangeListener = new com.roomorama.caldroid.CaldroidListener() {
@@ -59,6 +62,30 @@ import com.progym.interfaces.IProgressActivity;
           twYearly.setPadding(6, 6, 6, 6);
           twDaily.setPadding(6, 6, 6, 6);
           twMonthly.setPadding(6, 6, 6, 6);
+     }
+
+     protected void showProgressBar(Activity activity) {
+          if ( null != pb ) {
+               pb.show();
+          } else {
+               initProgressBar(activity);
+          }
+     }
+
+     private void initProgressBar(Activity activity) {
+          pb = new ProgressDialog(activity);
+          pb.setIndeterminate(true);
+          pb.setTitle("Please wait...");
+          pb.setMessage("Populating data");
+          pb.show();
+     }
+
+     protected void hideProgressBar(Activity activity) {
+          if ( null != pb ) {
+               pb.dismiss();
+          } else {
+               initProgressBar(activity);
+          }
      }
 
      /**

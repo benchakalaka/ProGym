@@ -1,50 +1,78 @@
 package com.progym.activities;
 
-import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.res.AnimationRes;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Point;
-import android.view.Display;
-import android.view.ViewGroup.MarginLayoutParams;
 import android.view.animation.Animation;
-import android.widget.LinearLayout;
 
 import com.progym.R;
+import com.progym.custom.roundimageview.RoundedImageView;
 
 @EActivity ( R.layout.activity_select_food_or_water_managment ) public class ActivitySelectFoodOrWaterManagment extends Activity {
 
-     @ViewById LinearLayout                    llFoodTracking;
-     @ViewById LinearLayout                    llWaterTracking;
+     @ViewById RoundedImageView              roundImageFoodManagment;
+     @ViewById RoundedImageView              roundImageWaterManagment;
 
-     @AnimationRes ( R.anim.fadein ) Animation fadeIn;
+     @AnimationRes ( R.anim.fade ) Animation fade;
+     private ProgressDialog                  pb;
 
-     @AfterViews void afterViews() {
-          Display display = getWindowManager().getDefaultDisplay();
-          Point size = new Point();
-          display.getSize(size);
-          int marginLeft = size.x / 4;
+     @Click void roundImageFoodManagment() {
+          roundImageFoodManagment.startAnimation(fade);
+          showProgressBar(ActivitySelectFoodOrWaterManagment.this);
 
-          MarginLayoutParams params = (MarginLayoutParams) llFoodTracking.getLayoutParams();
-          params.leftMargin = marginLeft;
-          llFoodTracking.setLayoutParams(params);
+          Thread t = new Thread(new Runnable() {
 
-          params = (MarginLayoutParams) llWaterTracking.getLayoutParams();
-          params.leftMargin = marginLeft;
-          llWaterTracking.setLayoutParams(params);
+               @Override public void run() {
+                    startActivity(new Intent(ActivitySelectFoodOrWaterManagment.this, ActivityFoodManagment_.class));
+                    hideProgressBar(ActivitySelectFoodOrWaterManagment.this);
+               }
+          });
+          t.start();
+
      }
 
-     @Click void llFoodTracking() {
-          llFoodTracking.startAnimation(fadeIn);
-          startActivity(new Intent(ActivitySelectFoodOrWaterManagment.this, ActivityFoodManagment_.class));
+     @Click void roundImageWaterManagment() {
+          roundImageWaterManagment.startAnimation(fade);
+          showProgressBar(ActivitySelectFoodOrWaterManagment.this);
+
+          Thread t = new Thread(new Runnable() {
+
+               @Override public void run() {
+
+                    ActivitySelectFoodOrWaterManagment.this.startActivity(new Intent(ActivitySelectFoodOrWaterManagment.this, ActivityWaterManagement_.class));
+                    hideProgressBar(ActivitySelectFoodOrWaterManagment.this);
+               }
+          });
+          t.start();
+
      }
 
-     @Click void llWaterTracking() {
-          llWaterTracking.startAnimation(fadeIn);
-          startActivity(new Intent(ActivitySelectFoodOrWaterManagment.this, ActivityWaterManagement_.class));
+     protected void showProgressBar(Activity activity) {
+          if ( null != pb ) {
+               pb.show();
+          } else {
+               initProgressBar(activity);
+          }
+     }
+
+     private void initProgressBar(Activity activity) {
+          pb = new ProgressDialog(activity);
+          pb.setIndeterminate(true);
+          pb.setTitle("Please wait...");
+          pb.setMessage("Populating data");
+          pb.show();
+     }
+
+     protected void hideProgressBar(Activity activity) {
+          if ( null != pb ) {
+               pb.dismiss();
+          } else {
+               initProgressBar(activity);
+          }
      }
 }

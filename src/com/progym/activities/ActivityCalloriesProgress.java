@@ -22,8 +22,8 @@ import com.progym.custom.CaldroidFragmentCustom;
 import com.progym.custom.NonSwipeableViewPager;
 import com.progym.custom.fragments.CalloriesProgressMonthlyLineFragment;
 import com.progym.custom.fragments.CalloriesProgressMonthlyLineFragment_;
-import com.progym.custom.fragments.FoodCalloriesProgressYearlyLineFragment;
-import com.progym.custom.fragments.FoodCalloriesProgressYearlyLineFragment_;
+import com.progym.custom.fragments.CalloriesProgressYearlyLineFragment;
+import com.progym.custom.fragments.CalloriesProgressYearlyLineFragment_;
 import com.progym.interfaces.IProgressActivity;
 
 @EActivity ( R.layout.callories_progress_activity ) public class ActivityCalloriesProgress extends FragmentActivity implements IProgressActivity {
@@ -95,11 +95,11 @@ import com.progym.interfaces.IProgressActivity;
           switch (fragmentType) {
                case MONTHLY:
                     viewPager.setCurrentItem(MONTHLY, true);
-                    ((ProgressCalloriesViewPagerAdapter) viewPager.getAdapter()).linegraphMonthly.setLineData3(new Date());
+                    ((ProgressCalloriesViewPagerAdapter) viewPager.getAdapter()).linegraphMonthly.setLineData3(new Date(), false);
                     break;
                case YEARLY:
                     viewPager.setCurrentItem(YEARLY, true);
-                    ((ProgressCalloriesViewPagerAdapter) viewPager.getAdapter()).linegraphYearly.setYearProgressData(SELECTED_DATE);
+                    ((ProgressCalloriesViewPagerAdapter) viewPager.getAdapter()).linegraphYearly.setYearProgressData(SELECTED_DATE, true);
                     break;
           }
      }
@@ -109,9 +109,9 @@ import com.progym.interfaces.IProgressActivity;
       */
      private class ProgressCalloriesViewPagerAdapter extends FragmentStatePagerAdapter {
 
-          private static final int                       NUM_OF_FRAGMENTS = 2;
-          public CalloriesProgressMonthlyLineFragment    linegraphMonthly = new CalloriesProgressMonthlyLineFragment_();
-          public FoodCalloriesProgressYearlyLineFragment linegraphYearly  = new FoodCalloriesProgressYearlyLineFragment_();
+          private static final int                    NUM_OF_FRAGMENTS = 2;
+          public CalloriesProgressMonthlyLineFragment linegraphMonthly = new CalloriesProgressMonthlyLineFragment_();
+          public CalloriesProgressYearlyLineFragment  linegraphYearly  = new CalloriesProgressYearlyLineFragment_();
 
           public ProgressCalloriesViewPagerAdapter ( FragmentManager fm ) {
                super(fm);

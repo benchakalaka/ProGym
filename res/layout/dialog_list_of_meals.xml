@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/rrrrrrrr"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent" >
+
+	<ScrollView
+		android:id="@+id/ssssssssw"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@drawable/blue_gradient" >
+
+		<LinearLayout
+			android:id="@+id/llIngridientsListToAdd"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_margin="1dp"
+			android:gravity="center"
+			android:orientation="vertical"
+			android:padding="3dp" >
+		</LinearLayout>
+	</ScrollView>
+
+	<LinearLayout
+		android:id="@+id/llSaveCancelButtons"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:orientation="horizontal" >
+
+		<Button
+			android:id="@+id/btnCreatePlateWithReadyMeal"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:background="@drawable/round_border_gray_gradient"
+			android:text="Add ready meal" />
+		
+		<Button
+			android:id="@+id/btnAddReadyMealToCurrPlate"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:background="@drawable/round_border_gray_gradient"
+			android:text="Add to current meal" />
+
+		<Button
+			android:id="@+id/btnCancel"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:background="@drawable/round_border_gray_gradient"
+			android:text="Cancel" />
+	</LinearLayout>
+
+</RelativeLayout>
