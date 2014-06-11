@@ -125,7 +125,7 @@ import com.todddavies.components.progressbar.ProgressWheel;
      }
 
      @Click void llLeftPanelDateWithCalendar() {
-
+     	llLeftPanelDateWithCalendar.startAnimation(fade);
           showProgressBar(ActivityWaterManagement.this);
 
           Thread t = new Thread(new Runnable() {
@@ -359,14 +359,15 @@ import com.todddavies.components.progressbar.ProgressWheel;
 
      @Touch void ivCustomWaterVolume(MotionEvent event, View v) {
           if ( event.getAction() == MotionEvent.ACTION_DOWN ) {
-
+          	
                List <CustomWaterVolume> customVolumes = CustomWaterVolume.listAll(CustomWaterVolume.class);
                if ( !customVolumes.isEmpty() ) {
                     ivCustomWaterVolume.setTag(String.valueOf(customVolumes.get(0).customVolume));
                     dragView(v);
                     animateBody();
                } else {
-                    Toast.makeText(getApplicationContext(), "There is no custom water value found", Toast.LENGTH_SHORT).show();
+               	Utils.showCustomToast(ActivityWaterManagement.this, "There is no custom water value found, press edit button", R.drawable.warning);
+                    llEditCustomWater.startAnimation(fade);
                }
           }
      }

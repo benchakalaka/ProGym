@@ -92,9 +92,7 @@ public class FoodCalloriesProgressYearlyLineFragment extends Fragment {
 	@AnimationRes ( R.anim.fadein ) Animation	fadeIn;
 	@AnimationRes ( R.anim.fadein ) Animation	fadeOut;
 
-	@Click void ivProteinCarbsFatProgress() {
-		setYearProgressData(new Date());
-	}
+
 
 	@Click void ivPrevYear() {
 		ivNextYear.startAnimation(fadeIn);

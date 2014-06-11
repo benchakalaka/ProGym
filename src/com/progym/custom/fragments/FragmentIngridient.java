@@ -218,6 +218,13 @@ import com.progym.utils.Utils;
                     ingridient.carbohydrates = Double.valueOf(etCarbs.getText().toString());
                     ingridient.fat = Double.valueOf(etFat.getText().toString());
                     ingridient.kkal = Integer.valueOf(etKkal.getText().toString());
+                    
+                    // control checking
+                    if (ingridient.protein+ingridient.carbohydrates+ingridient.fat > 100){
+                    	Utils.showCustomToast(getActivity(), "Protein+Carbs+Fat should be less than 100", R.drawable.warning);
+                    	return;
+                    }
+                    
                } catch (Exception ex) {
                     ex.printStackTrace();
                     // TODO: replace strings to resources!!!
