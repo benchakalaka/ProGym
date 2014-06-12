@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/scrollView1"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent" >
+
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@drawable/blue_gradient" >
+
+		<TextView
+			android:id="@+id/twEdit"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_alignParentLeft="true"
+			android:layout_alignParentTop="true"
+			android:layout_centerHorizontal="true"
+			android:background="@drawable/background_round_transparent_real"
+			android:text="Edit"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:textColor="@color/caldroid_white" />
+
+		<ImageView
+			android:id="@+id/ivEdit"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+			android:layout_below="@+id/twEdit"
+			android:src="@drawable/edit" />
+
+		<LinearLayout
+			android:id="@+id/llSaveCancelButtons"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_alignParentBottom="true"
+			android:layout_below="@+id/ivEdit"
+			android:orientation="horizontal" >
+
+			<Button
+				android:id="@+id/btnEdit"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:background="@drawable/round_border_gray_gradient"
+				android:text="Edit" />
+
+			<Button
+				android:id="@+id/btnCancel"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:background="@drawable/round_border_gray_gradient"
+				android:text="Cancel" />
+		</LinearLayout>
+
+		<EditText
+			android:id="@+id/etCustomValue"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_alignBottom="@+id/ivEdit"
+			android:layout_alignParentRight="true"
+			android:textColor="@android:color/white"
+			android:layout_alignTop="@+id/ivEdit"
+			android:layout_toRightOf="@+id/ivEdit"
+			android:ems="10"
+			android:inputType="number" />
+
+	</RelativeLayout>
+
+</ScrollView>

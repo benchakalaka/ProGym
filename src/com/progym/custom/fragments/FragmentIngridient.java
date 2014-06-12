@@ -8,21 +8,22 @@ import org.androidannotations.annotations.Touch;
 import org.androidannotations.annotations.ViewById;
 import org.apache.commons.lang3.StringUtils;
 
-import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.ClipData;
 import android.content.ClipDescription;
-import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
+import android.text.InputType;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.DragShadowBuilder;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.echo.holographlibrary.PieGraph;
 import com.echo.holographlibrary.PieGraph.OnSliceClickedListener;
@@ -47,18 +48,30 @@ import com.progym.utils.Utils;
      @ViewById EditText  etKkal;
      @ViewById EditText  etCarbs;
 
-     Ingridient          ingridient;
+     static Ingridient   ingridient;
 
      // protein, carbs, fat pie slices
      PieSlice            sliceProtein = new PieSlice();
      PieSlice            sliceFat     = new PieSlice();
      PieSlice            sliceCarbs   = new PieSlice();
 
+     /*
+      * @Override
+      * public void onSaveInstanceState(Bundle outState) {
+      * super.onSaveInstanceState(outState);
+      * outState.put
+      * }
+      * @Override
+      * public void onActivityCreated(Bundle savedInstanceState) {
+      * super.onActivityCreated(savedInstanceState);
+      * mWebView.restoreState(savedInstanceState);
+      * }
+      */
      // ((ActivityFoodManagment) getActivity()).viewPager.setCurrentItem(ActivityFoodManagment.EXPANDABLE_LISTVIEW_FOOD_TYPES, true);
 
      public void setGroupAndProduct(int groupName, String ingridient) {
           try {
-               this.ingridient = new Ingridient(getActivity());
+               FragmentIngridient.ingridient = new Ingridient(getActivity());
           } catch (Exception ex) {
                ex.printStackTrace();
                try {
@@ -74,57 +87,62 @@ import com.progym.utils.Utils;
           if ( null != cursor ) {
                cursor.moveToNext();
 
-               this.ingridient.protein = cursor.getDouble(1);
-               this.ingridient.carbohydrates = cursor.getDouble(2);
-               this.ingridient.fat = cursor.getDouble(3);
-               this.ingridient.kkal = cursor.getInt(4);
+               FragmentIngridient.ingridient.protein = cursor.getDouble(1);
+               FragmentIngridient.ingridient.carbohydrates = cursor.getDouble(2);
+               FragmentIngridient.ingridient.fat = cursor.getDouble(3);
+               FragmentIngridient.ingridient.kkal = cursor.getInt(4);
 
-               this.ingridient.groupName = Utils.getGroupNameByCataloguePosition(groupName);
-               this.ingridient.name = ingridient;
+               FragmentIngridient.ingridient.groupName = Utils.getGroupNameByCataloguePosition(groupName);
+               FragmentIngridient.ingridient.name = ingridient;
 
-               etProtein.setText(String.format("%s", this.ingridient.protein));
-               etFat.setText(String.format("%s", this.ingridient.fat));
-               etKkal.setText(String.format("%s", this.ingridient.kkal));
-               etCarbs.setText(String.format("%s", this.ingridient.carbohydrates));
+               etProtein.setText(String.format("%s", FragmentIngridient.ingridient.protein));
+               etFat.setText(String.format("%s", FragmentIngridient.ingridient.fat));
+               etKkal.setText(String.format("%s", FragmentIngridient.ingridient.kkal));
+               etCarbs.setText(String.format("%s", FragmentIngridient.ingridient.carbohydrates));
                ivFoodImage.setImageResource(Utils.getImageIdByGroupPositionInExpListView(groupName));
                twGroupNameAndIngridientName.setText(Utils.getGroupNameByCataloguePosition(groupName) + "  " + ingridient);
 
-               setUpPieChart((int) this.ingridient.protein, (int) this.ingridient.fat, (int) this.ingridient.carbohydrates);
+               setUpPieChart((int) FragmentIngridient.ingridient.protein, (int) FragmentIngridient.ingridient.fat, (int) FragmentIngridient.ingridient.carbohydrates);
 
                cursor.close();
           }
      }
 
      @Click void ivEditIngridient() {
-          AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
-
-          alert.setTitle("Custom ingridient name");
-          alert.setMessage("name");
+          final Dialog editDialog = new Dialog(getActivity());
+          editDialog.setContentView(R.layout.dialog_custom_value);
 
           // Set an EditText view to get user input
-          final EditText input = new EditText(getActivity());
+          final EditText input = (EditText) editDialog.findViewById(R.id.etCustomValue);
           input.setText(ingridient.name);
-          alert.setView(input);
+          input.setSelection(ingridient.name.length());
+          input.setInputType(InputType.TYPE_CLASS_TEXT);
 
-          alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-               @Override public void onClick(DialogInterface dialog, int whichButton) {
+          Button cancel = (Button) editDialog.findViewById(R.id.btnCancel);
+          Button edit = (Button) editDialog.findViewById(R.id.btnEdit);
 
+          cancel.setOnClickListener(new OnClickListener() {
+
+               @Override public void onClick(View v) {
+                    editDialog.dismiss();
+               }
+          });
+
+          edit.setOnClickListener(new OnClickListener() {
+
+               @Override public void onClick(View v) {
                     String value = input.getText().toString();
                     if ( !StringUtils.isEmpty(value) ) {
                          ingridient.name = value;
                          twGroupNameAndIngridientName.setText(ingridient.groupName + " " + ingridient.name);
+                         editDialog.dismiss();
                     } else {
-                         Utils.showCustomToast(getActivity(), "Canot be empty", R.drawable.food);
+                         Utils.showCustomToast(getActivity(), "Name of product cannot be empty", R.drawable.warning);
                     }
                }
           });
 
-          alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-               @Override public void onClick(DialogInterface dialog, int whichButton) {
-                    // Canceled.
-               }
-          });
-          alert.show();
+          editDialog.show();
      }
 
      @Override public void onResume() {
@@ -195,15 +213,15 @@ import com.progym.utils.Utils;
                     // 0 -> prot | 1 -> carbs | 2 -> fat
                     switch (index) {
                          case 0:
-                              Toast.makeText(getActivity(), ingridient.name + " contains " + ingridient.protein + " g of protein", Toast.LENGTH_SHORT).show();
+                              Utils.showCustomToast(getActivity(), ingridient.name + " contains " + ingridient.protein + " g of protein", R.drawable.info);
                               break;
 
                          case 1:
-                              Toast.makeText(getActivity(), ingridient.name + " contains " + ingridient.carbohydrates + " g of carbohydrates", Toast.LENGTH_SHORT).show();
+                              Utils.showCustomToast(getActivity(), ingridient.name + " contains " + ingridient.carbohydrates + " g of carbohydrates", R.drawable.info);
                               break;
 
                          case 2:
-                              Toast.makeText(getActivity(), ingridient.name + " contains " + ingridient.fat + " g of fat", Toast.LENGTH_SHORT).show();
+                              Utils.showCustomToast(getActivity(), ingridient.name + " contains " + ingridient.fat + " g of fat", R.drawable.info);
                               break;
                     }
                }
@@ -218,13 +236,13 @@ import com.progym.utils.Utils;
                     ingridient.carbohydrates = Double.valueOf(etCarbs.getText().toString());
                     ingridient.fat = Double.valueOf(etFat.getText().toString());
                     ingridient.kkal = Integer.valueOf(etKkal.getText().toString());
-                    
+
                     // control checking
-                    if (ingridient.protein+ingridient.carbohydrates+ingridient.fat > 100){
-                    	Utils.showCustomToast(getActivity(), "Protein+Carbs+Fat should be less than 100", R.drawable.warning);
-                    	return;
+                    if ( ingridient.protein + ingridient.carbohydrates + ingridient.fat > 100 ) {
+                         Utils.showCustomToast(getActivity(), "Protein+Carbs+Fat should be less than 100", R.drawable.warning);
+                         return;
                     }
-                    
+
                } catch (Exception ex) {
                     ex.printStackTrace();
                     // TODO: replace strings to resources!!!

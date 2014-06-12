@@ -36,7 +36,6 @@ import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.echo.holographlibrary.PieGraph;
 import com.echo.holographlibrary.PieGraph.OnSliceClickedListener;
@@ -92,15 +91,15 @@ import com.progym.utils.Utils;
                     // 0 -> prot | 1 -> carbs | 2 -> fat
                     switch (index) {
                          case 0:
-                              Toast.makeText(getActivity(), " You consumed " + String.format("%.2f", totalProtein) + " g of protein", Toast.LENGTH_SHORT).show();
+                              Utils.showCustomToast(getActivity(), " You consumed " + String.format("%.2f", totalProtein) + " g of protein", R.drawable.pfc);
                               break;
 
                          case 1:
-                              Toast.makeText(getActivity(), " You consumed " + String.format("%.2f", totalCarbs) + " g of carbohydrates", Toast.LENGTH_SHORT).show();
+                              Utils.showCustomToast(getActivity(), " You consumed " + String.format("%.2f", totalCarbs) + " g of carbohydrates", R.drawable.pfc);
                               break;
 
                          case 2:
-                              Toast.makeText(getActivity(), " You consumed " + String.format("%.2f", totalFat) + " g of fat", Toast.LENGTH_SHORT).show();
+                              Utils.showCustomToast(getActivity(), " You consumed " + String.format("%.2f", totalFat) + " g of fat", R.drawable.pfc);
                               break;
                     }
                }

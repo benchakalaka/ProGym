@@ -41,14 +41,6 @@
 						android:layout_alignParentTop="true"
 						android1:background="@drawable/circle_bg" />
 
-					<TextView
-						android1:id="@+id/twGroupNameAndIngridientName"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android1:layout_toRightOf="@id/ivFoodImage"
-						android:textAppearance="?android:attr/textAppearanceMedium"
-						android1:text="s" />
-
 					<LinearLayout
 						android:id="@+id/llKkalAndWeight"
 						android:layout_width="match_parent"
@@ -255,6 +247,23 @@
 						android1:layout_alignParentTop="true"
 						android1:background="@drawable/edit"
 						android1:textColor="@android:color/background_light" />
+
+					<TextView
+						android1:id="@+id/twGroupNameAndIngridientName"
+						android1:layout_width="wrap_content"
+						android1:layout_height="wrap_content"
+						android1:layout_above="@+id/llKkalAndWeight"
+						android1:layout_alignParentRight="true"
+						android1:layout_below="@+id/ivEditIngridient"
+						android1:layout_toRightOf="@+id/ivFoodImage"
+						android1:ellipsize="marquee"
+						android1:focusable="true"
+						android:lines="2"
+						android1:focusableInTouchMode="true"
+						android1:marqueeRepeatLimit="marquee_forever"
+						android1:scrollHorizontally="true"
+						android1:textAppearance="?android:attr/textAppearanceMedium" />
+
 				</RelativeLayout>
 
 				<LinearLayout

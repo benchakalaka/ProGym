@@ -75,7 +75,7 @@ import com.progym.utils.Utils;
      @Click void llNutrition() {
           llNutrition.startAnimation(fadeIn);
           if ( null == DataBaseUtils.getCurrentUser() ) {
-               Utils.showToast(getApplicationContext(), "Go to -Your profile- and create user before continue", true);
+               Utils.showCustomToast(ActivityStart.this, "Create profile, before continue, please", R.drawable.info);
                return;
           }
           startActivity(new Intent(ActivityStart.this, ActivitySelectFoodOrWaterManagment_.class));
@@ -89,7 +89,7 @@ import com.progym.utils.Utils;
      @Click void llProgress() {
           llProgress.startAnimation(fadeIn);
           if ( null == DataBaseUtils.getCurrentUser() ) {
-               Utils.showToast(getApplicationContext(), "Go to -Your profile- and create user before continue", true);
+               Utils.showCustomToast(ActivityStart.this, "Create profile, before continue, please", R.drawable.info);
                return;
           }
           startActivity(new Intent(ActivityStart.this, ActivityChooseProgressType_.class));

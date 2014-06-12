@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/rootRelative"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:layout_margin="3dip"
+	android:background="@drawable/blue_gradient" >
+
+	<ImageView
+		android:id="@+id/ivVolumeImage"
+		android:layout_width="40dip"
+		android:layout_height="80dip"
+		android:contentDescription="@null"
+		android:paddingLeft="20dp" />
+
+	<TextView
+		android:id="@+id/twWaterVolume"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_centerVertical="true"
+		android:layout_toLeftOf="@+id/twTime"
+		android:layout_toRightOf="@+id/ivVolumeImage"
+		android:paddingLeft="20dp"
+		android:text="250 ml"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:textColor="@android:color/white"
+		android:textStyle="bold" />
+
+	<TextView
+		android:id="@+id/twTime"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentRight="true"
+		android:layout_alignParentTop="true"
+		android:background="@drawable/background_round_border_green"
+		android:padding="4dp"
+		android:text="10:23:31"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:textColor="@android:color/holo_green_dark"
+		android:textStyle="italic|bold" />
+
+</RelativeLayout>

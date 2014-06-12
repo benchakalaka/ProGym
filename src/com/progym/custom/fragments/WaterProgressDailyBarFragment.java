@@ -37,7 +37,6 @@ import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.echo.holographlibrary.Bar;
 import com.echo.holographlibrary.BarGraph;
@@ -112,7 +111,7 @@ import com.progym.utils.Utils;
 
      public void setBarData(Date d, boolean isLeftIn) {
           this.DATE = d;
-          twCurrentDay.setText(Utils.formatDate(d, "EEEE") + " - " + Utils.formatDate(d, "dd") + " of " + Utils.formatDate(d, "MMM"));
+          twCurrentDay.setText(Utils.formatDate(d, "EEEE") + " - " + Utils.formatDate(d, "dd") + ",  " + Utils.formatDate(d, "MMM"));
           final String date = Utils.formatDate(this.DATE, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD);
           final double shouldDrink = DataBaseUtils.getWaterUserShouldConsumePerDay();
           final int consumed = DataBaseUtils.getConsumedPerDay(date);
@@ -141,11 +140,11 @@ import com.progym.utils.Utils;
 
                @Override public void onClick(int index) {
                     if ( 0 == index ) {
-                         Toast.makeText(getActivity(), "Norma for you " + String.format("%.2f L per day", (shouldDrink / 1000f)), Toast.LENGTH_SHORT).show();
+                         Utils.showCustomToast(getActivity(), "Norma for you " + String.format("%.2f L per day", (shouldDrink / 1000f)), R.drawable.info);
                     }
 
                     if ( 1 == index ) {
-                         Toast.makeText(getActivity(), date + " you consumed " + String.format("%.2f L", (consumed / 1000f)), Toast.LENGTH_SHORT).show();
+                         Utils.showCustomToast(getActivity(), date + " you consumed " + String.format("%.2f L", (consumed / 1000f)), R.drawable.info);
                     }
 
                }

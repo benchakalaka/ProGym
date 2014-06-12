@@ -35,6 +35,7 @@ import com.progym.interfaces.ISuperActivity;
      @AnimationRes ( R.anim.push_right_in ) Animation     rightIn;
      @AnimationRes ( R.anim.push_right_out ) Animation    rightOut;
      @AnimationRes ( R.anim.fadein ) Animation            fadeIn;
+     @AnimationRes ( R.anim.drag_animation ) Animation    drag;
      @AnimationRes Animation                              fade;
 
      @ViewById LinearLayout                               llLeftPanelDateWithCalendar;
