@@ -13,6 +13,23 @@ public class GlobalConstants {
      public static final String TAG = "ProGym";
 
      /**
+      * Class represents different advice type
+      * 
+      * @author Karpachev Ihor
+      */
+     public static interface ADVICE_TYPE {
+          public static final int    INT_BRAIN_WORK       = 0;
+          public static final int    INT_FAT_BURNING      = 1;
+          public static final int    INT_STRESS_REDUCTION = 2;
+          public static final int    INT_ENERGY           = 3;
+
+          public static final String STR_BRAIN_WORK       = "Brain Work";
+          public static final String STR_FAT_BURNING      = "Fat burning";
+          public static final String STR_STRESS_REDUCTION = "Stress reduction";
+          public static final String STR_ENERGY           = "Energy";
+     }
+
+     /**
       * Class represents different water volumes
       * 
       * @author Karpachev Ihor

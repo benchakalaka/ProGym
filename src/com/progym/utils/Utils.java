@@ -178,6 +178,29 @@ public class Utils {
           });
      }
 
+     public static int getImageIdByActiveAdvice(int activeAdvice) {
+          int retResourceId = R.drawable.brain;
+          switch (activeAdvice) {
+               case GlobalConstants.ADVICE_TYPE.INT_BRAIN_WORK:
+                    retResourceId = R.drawable.brain;
+                    break;
+
+               case GlobalConstants.ADVICE_TYPE.INT_ENERGY:
+                    retResourceId = R.drawable.energy;
+                    break;
+
+               case GlobalConstants.ADVICE_TYPE.INT_FAT_BURNING:
+                    retResourceId = R.drawable.pfc;
+                    break;
+
+               case GlobalConstants.ADVICE_TYPE.INT_STRESS_REDUCTION:
+                    retResourceId = R.drawable.stress;
+                    break;
+          }
+
+          return retResourceId;
+     }
+
      public static int getImageIdByGroupName(String groupName) {
           int retResourceId = R.drawable.ready;
           if ( groupName.equals(GlobalConstants.GROUP_INGRIDIENT_NAME.STR_MEAT_CATALOGUE) ) {

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/rlSlideMe"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="#00B180" >
+
+	<LinearLayout
+		android:id="@+id/llDragOnMe"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:padding="27dp"
+		android:background="@drawable/circle"
+		android:layout_centerInParent="true" >
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textColor="@color/caldroid_darker_gray"
+			android:textStyle="italic|bold"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:text="What do you need?" />
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentLeft="true"
+		android:layout_centerVertical="true"
+		android:orientation="vertical" >
+
+		<ImageView
+			android:id="@+id/ivEnergy"
+			android:layout_width="100dp"
+			android:layout_height="100dp"
+			android:src="@drawable/energy" />
+
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center"
+			android:text="Energy"
+			android:textColor="@color/caldroid_white" />
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentRight="true"
+		android:layout_centerVertical="true"
+		android:orientation="vertical" >
+
+		<ImageView
+			android:id="@+id/ivFatBurinig"
+			android:layout_width="100dp"
+			android:layout_height="100dp"
+			android:src="@drawable/pfc" />
+
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center"
+			android:text="Fat burning"
+			android:textColor="@color/caldroid_white" />
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentTop="true"
+		android:layout_centerHorizontal="true"
+		android:orientation="vertical" >
+
+		<ImageView
+			android:id="@+id/ivBrain"
+			android:layout_width="100dp"
+			android:layout_height="100dp"
+			android:src="@drawable/brain" />
+
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center"
+			android:text="Brain work"
+			android:textColor="@color/caldroid_white" />
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:layout_centerHorizontal="true"
+		android:orientation="vertical" >
+
+		<ImageView
+			android:id="@+id/ivStressReduction"
+			android:layout_width="100dp"
+			android:layout_height="100dp"
+			android:src="@drawable/stress" />
+
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:ellipsize="end"
+			android:gravity="center"
+			android:singleLine="false"
+			android:text="Stress reduction"
+			android:textColor="@color/caldroid_white" />
+	</LinearLayout>
+
+</RelativeLayout>

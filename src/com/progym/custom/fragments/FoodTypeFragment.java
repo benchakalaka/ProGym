@@ -120,7 +120,6 @@ import com.progym.utils.Utils;
                     }
 
                     Button btnCancel = (Button) dialog.findViewById(R.id.btnCancel);
-                    Button btnCreatePlateWithReadyMeal = (Button) dialog.findViewById(R.id.btnCreatePlateWithReadyMeal);
                     Button btnAddToReadyMeal = (Button) dialog.findViewById(R.id.btnAddReadyMealToCurrPlate);
 
                     btnAddToReadyMeal.setOnClickListener(new OnClickListener() {
@@ -141,15 +140,6 @@ import com.progym.utils.Utils;
                          }
                     });
 
-                    btnCreatePlateWithReadyMeal.setOnClickListener(new OnClickListener() {
-
-                         @Override public void onClick(View v) {
-                              if ( !ingridients.isEmpty() ) {
-                                   ((com.progym.activities.ActivityFoodManagment) getActivity()).ibReadyMealPlate(ingridients);
-                              }
-                              dialog.dismiss();
-                         }
-                    });
                     dialog.show();
                }
           });

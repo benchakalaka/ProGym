@@ -12,6 +12,7 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 import org.apache.commons.lang3.time.DateUtils;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -69,7 +70,7 @@ import com.progym.utils.Utils;
 
      @Override protected void onPause() {
           super.onPause();
-          Utils.log("=========================================PAUSE=========================================");
+          startActivity(new Intent(ActivityFoodManagment.this, ActivityStart_.class));
 
      }
 

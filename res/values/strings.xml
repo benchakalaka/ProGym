@@ -7,6 +7,135 @@
 	<string name="app_id">330369713784050</string>
 	<string name="choose_user">Choose user profile</string>
 
+	<string-array name="brain_ingridients_list1">
+		<item>Мюсли</item>
+		<item>Курага</item>
+		<item>Сардины</item>
+		<item>Миндаль</item>
+	</string-array>
+	<string-array name="brain_ingridients_list2">
+		<item>Лесные ягоды</item>
+		<item>Дыня</item>
+		<item>Зеленый перец</item>
+		<item>Броколи</item>
+	</string-array>
+	<string-array name="brain_ingridients_list3">
+		<item>Зелень</item>
+		<item>Картофель</item>
+		<item>Бананы</item>
+		<item>Печень</item>
+	</string-array>
+	<string-array name="brain_ingridients_list4">
+		<item>Не меньше 8 стаканов нешазированой воды в день</item>
+	</string-array>
+	<string-array name="fat_ingridients_list1">
+		<item>Постное красное мясо</item>
+		<item>Рыба</item>
+		<item>Птица</item>
+		<item>Тофу</item>
+	</string-array>
+	<string-array name="fat_ingridients_list2">
+		<item>Кориченвый рис</item>
+		<item>Яблоки</item>
+		<item>Салат</item>
+		<item>Хлеб с отрубями</item>
+	</string-array>
+	<string-array name="fat_ingridients_list3">
+		<item>Творог</item>
+		<item>Йогурт</item>
+		<item>Обезжиреное молоко</item>
+		<item>Сливочный сыр</item>
+	</string-array>
+	<string-array name="fat_ingridients_list4">
+		<item>Арбуз</item>
+		<item>Помидоры</item>
+		<item>Огурцы</item>
+		<item>Сладкий перец</item>
+	</string-array>
+	<string-array name="stress_ingridients_list1">
+		<item>Шпинат</item>
+		<item>Авокадо</item>
+		<item>Картофель</item>
+		<item>Бананы</item>
+	</string-array>
+	<string-array name="stress_ingridients_list2">
+		<item>Яйца</item>
+		<item>Нут</item>
+		<item>Курица</item>
+		<item>Крупы</item>
+	</string-array>
+	<string-array name="stress_ingridients_list3">
+		<item>Капуста</item>
+		<item>Грейпфруты</item>
+		<item>Гуава</item>
+		<item>Вишня</item>
+	</string-array>
+	<string-array name="stress_ingridients_list4">
+		<item>Тофу</item>
+		<item>Ржаной хлеб</item>
+		<item>Кедровые орехи</item>
+		<item>Кунжут</item>
+	</string-array>
+	
+	
+	<string-array name="energy_ingridients_list1">
+		<item>Кролик</item>
+		<item>Льняное масло</item>
+		<item>Подсолнечное масло</item>
+		<item>Жирная рыба</item>
+	</string-array>
+	<string-array name="energy_ingridients_list2">
+		<item>Гречка</item>
+		<item>Коричневый рис</item>
+		<item>Фасоль</item>
+		<item>Овсянка</item>
+	</string-array>
+	<string-array name="energy_ingridients_list3">
+		<item>Морковь</item>
+		<item>Красный перец</item>
+		<item>Руккола</item>
+		<item>Манго</item>
+	</string-array>
+	<string-array name="energy_ingridients_list4">
+		<item>Сушеный инжир</item>
+		<item>Кешью</item>
+		<item>Чечевица</item>
+		<item>Постное красное масло</item>
+	</string-array>
+
+	<string name="fat1">Белок</string>
+	<string name="fat2">Клетчатка</string>
+	<string name="fat3">Нежирные молочные продукты</string>
+	<string name="fat4">Продукты, ботатые водой</string>
+	<string name="stress1">Калий</string>
+	<string name="stress2">Витамины группы В</string>
+	<string name="stress3">Витамин С</string>
+	<string name="stress4">Магний</string>
+	<string name="brain1">Железо</string>
+	<string name="brain2">Витамин С</string>
+	<string name="brain3">Витамины группы В</string>
+	<string name="brain4">Вода</string>
+	<string name="energy1">Полиненасыщенные жырные кислоты</string>
+	<string name="energy2">Еда с низким GI*</string>
+	<string name="energy3">Бета-каротин</string>
+	<string name="energy4">Железо</string>
+	<string name="fat_descr1">Быстро насыщает</string>
+	<string name="fat_descr2">Не дает тебе проголодаться и контролирует уровень сахара в крови</string>
+	<string name="fat_descr3">Помогают справиться с жировыми отложениями</string>
+	<string name="fat_descr4">Содержит мало каллорий</string>
+	<string name="stress_descr1">Улучшает роботу нервной и кровеносной системы</string>
+	<string name="stress_descr2">Для здоровой нервной системы</string>
+	<string name="stress_descr3">Усиливает твой иммунитет</string>
+	<string name="stress_descr4">Минерал, который ты активно расходуешь в состоянии стресса</string>
+	<string name="brain_descr1">Регулирует приток крови к мозгу</string>
+	<string name="brain_descr2">Усиливает твой иммунитет</string>
+	<string name="brain_descr3">Для здоровой нервной системы</string>
+	<string name="brain_descr4">На 10% улучшает роботу мозга</string>
+	<string name="energy_descr1">Источник энергии для каждой клетки</string>
+	<string name="energy_descr2">Поддерживает постоянный уровень энергии в твоем организме</string>
+	<string name="energy_descr3">Усиливает твою устойчивость к вирусам</string>
+	<string name="energy_descr4">Регулирует энергообмен в организме</string>
+
 	<string-array name="bodyTypes">
 		<item>Ektomorf</item>
 		<item>Mezomorf</item>

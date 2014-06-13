@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical" >
+
+	<!-- Top panel -->
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_weight="1" >
+
+		<!-- Top LEFT panel -->
+		<RelativeLayout
+			android:id="@+id/rl1"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:background="@drawable/blue_gradient" >
+
+			<ImageView
+				android:id="@+id/iv1"
+				android:layout_width="100dp"
+				android:layout_height="100dp"
+				android:layout_alignParentLeft="true"
+				android:layout_alignParentTop="true"
+				/>
+
+			<TextView
+				android:id="@+id/tw1"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentRight="true"
+				android:layout_alignTop="@+id/iv1"
+				android:layout_toRightOf="@+id/iv1"
+				android:text="Level 2" />
+			
+			<TextView
+				android:id="@+id/tw1Description"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignLeft="@+id/iv1"
+				android:layout_alignParentBottom="true"
+				android:layout_alignParentRight="true"
+				android:textColor="@color/caldroid_black"
+				android:text="Description" />
+
+		</RelativeLayout>
+
+		<!-- Top Right panel -->
+		<RelativeLayout
+			android:id="@+id/rl2"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:background="@drawable/blue_gradient" >
+			
+			<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			 >
+
+			<ImageView
+				android:id="@+id/iv2"
+				android:layout_width="100dp"
+				android:layout_height="100dp"
+				android:layout_alignParentLeft="true"
+				android:layout_alignParentTop="true"
+				 />
+
+			<TextView
+				android:id="@+id/tw2"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentRight="true"
+				android:layout_alignTop="@+id/iv2"
+				android:layout_toRightOf="@+id/iv2"
+				android:text="Level 2" />
+			
+			<TextView
+				android:id="@+id/tw2Description"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignLeft="@+id/iv2"
+				android:layout_alignParentBottom="true"
+				android:layout_alignParentRight="true"
+				android:textColor="@color/caldroid_black"
+				android:text="Description" />
+
+		</RelativeLayout>
+		</RelativeLayout>
+	</LinearLayout>
+
+	<!-- Bottom panel -->
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_weight="1"
+		android:orientation="horizontal" >
+
+			<!-- Bottom LEFT panel -->
+		<RelativeLayout
+			android:id="@+id/rl3"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:background="@drawable/blue_gradient" >
+
+			<ImageView
+				android:id="@+id/iv3"
+				android:layout_width="100dp"
+				android:layout_height="100dp"
+				android:layout_alignParentLeft="true"
+				android:layout_alignParentTop="true"
+				/>
+
+			<TextView
+				android:id="@+id/tw3"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentRight="true"
+				android:layout_alignTop="@+id/iv3"
+				android:layout_toRightOf="@+id/iv3"
+				android:text="Level 2" />
+			
+			<TextView
+				android:id="@+id/tw3Description"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignLeft="@+id/iv3"
+				android:layout_alignParentBottom="true"
+				android:layout_alignParentRight="true"
+				android:textColor="@color/caldroid_black"
+				android:text="Description" />
+
+		</RelativeLayout>
+
+		<!-- Bottom RIGHT panel -->
+		<RelativeLayout
+			android:id="@+id/rl4"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:background="@drawable/blue_gradient" >
+			
+			<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				 >
+
+			<ImageView
+				android:id="@+id/iv4"
+				android:layout_width="100dp"
+				android:layout_height="100dp"
+				android:layout_alignParentLeft="true"
+				android:layout_alignParentTop="true"
+				 />
+
+			<TextView
+				android:id="@+id/tw4"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentRight="true"
+				android:layout_alignTop="@+id/iv4"
+				android:layout_toRightOf="@+id/iv4"
+				android:text="Level 2" />
+			
+			<TextView
+				android:id="@+id/tw4Description"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignLeft="@+id/iv4"
+				android:layout_alignParentBottom="true"
+				android:layout_alignParentRight="true"
+				android:textColor="@color/caldroid_black"
+				android:text="Description" />
+
+		</RelativeLayout>
+		</RelativeLayout>
+	</LinearLayout>
+
+</LinearLayout>

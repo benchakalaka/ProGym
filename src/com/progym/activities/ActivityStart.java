@@ -36,6 +36,7 @@ import com.progym.utils.Utils;
      @ViewById LinearLayout                    llNutrition;
      @ViewById LinearLayout                    llProgress;
      @ViewById LinearLayout                    llProfile;
+     @ViewById LinearLayout                    llAdvice;
 
      @AnimationRes ( R.anim.fadein ) Animation fadeIn;
 
@@ -73,12 +74,23 @@ import com.progym.utils.Utils;
      }
 
      @Click void llNutrition() {
+
           llNutrition.startAnimation(fadeIn);
           if ( null == DataBaseUtils.getCurrentUser() ) {
                Utils.showCustomToast(ActivityStart.this, "Create profile, before continue, please", R.drawable.info);
                return;
           }
           startActivity(new Intent(ActivityStart.this, ActivitySelectFoodOrWaterManagment_.class));
+
+     }
+
+     @Click void llAdvice() {
+          llAdvice.startAnimation(fadeIn);
+          if ( null == DataBaseUtils.getCurrentUser() ) {
+               Utils.showCustomToast(ActivityStart.this, "Create profile, before continue, please", R.drawable.info);
+               return;
+          }
+          startActivity(new Intent(ActivityStart.this, ActivityAdviceLevel_1_.class));
      }
 
      @Click void llProfile() {
