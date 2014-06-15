@@ -90,7 +90,7 @@ import com.progym.utils.Utils;
                Utils.showCustomToast(ActivityStart.this, "Create profile, before continue, please", R.drawable.info);
                return;
           }
-          startActivity(new Intent(ActivityStart.this, ActivityAdviceLevel_1_.class));
+          startActivity(new Intent(ActivityStart.this, ActivityChooseTypeOfAdvice_.class));
      }
 
      @Click void llProfile() {
