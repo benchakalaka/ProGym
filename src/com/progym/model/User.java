@@ -19,7 +19,7 @@ public class User extends SugarRecord <User> {
       */
      public int    gender;
      public double weight;
-     public int    height;
+     public double height;
      public int    age;
      /**
       * Ektomorf ------------------- 0

@@ -193,7 +193,7 @@ import com.progym.utils.Utils;
           // should be same
           multiRenderer.setChartTitle(String.format("Callories statistic"));
           multiRenderer.setXTitle(Utils.getSpecificDateValue(DATE, "MMM") + " of " + Utils.formatDate(DATE, DataBaseUtils.DATE_PATTERN_YYYY));
-          multiRenderer.setYTitle("Callories consumption     ");
+          multiRenderer.setYTitle(getActivity().getResources().getString(R.string.callories_consumption));
           multiRenderer.setAxesColor(Color.WHITE);
           multiRenderer.setShowLegend(true);
           multiRenderer.addSeriesRenderer(calloriesRenderer);

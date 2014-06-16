@@ -19,8 +19,8 @@
 			<TextView
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_gravity="center"
 				android:layout_weight="1"
+				android:gravity="center"
 				android:text="Track your statistic"
 				android:textAppearance="?android:attr/textAppearanceLarge"
 				android:textColor="@color/caldroid_white"
@@ -28,13 +28,15 @@
 		</LinearLayout>
 
 		<LinearLayout
+			android:id="@+id/llFoodCalloriesProgress"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:orientation="vertical" >
+			android:background="@drawable/background_round_transparent_real"
+			android:orientation="horizontal" >
 
 			<com.progym.custom.roundimageview.RoundedImageView
 				xmlns:app="http://schemas.android.com/apk/res-auto"
-				android:id="@+id/roundImageFoodCalloriesProgress"
+				
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:layout_weight="1"
@@ -47,23 +49,25 @@
 				app:oval="false" />
 
 			<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_gravity="center"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
 				android:layout_weight="1"
+				android:gravity="center"
 				android:text="Callories statistic"
 				android:textAppearance="?android:attr/textAppearanceMedium"
 				android:textColor="@color/caldroid_white" />
 		</LinearLayout>
 
 		<LinearLayout
+			android:id="@+id/llWaterProgress"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:orientation="vertical" >
+			android:background="@drawable/background_round_transparent_real"
+			android:orientation="horizontal" >
 
 			<com.progym.custom.roundimageview.RoundedImageView
 				xmlns:app="http://schemas.android.com/apk/res-auto"
-				android:id="@+id/roundImageWaterProgress"
+				
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:layout_weight="1"
@@ -76,23 +80,25 @@
 				app:oval="false" />
 
 			<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_gravity="center"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
 				android:layout_weight="1"
+				android:gravity="center"
 				android:text="Water statistic"
 				android:textAppearance="?android:attr/textAppearanceMedium"
 				android:textColor="@color/caldroid_white" />
 		</LinearLayout>
 
 		<LinearLayout
+			android:id="@+id/llFoodProgress"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:orientation="vertical" >
+			android:background="@drawable/background_round_transparent_real"
+			android:orientation="horizontal" >
 
 			<com.progym.custom.roundimageview.RoundedImageView
 				xmlns:app="http://schemas.android.com/apk/res-auto"
-				android:id="@+id/roundImageFoodProgress"
+				
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:layout_weight="1"
@@ -105,10 +111,10 @@
 				app:oval="false" />
 
 			<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_gravity="center"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
 				android:layout_weight="1"
+				android:gravity="center"
 				android:text="Protein/Carbohydrates/Fat statistic"
 				android:textAppearance="?android:attr/textAppearanceMedium"
 				android:textColor="@color/caldroid_white" />

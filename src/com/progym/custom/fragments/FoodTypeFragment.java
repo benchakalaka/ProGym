@@ -85,7 +85,7 @@ import com.progym.utils.Utils;
           ArrayList <String> ingridientsList = (ArrayList <String>) Utils.getIngridientsListByCatalogue(CURRENT_GROUPNAME_CATALOGUE);
 
           if ( ingridientsList.isEmpty() ) {
-               Utils.showCustomToast(getActivity(), "There is no ready meals found", R.drawable.unhappy);
+               Utils.showCustomToast(getActivity(), R.string.there_is_no_ready_meal_found, R.drawable.unhappy);
                return;
           }
 

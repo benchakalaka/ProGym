@@ -62,7 +62,7 @@ import com.progym.utils.Utils;
 
      @AfterViews void afterViews() {
           dialog = new Dialog(ActivityAdviceLevel_2.this);
-          dialog.setTitle("List of products");
+          dialog.setTitle(R.string.list_of_products);
           dialog.setCanceledOnTouchOutside(true);
 
           int resId = Utils.getImageIdByActiveAdvice(CURRENT_ACTIVITY_TYPE);
@@ -206,8 +206,6 @@ import com.progym.utils.Utils;
                     view = LayoutInflater.from(mContext).inflate(R.layout.list_group, parent, false);
                }
                TextView tw = (TextView) view.findViewById(R.id.text);
-               ImageView image = (ImageView) view.findViewById(R.id.image);
-               image.setBackgroundResource(R.drawable.pfc);
                tw.setText(getItem(position));
                return view;
           }

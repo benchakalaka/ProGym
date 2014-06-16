@@ -137,7 +137,7 @@ import com.progym.utils.Utils;
                          twGroupNameAndIngridientName.setText(ingridient.groupName + " " + ingridient.name);
                          editDialog.dismiss();
                     } else {
-                         Utils.showCustomToast(getActivity(), "Name of product cannot be empty", R.drawable.warning);
+                         Utils.showCustomToast(getActivity(), R.string.name_of_product_cannot_be_empty, R.drawable.warning);
                     }
                }
           });
@@ -245,9 +245,8 @@ import com.progym.utils.Utils;
 
                } catch (Exception ex) {
                     ex.printStackTrace();
-                    // TODO: replace strings to resources!!!
                     // TODO: replace with separate message for each fields
-                    Utils.showCustomToast(getActivity(), "Set proper weight,protein,carbs,fat,kkal", R.drawable.warning);
+                    Utils.showCustomToast(getActivity(), R.string.set_proper_prot_carbs_fat, R.drawable.warning);
                     return;
                }
 

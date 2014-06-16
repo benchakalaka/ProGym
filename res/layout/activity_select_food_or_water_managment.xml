@@ -20,8 +20,8 @@
 			<TextView
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_gravity="center"
 				android:layout_weight="1"
+				android:gravity="center"
 				android:text="Manage your food and water"
 				android:textAppearance="?android:attr/textAppearanceLarge"
 				android:textColor="@color/caldroid_white"
@@ -29,13 +29,14 @@
 		</LinearLayout>
 
 		<LinearLayout
+			android:id="@+id/llFoodManagment"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:orientation="vertical" >
+			android:background="@drawable/background_round_transparent_real"
+			android:orientation="horizontal" >
 
 			<com.progym.custom.roundimageview.RoundedImageView
 				xmlns:app="http://schemas.android.com/apk/res-auto"
-				android:id="@+id/roundImageFoodManagment"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:layout_weight="1"
@@ -48,23 +49,24 @@
 				app:oval="false" />
 
 			<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_gravity="center"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
 				android:layout_weight="1"
+				android:gravity="center"
 				android:text="Food managment"
 				android:textAppearance="?android:attr/textAppearanceMedium"
 				android:textColor="@color/caldroid_white" />
 		</LinearLayout>
 
 		<LinearLayout
+			android:id="@+id/llWaterManagment"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:orientation="vertical" >
+			android:background="@drawable/background_round_transparent_real"
+			android:orientation="horizontal" >
 
 			<com.progym.custom.roundimageview.RoundedImageView
 				xmlns:app="http://schemas.android.com/apk/res-auto"
-				android:id="@+id/roundImageWaterManagment"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:layout_weight="1"
@@ -77,10 +79,10 @@
 				app:oval="false" />
 
 			<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_gravity="center"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
 				android:layout_weight="1"
+				android:gravity="center"
 				android:text="Water managment"
 				android:textAppearance="?android:attr/textAppearanceMedium"
 				android:textColor="@color/caldroid_white" />

@@ -81,6 +81,43 @@
 					android:textColor="@color/caldroid_white"
 					android:textStyle="bold" />
 			</LinearLayout>
+			
+			
+			
+			<!-- weight field -->
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:layout_weight="1"
+				android:gravity="center"
+				android:orientation="horizontal"
+				android:padding="3dp" >
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center"
+					android:layout_weight="1"
+					android:text="Height (cm)"
+					android:textAppearance="?android:attr/textAppearanceMedium" />
+
+				<EditText
+					android:id="@+id/etUserHeight"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:background="@drawable/background_round_transparent_real"
+					android:gravity="left"
+					android:inputType="numberDecimal"
+					android:padding="3dp"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:textColor="@color/caldroid_white"
+					android:textStyle="bold" />
+			</LinearLayout>
+			
+			
 
 			<!-- age field -->
 

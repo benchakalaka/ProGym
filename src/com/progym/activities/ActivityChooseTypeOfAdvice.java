@@ -5,38 +5,48 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
 import android.content.Intent;
+import android.widget.LinearLayout;
 
 import com.progym.R;
-import com.progym.custom.roundimageview.RoundedImageView;
 
-@EActivity ( R.layout.activity_choose_type_of_advice )
-public class ActivityChooseTypeOfAdvice extends ProgymSuperActivity {
+@EActivity ( R.layout.activity_choose_type_of_advice ) public class ActivityChooseTypeOfAdvice extends ProgymSuperActivity {
 
-	@ViewById RoundedImageView	roundImageWhatDoYouNeed;
-	@ViewById RoundedImageView	roundImageUsefulTable;
+     @ViewById LinearLayout llWhatDoYouNeed;
+     @ViewById LinearLayout llUsefulTable;
 
-	@Override public void displaySelectedDate() {
-		// not using
-	}
+     @ViewById LinearLayout llCalculateBMI;
 
-	@Override void afterViews() {
-		fade.setDuration(300);
-	}
+     @Override public void displaySelectedDate() {
+          // not using
+     }
 
-	/**
-	 * Show water progress activity
-	 */
-	@Click void roundImageWhatDoYouNeed() {
-		roundImageWhatDoYouNeed.startAnimation(fade);
-		startActivity(new Intent(ActivityChooseTypeOfAdvice.this, ActivityAdviceLevel_1_.class));
-	}
+     @Override void afterViews() {
+          fade.setDuration(300);
+     }
 
-	/**
-	 * Show food progress activity
-	 */
-	@Click void roundImageUsefulTable() {
-		roundImageUsefulTable.startAnimation(fade);
-		startActivity(new Intent(ActivityChooseTypeOfAdvice.this, ActivityAdviceAgeGroup_.class));
-	}
+     /**
+      * Show water progress activity
+      */
+     @Click void llWhatDoYouNeed() {
+          llWhatDoYouNeed.startAnimation(fade);
+          startActivity(new Intent(ActivityChooseTypeOfAdvice.this, ActivityAdviceLevel_1_.class));
+     }
+
+     /**
+      * Show food progress activity
+      */
+     @Click void llUsefulTable() {
+          llUsefulTable.startAnimation(fade);
+          startActivity(new Intent(ActivityChooseTypeOfAdvice.this, ActivityAdviceAgeGroup_.class));
+     }
+
+     /**
+      * Show calculate BMI
+      */
+
+     @Click void llCalculateBMI() {
+          llCalculateBMI.startAnimation(fade);
+          startActivity(new Intent(ActivityChooseTypeOfAdvice.this, ActivityCalculateBMI_.class));
+     }
 
 }

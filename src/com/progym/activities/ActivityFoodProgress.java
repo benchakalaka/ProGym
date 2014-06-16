@@ -31,9 +31,6 @@ import com.progym.utils.DataBaseUtils;
 
 @EActivity ( R.layout.food_progress_activity ) public class ActivityFoodProgress extends ActivityAbstractProgress implements IProgressActivity {
 
-     public final static String months[]       = new String[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
-     public final static String months_short[] = new String[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
-
      @Click void twDaily() {
 
           showProgressBar(ActivityFoodProgress.this);

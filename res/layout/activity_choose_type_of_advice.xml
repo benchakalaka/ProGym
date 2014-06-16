@@ -1,89 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/roootScrill"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/round_border_gray_gradient" >
+	android:id="@+id/roootScrill"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@drawable/round_border_gray_gradient" >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical" >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/background_round_border"
-            android:orientation="vertical" >
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@drawable/background_round_border"
+			android:orientation="vertical" >
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:text="Track your statistic"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/caldroid_white"
-                android:textSize="20sp" />
-        </LinearLayout>
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:gravity="center"
+				android:text="Stay wise, read wise advice"
+				android:textAppearance="?android:attr/textAppearanceLarge"
+				android:textColor="@color/caldroid_white"
+				android:textSize="20sp" />
+		</LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+		<LinearLayout
+			android:id="@+id/llWhatDoYouNeed"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@drawable/background_round_transparent_real"
+			android:orientation="horizontal" >
 
-            <com.progym.custom.roundimageview.RoundedImageView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/roundImageWhatDoYouNeed"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:padding="10dip"
-                android:scaleType="center"
-                android:src="@drawable/brain"
-                app:border_color="@color/caldroid_black"
-                app:border_width="4dip"
-                app:corner_radius="30dip"
-                app:oval="false" />
+			<com.progym.custom.roundimageview.RoundedImageView
+				xmlns:app="http://schemas.android.com/apk/res-auto"
+				
+				android:layout_width="match_parent"
+				android:layout_height="100dp"
+				android:layout_weight="1"
+				android:padding="10dip"
+				android:scaleType="center"
+				android:src="@drawable/brain"
+				app:border_color="@color/caldroid_black"
+				app:border_width="4dip"
+				app:corner_radius="30dip"
+				app:oval="false" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:text="Useful tips"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/caldroid_white" />
-        </LinearLayout>
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:gravity="center"
+				android:text="What do you need?"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:textColor="@color/caldroid_white" />
+		</LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+		<LinearLayout
+			android:id="@+id/llUsefulTable"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@drawable/background_round_transparent_real"
+			android:orientation="horizontal" >
 
-            <com.progym.custom.roundimageview.RoundedImageView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/roundImageUsefulTable"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:padding="10dip"
-                android:scaleType="center"
-                android:src="@drawable/water"
-                app:border_color="@color/caldroid_black"
-                app:border_width="4dip"
-                app:corner_radius="30dip"
-                app:oval="false" />
+			<com.progym.custom.roundimageview.RoundedImageView
+				xmlns:app="http://schemas.android.com/apk/res-auto"
+				android:layout_width="match_parent"
+				android:layout_height="100dp"
+				android:layout_weight="1"
+				android:padding="10dip"
+				android:scaleType="center"
+				android:src="@drawable/energy_table"
+				app:border_color="@color/caldroid_black"
+				app:border_width="4dip"
+				app:corner_radius="30dip"
+				app:oval="false" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:text="Energy table"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/caldroid_white" />
-        </LinearLayout>
-    </LinearLayout>
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:gravity="center"
+				android:text="Energy table"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:textColor="@color/caldroid_white" />
+		</LinearLayout>
+		
+		
+		
+		<LinearLayout
+			android:id="@+id/llCalculateBMI"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@drawable/background_round_transparent_real"
+			android:orientation="horizontal" >
+
+			<com.progym.custom.roundimageview.RoundedImageView
+				xmlns:app="http://schemas.android.com/apk/res-auto"
+				android:layout_width="match_parent"
+				android:layout_height="100dp"
+				android:layout_weight="1"
+				android:padding="10dip"
+				android:scaleType="center"
+				android:src="@drawable/warning"
+				app:border_color="@color/caldroid_black"
+				app:border_width="4dip"
+				app:corner_radius="30dip"
+				app:oval="false" />
+
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:gravity="center"
+				android:text="Calculate BMI"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:textColor="@color/caldroid_white" />
+		</LinearLayout>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</LinearLayout>
 
 </ScrollView>

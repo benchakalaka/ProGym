@@ -28,9 +28,6 @@ import com.progym.interfaces.IProgressActivity;
 
 @EActivity ( R.layout.callories_progress_activity ) public class ActivityCalloriesProgress extends FragmentActivity implements IProgressActivity {
 
-     public final static String                           months[]             = new String[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
-     public final static String                           months_short[]       = new String[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
-
      static Date                                          SELECTED_DATE        = new Date();
      CaldroidFragmentCustom                               calendar;
 

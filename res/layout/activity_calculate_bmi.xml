@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/rlSlideMe"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@drawable/background_round_border" >
+
+	<LinearLayout
+		android:id="@+id/llBMIHeader"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentRight="true"
+		android:background="@drawable/circle"
+		android:orientation="vertical"
+		android:padding="27dp" >
+
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center"
+			android:text="BMI (Body Mass Index) calculator"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:textColor="@color/caldroid_darker_gray"
+			android:textStyle="italic|bold" />
+	</LinearLayout>
+
+	<ScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_above="@+id/llCalcBmi"
+		android:layout_below="@+id/llBMIHeader" >
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:orientation="vertical" >
+
+			<RadioGroup
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginBottom="10dp"
+				android:background="@drawable/background_start_buttons"
+				android:orientation="horizontal" >
+
+				<RadioButton
+					android:id="@+id/rbMale"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:text="Male"
+					android:textColor="@android:color/holo_red_dark"
+					android:textStyle="bold" />
+
+				<RadioButton
+					android:id="@+id/rbFemale"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:text="Female"
+					android:textColor="@android:color/black"
+					android:textStyle="bold" />
+			</RadioGroup>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:orientation="vertical" >
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="10dp"
+					android:background="@drawable/blue_gradient"
+					android:orientation="horizontal" >
+
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:layout_gravity="left"
+						android:layout_weight="1"
+						android:text="Age"
+						android:textColor="@color/caldroid_white" />
+
+					<EditText
+						android:id="@+id/etBMIAge"
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:layout_weight="1"
+						android:gravity="right"
+						android:hint="eg. 24"
+						android:inputType="numberDecimal"
+						android:textColor="@color/caldroid_white" />
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_marginBottom="10dp"
+					android:layout_weight="1"
+					android:background="@drawable/blue_gradient"
+					android:orientation="horizontal" >
+
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:layout_gravity="left"
+						android:layout_weight="1"
+						android:text="Height"
+						android:textColor="@color/caldroid_white" />
+
+					<EditText
+						android:id="@+id/etBMIHeight"
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:layout_weight="1"
+						android:gravity="right"
+						android:hint="eg. 177,5cm"
+						android:inputType="numberDecimal"
+						android:textColor="@color/caldroid_white" />
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_marginBottom="10dp"
+					android:background="@drawable/blue_gradient"
+					android:orientation="horizontal" >
+
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:layout_gravity="left"
+						android:layout_weight="1"
+						android:text="Weight"
+						android:textColor="@color/caldroid_white" />
+
+					<EditText
+						android:id="@+id/etBMIWeight"
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:layout_weight="1"
+						android:gravity="right"
+						android:hint="eg. 56kg"
+						android:inputType="numberDecimal"
+						android:textColor="@color/caldroid_white" />
+				</LinearLayout>
+			</LinearLayout>
+		</LinearLayout>
+	</ScrollView>
+
+	<LinearLayout
+		android:id="@+id/llCalcBmi"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:orientation="horizontal" >
+
+		<Button
+			android:id="@+id/btnCalculateBMI"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:background="@drawable/round_border_gray_gradient"
+			android:text="Calculate" />
+
+		<Button
+			android:id="@+id/btnCalculateMyBMI"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:background="@drawable/round_border_gray_gradient"
+			android:text="Calculate my BMI" />
+	</LinearLayout>
+
+</RelativeLayout>

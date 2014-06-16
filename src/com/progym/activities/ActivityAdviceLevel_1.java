@@ -49,7 +49,7 @@ import com.progym.utils.Utils;
                          ActivityAdviceLevel_2_.CURRENT_ACTIVITY_TYPE = Integer.valueOf(tagAdviceType);
                          switch (ActivityAdviceLevel_2_.CURRENT_ACTIVITY_TYPE) {
                               case GlobalConstants.ADVICE_TYPE.INT_BRAIN_WORK:
-                                   Utils.showCustomToast(ActivityAdviceLevel_1.this, "Brain work", R.drawable.brain);
+                                   Utils.showCustomToast(ActivityAdviceLevel_1.this, R.string.brain_work, R.drawable.brain);
                                    Intent brain = new Intent(ActivityAdviceLevel_1.this, ActivityAdviceLevel_2_.class);
                                    brain.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                                    startActivity(brain);
@@ -57,7 +57,7 @@ import com.progym.utils.Utils;
                                    break;
 
                               case GlobalConstants.ADVICE_TYPE.INT_ENERGY:
-                                   Utils.showCustomToast(ActivityAdviceLevel_1.this, "Energy", R.drawable.energy);
+                                   Utils.showCustomToast(ActivityAdviceLevel_1.this, R.string.energy, R.drawable.energy);
                                    Intent energy = new Intent(ActivityAdviceLevel_1.this, ActivityAdviceLevel_2_.class);
                                    energy.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                                    startActivity(energy);
@@ -65,7 +65,7 @@ import com.progym.utils.Utils;
                                    break;
 
                               case GlobalConstants.ADVICE_TYPE.INT_FAT_BURNING:
-                                   Utils.showCustomToast(ActivityAdviceLevel_1.this, "Fat burning", R.drawable.pfc);
+                                   Utils.showCustomToast(ActivityAdviceLevel_1.this, R.string.fat_butning, R.drawable.pfc);
                                    Intent fat = new Intent(ActivityAdviceLevel_1.this, ActivityAdviceLevel_2_.class);
                                    fat.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                                    startActivity(fat);
@@ -73,7 +73,7 @@ import com.progym.utils.Utils;
                                    break;
 
                               case GlobalConstants.ADVICE_TYPE.INT_STRESS_REDUCTION:
-                                   Utils.showCustomToast(ActivityAdviceLevel_1.this, "Stress reduction", R.drawable.stress);
+                                   Utils.showCustomToast(ActivityAdviceLevel_1.this, R.string.stress_reduction, R.drawable.stress);
                                    Intent stress = new Intent(ActivityAdviceLevel_1.this, ActivityAdviceLevel_2_.class);
                                    stress.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                                    startActivity(stress);

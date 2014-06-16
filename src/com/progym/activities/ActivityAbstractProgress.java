@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import com.progym.R;
 import com.progym.R.color;
 import com.progym.R.drawable;
 import com.progym.custom.CaldroidFragmentCustom;
@@ -31,6 +32,9 @@ import com.progym.interfaces.IProgressActivity;
      public static final int                              YEARLY               = 2;
      public static final int                              RANGE                = 3;
      ProgressDialog                                       pb;
+
+     public final static String                           months[]             = new String[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
+     public final static String                           months_short[]       = new String[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
 
      // Setup listener
      public final com.roomorama.caldroid.CaldroidListener onDateChangeListener = new com.roomorama.caldroid.CaldroidListener() {
@@ -75,8 +79,8 @@ import com.progym.interfaces.IProgressActivity;
      private void initProgressBar(Activity activity) {
           pb = new ProgressDialog(activity);
           pb.setIndeterminate(true);
-          pb.setTitle("Please wait...");
-          pb.setMessage("Populating data");
+          pb.setTitle(R.string.please_wait);
+          pb.setMessage(getResources().getString(R.string.populating_data));
           pb.show();
      }
 

@@ -78,8 +78,8 @@ import com.progym.interfaces.ISuperActivity;
      private void initProgressBar(Activity activity) {
           pb = new ProgressDialog(activity);
           pb.setIndeterminate(true);
-          pb.setTitle("Please wait...");
-          pb.setMessage("Populating data");
+          pb.setTitle(R.string.please_wait);
+          pb.setMessage(getResources().getString(R.string.populating_data));
           pb.show();
      }
 

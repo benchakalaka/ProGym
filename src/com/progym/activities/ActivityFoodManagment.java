@@ -102,7 +102,7 @@ import com.progym.utils.Utils;
                               final String kkal = event.getClipData().getItemAt(6).getText().toString();
 
                               if ( null == CURRENT_MEAL ) {
-                                   Utils.showCustomToast(ActivityFoodManagment.this, "Create plate", R.drawable.meal_title);
+                                   Utils.showCustomToast(ActivityFoodManagment.this, R.string.create_plate, R.drawable.plus);
                                    ibCreatePlate.startAnimation(fadeIn);
                                    return false;
                               }
@@ -155,7 +155,7 @@ import com.progym.utils.Utils;
                List <Ingridient> ingridients = DataBaseUtils.getProductsOnPlate(CURRENT_MEAL);
 
                if ( ingridients.isEmpty() ) {
-                    Utils.showCustomToast(ActivityFoodManagment.this, "Have a look, there is nothing on this plate. Add some food please!", R.drawable.unhappy);
+                    Utils.showCustomToast(ActivityFoodManagment.this, R.string.there_is_nothing_on_plate, R.drawable.unhappy);
                     return;
                }
 
@@ -190,9 +190,9 @@ import com.progym.utils.Utils;
 
                // Add to expandable list view ready meal date
                ((ViewPagerAdapter) viewPager.getAdapter()).foodCategoryExpListViewFragment.addToReadyMeal(CURRENT_MEAL.date);
-               Utils.showCustomToast(ActivityFoodManagment.this, "List of products has been saved. You can find it under the -Ready meals- catalogue", R.drawable.save);
+               Utils.showCustomToast(ActivityFoodManagment.this, R.string.list_of_products_has_been_saved, R.drawable.save);
           } else {
-               Utils.showCustomToast(this, "Create plate before saving it", R.drawable.meal_title);
+               Utils.showCustomToast(this, R.string.create_plate_before_saving, R.drawable.plus);
                ibCreatePlate.startAnimation(fade);
           }
      }
@@ -332,13 +332,13 @@ import com.progym.utils.Utils;
           createProductOnPlate(meal);
 
           setLastPlateActive();
-          Utils.showCustomToast(this, "Plate has been created", R.drawable.meal_title);
+          Utils.showCustomToast(this, R.string.plate_has_been_created, R.drawable.meal_title);
      }
 
      public void addReadyMealToCurrentPlate(List <ReadyIngridient> ingridientsOfReadyMeal) {
           User u = DataBaseUtils.getCurrentUser();
           if ( null == CURRENT_MEAL ) {
-               Utils.showCustomToast(this, "Create plate before", R.drawable.meal_title);
+               Utils.showCustomToast(this, R.string.create_plate, R.drawable.plus);
                ibCreatePlate.startAnimation(fade);
                return;
           }
@@ -382,7 +382,7 @@ import com.progym.utils.Utils;
           this.CURRENT_MEAL = meal;
 
           setLastPlateActive();
-          Utils.showCustomToast(this, "Plate has been created", R.drawable.meal_title);
+          Utils.showCustomToast(this, R.string.plate_has_been_created, R.drawable.plus);
 
      }
 

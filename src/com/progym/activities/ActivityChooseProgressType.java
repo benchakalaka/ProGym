@@ -5,15 +5,15 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
 import android.content.Intent;
+import android.widget.LinearLayout;
 
 import com.progym.R;
-import com.progym.custom.roundimageview.RoundedImageView;
 
 @EActivity ( R.layout.activity_choose_type_of_progress ) public class ActivityChooseProgressType extends ProgymSuperActivity {
 
-     @ViewById RoundedImageView roundImageWaterProgress;
-     @ViewById RoundedImageView roundImageFoodProgress;
-     @ViewById RoundedImageView roundImageFoodCalloriesProgress;
+     @ViewById LinearLayout llWaterProgress;
+     @ViewById LinearLayout llFoodProgress;
+     @ViewById LinearLayout llFoodCalloriesProgress;
 
      @Override public void displaySelectedDate() {
           // not using
@@ -26,24 +26,24 @@ import com.progym.custom.roundimageview.RoundedImageView;
      /**
       * Show water progress activity
       */
-     @Click void roundImageWaterProgress() {
-          roundImageWaterProgress.startAnimation(fade);
+     @Click void llWaterProgress() {
+          llWaterProgress.startAnimation(fade);
           startActivity(new Intent(ActivityChooseProgressType.this, ActivityWaterProgress_.class));
      }
 
      /**
       * Show food progress activity
       */
-     @Click void roundImageFoodProgress() {
-          roundImageFoodProgress.startAnimation(fade);
+     @Click void llFoodProgress() {
+          llFoodProgress.startAnimation(fade);
           startActivity(new Intent(ActivityChooseProgressType.this, ActivityFoodProgress_.class));
      }
 
      /**
       * Show food progress callories activity
       */
-     @Click void roundImageFoodCalloriesProgress() {
-          roundImageFoodCalloriesProgress.startAnimation(fade);
+     @Click void llFoodCalloriesProgress() {
+          llFoodCalloriesProgress.startAnimation(fade);
           startActivity(new Intent(ActivityChooseProgressType.this, ActivityCalloriesProgress_.class));
      }
 

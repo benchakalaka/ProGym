@@ -12,8 +12,6 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
@@ -39,6 +37,7 @@ import com.progym.utils.Utils;
      @ViewById EditText          etUserName;
      @ViewById EditText          etUserWeight;
      @ViewById EditText          etUserAge;
+     @ViewById EditText          etUserHeight;
      @ViewById NDSpinner         spinnerBodyType;
      @ViewById NDSpinner         spinnerGender;
 
@@ -58,11 +57,11 @@ import com.progym.utils.Utils;
           InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
           imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
 
-          BodyTypeAdapter bodyTypeAdapter = new BodyTypeAdapter(ActivityUserProfile.this, android.R.layout.simple_spinner_item, new String[] { "Ektomorf", "Mezo", "Endo" });
-          GenderAdapter genderAdpater = new GenderAdapter(ActivityUserProfile.this, android.R.layout.simple_spinner_item, new String[] { "Male", "Female" });
+          BodyTypeAdapter bodyTypeAdapter = new BodyTypeAdapter(ActivityUserProfile.this, android.R.layout.simple_spinner_item, bodyTypes);
+          GenderAdapter genderAdpater = new GenderAdapter(ActivityUserProfile.this, android.R.layout.simple_spinner_item, genders);
           spinnerGender.setAdapter(genderAdpater);
           spinnerBodyType.setAdapter(bodyTypeAdapter);
-          dialog.setTitle("Body type explanation");
+          dialog.setTitle(R.string.body_type_explanation);
           final DialogBodyTypeExplanation view = DialogBodyTypeExplanation_.build(ActivityUserProfile.this);
           dialog.setContentView(view);
           dialog.setCanceledOnTouchOutside(true);
@@ -80,9 +79,11 @@ import com.progym.utils.Utils;
                spinnerBodyType.setSelection(u.bodyType, false);
                spinnerGender.setSelection(u.gender);
                etUserWeight.setText(String.valueOf(u.weight));
+               etUserHeight.setText(String.valueOf(u.height));
           } else {
                etUserName.setText("");
                etUserAge.setText("");
+               etUserHeight.setText("");
                spinnerBodyType.setSelection(0, false);
                spinnerGender.setSelection(0);
                etUserWeight.setText(String.valueOf(0));
@@ -104,7 +105,7 @@ import com.progym.utils.Utils;
           }
 
           if ( !checkFields() ) {
-               Utils.showCustomToast(ActivityUserProfile.this, "Name/Age/Weight aren't filled properly", R.drawable.settings_warning);
+               Utils.showCustomToast(ActivityUserProfile.this, R.string.name_age_weight_arent_filled_properly, R.drawable.settings_warning);
                return;
           }
 
@@ -112,7 +113,7 @@ import com.progym.utils.Utils;
           userToSave.age = Integer.valueOf(etUserAge.getText().toString());
 
           userToSave.gender = spinnerGender.getSelectedItemPosition();
-          userToSave.height = 0; // Static for now :TODO
+          userToSave.height = Double.valueOf(etUserHeight.getText().toString());
           userToSave.weight = Double.valueOf(etUserWeight.getText().toString());
           userToSave.bodyType = spinnerBodyType.getSelectedItemPosition();
           userToSave.save();
@@ -132,28 +133,20 @@ import com.progym.utils.Utils;
                if ( StringUtils.isBlank(etUserName.getText().toString()) ) {
                     result = false;
                }
+
+               if ( StringUtils.isBlank(etUserWeight.getText().toString()) ) {
+                    result = false;
+               }
+
+               if ( StringUtils.isBlank(etUserHeight.getText().toString()) ) {
+                    result = false;
+               }
           } catch (Exception ex) {
                ex.printStackTrace();
                result = false;
           }
 
           return result;
-     }
-
-     @Override public boolean onCreateOptionsMenu(Menu menu) {
-          // Inflate the menu; this adds items to the action bar if it is present.
-          // commmited from home
-          getMenuInflater().inflate(R.menu.start, menu);
-          return true;
-     }
-
-     @Override public boolean onOptionsItemSelected(MenuItem item) {
-          // Handle action bar item clicks here. The action bar will
-          // automatically handle clicks on the Home/Up button, so long
-          // as you specify a parent activity in AndroidManifest.xml.
-          int id = item.getItemId();
-          if ( id == R.id.action_settings ) { return true; }
-          return super.onOptionsItemSelected(item);
      }
 
      // =================================================================================
@@ -188,13 +181,12 @@ import com.progym.utils.Utils;
                bodyTypeDescription.setText(data[position]);
 
                if ( position == 0 ) {
-                    bodyType.setBackgroundResource(R.drawable.ectomorf);
+                    bodyType.setBackgroundResource(R.drawable.ekto);
                } else if ( position == 1 ) {
-                    bodyType.setBackgroundResource(R.drawable.mezomorf);
+                    bodyType.setBackgroundResource(R.drawable.mezo);
                } else if ( position == 2 ) {
-                    bodyType.setBackgroundResource(R.drawable.endomorf);
+                    bodyType.setBackgroundResource(R.drawable.endo);
                }
-
                return row;
           }
      }

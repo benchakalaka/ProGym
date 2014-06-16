@@ -9,20 +9,20 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.view.animation.Animation;
+import android.widget.LinearLayout;
 
 import com.progym.R;
-import com.progym.custom.roundimageview.RoundedImageView;
 
 @EActivity ( R.layout.activity_select_food_or_water_managment ) public class ActivitySelectFoodOrWaterManagment extends Activity {
 
-     @ViewById RoundedImageView              roundImageFoodManagment;
-     @ViewById RoundedImageView              roundImageWaterManagment;
+     @ViewById LinearLayout                  llFoodManagment;
+     @ViewById LinearLayout                  llWaterManagment;
 
      @AnimationRes ( R.anim.fade ) Animation fade;
      private ProgressDialog                  pb;
 
-     @Click void roundImageFoodManagment() {
-          roundImageFoodManagment.startAnimation(fade);
+     @Click void llFoodManagment() {
+          llFoodManagment.startAnimation(fade);
           showProgressBar(ActivitySelectFoodOrWaterManagment.this);
 
           Thread t = new Thread(new Runnable() {
@@ -36,8 +36,8 @@ import com.progym.custom.roundimageview.RoundedImageView;
 
      }
 
-     @Click void roundImageWaterManagment() {
-          roundImageWaterManagment.startAnimation(fade);
+     @Click void llWaterManagment() {
+          llWaterManagment.startAnimation(fade);
           showProgressBar(ActivitySelectFoodOrWaterManagment.this);
 
           Thread t = new Thread(new Runnable() {
@@ -63,8 +63,8 @@ import com.progym.custom.roundimageview.RoundedImageView;
      private void initProgressBar(Activity activity) {
           pb = new ProgressDialog(activity);
           pb.setIndeterminate(true);
-          pb.setTitle("Please wait...");
-          pb.setMessage("Populating data");
+          pb.setTitle(R.string.please_wait);
+          pb.setMessage(getResources().getString(R.string.populating_data));
           pb.show();
      }
 

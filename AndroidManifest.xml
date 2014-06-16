@@ -22,7 +22,7 @@
 			android:value="@string/app_id" />
 		<meta-data
 			android:name="DATABASE"
-			android:value="progym35.db" />
+			android:value="progym36.db" />
 		<meta-data
 			android:name="VERSION"
 			android:value="1" />
@@ -97,26 +97,39 @@
 			android:windowSoftInputMode="stateHidden" >
 		</activity>
 		<activity
+			android:name="com.progym.activities.ActivityChooseActivityBMI_"
+			android:label="@string/app_name"
+			android:screenOrientation="sensorLandscape"
+			android:windowSoftInputMode="stateHidden" >
+		</activity>
+		<activity
+			android:name="com.progym.activities.ActivityCalculateBMI_"
+			android:label="@string/app_name"
+			android:screenOrientation="sensorLandscape"
+			android:windowSoftInputMode="stateHidden" >
+		</activity>
+		<activity
+			android:name="com.progym.activities.ActivityAdvicePacExplanation_"
+			android:label="@string/app_name"
+			android:screenOrientation="sensorLandscape"
+			android:windowSoftInputMode="stateHidden" >
+		</activity>
+		<activity
 			android:name="com.progym.activities.ActivityAdviceLevel_2_"
 			android:label="@string/app_name"
 			android:screenOrientation="sensorLandscape"
 			android:windowSoftInputMode="stateHidden" >
 		</activity>
-		
-		
 		<activity
 			android:name="com.progym.activities.ActivityAdviceAgeGroup_"
 			android:label="@string/app_name"
 			android:screenOrientation="sensorLandscape" >
 		</activity>
-		
 		<activity
 			android:name="com.progym.activities.ActivityChooseTypeOfAdvice_"
 			android:label="@string/app_name"
 			android:screenOrientation="sensorLandscape" >
 		</activity>
-		
-		
 		<activity
 			android:name="com.progym.activities.ActivitySelectFoodOrWaterManagment_"
 			android:label="@string/app_name"

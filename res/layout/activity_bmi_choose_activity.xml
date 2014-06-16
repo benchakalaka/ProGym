@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/rlSlideMe"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@drawable/background_round_border" >
+
+	<LinearLayout
+		android:id="@+id/llBMIHeader"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentRight="true"
+		android:background="@drawable/circle"
+		android:orientation="vertical"
+		android:padding="20dp" >
+
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center"
+			android:text="Which of the below best describes your activity levels?"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:textColor="@color/caldroid_darker_gray"
+			android:textStyle="italic|bold" />
+	</LinearLayout>
+
+	<ScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_above="@+id/llBackNext"
+		android:layout_below="@+id/llBMIHeader" >
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical" >
+
+			<RadioGroup
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_marginBottom="10dp"
+				android:layout_weight="1.32"
+				android:background="@drawable/blue_gradient"
+				android:orientation="vertical" >
+
+				<RadioButton
+					android:id="@+id/rbInactive"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:text="Inactive"
+					android:textColor="@color/caldroid_white"
+					android:textStyle="bold" />
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="(I am inactive) I travel by car or public transport, I don&apos;t have an active job, I spend most of my work and leisure time sitting and I do little or no exercise."
+					android:textAppearance="?android:attr/textAppearanceLarge"
+					android:textColor="@color/caldroid_white"
+					android:textStyle="italic" />
+
+				<View
+					android:layout_width="fill_parent"
+					android:layout_height="4dp"
+					android:background="@android:color/holo_red_dark" />
+
+				<RadioButton
+					android:id="@+id/rbLow"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:text="Low"
+					android:textColor="@color/caldroid_yellow"
+					android:textStyle="bold" />
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="(My activity level are low) I occasionally travel on foot, I don&apos;t have an active job, I spend most of my work and leisure time sitting and do a maximum of 2.5 hours exercise a week."
+					android:textAppearance="?android:attr/textAppearanceLarge"
+					android:textColor="@color/caldroid_yellow"
+					android:textStyle="italic" />
+
+				<View
+					android:layout_width="fill_parent"
+					android:layout_height="4dp"
+					android:background="@android:color/holo_red_dark" />
+
+				<RadioButton
+					android:id="@+id/rbModerate"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:text="Moderate"
+					android:textColor="@color/red"
+					android:textStyle="bold" />
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left"
+					android:text="(My activity levels are moderate) I regularly travel on foot or bike, I am active at work and home, I don&apos;t spend much time sitting and I do at least 2.5 hours exercise each week."
+					android:textAppearance="?android:attr/textAppearanceLarge"
+					android:textColor="@color/red"
+					android:textStyle="italic" />
+			</RadioGroup>
+		</LinearLayout>
+	</ScrollView>
+
+	<LinearLayout
+		android:id="@+id/llBackNext"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:orientation="horizontal" >
+
+		<Button
+			android:id="@+id/btnBack"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:background="@drawable/round_border_gray_gradient"
+			android:text="Back" />
+
+		<Button
+			android:id="@+id/btnNext"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:background="@drawable/round_border_gray_gradient"
+			android:text="Next" />
+	</LinearLayout>
+
+</RelativeLayout>

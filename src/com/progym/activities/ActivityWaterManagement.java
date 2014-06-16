@@ -158,7 +158,7 @@ import com.todddavies.components.progressbar.ProgressWheel;
           llListOfWaterToday.removeAllViews();
 
           if ( list.isEmpty() ) {
-               Utils.showCustomToast(ActivityWaterManagement.this, "You have no drink a water today, drink something please", R.drawable.unhappy);
+               Utils.showCustomToast(ActivityWaterManagement.this, R.string.drink_something, R.drawable.unhappy);
                return;
           }
 
@@ -176,14 +176,14 @@ import com.todddavies.components.progressbar.ProgressWheel;
 
                llListOfWaterToday.addView(listItem);
           }
-          Utils.showCustomToast(ActivityWaterManagement.this, "Today water statistics", R.drawable.water_progress);
+          Utils.showCustomToast(ActivityWaterManagement.this, R.string.today_water_statistic, R.drawable.water_progress);
           dialogListOfWaterConsumedToday.show();
      }
 
      @Click void llEditCustomWater() {
           final Dialog editDialog = new Dialog(ActivityWaterManagement.this);
           editDialog.setContentView(R.layout.dialog_custom_value);
-          editDialog.setTitle("Input water volume in ML");
+          editDialog.setTitle(R.string.input_volume_in_ml);
           Button cancel = (Button) editDialog.findViewById(R.id.btnCancel);
           Button edit = (Button) editDialog.findViewById(R.id.btnEdit);
           final EditText input = (EditText) editDialog.findViewById(R.id.etCustomValue);
@@ -213,11 +213,11 @@ import com.todddavies.components.progressbar.ProgressWheel;
                          value = Integer.valueOf(input.getText().toString());
                     } catch (Exception ex) {
                          ex.printStackTrace();
-                         Utils.showCustomToast(ActivityWaterManagement.this, "Please input proper value", R.drawable.unhappy);
+                         Utils.showCustomToast(ActivityWaterManagement.this, R.string.please_input_proper_value, R.drawable.unhappy);
                          return;
                     }
                     if ( value <= 0 ) {
-                         Utils.showCustomToast(ActivityWaterManagement.this, "Value should be greater 0", R.drawable.unhappy);
+                         Utils.showCustomToast(ActivityWaterManagement.this, R.string.should_be_greater_than_0, R.drawable.unhappy);
                          return;
                     }
 
@@ -387,7 +387,7 @@ import com.todddavies.components.progressbar.ProgressWheel;
                double onePercent = USER_SHOULD_CONSUME / 100;
                Utils.showCustomToast(ActivityWaterManagement.this, customVolumes.get(0).customVolume + "ml is " + String.format("%.2f", customVolumes.get(0).customVolume / onePercent) + "% of your body norma!", R.drawable.info);
           } else {
-               Utils.showCustomToast(ActivityWaterManagement.this, "There is no custom water value found", R.drawable.unhappy);
+               Utils.showCustomToast(ActivityWaterManagement.this, R.string.there_is_no_custom_value, R.drawable.unhappy);
                llEditCustomWater.startAnimation(fade);
           }
      }
@@ -428,7 +428,7 @@ import com.todddavies.components.progressbar.ProgressWheel;
                     dragView(v);
                     animateBody();
                } else {
-                    Utils.showCustomToast(ActivityWaterManagement.this, "There is no custom water value found, press edit button", R.drawable.warning);
+                    Utils.showCustomToast(ActivityWaterManagement.this, R.string.there_is_no_custom_value, R.drawable.warning);
                     llEditCustomWater.startAnimation(fade);
                }
           }

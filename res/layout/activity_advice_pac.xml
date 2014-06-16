@@ -1,0 +1,409 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/scrollView1"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@drawable/blue_gradient" >
+
+	<TableLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent" >
+
+		<TableRow
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:background="@drawable/background_round_transparent_real" >
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:orientation="horizontal" >
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:gravity="center"
+					android:text="Group"
+					android:textAppearance="?android:attr/textAppearanceMedium" />
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:gravity="center"
+					android:text="PA"
+					android:textAppearance="?android:attr/textAppearanceMedium" />
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:gravity="center"
+					android:text="prof_group"
+					android:textAppearance="?android:attr/textAppearanceMedium" />
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:gravity="center"
+					android:text="Predstaviteli"
+					android:textAppearance="?android:attr/textAppearanceMedium" />
+			</LinearLayout>
+		</TableRow>
+
+		<View
+			android:layout_width="fill_parent"
+			android:layout_height="5dp"
+			android:background="@android:color/holo_red_dark" />
+
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:gravity="left"
+			android:textColor="@android:color/secondary_text_light"
+			android:text="PA (Physical Activity Coefficeint) - physical activity is important for managing body weight by both older and small persons who might miss key micronutrients when consuming restrictive diets. Further, physical activity results in the anabolic and regulatory processes in skeletal muscle, develops cardiovascular system improvements, improves blood lipoprotein profiles in older adults, and leads to increased expression of many beneficial enzymes and enzyme systems in diverse organs and organ systems from bones and muscles to brain."
+			android:textAppearance="?android:attr/textAppearanceMedium" />
+
+		<View
+			android:layout_width="fill_parent"
+			android:layout_height="5dp"
+			android:background="@android:color/holo_red_dark" />
+
+		<!-- GROUDP I -->
+
+		<TableRow
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" >
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:orientation="horizontal" >
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:gravity="center"
+					android:text="I"
+					android:textAppearance="?android:attr/textAppearanceMedium" />
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:gravity="center"
+					android:text="1,4"
+					android:textAppearance="?android:attr/textAppearanceMedium" />
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:orientation="vertical" >
+
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:layout_weight="1"
+						android:gravity="center"
+						android:text="@string/_1_4_prof_group"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:textColor="@android:color/white" />
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:orientation="vertical" >
+
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:layout_weight="1"
+						android:gravity="center"
+						android:text="@string/_1_4_prestaviteli"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:textColor="@android:color/white" />
+				</LinearLayout>
+			</LinearLayout>
+		</TableRow>
+
+		<View
+			android:layout_width="fill_parent"
+			android:layout_height="2dp"
+			android:background="@android:color/holo_green_dark" />
+
+		<!-- GROUDP II -->
+
+		<TableRow
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" >
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:orientation="horizontal" >
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:gravity="center"
+					android:text="II"
+					android:textAppearance="?android:attr/textAppearanceMedium" />
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:gravity="center"
+					android:text="1,6"
+					android:textAppearance="?android:attr/textAppearanceMedium" />
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:orientation="vertical" >
+
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:layout_weight="1"
+						android:gravity="center"
+						android:text="@string/_1_6_prof_group"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:textColor="@android:color/white" />
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:orientation="vertical" >
+
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:layout_weight="1"
+						android:gravity="center"
+						android:text="@string/_1_6_prestaviteli"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:textColor="@android:color/white" />
+				</LinearLayout>
+			</LinearLayout>
+		</TableRow>
+
+		<View
+			android:layout_width="fill_parent"
+			android:layout_height="2dp"
+			android:background="@android:color/holo_green_dark" />
+
+		<!-- GROUDP III -->
+
+		<TableRow
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" >
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:orientation="horizontal" >
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:gravity="center"
+					android:text="III"
+					android:textAppearance="?android:attr/textAppearanceMedium" />
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:gravity="center"
+					android:text="1,9"
+					android:textAppearance="?android:attr/textAppearanceMedium" />
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:orientation="vertical" >
+
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:layout_weight="1"
+						android:gravity="center"
+						android:text="@string/_1_9_prof_group"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:textColor="@android:color/white" />
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:orientation="vertical" >
+
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:layout_weight="1"
+						android:gravity="center"
+						android:text="@string/_1_9_prestaviteli"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:textColor="@android:color/white" />
+				</LinearLayout>
+			</LinearLayout>
+		</TableRow>
+
+		<View
+			android:layout_width="fill_parent"
+			android:layout_height="2dp"
+			android:background="@android:color/holo_green_dark" />
+		<!-- GROUP IV -->
+
+		<TableRow
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" >
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:orientation="horizontal" >
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:gravity="center"
+					android:text="IV"
+					android:textAppearance="?android:attr/textAppearanceMedium" />
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:gravity="center"
+					android:text="2,3"
+					android:textAppearance="?android:attr/textAppearanceMedium" />
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:orientation="vertical" >
+
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:layout_weight="1"
+						android:gravity="center"
+						android:text="@string/_2_3_prof_group"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:textColor="@android:color/white" />
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:orientation="vertical" >
+
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:layout_weight="1"
+						android:gravity="center"
+						android:text="@string/_2_3_prestaviteli"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:textColor="@android:color/white" />
+				</LinearLayout>
+			</LinearLayout>
+		</TableRow>
+
+		<View
+			android:layout_width="fill_parent"
+			android:layout_height="2dp"
+			android:background="@android:color/holo_green_dark" />
+		<!-- GROUP V -->
+
+		<TableRow
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" >
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:orientation="horizontal" >
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:gravity="center"
+					android:text="V"
+					android:textAppearance="?android:attr/textAppearanceMedium" />
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:gravity="center"
+					android:text="2,5"
+					android:textAppearance="?android:attr/textAppearanceMedium" />
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:orientation="vertical" >
+
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:layout_weight="1"
+						android:gravity="center"
+						android:text="@string/_2_5_prof_group"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:textColor="@android:color/white" />
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:orientation="vertical" >
+
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:layout_weight="1"
+						android:gravity="center"
+						android:text="@string/_2_5_prestaviteli"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:textColor="@android:color/white" />
+				</LinearLayout>
+			</LinearLayout>
+		</TableRow>
+
+		<View
+			android:layout_width="fill_parent"
+			android:layout_height="4dp"
+			android:background="@android:color/holo_red_dark" />
+	</TableLayout>
+
+</ScrollView>
