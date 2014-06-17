@@ -212,7 +212,7 @@ public class Utils {
           } else if ( groupName.equals(GlobalConstants.GROUP_INGRIDIENT_NAME.STR_READY_MEALS_CATALOGUE) ) {
                retResourceId = R.drawable.ready;
           } else if ( groupName.equals(GlobalConstants.GROUP_INGRIDIENT_NAME.STR_OTHER_CATALOGUE) ) {
-               retResourceId = R.drawable.custom_type;
+               retResourceId = R.drawable.ready_meal;
           } else if ( groupName.equals(GlobalConstants.GROUP_INGRIDIENT_NAME.STR_FRUITS_CATALOGUE) ) {
                retResourceId = R.drawable.fruits;
           }
@@ -232,7 +232,7 @@ public class Utils {
                     break;
 
                case GlobalConstants.GROUP_INGRIDIENT_NAME.INT_OTHER_CATALOGUE:
-                    retResourceId = R.drawable.custom_type;
+                    retResourceId = R.drawable.ready_meal;
                     break;
 
                case GlobalConstants.GROUP_INGRIDIENT_NAME.INT_PORRIDGE_CATALOGUE:

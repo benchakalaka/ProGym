@@ -169,14 +169,6 @@
 			android:background="@drawable/round_border_gray_gradient"
 			android:text="Calculate" />
 
-		<Button
-			android:id="@+id/btnCalculateMyBMI"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_weight="1"
-			android:layout_margin="10dp"
-			android:background="@drawable/round_border_gray_gradient"
-			android:text="Calculate my BMI" />
 	</LinearLayout>
 
 </RelativeLayout>

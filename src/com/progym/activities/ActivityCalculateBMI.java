@@ -52,20 +52,7 @@ import com.progym.utils.Utils;
      }
 
      @Click void btnCalculateMyBMI() {
-          User user = DataBaseUtils.getCurrentUser();
-          if ( null != user ) {
-               double heightInSquare = Math.pow(user.height / 100, 2);
-               double userBmi = user.weight / Math.pow(user.height / 100, 2);
-               double userHealthyWeightFrom = 18.5 * heightInSquare;
-               double userHealthyWeightTo = 24.99 * heightInSquare;
-
-               ActivityBMIResult.USER_BMI = userBmi;
-               ActivityBMIResult.USER_HEALTHY_WEIGHT_FROM = userHealthyWeightFrom;
-               ActivityBMIResult.USER_HEALTHY_WEIGHT_TO = userHealthyWeightTo;
-               ActivityBMIResult.USER_GENDER = user.gender;
-               ActivityBMIResult.USER_ACTIVITY_LEVEL = 1;
-               startActivity(new Intent(ActivityCalculateBMI.this, ActivityBMIResult_.class));
-          }
+      
      }
 
      @Click void btnCalculateBMI() {

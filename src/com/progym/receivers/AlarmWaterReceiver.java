@@ -28,7 +28,7 @@ public class AlarmWaterReceiver extends BroadcastReceiver {
                if ( prefs.getBoolean("isAlarmSet", false) ) {
                     String alarmTime = Utils.isNeedToAddAlarm(prefs);
                     if ( !alarmTime.equals("") ) {
-                         Notification noti = new NotificationCompat.Builder(context).setContentTitle("Dont miss to drink some water...").setContentText("ProGym (" + alarmTime + ")").setSmallIcon(R.drawable.water).build();
+                         Notification noti = new NotificationCompat.Builder(context).setContentTitle("Dont miss to drink some water...").setContentText("ProGym (" + alarmTime + ")").setSmallIcon(R.drawable.advice).build();
                          NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
                          // hide the notification after its selected
                          noti.flags |= Notification.FLAG_AUTO_CANCEL;
