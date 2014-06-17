@@ -1,0 +1,174 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/scrollView1"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@drawable/round_border_gray_gradient" >
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical" >
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:layout_margin="10dp"
+			android:background="@drawable/background_underweight"
+			android:orientation="vertical"
+			android:padding="5dp" >
+
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:text="Underweight"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:textColor="@color/caldroid_black"
+				android:textStyle="bold"
+				android:typeface="serif" />
+
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:text="@string/underweight_"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:textColor="@color/caldroid_black"
+				android:typeface="serif" />
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="@drawable/background_normal"
+			android:orientation="vertical"
+			android:layout_margin="10dp"
+			android:padding="5dp" >
+
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="Normal"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:textColor="@android:color/black"
+				android:textStyle="bold"
+				android:typeface="serif" />
+
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:text="@string/noraml_"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:textColor="@color/caldroid_black"
+				android:typeface="serif" />
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:layout_margin="10dp"
+			android:background="@drawable/background_overweight"
+			android:orientation="vertical"
+			android:padding="5dp" >
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Overweight"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:textColor="@android:color/black"
+				android:textStyle="bold"
+				android:typeface="serif" />
+
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:text="@string/overweight_"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:textColor="@android:color/black"
+				android:typeface="serif" />
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_margin="10dp"
+			android:layout_weight="1"
+			android:background="@drawable/background_obese"
+			android:orientation="vertical"
+			android:padding="5dp" >
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Obese"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:textStyle="bold"
+				android:typeface="serif" />
+
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:text="@string/obese_"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:typeface="serif" />
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:layout_margin="10dp"
+			android:background="@drawable/background_severely_obese"
+			android:orientation="vertical"
+			android:padding="5dp" >
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Severely Obese"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:textStyle="bold"
+				android:typeface="serif" />
+
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:text="@string/severely_obese_"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:typeface="serif" />
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_margin="10dp"
+			android:background="@drawable/background_morbidly_obese"
+			android:orientation="vertical"
+			android:padding="5dp" >
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Morbidly Obese"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:textStyle="bold"
+				android:typeface="serif" />
+
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:text="@string/morbidly_obese_"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:typeface="serif" />
+		</LinearLayout>
+	</LinearLayout>
+
+</ScrollView>

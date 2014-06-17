@@ -7,6 +7,7 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
+import android.content.Intent;
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -72,6 +73,11 @@ import com.progym.interfaces.IProgressActivity;
           calendar = new CaldroidFragmentCustom();
           calendar.setCaldroidListener(onDateChangeListener);
           twMonthly.setBackgroundColor(color.red);
+     }
+
+     @Override protected void onPause() {
+          super.onPause();
+          startActivity(new Intent(ActivityCalloriesProgress.this, ActivityStart_.class));
      }
 
      /**

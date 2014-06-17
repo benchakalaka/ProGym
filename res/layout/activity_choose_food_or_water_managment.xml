@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-	android:id="@+id/roootScrill"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/scroll__"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:background="@drawable/round_border_gray_gradient" >
 
 	<LinearLayout
+		android:id="@+id/rl_start_root"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:orientation="vertical" >
@@ -14,25 +15,25 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_margin="10dp"
-			android:padding="10dp"
 			android:background="@drawable/background_obese"
-			android:orientation="vertical" >
+			android:orientation="vertical"
+			android:padding="10dp" >
 
 			<TextView
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
 				android:gravity="center"
-				android:typeface="serif"
-				android:textStyle="italic"
-				android:text="Track your statistic"
+				android:text="Manage your food and water consumption"
 				android:textAppearance="?android:attr/textAppearanceLarge"
 				android:textColor="@color/caldroid_white"
-				android:textSize="20sp" />
+				android:textSize="20sp"
+				android:textStyle="italic"
+				android:typeface="serif" />
 		</LinearLayout>
 
 		<LinearLayout
-			android:id="@+id/llFoodCalloriesProgress"
+			android:id="@+id/llFoodManagment"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_margin="10dp"
@@ -42,11 +43,11 @@
 			<com.progym.custom.roundimageview.RoundedImageView
 				xmlns:app="http://schemas.android.com/apk/res-auto"
 				android:layout_width="match_parent"
-				android:layout_height="match_parent"
+				android:layout_height="220dp"
 				android:layout_weight="1"
 				android:padding="10dip"
 				android:scaleType="center"
-				android:src="@drawable/calories_statistics"
+				android:src="@drawable/ready_meal"
 				app:border_color="@color/caldroid_black"
 				app:border_width="4dip"
 				app:corner_radius="30dip"
@@ -57,13 +58,13 @@
 				android:layout_height="match_parent"
 				android:layout_weight="1"
 				android:gravity="center"
-				android:text="Callories statistic"
+				android:text="Food managment"
 				android:textAppearance="?android:attr/textAppearanceMedium"
 				android:textColor="@color/caldroid_white" />
 		</LinearLayout>
 
 		<LinearLayout
-			android:id="@+id/llWaterProgress"
+			android:id="@+id/llWaterManagment"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_margin="10dp"
@@ -77,7 +78,7 @@
 				android:layout_weight="1"
 				android:padding="10dip"
 				android:scaleType="center"
-				android:src="@drawable/water_statistics"
+				android:src="@drawable/glass_025"
 				app:border_color="@color/caldroid_black"
 				app:border_width="4dip"
 				app:corner_radius="30dip"
@@ -88,38 +89,7 @@
 				android:layout_height="match_parent"
 				android:layout_weight="1"
 				android:gravity="center"
-				android:text="Water statistic"
-				android:textAppearance="?android:attr/textAppearanceMedium"
-				android:textColor="@color/caldroid_white" />
-		</LinearLayout>
-
-		<LinearLayout
-			android:id="@+id/llFoodProgress"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_margin="10dp"
-			android:background="@drawable/background_round_transparent_real"
-			android:orientation="horizontal" >
-
-			<com.progym.custom.roundimageview.RoundedImageView
-				xmlns:app="http://schemas.android.com/apk/res-auto"
-				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:layout_weight="1"
-				android:padding="10dip"
-				android:scaleType="center"
-				android:src="@drawable/protein_carbs_fat_statistics"
-				app:border_color="@color/caldroid_black"
-				app:border_width="4dip"
-				app:corner_radius="40dip"
-				app:oval="false" />
-
-			<TextView
-				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:layout_weight="1"
-				android:gravity="center"
-				android:text="Protein/Carbohydrates/Fat statistic"
+				android:text="Water managment"
 				android:textAppearance="?android:attr/textAppearanceMedium"
 				android:textColor="@color/caldroid_white" />
 		</LinearLayout>

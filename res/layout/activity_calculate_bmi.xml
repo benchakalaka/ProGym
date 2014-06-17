@@ -3,7 +3,7 @@
 	android:id="@+id/rlSlideMe"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:background="@drawable/background_round_border" >
+	android:background="@drawable/round_border_gray_gradient" >
 
 	<LinearLayout
 		android:id="@+id/llBMIHeader"
@@ -11,9 +11,9 @@
 		android:layout_height="wrap_content"
 		android:layout_alignParentLeft="true"
 		android:layout_alignParentRight="true"
-		android:background="@drawable/circle"
 		android:orientation="vertical"
-		android:padding="27dp" >
+		android:background="@drawable/background_normal"
+		android:padding="7dp" >
 
 		<TextView
 			android:layout_width="match_parent"
@@ -40,8 +40,8 @@
 			<RadioGroup
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_marginBottom="10dp"
-				android:background="@drawable/background_start_buttons"
+				android:layout_margin="10dp"
+				android:background="@drawable/round_border_gray_gradient"
 				android:orientation="horizontal" >
 
 				<RadioButton
@@ -50,7 +50,8 @@
 					android:layout_height="wrap_content"
 					android:layout_weight="1"
 					android:text="Male"
-					android:textColor="@android:color/holo_red_dark"
+					android:checked="true"
+					android:textColor="@android:color/black"
 					android:textStyle="bold" />
 
 				<RadioButton
@@ -67,6 +68,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:layout_weight="1"
+				android:layout_margin="10dp"
 				android:orientation="vertical" >
 
 				<LinearLayout
@@ -163,6 +165,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_weight="1"
+			android:layout_margin="10dp"
 			android:background="@drawable/round_border_gray_gradient"
 			android:text="Calculate" />
 
@@ -171,6 +174,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_weight="1"
+			android:layout_margin="10dp"
 			android:background="@drawable/round_border_gray_gradient"
 			android:text="Calculate my BMI" />
 	</LinearLayout>

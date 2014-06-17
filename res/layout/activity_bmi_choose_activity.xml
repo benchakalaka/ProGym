@@ -11,9 +11,9 @@
 		android:layout_height="wrap_content"
 		android:layout_alignParentLeft="true"
 		android:layout_alignParentRight="true"
-		android:background="@drawable/circle"
+		android:background="@drawable/background_normal"
 		android:orientation="vertical"
-		android:padding="20dp" >
+		android:padding="7dp" >
 
 		<TextView
 			android:layout_width="match_parent"
@@ -41,7 +41,7 @@
 				android:layout_height="0dp"
 				android:layout_marginBottom="10dp"
 				android:layout_weight="1.32"
-				android:background="@drawable/blue_gradient"
+				android:background="@drawable/round_border_gray_gradient"
 				android:orientation="vertical" >
 
 				<RadioButton
@@ -49,7 +49,8 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_weight="1"
-					android:text="Inactive"
+					android:checked="true"
+					android:text="Inactive (I am inactive)"
 					android:textColor="@color/caldroid_white"
 					android:textStyle="bold" />
 
@@ -57,7 +58,7 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:gravity="left"
-					android:text="(I am inactive) I travel by car or public transport, I don&apos;t have an active job, I spend most of my work and leisure time sitting and I do little or no exercise."
+					android:text="I travel by car or public transport, I don&apos;t have an active job, I spend most of my work and leisure time sitting and I do little or no exercise."
 					android:textAppearance="?android:attr/textAppearanceLarge"
 					android:textColor="@color/caldroid_white"
 					android:textStyle="italic" />
@@ -72,7 +73,7 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_weight="1"
-					android:text="Low"
+					android:text="Low (My activity level are low)"
 					android:textColor="@color/caldroid_yellow"
 					android:textStyle="bold" />
 
@@ -80,7 +81,7 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:gravity="left"
-					android:text="(My activity level are low) I occasionally travel on foot, I don&apos;t have an active job, I spend most of my work and leisure time sitting and do a maximum of 2.5 hours exercise a week."
+					android:text="I occasionally travel on foot, I don&apos;t have an active job, I spend most of my work and leisure time sitting and do a maximum of 2.5 hours exercise a week."
 					android:textAppearance="?android:attr/textAppearanceLarge"
 					android:textColor="@color/caldroid_yellow"
 					android:textStyle="italic" />
@@ -95,17 +96,17 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_weight="1"
-					android:text="Moderate"
-					android:textColor="@color/red"
+					android:text="Moderate (My activity levels are moderate)"
+					android:textColor="@color/caldroid_black"
 					android:textStyle="bold" />
 
 				<TextView
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:gravity="left"
-					android:text="(My activity levels are moderate) I regularly travel on foot or bike, I am active at work and home, I don&apos;t spend much time sitting and I do at least 2.5 hours exercise each week."
+					android:text="I regularly travel on foot or bike, I am active at work and home, I don&apos;t spend much time sitting and I do at least 2.5 hours exercise each week."
 					android:textAppearance="?android:attr/textAppearanceLarge"
-					android:textColor="@color/red"
+					android:textColor="@color/caldroid_black"
 					android:textStyle="italic" />
 			</RadioGroup>
 		</LinearLayout>

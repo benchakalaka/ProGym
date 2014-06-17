@@ -43,7 +43,6 @@ import com.progym.utils.Utils;
                DataBaseUtils.setCurrentUser(null);
           } else {
                DataBaseUtils.setCurrentUser(users.get(0));
-               Utils.showCustomToast(ActivityStart.this, "Hi " + users.get(0).name, R.drawable.user);
           }
           // Set up ingridient database
           DataBaseUtils.setUpIngridientsDatabase(getApplicationContext());
@@ -81,5 +80,9 @@ import com.progym.utils.Utils;
                return;
           }
           startActivity(new Intent(ActivityStart.this, ActivityChooseProgressType_.class));
+     }
+
+     @Override public void onBackPressed() {
+          moveTaskToBack(true);
      }
 }

@@ -156,6 +156,7 @@ import com.progym.utils.Utils;
           final String date = Utils.formatDate(this.DATE, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD);
           List <Ingridient> ingridients = DataBaseUtils.getProductsOnPlate(date);
           if ( null != ingridients ) {
+
                for ( Ingridient ingridient : ingridients ) {
                     totalProtein += ingridient.protein;
                     totalFat += ingridient.fat;
@@ -163,9 +164,9 @@ import com.progym.utils.Utils;
                     totalCallories += ingridient.kkal;
                     Utils.log(String.format("==========prot:%s == carbs:%s == name:%s == fat %s============", ingridient.protein, ingridient.carbohydrates, ingridient.name, ingridient.fat));
                }
-
                twCurrentDay.setText(Utils.formatDate(dateToSetUp, "EEEE") + " - " + Utils.formatDate(dateToSetUp, "dd") + " of " + Utils.formatDate(dateToSetUp, "MMM"));
                setUpPieChart(totalProtein, totalFat, totalCarbs, isLeftIn);
+
           }
 
      }

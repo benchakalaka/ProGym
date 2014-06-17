@@ -36,6 +36,7 @@ import com.progym.utils.Utils;
      @AnimationRes ( R.anim.shake ) Animation shake;
 
      @AfterViews void afterViews() {
+          Utils.showCustomToast(ActivityAdviceLevel_1.this, R.string.drag_items_to_screen_center, R.drawable.info);
           ivBrain.setTag(String.valueOf(GlobalConstants.ADVICE_TYPE.INT_BRAIN_WORK));
           ivEnergy.setTag(String.valueOf(GlobalConstants.ADVICE_TYPE.INT_ENERGY));
           ivFatBurinig.setTag(String.valueOf(GlobalConstants.ADVICE_TYPE.INT_FAT_BURNING));

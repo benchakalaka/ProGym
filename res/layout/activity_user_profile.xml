@@ -81,9 +81,7 @@
 					android:textColor="@color/caldroid_white"
 					android:textStyle="bold" />
 			</LinearLayout>
-			
-			
-			
+
 			<!-- weight field -->
 
 			<LinearLayout
@@ -116,8 +114,6 @@
 					android:textColor="@color/caldroid_white"
 					android:textStyle="bold" />
 			</LinearLayout>
-			
-			
 
 			<!-- age field -->
 
@@ -152,34 +148,6 @@
 					android:textStyle="bold" />
 			</LinearLayout>
 
-			<!-- 
-			<LinearLayout
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_margin="1dp"
-				android:layout_weight="1"
-				android:gravity="center"
-				android:orientation="horizontal"
-				android:padding="3dp" >
-
-				<TextView
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_gravity="center"
-					android:layout_weight="1"
-					android:text="Water alarm"
-					android:textAppearance="?android:attr/textAppearanceMedium" />
-
-				<ToggleButton
-					android:id="@+id/tbAlarm"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_weight="1"
-					android:background="@drawable/round_border_gray_gradient"
-					android:textOff="OFF"
-					android:textOn="ON" />
-			</LinearLayout>
- -->
 			<!-- spinner test -->
 
 			<LinearLayout
@@ -190,20 +158,6 @@
 				android:gravity="center"
 				android:orientation="vertical"
 				android:padding="3dp" >
-
-				<TextView
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_gravity="center"
-					android:layout_weight="1"
-					android:text="Body type"
-					android:textAppearance="?android:attr/textAppearanceMedium" />
-
-				<com.progym.custom.NDSpinner
-					android:id="@+id/spinnerBodyType"
-					android:layout_width="fill_parent"
-					android:layout_height="wrap_content"
-					android:background="@drawable/btn_dropdown" />
 
 				<TextView
 					android:layout_width="match_parent"
@@ -233,34 +187,19 @@
 			android:id="@+id/btnSave"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
+			android:layout_margin="10dp"
 			android:layout_weight="1"
 			android:background="@drawable/round_border_gray_gradient"
 			android:text="Save profile" />
+
 		<Button
 			android:id="@+id/btnCancel"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
+			android:layout_margin="10dp"
 			android:layout_weight="1"
 			android:background="@drawable/round_border_gray_gradient"
 			android:text="Cancel" />
-<!-- 
-		<Button
-			android:id="@+id/btnCreateUser"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_weight="1"
-			android:background="@drawable/round_border_gray_gradient"
-			android:text="Create User" />
-		
-		<Button
-			android:id="@+id/btnSwitchUser"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_weight="1"
-			android:background="@drawable/round_border_gray_gradient"
-			android:text="Switch profile" />
-			
-			 -->
 	</LinearLayout>
 
 </RelativeLayout>

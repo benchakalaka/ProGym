@@ -13,7 +13,7 @@ import android.widget.LinearLayout;
 
 import com.progym.R;
 
-@EActivity ( R.layout.activity_select_food_or_water_managment ) public class ActivitySelectFoodOrWaterManagment extends Activity {
+@EActivity ( R.layout.activity_choose_food_or_water_managment ) public class ActivitySelectFoodOrWaterManagment extends Activity {
 
      @ViewById LinearLayout                  llFoodManagment;
      @ViewById LinearLayout                  llWaterManagment;

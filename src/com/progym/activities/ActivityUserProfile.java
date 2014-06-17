@@ -38,13 +38,13 @@ import com.progym.utils.Utils;
      @ViewById EditText          etUserWeight;
      @ViewById EditText          etUserAge;
      @ViewById EditText          etUserHeight;
-     @ViewById NDSpinner         spinnerBodyType;
+     // @ViewById NDSpinner spinnerBodyType;
      @ViewById NDSpinner         spinnerGender;
 
      @ViewById Button            btnSave;
      @ViewById Button            btnCancel;
 
-     @StringArrayRes String[]    bodyTypes;
+     // @StringArrayRes String[] bodyTypes;
      @StringArrayRes String[]    genders;
 
      private User                userToSave;
@@ -57,10 +57,10 @@ import com.progym.utils.Utils;
           InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
           imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
 
-          BodyTypeAdapter bodyTypeAdapter = new BodyTypeAdapter(ActivityUserProfile.this, android.R.layout.simple_spinner_item, bodyTypes);
+          // BodyTypeAdapter bodyTypeAdapter = new BodyTypeAdapter(ActivityUserProfile.this, android.R.layout.simple_spinner_item, bodyTypes);
           GenderAdapter genderAdpater = new GenderAdapter(ActivityUserProfile.this, android.R.layout.simple_spinner_item, genders);
           spinnerGender.setAdapter(genderAdpater);
-          spinnerBodyType.setAdapter(bodyTypeAdapter);
+          // spinnerBodyType.setAdapter(bodyTypeAdapter);
           dialog.setTitle(R.string.body_type_explanation);
           final DialogBodyTypeExplanation view = DialogBodyTypeExplanation_.build(ActivityUserProfile.this);
           dialog.setContentView(view);
@@ -71,12 +71,17 @@ import com.progym.utils.Utils;
           onBackPressed();
      }
 
+     @Override protected void onPause() {
+          super.onPause();
+          startActivity(new Intent(ActivityUserProfile.this, ActivityStart_.class));
+     }
+
      private void setUpUser() {
           User u = DataBaseUtils.getCurrentUser();
           if ( null != u ) {
                etUserName.setText(u.name);
                etUserAge.setText(String.valueOf(u.age));
-               spinnerBodyType.setSelection(u.bodyType, false);
+               // spinnerBodyType.setSelection(u.bodyType, false);
                spinnerGender.setSelection(u.gender);
                etUserWeight.setText(String.valueOf(u.weight));
                etUserHeight.setText(String.valueOf(u.height));
@@ -84,7 +89,7 @@ import com.progym.utils.Utils;
                etUserName.setText("");
                etUserAge.setText("");
                etUserHeight.setText("");
-               spinnerBodyType.setSelection(0, false);
+               // spinnerBodyType.setSelection(0, false);
                spinnerGender.setSelection(0);
                etUserWeight.setText(String.valueOf(0));
           }
@@ -115,7 +120,7 @@ import com.progym.utils.Utils;
           userToSave.gender = spinnerGender.getSelectedItemPosition();
           userToSave.height = Double.valueOf(etUserHeight.getText().toString());
           userToSave.weight = Double.valueOf(etUserWeight.getText().toString());
-          userToSave.bodyType = spinnerBodyType.getSelectedItemPosition();
+          // userToSave.bodyType = 0; spinnerBodyType.getSelectedItemPosition();
           userToSave.save();
           startActivity(new Intent(ActivityUserProfile.this, ActivityStart_.class));
      }
@@ -153,44 +158,39 @@ import com.progym.utils.Utils;
      // =================================================================================
      // ADAPTERS BodyTypeAdapter
      // =================================================================================
-
-     public class BodyTypeAdapter extends ArrayAdapter <String> {
-          private final Activity context;
-          String[]               data = null;
-
-          public BodyTypeAdapter ( Activity context , int resource , String[] data ) {
-               super(context, resource, data);
-               this.context = context;
-               this.data = data;
-          }
-
-          @Override public View getView(int position, View convertView, ViewGroup parent) { // Ordinary view in Spinner, we use
-                                                                                            // android.R.layout.simple_spinner_item
-               return super.getView(position, convertView, parent);
-          }
-
-          @Override public View getDropDownView(int position, View convertView, ViewGroup parent) { // This view starts when we click the spinner.
-               View row = convertView;
-               if ( row == null ) {
-                    LayoutInflater inflater = context.getLayoutInflater();
-                    row = inflater.inflate(R.layout.dropdown_bodytype_layout, parent, false);
-               }
-
-               ImageView bodyType = (ImageView) row.findViewById(R.id.imageIcon);
-               TextView bodyTypeDescription = (TextView) row.findViewById(R.id.countryName);
-               bodyTypeDescription.setText(data[position]);
-
-               if ( position == 0 ) {
-                    bodyType.setBackgroundResource(R.drawable.ekto);
-               } else if ( position == 1 ) {
-                    bodyType.setBackgroundResource(R.drawable.mezo);
-               } else if ( position == 2 ) {
-                    bodyType.setBackgroundResource(R.drawable.endo);
-               }
-               return row;
-          }
-     }
-
+     /*
+      * public class BodyTypeAdapter extends ArrayAdapter <String> {
+      * private final Activity context;
+      * String[] data = null;
+      * public BodyTypeAdapter ( Activity context , int resource , String[] data ) {
+      * super(context, resource, data);
+      * this.context = context;
+      * this.data = data;
+      * }
+      * @Override public View getView(int position, View convertView, ViewGroup parent) { // Ordinary view in Spinner, we use
+      * // android.R.layout.simple_spinner_item
+      * return super.getView(position, convertView, parent);
+      * }
+      * @Override public View getDropDownView(int position, View convertView, ViewGroup parent) { // This view starts when we click the spinner.
+      * View row = convertView;
+      * if ( row == null ) {
+      * LayoutInflater inflater = context.getLayoutInflater();
+      * row = inflater.inflate(R.layout.dropdown_bodytype_layout, parent, false);
+      * }
+      * ImageView bodyType = (ImageView) row.findViewById(R.id.imageIcon);
+      * TextView bodyTypeDescription = (TextView) row.findViewById(R.id.countryName);
+      * bodyTypeDescription.setText(data[position]);
+      * if ( position == 0 ) {
+      * bodyType.setBackgroundResource(R.drawable.ekto);
+      * } else if ( position == 1 ) {
+      * bodyType.setBackgroundResource(R.drawable.mezo);
+      * } else if ( position == 2 ) {
+      * bodyType.setBackgroundResource(R.drawable.endo);
+      * }
+      * return row;
+      * }
+      * }
+      */
      // =================================================================================
      // =================================================================================
      // ADAPTERS GenderAdapter

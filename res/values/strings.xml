@@ -140,7 +140,22 @@
 	<string name="energy_descr2">Поддерживает постоянный уровень энергии в твоем организме</string>
 	<string name="energy_descr3">Усиливает твою устойчивость к вирусам</string>
 	<string name="energy_descr4">Регулирует энергообмен в организме</string>
+	
+	<string name="underweight_">less than 18.5</string>
+	<string name="noraml_">18.5-24.99</string>
+	<string name="overweight_">25-29.99</string>
+	<string name="obese_">30-35.99</string>
+	<string name="severely_obese_">36-39.99</string>
+	<string name="morbidly_obese_">more than 40</string>
+	<string name="drag_items_to_screen_center">Drag one of the item to the center of the screen</string>
+	
+	
+	
+	
 
+	
+	
+	
 	<string-array name="bodyTypes">
 		<item>Ektomorf</item>
 		<item>Mezomorf</item>

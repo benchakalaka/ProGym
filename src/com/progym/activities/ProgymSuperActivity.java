@@ -80,6 +80,7 @@ import com.progym.interfaces.ISuperActivity;
           pb.setIndeterminate(true);
           pb.setTitle(R.string.please_wait);
           pb.setMessage(getResources().getString(R.string.populating_data));
+          pb.setCancelable(false);
           pb.show();
      }
 

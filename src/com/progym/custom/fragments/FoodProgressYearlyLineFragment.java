@@ -239,7 +239,7 @@ import com.progym.utils.Utils;
 
           int[] colors = new int[] { getActivity().getResources().getColor(R.color.green), getActivity().getResources().getColor(R.color.orange), getActivity().getResources().getColor(R.color.purple) };
           XYMultipleSeriesRenderer renderer = buildBarRenderer(colors);
-          setChartSettings(renderer, String.format("Protein/Carbohydrates/Fat statistic for %s year", Utils.getSpecificDateValue(DATE, "yyyy")), "Months", "Amount (g)", 0.7, 12.3, 0, yMaxAxisValue + 30, Color.GRAY, Color.LTGRAY);
+          setChartSettings(renderer, String.format("Protein/Carbohydrates/Fat statistic for %s year", Utils.getSpecificDateValue(DATE, "yyyy")), "Months", "Amount (g)           ", 0.7, 12.3, 0, yMaxAxisValue + 30, Color.GRAY, Color.LTGRAY);
 
           renderer.getSeriesRendererAt(0).setDisplayChartValues(true);
           renderer.getSeriesRendererAt(1).setDisplayChartValues(true);

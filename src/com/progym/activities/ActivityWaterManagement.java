@@ -16,6 +16,7 @@ import org.apache.commons.lang3.time.DateUtils;
 import android.app.Dialog;
 import android.content.ClipData;
 import android.content.ClipDescription;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.text.InputType;
 import android.view.DragEvent;
@@ -149,6 +150,11 @@ import com.todddavies.components.progressbar.ProgressWheel;
           });
      }
 
+     @Override protected void onPause() {
+          super.onPause();
+          startActivity(new Intent(ActivityWaterManagement.this, ActivityStart_.class));
+     }
+
      @Click void ivListOfConsumedWater() {
           fade.setDuration(600);
           ivListOfConsumedWater.startAnimation(fade);
@@ -239,7 +245,7 @@ import com.todddavies.components.progressbar.ProgressWheel;
 
                @Override public void run() {
                     List <WaterConsumed> list = DataBaseUtils.getAllWaterConsumed();
-
+                    calendar = new CaldroidFragmentCustom();
                     HashMap <Date, Integer> datesAndColour = new HashMap <Date, Integer>();
                     for ( WaterConsumed singleDate : list ) {
                          try {
@@ -248,9 +254,14 @@ import com.todddavies.components.progressbar.ProgressWheel;
                               e.printStackTrace();
                          }
                     }
-                    // highlight dates in calendar with blue color
-                    calendar.setBackgroundResourceForDates(datesAndColour);
-                    calendar.show(getSupportFragmentManager(), GlobalConstants.TAG);
+
+                    try {
+                         // highlight dates in calendar with blue color
+                         calendar.setBackgroundResourceForDates(datesAndColour);
+                         calendar.show(getSupportFragmentManager(), GlobalConstants.TAG);
+                    } catch (Exception ex) {
+                         ex.printStackTrace();
+                    }
                     hideProgressBar(ActivityWaterManagement.this);
                }
           });

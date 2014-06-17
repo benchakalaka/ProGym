@@ -21,6 +21,7 @@ public class User extends SugarRecord <User> {
      public double weight;
      public double height;
      public int    age;
+
      /**
       * Ektomorf ------------------- 0
       * Mezomorf ------------------- 1
@@ -28,7 +29,7 @@ public class User extends SugarRecord <User> {
       * Ekto-Mezo ------------------ 3
       * Endo-Mezo ------------------ 4
       */
-     public int    bodyType;
+     // public int bodyType;
 
      public User ( Context arg0 ) {
           super(arg0);

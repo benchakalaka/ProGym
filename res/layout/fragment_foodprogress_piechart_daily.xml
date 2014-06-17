@@ -106,7 +106,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:background="@color/caldroid_yellow"
+        android:background="@drawable/round_border_gray_gradient"
+        android:layout_margin="5dp"
+        android:padding="10dp"
         android:text="sss"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 

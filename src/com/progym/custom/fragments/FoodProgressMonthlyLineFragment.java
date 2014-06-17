@@ -226,12 +226,13 @@ import com.progym.utils.Utils;
           // should be same
           multiRenderer.setChartTitle(String.format("Protein/Carbs/Fat statistic "));
           multiRenderer.setXTitle(Utils.getSpecificDateValue(DATE, "MMM") + " of " + Utils.formatDate(DATE, DataBaseUtils.DATE_PATTERN_YYYY));
-          multiRenderer.setYTitle("Nutrition weight (g)");
+          multiRenderer.setYTitle("Amount (g)          ");
           multiRenderer.setAxesColor(Color.WHITE);
           multiRenderer.setShowLegend(true);
           multiRenderer.addSeriesRenderer(proteinRenderer);
           multiRenderer.addSeriesRenderer(carbsRenderer);
           multiRenderer.addSeriesRenderer(fatRenderer);
+
           multiRenderer.setShowGrid(true);
           multiRenderer.setClickEnabled(true);
           multiRenderer.setXLabelsAngle(20);

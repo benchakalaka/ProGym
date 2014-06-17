@@ -33,6 +33,8 @@
 		android:layout_height="wrap_content"
 		android:layout_alignTop="@+id/bargraph"
 		android:layout_centerHorizontal="true"
-		android:background="@color/caldroid_yellow"
+		android:padding="10dp"
+		android:layout_margin="10dp"
+		android:background="@drawable/round_border_gray_gradient"
 		android:textAppearance="?android:attr/textAppearanceLarge" />
 </RelativeLayout>

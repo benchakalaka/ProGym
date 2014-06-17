@@ -2,7 +2,8 @@
 	android:id="@+id/topscroll"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:background="#008300" >
+	android:background="@drawable/blue_gradient" 
+	>
 
 	<!-- PARENT TABLELAYOUT -->
 
@@ -10,7 +11,7 @@
 		android:id="@+id/activity_start_button_settings"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:background="#008300"
+		android:background="@drawable/blue_gradient" 
 		android:stretchColumns="*" >
 
 		<LinearLayout

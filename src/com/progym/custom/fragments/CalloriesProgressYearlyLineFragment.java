@@ -237,7 +237,7 @@ import com.progym.utils.Utils;
 
           int[] colors = new int[] { getActivity().getResources().getColor(R.color.purple) };
           XYMultipleSeriesRenderer renderer = buildBarRenderer(colors);
-          setChartSettings(renderer, String.format("Callories statistic for %s year", Utils.getSpecificDateValue(DATE, "yyyy")), "Months", "Amount (g)", 0.7, 12.3, 0, yMaxAxisValue + 30, Color.GRAY, Color.LTGRAY);
+          setChartSettings(renderer, String.format("Callories statistic for %s year", Utils.getSpecificDateValue(DATE, "yyyy")), "Months", "Calories consumption", 0.7, 12.3, 0, yMaxAxisValue + 30, Color.GRAY, Color.LTGRAY);
 
           renderer.getSeriesRendererAt(0).setDisplayChartValues(true);
           renderer.getSeriesRendererAt(0).setChartValuesTextSize(15f);

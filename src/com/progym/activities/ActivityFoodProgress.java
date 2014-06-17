@@ -10,6 +10,7 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.apache.commons.lang3.time.DateUtils;
 
+import android.content.Intent;
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -41,24 +42,31 @@ import com.progym.utils.DataBaseUtils;
 
                     FRAGMENT_TYPE = DAILY;
                     List <Meal> meals = DataBaseUtils.getAllPlates();
+                    HashMap <Date, Integer> datesToHighligt = new HashMap <Date, Integer>();
                     if ( null != meals && !meals.isEmpty() ) {
-                         HashMap <Date, Integer> datesToHighligt = new HashMap <Date, Integer>();
+
                          for ( Meal meal : meals ) {
                               try {
-                                   datesToHighligt.put(DateUtils.parseDate(meal.date, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD_HH_MM_SS), com.caldroid.R.color.caldroid_sky_blue);
+                                   datesToHighligt.put(DateUtils.parseDate(meal.date, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD_HH_MM_SS_MILLIS), com.caldroid.R.color.caldroid_sky_blue);
                               } catch (ParseException e) {
                                    e.printStackTrace();
                               }
                          }
-                         // highlight dates in calendar with blue color
-                         calendar.setBackgroundResourceForDates(datesToHighligt);
-                         calendar.show(getSupportFragmentManager(), GlobalConstants.TAG);
                     }
+                    // highlight dates in calendar with blue color
+                    calendar.setBackgroundResourceForDates(datesToHighligt);
+                    calendar.show(getSupportFragmentManager(), GlobalConstants.TAG);
+
                     hideProgressBar(ActivityFoodProgress.this);
                }
           });
           t.start();
 
+     }
+
+     @Override protected void onPause() {
+          super.onPause();
+          startActivity(new Intent(ActivityFoodProgress.this, ActivityStart_.class));
      }
 
      @Click void twMonthly() {

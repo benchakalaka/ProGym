@@ -205,19 +205,32 @@ import com.progym.utils.Utils;
 
                @Override public void run() {
                     List <Meal> meals = DataBaseUtils.getAllPlates();
+                    HashMap <Date, Integer> datesToHighligt = new HashMap <Date, Integer>();
                     if ( null != meals && !meals.isEmpty() ) {
-                         HashMap <Date, Integer> datesToHighligt = new HashMap <Date, Integer>();
+                         calendar = new CaldroidFragmentCustom();
                          for ( Meal meal : meals ) {
                               try {
-                                   datesToHighligt.put(DateUtils.parseDate(meal.date, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD_HH_MM_SS), com.caldroid.R.color.caldroid_sky_blue);
+                                   Date key = DateUtils.parseDate(meal.date, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD_HH_MM_SS_MILLIS);
+                                   datesToHighligt.put(key, com.caldroid.R.color.caldroid_sky_blue);
                               } catch (ParseException e) {
                                    e.printStackTrace();
                               }
                          }
+                    }
+
+                    try {
                          // highlight dates in calendar with blue color
                          calendar.setBackgroundResourceForDates(datesToHighligt);
+                         calendar.show(getSupportFragmentManager(), GlobalConstants.TAG);
+                    } catch (Exception ex) {
+                         ex.printStackTrace();
+
+                         // calendar = new CaldroidFragmentCustom();
+                         // highlight dates in calendar with blue color
+                         // calendar.setBackgroundResourceForDates(datesToHighligt);
+                         // calendar.show(getSupportFragmentManager(), GlobalConstants.TAG);
                     }
-                    calendar.show(getSupportFragmentManager(), GlobalConstants.TAG);
+
                     hideProgressBar(ActivityFoodManagment.this);
                }
           });
