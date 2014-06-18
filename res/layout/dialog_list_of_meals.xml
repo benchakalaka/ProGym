@@ -30,17 +30,19 @@
 		
 		<Button
 			android:id="@+id/btnAddReadyMealToCurrPlate"
-			android:layout_width="wrap_content"
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_weight="1"
+			android:layout_margin="10dp"
 			android:background="@drawable/round_border_gray_gradient"
 			android:text="Add to current meal" />
 
 		<Button
 			android:id="@+id/btnCancel"
-			android:layout_width="wrap_content"
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_weight="1"
+			android:layout_margin="10dp"
 			android:background="@drawable/round_border_gray_gradient"
 			android:text="Cancel" />
 	</LinearLayout>

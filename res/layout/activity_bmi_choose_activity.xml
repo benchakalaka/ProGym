@@ -29,7 +29,8 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:layout_above="@+id/llBackNext"
-		android:layout_below="@+id/llBMIHeader" >
+		android:layout_below="@+id/llBMIHeader"
+		android:background="@drawable/round_border_gray_gradient" >
 
 		<LinearLayout
 			android:layout_width="match_parent"
@@ -41,73 +42,122 @@
 				android:layout_height="0dp"
 				android:layout_marginBottom="10dp"
 				android:layout_weight="1.32"
-				android:background="@drawable/round_border_gray_gradient"
 				android:orientation="vertical" >
 
-				<RadioButton
-					android:id="@+id/rbInactive"
+				<TextView
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:layout_weight="1"
-					android:checked="true"
-					android:text="Inactive (I am inactive)"
+					android:background="@drawable/blue_gradient"
+					android:gravity="center"
+					android:text="I am inactive"
+					android:textAppearance="?android:attr/textAppearanceLarge"
 					android:textColor="@color/caldroid_white"
 					android:textStyle="bold" />
 
 				<TextView
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
+					android:layout_margin="10dp"
+					android:background="@drawable/blue_gradient"
 					android:gravity="left"
 					android:text="I travel by car or public transport, I don&apos;t have an active job, I spend most of my work and leisure time sitting and I do little or no exercise."
 					android:textAppearance="?android:attr/textAppearanceLarge"
 					android:textColor="@color/caldroid_white"
 					android:textStyle="italic" />
 
+				<RadioButton
+					android:id="@+id/rbInactive"
+					android:layout_width="50dp"
+					android:layout_height="50dp"
+					android:layout_gravity="right"
+					android:layout_margin="5dp"
+					android:layout_weight="1"
+					android:background="@drawable/radio_selector"
+					android:button="@null"
+					android:checked="true"
+					android:textColor="@color/caldroid_white"
+					android:textStyle="bold" />
+
 				<View
 					android:layout_width="fill_parent"
-					android:layout_height="4dp"
-					android:background="@android:color/holo_red_dark" />
+					android:layout_height="3dp"
+					android:background="@drawable/round_border_gray_gradient" />
 
-				<RadioButton
-					android:id="@+id/rbLow"
+				<TextView
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:layout_weight="1"
-					android:text="Low (My activity level are low)"
+					android:background="@drawable/blue_gradient"
+					android:gravity="center"
+					android:text="My activity level are low"
+					android:textAppearance="?android:attr/textAppearanceLarge"
 					android:textColor="@color/caldroid_yellow"
 					android:textStyle="bold" />
 
 				<TextView
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
+					android:layout_margin="10dp"
+					android:background="@drawable/blue_gradient"
 					android:gravity="left"
 					android:text="I occasionally travel on foot, I don&apos;t have an active job, I spend most of my work and leisure time sitting and do a maximum of 2.5 hours exercise a week."
 					android:textAppearance="?android:attr/textAppearanceLarge"
 					android:textColor="@color/caldroid_yellow"
 					android:textStyle="italic" />
 
+				<RadioButton
+					android:id="@+id/rbLow"
+					android:layout_width="50dp"
+					android:layout_height="50dp"
+					android:layout_gravity="right"
+					android:layout_margin="5dp"
+					android:layout_weight="1"
+					android:background="@drawable/radio_selector"
+					android:button="@null"
+					android:textColor="@color/caldroid_yellow"
+					android:textStyle="bold" />
+
 				<View
 					android:layout_width="fill_parent"
-					android:layout_height="4dp"
-					android:background="@android:color/holo_red_dark" />
+					android:layout_height="3dp"
+					android:background="@drawable/round_border_gray_gradient" />
 
-				<RadioButton
-					android:id="@+id/rbModerate"
+				<TextView
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:layout_weight="1"
-					android:text="Moderate (My activity levels are moderate)"
+					android:background="@drawable/blue_gradient"
+					android:gravity="center"
+					android:text="My activity levels are moderate"
 					android:textColor="@color/caldroid_black"
+					android:textAppearance="?android:attr/textAppearanceLarge"
 					android:textStyle="bold" />
 
 				<TextView
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
+					android:layout_margin="10dp"
+					android:background="@drawable/blue_gradient"
 					android:gravity="left"
 					android:text="I regularly travel on foot or bike, I am active at work and home, I don&apos;t spend much time sitting and I do at least 2.5 hours exercise each week."
 					android:textAppearance="?android:attr/textAppearanceLarge"
 					android:textColor="@color/caldroid_black"
 					android:textStyle="italic" />
+
+				<RadioButton
+					android:id="@+id/rbModerate"
+					android:layout_width="50dp"
+					android:layout_height="50dp"
+					android:layout_gravity="right"
+					android:layout_margin="5dp"
+					android:layout_weight="1"
+					android:background="@drawable/radio_selector"
+					android:button="@null"
+					android:textColor="@color/caldroid_black"
+					android:textStyle="bold" />
+
+				<View
+					android:layout_width="fill_parent"
+					android:layout_height="3dp"
+					android:background="@drawable/round_border_gray_gradient" />
 			</RadioGroup>
 		</LinearLayout>
 	</ScrollView>
@@ -123,6 +173,7 @@
 			android:id="@+id/btnBack"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
+			android:layout_margin="10dp"
 			android:layout_weight="1"
 			android:background="@drawable/round_border_gray_gradient"
 			android:text="Back" />
@@ -131,6 +182,7 @@
 			android:id="@+id/btnNext"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
+			android:layout_margin="10dp"
 			android:layout_weight="1"
 			android:background="@drawable/round_border_gray_gradient"
 			android:text="Next" />

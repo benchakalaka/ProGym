@@ -11,8 +11,8 @@
 		android:layout_height="wrap_content"
 		android:layout_alignParentLeft="true"
 		android:layout_alignParentRight="true"
-		android:orientation="vertical"
 		android:background="@drawable/background_normal"
+		android:orientation="vertical"
 		android:padding="7dp" >
 
 		<TextView
@@ -49,8 +49,8 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_weight="1"
-					android:text="Male"
 					android:checked="true"
+					android:text="Male"
 					android:textColor="@android:color/black"
 					android:textStyle="bold" />
 
@@ -67,8 +67,8 @@
 			<LinearLayout
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
-				android:layout_weight="1"
 				android:layout_margin="10dp"
+				android:layout_weight="1"
 				android:orientation="vertical" >
 
 				<LinearLayout
@@ -164,11 +164,10 @@
 			android:id="@+id/btnCalculateBMI"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_weight="1"
 			android:layout_margin="10dp"
+			android:layout_weight="1"
 			android:background="@drawable/round_border_gray_gradient"
 			android:text="Calculate" />
-
 	</LinearLayout>
 
 </RelativeLayout>

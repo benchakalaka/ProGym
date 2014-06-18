@@ -86,12 +86,12 @@ import com.progym.utils.Utils;
                etUserWeight.setText(String.valueOf(u.weight));
                etUserHeight.setText(String.valueOf(u.height));
           } else {
+               etUserWeight.setText("");
                etUserName.setText("");
                etUserAge.setText("");
                etUserHeight.setText("");
                // spinnerBodyType.setSelection(0, false);
                spinnerGender.setSelection(0);
-               etUserWeight.setText(String.valueOf(0));
           }
      }
 

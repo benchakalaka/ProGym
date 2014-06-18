@@ -83,8 +83,6 @@ import com.todddavies.components.progressbar.ProgressWheel;
 
      @Override @AfterViews void afterViews() {
 
-          calendar = new CaldroidFragmentCustom();
-          calendar.setCaldroidListener(onDateChangeListener);
           dialogListOfWaterConsumedToday = new Dialog(this);
           dialogListOfWaterConsumedToday.setContentView(R.layout.dialog_list_consumed_today);
           dialogListOfWaterConsumedToday.setCanceledOnTouchOutside(true);
@@ -257,6 +255,7 @@ import com.todddavies.components.progressbar.ProgressWheel;
 
                     try {
                          // highlight dates in calendar with blue color
+                         calendar.setCaldroidListener(onDateChangeListener);
                          calendar.setBackgroundResourceForDates(datesAndColour);
                          calendar.show(getSupportFragmentManager(), GlobalConstants.TAG);
                     } catch (Exception ex) {

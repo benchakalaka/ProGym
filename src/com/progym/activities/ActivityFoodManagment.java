@@ -71,12 +71,9 @@ import com.progym.utils.Utils;
      @Override protected void onPause() {
           super.onPause();
           startActivity(new Intent(ActivityFoodManagment.this, ActivityStart_.class));
-
      }
 
      @Override @AfterViews void afterViews() {
-          calendar = new CaldroidFragmentCustom();
-          calendar.setCaldroidListener(onDateChangeListener);
           PLATES_BUTTONS = new ArrayList <View>();
           viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
           displaySelectedDate();
@@ -220,6 +217,7 @@ import com.progym.utils.Utils;
 
                     try {
                          // highlight dates in calendar with blue color
+                         calendar.setCaldroidListener(onDateChangeListener);
                          calendar.setBackgroundResourceForDates(datesToHighligt);
                          calendar.show(getSupportFragmentManager(), GlobalConstants.TAG);
                     } catch (Exception ex) {

@@ -18,7 +18,8 @@
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:layout_weight="1"
-			android:background="@drawable/blue_gradient" >
+			android:layout_margin="5dp"
+			android:background="@drawable/round_border_gray_gradient" >
 
 			<ImageView
 				android:id="@+id/iv1"
@@ -61,7 +62,8 @@
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:layout_weight="1"
-			android:background="@drawable/blue_gradient" >
+			android:layout_margin="5dp"
+			android:background="@drawable/round_border_gray_gradient" >
 
 			<RelativeLayout
 				android:layout_width="match_parent"
@@ -119,7 +121,8 @@
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:layout_weight="1"
-			android:background="@drawable/blue_gradient" >
+			android:layout_margin="5dp"
+			android:background="@drawable/round_border_gray_gradient" >
 
 			<ImageView
 				android:id="@+id/iv3"
@@ -161,8 +164,9 @@
 			android:id="@+id/rl4"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
+			android:layout_margin="5dp"
 			android:layout_weight="1"
-			android:background="@drawable/blue_gradient" >
+			android:background="@drawable/round_border_gray_gradient" >
 
 			<RelativeLayout
 				android:layout_width="match_parent"

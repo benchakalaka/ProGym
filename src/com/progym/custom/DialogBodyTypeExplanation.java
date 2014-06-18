@@ -26,24 +26,24 @@ import com.progym.R;
       *             Mezomorf ------------------- 1
       *             Endomorf ------------------- 2
       */
-     public void setBodyTypeToExplain(int bodyType) {
-          String description = "";
-          switch (bodyType) {
-          // Ektomorf
-               case 0:
-                    description = this.context.getResources().getString(R.string.ektomorf);
-                    break;
-
-               // Mezomorf
-               case 1:
-                    description = this.context.getResources().getString(R.string.mezomorf);
-                    break;
-
-               // Endomorf
-               case 2:
-                    description = this.context.getResources().getString(R.string.endomorf);
-                    break;
-          }
-          twBodyTypeExplanation.setText(description);
-     }
+     /*
+      * public void setBodyTypeToExplain(int bodyType) {
+      * String description = "";
+      * switch (bodyType) {
+      * // Ektomorf
+      * case 0:
+      * description = this.context.getResources().getString(R.string.ektomorf);
+      * break;
+      * // Mezomorf
+      * case 1:
+      * description = this.context.getResources().getString(R.string.mezomorf);
+      * break;
+      * // Endomorf
+      * case 2:
+      * description = this.context.getResources().getString(R.string.endomorf);
+      * break;
+      * }
+      * twBodyTypeExplanation.setText(description);
+      * }
+      */
 }

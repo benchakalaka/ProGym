@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:id="@+id/water_managment_root_relative_layout"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	>
+	android:layout_height="match_parent" >
 
 	<LinearLayout
 		android:layout_width="match_parent"
@@ -113,8 +112,7 @@
 					android:id="@+id/hsvWaterVolumes"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:layout_below="@+id/llConsumedStatistic"
-					 >
+					android:layout_below="@+id/llConsumedStatistic" >
 
 					<LinearLayout
 						android:layout_width="match_parent"
@@ -284,8 +282,7 @@
 				android:id="@+id/water_managment_root_relative_lasyout"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
-				android:layout_margin="3dp"
-				 >
+				android:layout_margin="3dp" >
 
 				<com.progym.custom.WaterLevelBodyView
 					android:id="@+id/ivBodyWaterLevel"
@@ -324,15 +321,13 @@
 					android:layout_width="wrap_content"
 					android:layout_height="100dp"
 					android:layout_alignParentBottom="true"
-					android:layout_alignParentLeft="true"
-					 >
+					android:layout_alignParentLeft="true" >
 
 					<LinearLayout
 						android:id="@+id/llAlreadyConsumedWaterList"
 						android:layout_width="wrap_content"
-						android:orientation="horizontal"
-						android:layout_height="100dp" >
-
+						android:layout_height="100dp"
+						android:orientation="horizontal" >
 					</LinearLayout>
 				</HorizontalScrollView>
 			</RelativeLayout>
