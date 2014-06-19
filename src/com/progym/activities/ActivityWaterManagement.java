@@ -107,6 +107,15 @@ import com.todddavies.components.progressbar.ProgressWheel;
                               ConsumedWaterItemView itemView = ConsumedWaterItemView_.build(getApplicationContext());
                               itemView.ivVolumeImage.setBackgroundResource(Utils.getImageIdByTag(tag));
 
+                              try {
+                                   if ( llAlreadyConsumedWaterList.getChildCount() > 25 ) {
+                                        Utils.showCustomToast(ActivityWaterManagement.this, R.string.restriction_water, R.drawable.info);
+                                        return true;
+                                   }
+                              } catch (Exception ex) {
+                                   ex.printStackTrace();
+                              }
+
                               llAlreadyConsumedWaterList.addView(itemView);
                               horizontalScrollView.postDelayed(new Runnable() {
                                    @Override public void run() {

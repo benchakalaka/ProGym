@@ -1,34 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/rlRrootItem"
-    android:layout_width="80dp"
-    android:layout_height="80dp"
-    android:layout_marginLeft="5dp"
-    android:padding="15dp" >
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="2dp"
+    >
 
     <ImageView
         android:id="@+id/ivVolumeImage"
         android:layout_width="50dip"
         android:layout_height="50dip"
         android:layout_alignParentTop="true"
-        android:background="@drawable/meal_title" />
+        android:background="@drawable/ingridient" />
 
     <TextView
-        android:id="@+id/twIngridientsAmount"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:background="@drawable/round_border_gray_gradient"
-        android:gravity="center_horizontal"
-        android:paddingBottom="1dp"
-        android:paddingLeft="3dp"
-        android:paddingRight="3dp"
-        android:paddingTop="1dp"
-        android:text="4"
-        android:textAlignment="center"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@android:color/white"
-        android:textStyle="bold" />
+    	android:id="@+id/twIngridientsAmount"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_alignParentLeft="true"
+    	android:layout_alignParentTop="true"
+    	android:background="@drawable/green_gradient"
+    	android:gravity="center_horizontal"
+    	android:text="4"
+    	android:textAlignment="center"
+    	android:textAppearance="?android:attr/textAppearanceMedium"
+    	android:textColor="@android:color/white"
+    	android:textStyle="italic|bold"
+    	android:typeface="serif" />
 
 </RelativeLayout>

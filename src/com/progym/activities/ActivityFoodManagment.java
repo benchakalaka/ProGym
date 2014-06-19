@@ -12,6 +12,7 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 import org.apache.commons.lang3.time.DateUtils;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
@@ -67,6 +68,7 @@ import com.progym.utils.Utils;
      @ViewById public HorizontalScrollView  horizontalScrollView;
 
      private ArrayList <View>               PLATES_BUTTONS;
+     static ProgressDialog                  ringProgressDialog;
 
      @Override protected void onPause() {
           super.onPause();
@@ -74,13 +76,9 @@ import com.progym.utils.Utils;
      }
 
      @Override @AfterViews void afterViews() {
-          PLATES_BUTTONS = new ArrayList <View>();
-          viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
-          displaySelectedDate();
           svListOfConsumedMeals.setOnDragListener(new OnDragListener() {
 
                @Override public boolean onDrag(View v, DragEvent event) {
-
                     switch (event.getAction()) {
                          case DragEvent.ACTION_DROP:
                               // 0 - element name of product
@@ -90,6 +88,11 @@ import com.progym.utils.Utils;
                               // 4 - element carbs of prodcut
                               // 5 - element fat of prodcut
                               // 6 - element kkal of prodcut
+
+                              if ( Integer.valueOf(((SinglePlateItemView) CURRENT_MEAL_VIEW).twIngridientsAmount.getText().toString()) > 25 ) {
+                                   Utils.showCustomToast(ActivityFoodManagment.this, R.string.restriction_meal, R.drawable.info);
+                                   return true;
+                              }
                               final String name = event.getClipData().getItemAt(0).getText().toString();
                               final String weight = event.getClipData().getItemAt(1).getText().toString();
                               final String groupName = event.getClipData().getItemAt(2).getText().toString();
@@ -137,6 +140,90 @@ import com.progym.utils.Utils;
           });
      }
 
+     @Override protected void onResume() {
+          super.onResume();
+          viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
+          twCurrentDate.setText(Utils.formatDate(SELECTED_DATE, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD));
+
+          final ProgressDialog ringProgressDialog = ProgressDialog.show(ActivityFoodManagment.this, getResources().getString(R.string.please_wait), getResources().getString(R.string.populating_data), true);
+          ringProgressDialog.setCancelable(true);
+          new Thread(new Runnable() {
+               @Override public void run() {
+                    try {
+                         PLATES_BUTTONS = new ArrayList <View>();
+                         List <Meal> meals = DataBaseUtils.getPlatesConsumedByDate(twCurrentDate.getText().toString());
+                         ActivityFoodManagment.this.runOnUiThread(new Runnable() {
+
+                              @Override public void run() {
+                                   llCreatedPlates.removeAllViews();
+
+                              }
+                         });
+
+                         if ( null != meals && !meals.isEmpty() ) {
+                              // set active meal last meal
+                              CURRENT_MEAL = meals.get(meals.size() - 1);
+
+                              for ( Meal meal : meals ) {
+                                   createProductOnPlate(meal);
+                              }
+
+                         } else {
+                              CURRENT_MEAL = null;
+                         }
+
+                         ActivityFoodManagment.this.runOnUiThread(new Runnable() {
+
+                              @Override public void run() {
+                                   llAlreadyOnPlate.removeAllViews();
+
+                              }
+                         });
+
+                         if ( null != CURRENT_MEAL ) {
+                              List <Ingridient> ingridients = DataBaseUtils.getProductsOnPlate(CURRENT_MEAL);
+                              for ( Ingridient ingridient : ingridients ) {
+                                   final OneProductOnPlateView view = OneProductOnPlateView_.build(getApplicationContext());
+                                   view.ivProduct.setImageResource(Utils.getImageIdByGroupName(ingridient.groupName));
+                                   view.twProductDescription.setText(String.format("%s : %sg (%skkal)", ingridient.name, ingridient.weight, ingridient.kkal));
+
+                                   ActivityFoodManagment.this.runOnUiThread(new Runnable() {
+
+                                        @Override public void run() {
+                                             llAlreadyOnPlate.addView(view);
+                                        }
+                                   });
+                              }
+                         }
+                         if ( !PLATES_BUTTONS.isEmpty() ) {
+                              for ( final View plateView : PLATES_BUTTONS ) {
+                                   ActivityFoodManagment.this.runOnUiThread(new Runnable() {
+
+                                        @Override public void run() {
+                                             plateView.setBackgroundColor(Color.TRANSPARENT);
+                                        }
+                                   });
+                              }
+                              // Set CURRENT_PLATE_VIEW - > display amount of products on the meal
+                              CURRENT_MEAL_VIEW = PLATES_BUTTONS.get(PLATES_BUTTONS.size() - 1);
+
+                              ActivityFoodManagment.this.runOnUiThread(new Runnable() {
+
+                                   @Override public void run() {
+                                        PLATES_BUTTONS.get(PLATES_BUTTONS.size() - 1).setBackgroundResource(R.drawable.background_round_transparent_real);// .setPadding(15,
+                                   }
+                              });
+
+                              // 15, 15, 15);
+                         }
+                    } catch (Exception e) {
+                         e.printStackTrace();
+                    }
+                    ringProgressDialog.dismiss();
+               }
+          }).start();
+     }
+
      @Override public void onBackPressed() {
           // 1 - ingridient specification, go back to expandable list view
           if ( viewPager.getCurrentItem() == ActivityFoodManagment.SPECIFIC_FOOD_SPECIFICATION ) {
@@ -146,48 +233,78 @@ import com.progym.utils.Utils;
           }
      }
 
+     /**
+      * final ProgressDialog ringProgressDialog = ProgressDialog.show(ActivityFoodManagment.this,
+      * getResources().getString(R.string.please_wait),getResources().getString(R.string.saving) , true);
+      * ringProgressDialog.setCancelable(true);
+      * new Thread(new Runnable() {
+      * 
+      * @Override
+      *           public void run() {
+      *           try {
+      *           } catch (Exception e) {
+      *           e.printStackTrace();
+      *           }
+      *           ringProgressDialog.dismiss();
+      *           }
+      *           }).start();
+      */
+
      @Click void ibSavePlate() {
+
           if ( null != CURRENT_MEAL ) {
+               final ProgressDialog ringProgressDialog = ProgressDialog.show(ActivityFoodManagment.this, getResources().getString(R.string.please_wait), getResources().getString(R.string.saving), true);
+               ringProgressDialog.setCancelable(true);
+               new Thread(new Runnable() {
+                    @Override public void run() {
+                         try {
+                              List <Ingridient> ingridients = DataBaseUtils.getProductsOnPlate(CURRENT_MEAL);
 
-               List <Ingridient> ingridients = DataBaseUtils.getProductsOnPlate(CURRENT_MEAL);
+                              if ( ingridients.isEmpty() ) {
+                                   Utils.showCustomToast(ActivityFoodManagment.this, R.string.there_is_nothing_on_plate, R.drawable.unhappy);
+                                   ringProgressDialog.dismiss();
+                                   return;
+                              }
 
-               if ( ingridients.isEmpty() ) {
-                    Utils.showCustomToast(ActivityFoodManagment.this, R.string.there_is_nothing_on_plate, R.drawable.unhappy);
-                    return;
-               }
+                              ReadyMeal readyMeal = new ReadyMeal(getApplicationContext());
+                              readyMeal.user = DataBaseUtils.getCurrentUser();
+                              readyMeal.date = Utils.formatDate(new Date(), DataBaseUtils.DATE_PATTERN_YYYY_MM_DD_HH_MM_SS_MILLIS);
+                              readyMeal.save();
 
-               ReadyMeal readyMeal = new ReadyMeal(getApplicationContext());
-               readyMeal.user = DataBaseUtils.getCurrentUser();
-               readyMeal.date = Utils.formatDate(new Date(), DataBaseUtils.DATE_PATTERN_YYYY_MM_DD_HH_MM_SS_MILLIS);
-               readyMeal.save();
+                              // GET ALL READY_MEAL_CATALOGUE INGRIDIENTS
+                              List <ReadyMeal> meals = ReadyMeal.listAll(ReadyMeal.class);
+                              if ( !GlobalConstants.INGRIDIENTS.READY_MEALS.isEmpty() ) {
+                                   GlobalConstants.INGRIDIENTS.READY_MEALS.clear();
+                              }
+                              for ( ReadyMeal meal : meals ) {
+                                   GlobalConstants.INGRIDIENTS.READY_MEALS.add(meal.date);
+                              }
 
-               // GET ALL READY_MEAL_CATALOGUE INGRIDIENTS
-               List <ReadyMeal> meals = ReadyMeal.listAll(ReadyMeal.class);
-               if ( !GlobalConstants.INGRIDIENTS.READY_MEALS.isEmpty() ) {
-                    GlobalConstants.INGRIDIENTS.READY_MEALS.clear();
-               }
-               for ( ReadyMeal meal : meals ) {
-                    GlobalConstants.INGRIDIENTS.READY_MEALS.add(meal.date);
-               }
+                              for ( Ingridient i : ingridients ) {
+                                   ReadyIngridient readiIngridien = new ReadyIngridient(ActivityFoodManagment.this);
+                                   readiIngridien.carbohydrates = i.carbohydrates;
+                                   readiIngridien.fat = i.fat;
+                                   readiIngridien.protein = i.protein;
+                                   readiIngridien.groupName = i.groupName;
+                                   readiIngridien.name = i.name;
+                                   readiIngridien.kkal = i.kkal;
+                                   readiIngridien.user = DataBaseUtils.getCurrentUser();
+                                   readiIngridien.meal = CURRENT_MEAL;
+                                   readiIngridien.weight = i.weight;
+                                   readiIngridien.date = readyMeal.date;
+                                   readiIngridien.save();
+                              }
 
-               for ( Ingridient i : ingridients ) {
-                    ReadyIngridient readiIngridien = new ReadyIngridient(ActivityFoodManagment.this);
-                    readiIngridien.carbohydrates = i.carbohydrates;
-                    readiIngridien.fat = i.fat;
-                    readiIngridien.protein = i.protein;
-                    readiIngridien.groupName = i.groupName;
-                    readiIngridien.name = i.name;
-                    readiIngridien.kkal = i.kkal;
-                    readiIngridien.user = DataBaseUtils.getCurrentUser();
-                    readiIngridien.meal = CURRENT_MEAL;
-                    readiIngridien.weight = i.weight;
-                    readiIngridien.date = readyMeal.date;
-                    readiIngridien.save();
-               }
+                              // Add to expandable list view ready meal date
+                              ((ViewPagerAdapter) viewPager.getAdapter()).foodCategoryExpListViewFragment.addToReadyMeal(CURRENT_MEAL.date);
+                              Utils.showCustomToast(ActivityFoodManagment.this, R.string.list_of_products_has_been_saved, R.drawable.save);
+                         } catch (Exception e) {
+                              e.printStackTrace();
+                         }
+                         ringProgressDialog.dismiss();
+                    }
+               }).start();
 
-               // Add to expandable list view ready meal date
-               ((ViewPagerAdapter) viewPager.getAdapter()).foodCategoryExpListViewFragment.addToReadyMeal(CURRENT_MEAL.date);
-               Utils.showCustomToast(ActivityFoodManagment.this, R.string.list_of_products_has_been_saved, R.drawable.save);
           } else {
                Utils.showCustomToast(this, R.string.create_plate_before_saving, R.drawable.plus);
                ibCreatePlate.startAnimation(fade);
@@ -239,38 +356,82 @@ import com.progym.utils.Utils;
      @Override public void displaySelectedDate() {
           // Apply pattern for displaying into left panel without time
           twCurrentDate.setText(Utils.formatDate(SELECTED_DATE, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD));
-          loadPlatesByDate(twCurrentDate.getText().toString());
-          putProductsOnPlate();
-          setLastPlateActive();
+          final ProgressDialog ringProgressDialog = ProgressDialog.show(ActivityFoodManagment.this, getResources().getString(R.string.please_wait), getResources().getString(R.string.populating_data), true);
+          ringProgressDialog.setCancelable(true);
+          new Thread(new Runnable() {
+
+               @Override public void run() {
+                    try {
+                         loadPlatesByDate(twCurrentDate.getText().toString());
+                         putProductsOnPlate();
+                         setLastPlateActive();
+                    } catch (Exception e) {
+                         e.printStackTrace();
+                    }
+                    ringProgressDialog.dismiss();
+               }
+          }).start();
      }
 
      private void setLastPlateActive() {
           if ( !PLATES_BUTTONS.isEmpty() ) {
-               for ( View plateView : PLATES_BUTTONS ) {
-                    plateView.setBackgroundColor(Color.TRANSPARENT);// setPadding(0, 0, 0, 0);
+               for ( final View plateView : PLATES_BUTTONS ) {
+                    ActivityFoodManagment.this.runOnUiThread(new Runnable() {
+
+                         @Override public void run() {
+                              plateView.setBackgroundColor(Color.TRANSPARENT);
+                         }
+                    });
                }
                // Set CURRENT_PLATE_VIEW - > display amount of products on the meal
                CURRENT_MEAL_VIEW = PLATES_BUTTONS.get(PLATES_BUTTONS.size() - 1);
-               PLATES_BUTTONS.get(PLATES_BUTTONS.size() - 1).setBackgroundResource(R.drawable.background_round_transparent_real);// .setPadding(15, 15, 15, 15);
+
+               ActivityFoodManagment.this.runOnUiThread(new Runnable() {
+
+                    @Override public void run() {
+                         PLATES_BUTTONS.get(PLATES_BUTTONS.size() - 1).setBackgroundResource(R.drawable.background_round_transparent_real);// .setPadding(15,
+                                                                                                                                           // 15, 15, 15);
+                    }
+               });
+
           }
      }
 
      private void putProductsOnPlate() {
-          llAlreadyOnPlate.removeAllViews();
+          ActivityFoodManagment.this.runOnUiThread(new Runnable() {
+
+               @Override public void run() {
+                    llAlreadyOnPlate.removeAllViews();
+               }
+          });
+
           if ( null != CURRENT_MEAL ) {
                List <Ingridient> ingridients = DataBaseUtils.getProductsOnPlate(CURRENT_MEAL);
                for ( Ingridient ingridient : ingridients ) {
-                    OneProductOnPlateView view = OneProductOnPlateView_.build(getApplicationContext());
+                    final OneProductOnPlateView view = OneProductOnPlateView_.build(getApplicationContext());
                     view.ivProduct.setImageResource(Utils.getImageIdByGroupName(ingridient.groupName));
                     view.twProductDescription.setText(String.format("%s : %sg (%skkal)", ingridient.name, ingridient.weight, ingridient.kkal));
-                    llAlreadyOnPlate.addView(view);
+                    ActivityFoodManagment.this.runOnUiThread(new Runnable() {
+
+                         @Override public void run() {
+                              llAlreadyOnPlate.addView(view);
+                         }
+                    });
+
                }
           }
      }
 
      private void loadPlatesByDate(String date) {
           List <Meal> meals = DataBaseUtils.getPlatesConsumedByDate(date);
-          llCreatedPlates.removeAllViews();
+
+          ActivityFoodManagment.this.runOnUiThread(new Runnable() {
+
+               @Override public void run() {
+                    llCreatedPlates.removeAllViews();
+               }
+          });
+
           if ( null != meals && !meals.isEmpty() ) {
                // set active meal last meal
                CURRENT_MEAL = meals.get(meals.size() - 1);
@@ -343,63 +504,93 @@ import com.progym.utils.Utils;
           createProductOnPlate(meal);
 
           setLastPlateActive();
-          Utils.showCustomToast(this, R.string.plate_has_been_created, R.drawable.meal_title);
+          Utils.showCustomToast(this, R.string.plate_has_been_created, R.drawable.ingridient);
      }
 
-     public void addReadyMealToCurrentPlate(List <ReadyIngridient> ingridientsOfReadyMeal) {
-          User u = DataBaseUtils.getCurrentUser();
+     public void addReadyMealToCurrentPlate(final List <ReadyIngridient> ingridientsOfReadyMeal) {
+          final User u = DataBaseUtils.getCurrentUser();
           if ( null == CURRENT_MEAL ) {
                Utils.showCustomToast(this, R.string.create_plate, R.drawable.plus);
                ibCreatePlate.startAnimation(fade);
                return;
           }
-          Meal meal = CURRENT_MEAL;
+          final Meal meal = CURRENT_MEAL;
 
-          for ( ReadyIngridient i : ingridientsOfReadyMeal ) {
-               Ingridient ingridientToLog = new Ingridient(getApplicationContext());
-               ingridientToLog.carbohydrates = i.carbohydrates;
-               ingridientToLog.fat = i.fat;
-               ingridientToLog.protein = i.protein;
-               ingridientToLog.groupName = i.groupName;
-               ingridientToLog.name = i.name;
-               ingridientToLog.kkal = i.kkal;
-               ingridientToLog.user = u;
-               ingridientToLog.meal = meal;
-               ingridientToLog.weight = i.weight;
-               ingridientToLog.date = meal.date;
-               ingridientToLog.save();
-               OneProductOnPlateView view = OneProductOnPlateView_.build(getApplicationContext());
-               view.ivProduct.setImageResource(Utils.getImageIdByGroupName(ingridientToLog.groupName));
-               view.twProductDescription.setText(String.format("%s : %sg (%skkal)", ingridientToLog.name, ingridientToLog.weight, ingridientToLog.kkal));
-               llAlreadyOnPlate.addView(view);
+          ActivityFoodManagment.this.runOnUiThread(new Runnable() {
 
-               int currentAmountOfIngridients = Integer.valueOf(((SinglePlateItemView) CURRENT_MEAL_VIEW).twIngridientsAmount.getText().toString());
-               ((SinglePlateItemView) CURRENT_MEAL_VIEW).twIngridientsAmount.setText(String.valueOf(currentAmountOfIngridients + 1));
-               svListOfConsumedMeals.post(new Runnable() {
-                    @Override public void run() {
-                         // This method works even better because there are no animations.
-                         svListOfConsumedMeals.smoothScrollTo(0, svListOfConsumedMeals.getBottom());
+               @Override public void run() {
+                    ringProgressDialog = ProgressDialog.show(ActivityFoodManagment.this, getResources().getString(R.string.please_wait), getResources().getString(R.string.building_list), true);
+                    ringProgressDialog.setCancelable(true);
+
+               }
+          });
+
+          new Thread(new Runnable() {
+
+               @Override public void run() {
+                    try {
+                         for ( ReadyIngridient i : ingridientsOfReadyMeal ) {
+                              Ingridient ingridientToLog = new Ingridient(getApplicationContext());
+                              ingridientToLog.carbohydrates = i.carbohydrates;
+                              ingridientToLog.fat = i.fat;
+                              ingridientToLog.protein = i.protein;
+                              ingridientToLog.groupName = i.groupName;
+                              ingridientToLog.name = i.name;
+                              ingridientToLog.kkal = i.kkal;
+                              ingridientToLog.user = u;
+                              ingridientToLog.meal = meal;
+                              ingridientToLog.weight = i.weight;
+                              ingridientToLog.date = meal.date;
+                              ingridientToLog.save();
+                              final OneProductOnPlateView view = OneProductOnPlateView_.build(getApplicationContext());
+                              view.ivProduct.setImageResource(Utils.getImageIdByGroupName(ingridientToLog.groupName));
+                              view.twProductDescription.setText(String.format("%s : %sg (%skkal)", ingridientToLog.name, ingridientToLog.weight, ingridientToLog.kkal));
+
+                              ActivityFoodManagment.this.runOnUiThread(new Runnable() {
+
+                                   @Override public void run() {
+                                        llAlreadyOnPlate.addView(view);
+
+                                   }
+                              });
+
+                              ActivityFoodManagment.this.runOnUiThread(new Runnable() {
+
+                                   @Override public void run() {
+                                        int currentAmountOfIngridients = Integer.valueOf(((SinglePlateItemView) CURRENT_MEAL_VIEW).twIngridientsAmount.getText().toString());
+                                        ((SinglePlateItemView) CURRENT_MEAL_VIEW).twIngridientsAmount.setText(String.valueOf(currentAmountOfIngridients + 1));
+                                        // Utils.showCustomToast(ActivityFoodManagment.this, R.string.ingridients_has_been_added, R.drawable.plus);
+                                   }
+                              });
+
+                              svListOfConsumedMeals.post(new Runnable() {
+                                   @Override public void run() {
+                                        // This method works even better because there are no animations.
+                                        svListOfConsumedMeals.smoothScrollTo(0, svListOfConsumedMeals.getBottom());
+                                   }
+                              });
+                         }
+
+                         CURRENT_MEAL = meal;
+
+                         ActivityFoodManagment.this.runOnUiThread(new Runnable() {
+
+                              @Override public void run() {
+                                   Utils.showCustomToast(ActivityFoodManagment.this, R.string.ingridients_has_been_added, R.drawable.plus);
+                              }
+                         });
+                    } catch (Exception e) {
+                         e.printStackTrace();
                     }
-               });
-          }
-
-          // meal.date = properDate;
-          // meal.user = u;
-
-          // createProductOnPlate(meal);
-
-          // save meal
-          // meal.save();
-          this.CURRENT_MEAL = meal;
-
-          setLastPlateActive();
-          Utils.showCustomToast(this, R.string.plate_has_been_created, R.drawable.plus);
+                    ringProgressDialog.dismiss();
+               }
+          }).start();
 
      }
 
      private void createProductOnPlate(Meal meal) {
-          SinglePlateItemView itemView = SinglePlateItemView_.build(getApplicationContext());
-          itemView.ivVolumeImage.setBackgroundResource(R.drawable.meal_title);
+          final SinglePlateItemView itemView = SinglePlateItemView_.build(getApplicationContext());
+          itemView.ivVolumeImage.setBackgroundResource(R.drawable.ingridient);
           itemView.twIngridientsAmount.setText(String.valueOf(DataBaseUtils.getProductsOnPlate(meal).size()));
 
           // Set Meal as property to this VEIW :TODO
@@ -410,34 +601,84 @@ import com.progym.utils.Utils;
 
           itemView.setOnClickListener(new OnClickListener() {
 
-               @Override public void onClick(View v) {
-                    CURRENT_MEAL = (Meal) v.getTag();
-                    CURRENT_MEAL_VIEW = v;
+               @Override public void onClick(final View v) {
+                    final ProgressDialog ringProgressDialog = ProgressDialog.show(ActivityFoodManagment.this, getResources().getString(R.string.please_wait), getResources().getString(R.string.populating_data), true);
+                    ringProgressDialog.setCancelable(true);
 
-                    CURRENT_MEAL_VIEW.startAnimation(fade);
-                    Utils.showCustomToast(ActivityFoodManagment.this, String.format("Created %s", CURRENT_MEAL.date), R.drawable.meal_title);
+                    new Thread(new Runnable() {
 
-                    /*
-                     * Utils.log("CURRENT PLATE DATE :: " + CURRENT_MEAL.date);
-                     * List <Ingridient> ingridients = DataBaseUtils.getProductsOnPlate(CURRENT_MEAL);
-                     * if ( null != ingridients ) {
-                     * for ( Ingridient ingridient : ingridients ) {
-                     * Utils.log(String.format("==========prot:%s == carbs:%s == name:%s == fat %s============", ingridient.protein, ingridient.carbohydrates,
-                     * ingridient.name, ingridient.fat));
-                     * }
-                     * }
-                     */
+                         @Override public void run() {
+                              try {
+                                   CURRENT_MEAL = (Meal) v.getTag();
+                                   CURRENT_MEAL_VIEW = v;
 
-                    for ( View plateView : PLATES_BUTTONS ) {
-                         // Unselect all
-                         plateView.setBackgroundColor(Color.TRANSPARENT);
-                    }
-                    v.setBackgroundResource(R.drawable.background_round_transparent_real);
+                                   ActivityFoodManagment.this.runOnUiThread(new Runnable() {
 
-                    putProductsOnPlate();
+                                        @Override public void run() {
+                                             CURRENT_MEAL_VIEW.startAnimation(fade);
+                                        }
+                                   });
+
+                                   Utils.showCustomToast(ActivityFoodManagment.this, String.format("Created %s", CURRENT_MEAL.date), R.drawable.ingridient);
+
+                                   for ( final View plateView : PLATES_BUTTONS ) {
+                                        // Unselect all
+                                        ActivityFoodManagment.this.runOnUiThread(new Runnable() {
+
+                                             @Override public void run() {
+                                                  plateView.setBackgroundColor(Color.TRANSPARENT);
+                                             }
+                                        });
+
+                                   }
+                                   ActivityFoodManagment.this.runOnUiThread(new Runnable() {
+
+                                        @Override public void run() {
+                                             v.setBackgroundResource(R.drawable.background_round_transparent_real);
+                                        }
+                                   });
+
+                                   // putProductsOnPlate();
+                                   ActivityFoodManagment.this.runOnUiThread(new Runnable() {
+
+                                        @Override public void run() {
+                                             llAlreadyOnPlate.removeAllViews();
+                                        }
+                                   });
+
+                                   if ( null != CURRENT_MEAL ) {
+                                        List <Ingridient> ingridients = DataBaseUtils.getProductsOnPlate(CURRENT_MEAL);
+                                        for ( Ingridient ingridient : ingridients ) {
+                                             final OneProductOnPlateView view = OneProductOnPlateView_.build(getApplicationContext());
+                                             view.ivProduct.setImageResource(Utils.getImageIdByGroupName(ingridient.groupName));
+                                             view.twProductDescription.setText(String.format("%s : %sg (%skkal)", ingridient.name, ingridient.weight, ingridient.kkal));
+                                             ActivityFoodManagment.this.runOnUiThread(new Runnable() {
+
+                                                  @Override public void run() {
+                                                       llAlreadyOnPlate.addView(view);
+                                                  }
+                                             });
+                                        }
+                                   }
+                                   ringProgressDialog.dismiss();
+                              } catch (Exception ex) {
+                                   ex.printStackTrace();
+                              }
+                         }
+                    }).start();
+
+               }
+
+          });
+
+          ActivityFoodManagment.this.runOnUiThread(new Runnable() {
+
+               @Override public void run() {
+                    llCreatedPlates.addView(itemView);
+
                }
           });
-          llCreatedPlates.addView(itemView);
+
      }
 
      /**

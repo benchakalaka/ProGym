@@ -35,6 +35,7 @@ import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.res.AnimationRes;
 import org.apache.commons.lang3.time.DateUtils;
 
+import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.view.View;
@@ -199,73 +200,100 @@ import com.progym.utils.Utils;
           renderer.setLabelsColor(labelsColor);
      }
 
-     public void setYearProgressData(Date date, boolean isLeftIn) {
-          int yMaxAxisValue = 0;
-          try {
-               rlRootGraphLayout.removeView(viewChart);
-          } catch (Exception edsx) {
-               edsx.printStackTrace();
-          }
-          DATE = date;
-          // Get amount of days in a month to find out average
-          int daysInMonth = Utils.getDaysInMonth(date.getMonth(), Integer.valueOf(Utils.formatDate(date, DataBaseUtils.DATE_PATTERN_YYYY)));
-          // set January as first month
-          date.setMonth(0);
-          date.setDate(1);
+     public void setYearProgressData(final Date date, final boolean isLeftIn) {
 
-          int[] x = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+          final ProgressDialog ringProgressDialog = ProgressDialog.show(getActivity(), getResources().getString(R.string.please_wait), getResources().getString(R.string.populating_data), true);
+          ringProgressDialog.setCancelable(true);
+          new Thread(new Runnable() {
 
-          XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
-          CategorySeries seriesCallories = new CategorySeries("Callories");
+               @Override public void run() {
+                    try {
+                         int yMaxAxisValue = 0;
 
-          List <Ingridient> list;
-          for ( int element : x ) {
-               list = DataBaseUtils.getAllFoodConsumedInMonth(Utils.formatDate(date, DataBaseUtils.DATE_PATTERN_YYYY_MM));
+                         getActivity().runOnUiThread(new Runnable() {
 
-               // init "average" data
-               int totalCallories = 0;
-               for ( Ingridient ingridient : list ) {
-                    totalCallories += ingridient.kkal;
+                              @Override public void run() {
+                                   try {
+                                        rlRootGraphLayout.removeView(viewChart);
+                                   } catch (Exception edsx) {
+                                        edsx.printStackTrace();
+                                   }
+                              }
+                         });
+
+                         DATE = date;
+                         // Get amount of days in a month to find out average
+                         int daysInMonth = Utils.getDaysInMonth(date.getMonth(), Integer.valueOf(Utils.formatDate(date, DataBaseUtils.DATE_PATTERN_YYYY)));
+                         // set January as first month
+                         date.setMonth(0);
+                         date.setDate(1);
+
+                         int[] x = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+
+                         final XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
+                         CategorySeries seriesCallories = new CategorySeries("Callories");
+
+                         List <Ingridient> list;
+                         Date dt = date; // *
+                         for ( int element : x ) {
+                              list = DataBaseUtils.getAllFoodConsumedInMonth(Utils.formatDate(dt, DataBaseUtils.DATE_PATTERN_YYYY_MM));
+
+                              // init "average" data
+                              int totalCallories = 0;
+                              for ( Ingridient ingridient : list ) {
+                                   totalCallories += ingridient.kkal;
+                              }
+                              // add value to series
+                              seriesCallories.add(totalCallories / daysInMonth);
+                              // calculate maximum Y axis values
+                              yMaxAxisValue = Math.max(yMaxAxisValue, totalCallories / daysInMonth);
+                              // increment month
+                              dt = DateUtils.addMonths(dt, 1);
+                         }
+
+                         int[] colors = new int[] { getActivity().getResources().getColor(R.color.purple) };
+                         final XYMultipleSeriesRenderer renderer = buildBarRenderer(colors);
+                         setChartSettings(renderer, String.format("Callories statistic for %s year", Utils.getSpecificDateValue(DATE, "yyyy")), "Months", "Calories consumption", 0.7, 12.3, 0, yMaxAxisValue + 30, Color.GRAY, Color.LTGRAY);
+
+                         renderer.getSeriesRendererAt(0).setDisplayChartValues(true);
+                         renderer.getSeriesRendererAt(0).setChartValuesTextSize(15f);
+                         renderer.setXLabels(0);
+                         renderer.setClickEnabled(false);
+                         renderer.setZoomEnabled(false);
+                         renderer.setPanEnabled(false, false);
+                         renderer.setZoomButtonsVisible(false);
+                         renderer.setPanLimits(new double[] { 1, 11 });
+                         renderer.setShowGrid(true);
+                         renderer.setShowLegend(true);
+                         renderer.setFitLegend(true);
+
+                         for ( int i = 0; i < ActivityWaterProgress.months_short.length; i++ ) {
+                              renderer.addXTextLabel(i + 1, ActivityWaterProgress.months_short[i]);
+
+                         }
+                         dataset.addSeries(seriesCallories.toXYSeries());
+
+                         getActivity().runOnUiThread(new Runnable() {
+
+                              @Override public void run() {
+                                   viewChart = ChartFactory.getBarChartView(getActivity(), dataset, renderer, Type.DEFAULT);
+                                   rlRootGraphLayout.addView(viewChart, 0);
+
+                                   if ( isLeftIn ) {
+                                        rightIn.setDuration(1000);
+                                        viewChart.startAnimation(rightIn);
+                                   } else {
+                                        leftIn.setDuration(1000);
+                                        viewChart.startAnimation(leftIn);
+                                   }
+                              }
+                         });
+
+                    } catch (Exception e) {
+                    }
+                    ringProgressDialog.dismiss();
                }
-               // add value to series
-               seriesCallories.add(totalCallories / daysInMonth);
-               // calculate maximum Y axis values
-               yMaxAxisValue = Math.max(yMaxAxisValue, totalCallories / daysInMonth);
-               // increment month
-               date = DateUtils.addMonths(date, 1);
-          }
+          }).start();
 
-          int[] colors = new int[] { getActivity().getResources().getColor(R.color.purple) };
-          XYMultipleSeriesRenderer renderer = buildBarRenderer(colors);
-          setChartSettings(renderer, String.format("Callories statistic for %s year", Utils.getSpecificDateValue(DATE, "yyyy")), "Months", "Calories consumption", 0.7, 12.3, 0, yMaxAxisValue + 30, Color.GRAY, Color.LTGRAY);
-
-          renderer.getSeriesRendererAt(0).setDisplayChartValues(true);
-          renderer.getSeriesRendererAt(0).setChartValuesTextSize(15f);
-          renderer.setXLabels(0);
-          renderer.setClickEnabled(false);
-          renderer.setZoomEnabled(false);
-          renderer.setPanEnabled(false, false);
-          renderer.setZoomButtonsVisible(false);
-          renderer.setPanLimits(new double[] { 1, 11 });
-          renderer.setShowGrid(true);
-          renderer.setShowLegend(true);
-          renderer.setFitLegend(true);
-
-          for ( int i = 0; i < ActivityWaterProgress.months_short.length; i++ ) {
-               renderer.addXTextLabel(i + 1, ActivityWaterProgress.months_short[i]);
-
-          }
-          dataset.addSeries(seriesCallories.toXYSeries());
-
-          viewChart = ChartFactory.getBarChartView(getActivity(), dataset, renderer, Type.DEFAULT);
-          rlRootGraphLayout.addView(viewChart, 0);
-
-          if ( isLeftIn ) {
-               rightIn.setDuration(1000);
-               viewChart.startAnimation(rightIn);
-          } else {
-               leftIn.setDuration(1000);
-               viewChart.startAnimation(leftIn);
-          }
      }
 }

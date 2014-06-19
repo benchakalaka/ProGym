@@ -2,22 +2,22 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:id="@+id/rrrrrrrr"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent" >
+	android:layout_height="match_parent"
+	android:background="@drawable/blue_gradient" >
 
 	<ScrollView
 		android:id="@+id/ssssssssw"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:background="@drawable/blue_gradient" >
+		android:layout_above="@+id/llSaveCancelButtons" >
 
 		<LinearLayout
 			android:id="@+id/llIngridientsListToAdd"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_margin="1dp"
+			android:layout_margin="5dp"
 			android:gravity="center"
-			android:orientation="vertical"
-			android:padding="3dp" >
+			android:orientation="vertical" >
 		</LinearLayout>
 	</ScrollView>
 
@@ -27,13 +27,13 @@
 		android:layout_height="wrap_content"
 		android:layout_alignParentBottom="true"
 		android:orientation="horizontal" >
-		
+
 		<Button
 			android:id="@+id/btnAddReadyMealToCurrPlate"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_weight="1"
 			android:layout_margin="10dp"
+			android:layout_weight="1"
 			android:background="@drawable/round_border_gray_gradient"
 			android:text="Add to current meal" />
 
@@ -41,8 +41,8 @@
 			android:id="@+id/btnCancel"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_weight="1"
 			android:layout_margin="10dp"
+			android:layout_weight="1"
 			android:background="@drawable/round_border_gray_gradient"
 			android:text="Cancel" />
 	</LinearLayout>

@@ -103,9 +103,10 @@ import com.progym.utils.Utils;
 
           listView.setOnItemClickListener(new OnItemClickListener() {
 
-               @Override public void onItemClick(AdapterView <?> adapter, View view, int pos, long arg3) {
+               @Override public void onItemClick(final AdapterView <?> adapter, View view, final int pos, long arg3) {
 
                     dialog.setContentView(R.layout.dialog_list_of_meals);
+                    dialog.setTitle(R.string.ingridients_list);
                     LinearLayout ll = (LinearLayout) dialog.findViewById(R.id.llIngridientsListToAdd);
 
                     final String plateDate = adapter.getItemAtPosition(pos).toString();
@@ -141,6 +142,7 @@ import com.progym.utils.Utils;
                     });
 
                     dialog.show();
+
                }
           });
           dialog.show();

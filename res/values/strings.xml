@@ -140,7 +140,6 @@
 	<string name="energy_descr2">Поддерживает постоянный уровень энергии в твоем организме</string>
 	<string name="energy_descr3">Усиливает твою устойчивость к вирусам</string>
 	<string name="energy_descr4">Регулирует энергообмен в организме</string>
-	
 	<string name="underweight_">less than 18.5</string>
 	<string name="noraml_">18.5-24.99</string>
 	<string name="overweight_">25-29.99</string>
@@ -148,20 +147,19 @@
 	<string name="severely_obese_">36-39.99</string>
 	<string name="morbidly_obese_">more than 40</string>
 	<string name="drag_items_to_screen_center">Drag one of the item to the center of the screen</string>
+	<string name="ingridients_list">List of ingridients</string>
 	
-	
-	
-	
+	<string name="restriction_meal">Sorry, you can log up to 25 items per meal</string>
+	<string name="restriction_water">Sorry, you can log up to 25 water items per day</string>
 
-	
-	
-	
 	<string-array name="genders">
 		<item>Male</item>
 		<item>Female</item>
 	</string-array>
 
-	<string name="food">food</string>
+	<string name="saving">Saving</string>
+	<string name="building_list">Building list</string>
+	
 	<string name="please_wait">Please wait...</string>
 	<string name="populating_data">Populating data</string>
 	<string name="brain_work">Brain work</string>
@@ -187,5 +185,6 @@
 	<string name="there_is_no_ready_meal_found">There is no ready meals found</string>
 	<string name="name_of_product_cannot_be_empty">Name of product cannot be empty</string>
 	<string name="set_proper_prot_carbs_fat">Set proper weight,protein,carbs,fat,kkal</string>
+	<string name="ingridients_has_been_added">List of ingridients has been added to current meal</string>
 
 </resources>

@@ -29,6 +29,7 @@ import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.res.AnimationRes;
 import org.apache.commons.lang3.time.DateUtils;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.animation.Animation;
@@ -147,62 +148,84 @@ import com.progym.utils.Utils;
 
      }
 
-     public void setPieData(Date dateToSetUp, boolean isLeftIn) {
-          this.DATE = dateToSetUp;
-          totalProtein = 0;
-          totalFat = 0;
-          totalCarbs = 0;
-          totalCallories = 0;
-          final String date = Utils.formatDate(this.DATE, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD);
-          List <Ingridient> ingridients = DataBaseUtils.getProductsOnPlate(date);
-          if ( null != ingridients ) {
+     public void setPieData(final Date dateToSetUp, final boolean isLeftIn) {
 
-               for ( Ingridient ingridient : ingridients ) {
-                    totalProtein += ingridient.protein;
-                    totalFat += ingridient.fat;
-                    totalCarbs += ingridient.carbohydrates;
-                    totalCallories += ingridient.kkal;
-                    Utils.log(String.format("==========prot:%s == carbs:%s == name:%s == fat %s============", ingridient.protein, ingridient.carbohydrates, ingridient.name, ingridient.fat));
+          final ProgressDialog ringProgressDialog = ProgressDialog.show(getActivity(), getResources().getString(R.string.please_wait), getResources().getString(R.string.populating_data), true);
+          ringProgressDialog.setCancelable(true);
+          new Thread(new Runnable() {
+
+               @Override public void run() {
+                    try {
+                         DATE = dateToSetUp;
+                         totalProtein = 0;
+                         totalFat = 0;
+                         totalCarbs = 0;
+                         totalCallories = 0;
+                         final String date = Utils.formatDate(DATE, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD);
+                         List <Ingridient> ingridients = DataBaseUtils.getProductsOnPlate(date);
+                         if ( null != ingridients ) {
+
+                              for ( Ingridient ingridient : ingridients ) {
+                                   totalProtein += ingridient.protein;
+                                   totalFat += ingridient.fat;
+                                   totalCarbs += ingridient.carbohydrates;
+                                   totalCallories += ingridient.kkal;
+                                   Utils.log(String.format("==========prot:%s == carbs:%s == name:%s == fat %s============", ingridient.protein, ingridient.carbohydrates, ingridient.name, ingridient.fat));
+                              }
+
+                              getActivity().runOnUiThread(new Runnable() {
+
+                                   @Override public void run() {
+                                        twCurrentDay.setText(Utils.formatDate(dateToSetUp, "EEEE") + " - " + Utils.formatDate(dateToSetUp, "dd") + " of " + Utils.formatDate(dateToSetUp, "MMM"));
+
+                                   }
+                              });
+
+                              setUpPieChart(totalProtein, totalFat, totalCarbs, isLeftIn);
+
+                         }
+                    } catch (Exception e) {
+                         e.printStackTrace();
+                    }
+                    ringProgressDialog.dismiss();
                }
-               twCurrentDay.setText(Utils.formatDate(dateToSetUp, "EEEE") + " - " + Utils.formatDate(dateToSetUp, "dd") + " of " + Utils.formatDate(dateToSetUp, "MMM"));
-               setUpPieChart(totalProtein, totalFat, totalCarbs, isLeftIn);
-
-          }
-
+          }).start();
      }
 
-     private void setUpPieChart(double protein, double fat, double carbs, boolean isLeftIn) {
+     private void setUpPieChart(final double protein, final double fat, final double carbs, final boolean isLeftIn) {
+          getActivity().runOnUiThread(new Runnable() {
 
-          twProtein.setText(String.format("%.2f", protein));
-          twFat.setText(String.format("%.2f", fat));
-          twCarbs.setText(String.format("%.2f", carbs));
-          twCalories.setText(String.valueOf("Calories per day " + totalCallories));
+               @Override public void run() {
+                    twProtein.setText(String.format("%.2f", protein));
+                    twFat.setText(String.format("%.2f", fat));
+                    twCarbs.setText(String.format("%.2f", carbs));
+                    twCalories.setText(String.valueOf("Calories per day " + totalCallories));
 
-          // set up pie chart parameters
-          fat = (fat < 1) ? 1 : fat;
-          protein = (protein < 1) ? 1 : protein;
-          carbs = (carbs < 1) ? 1 : carbs;
+                    // set up pie chart parameters
 
-          sliceFat.setValue((int) fat);
-          sliceProtein.setValue((int) protein);
-          sliceCarbs.setValue((int) carbs);
+                    sliceFat.setValue((int) ((fat < 1) ? 1 : fat));
+                    sliceProtein.setValue((int) ((protein < 1) ? 1 : protein));
+                    sliceCarbs.setValue((int) ((carbs < 1) ? 1 : carbs));
 
-          // remove existing slices (if exists)
-          pieGraphFoodStats.removeSlices();
-          // PROTEIN INDEX = 0
-          pieGraphFoodStats.addSlice(sliceProtein);
-          // CARBS INDEX = 1
-          pieGraphFoodStats.addSlice(sliceCarbs);
-          // FAT INDEX = 2
-          pieGraphFoodStats.addSlice(sliceFat);
+                    // remove existing slices (if exists)
+                    pieGraphFoodStats.removeSlices();
+                    // PROTEIN INDEX = 0
+                    pieGraphFoodStats.addSlice(sliceProtein);
+                    // CARBS INDEX = 1
+                    pieGraphFoodStats.addSlice(sliceCarbs);
+                    // FAT INDEX = 2
+                    pieGraphFoodStats.addSlice(sliceFat);
 
-          if ( isLeftIn ) {
-               rightIn.setDuration(1000);
-               pieGraphFoodStats.startAnimation(rightIn);
-          } else {
-               leftIn.setDuration(1000);
-               pieGraphFoodStats.startAnimation(leftIn);
-          }
+                    if ( isLeftIn ) {
+                         rightIn.setDuration(1000);
+                         pieGraphFoodStats.startAnimation(rightIn);
+                    } else {
+                         leftIn.setDuration(1000);
+                         pieGraphFoodStats.startAnimation(leftIn);
+                    }
+
+               }
+          });
 
      }
 }
