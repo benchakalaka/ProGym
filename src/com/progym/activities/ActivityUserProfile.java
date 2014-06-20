@@ -22,8 +22,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.progym.R;
-import com.progym.custom.DialogBodyTypeExplanation;
-import com.progym.custom.DialogBodyTypeExplanation_;
 import com.progym.custom.NDSpinner;
 import com.progym.model.User;
 import com.progym.utils.AppSharedPreferences_;
@@ -61,10 +59,10 @@ import com.progym.utils.Utils;
           GenderAdapter genderAdpater = new GenderAdapter(ActivityUserProfile.this, android.R.layout.simple_spinner_item, genders);
           spinnerGender.setAdapter(genderAdpater);
           // spinnerBodyType.setAdapter(bodyTypeAdapter);
-          dialog.setTitle(R.string.body_type_explanation);
-          final DialogBodyTypeExplanation view = DialogBodyTypeExplanation_.build(ActivityUserProfile.this);
-          dialog.setContentView(view);
-          dialog.setCanceledOnTouchOutside(true);
+          // dialog.setTitle(R.string.body_type_explanation);
+          // final DialogBodyTypeExplanation view = DialogBodyTypeExplanation_.build(ActivityUserProfile.this);
+          // dialog.setContentView(view);
+          // dialog.setCanceledOnTouchOutside(true);
      }
 
      @Click void btnCancel() {

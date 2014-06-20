@@ -12,6 +12,12 @@ public class GlobalConstants {
 
      public static final String TAG = "ProGym";
 
+     public static interface RESTRICTION {
+          public static final int RESTRICTION_25 = 25;
+          public static final int RESTRICTION_24 = 24;
+          public static final int RESTRICTION_19 = 19;
+     }
+
      /**
       * Class represents different advice type
       * 

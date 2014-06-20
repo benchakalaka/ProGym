@@ -19,7 +19,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:gravity="center"
-			android:text="Which of the below best describes your activity levels?"
+			android:text="@string/which_describes_best_your_activity"
 			android:textAppearance="?android:attr/textAppearanceLarge"
 			android:textColor="@color/caldroid_darker_gray"
 			android:textStyle="italic|bold" />
@@ -32,16 +32,11 @@
 		android:layout_below="@+id/llBMIHeader"
 		android:background="@drawable/round_border_gray_gradient" >
 
-		<LinearLayout
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:orientation="vertical" >
 
 			<RadioGroup
 				android:layout_width="match_parent"
 				android:layout_height="0dp"
-				android:layout_marginBottom="10dp"
-				android:layout_weight="1.32"
+				android:layout_weight="1"
 				android:orientation="vertical" >
 
 				<TextView
@@ -49,7 +44,7 @@
 					android:layout_height="wrap_content"
 					android:background="@drawable/blue_gradient"
 					android:gravity="center"
-					android:text="I am inactive"
+					android:text="@string/iam_inactive"
 					android:textAppearance="?android:attr/textAppearanceLarge"
 					android:textColor="@color/caldroid_white"
 					android:textStyle="bold" />
@@ -59,8 +54,8 @@
 					android:layout_height="wrap_content"
 					android:layout_margin="10dp"
 					android:background="@drawable/blue_gradient"
-					android:gravity="left"
-					android:text="I travel by car or public transport, I don&apos;t have an active job, I spend most of my work and leisure time sitting and I do little or no exercise."
+					android:gravity="left"  
+					android:text="@string/iam_inactive_description"
 					android:textAppearance="?android:attr/textAppearanceLarge"
 					android:textColor="@color/caldroid_white"
 					android:textStyle="italic" />
@@ -88,7 +83,7 @@
 					android:layout_height="wrap_content"
 					android:background="@drawable/blue_gradient"
 					android:gravity="center"
-					android:text="My activity level are low"
+					android:text="@string/iam_low_activity"
 					android:textAppearance="?android:attr/textAppearanceLarge"
 					android:textColor="@color/caldroid_yellow"
 					android:textStyle="bold" />
@@ -98,8 +93,8 @@
 					android:layout_height="wrap_content"
 					android:layout_margin="10dp"
 					android:background="@drawable/blue_gradient"
-					android:gravity="left"
-					android:text="I occasionally travel on foot, I don&apos;t have an active job, I spend most of my work and leisure time sitting and do a maximum of 2.5 hours exercise a week."
+					android:gravity="left" 
+					android:text="@string/iam_low_activity_description"
 					android:textAppearance="?android:attr/textAppearanceLarge"
 					android:textColor="@color/caldroid_yellow"
 					android:textStyle="italic" />
@@ -126,7 +121,7 @@
 					android:layout_height="wrap_content"
 					android:background="@drawable/blue_gradient"
 					android:gravity="center"
-					android:text="My activity levels are moderate"
+					android:text="@string/iam_moderate"
 					android:textColor="@color/caldroid_black"
 					android:textAppearance="?android:attr/textAppearanceLarge"
 					android:textStyle="bold" />
@@ -136,8 +131,8 @@
 					android:layout_height="wrap_content"
 					android:layout_margin="10dp"
 					android:background="@drawable/blue_gradient"
-					android:gravity="left"
-					android:text="I regularly travel on foot or bike, I am active at work and home, I don&apos;t spend much time sitting and I do at least 2.5 hours exercise each week."
+					android:gravity="left"  
+					android:text="@string/iam_moderate_description"
 					android:textAppearance="?android:attr/textAppearanceLarge"
 					android:textColor="@color/caldroid_black"
 					android:textStyle="italic" />
@@ -159,7 +154,6 @@
 					android:layout_height="3dp"
 					android:background="@drawable/round_border_gray_gradient" />
 			</RadioGroup>
-		</LinearLayout>
 	</ScrollView>
 
 	<LinearLayout
@@ -175,8 +169,9 @@
 			android:layout_height="wrap_content"
 			android:layout_margin="10dp"
 			android:layout_weight="1"
+			style="?android:attr/buttonBarButtonStyle"
 			android:background="@drawable/round_border_gray_gradient"
-			android:text="Back" />
+			android:text="@string/back" />
 
 		<Button
 			android:id="@+id/btnNext"
@@ -184,8 +179,9 @@
 			android:layout_height="wrap_content"
 			android:layout_margin="10dp"
 			android:layout_weight="1"
+			style="?android:attr/buttonBarButtonStyle"
 			android:background="@drawable/round_border_gray_gradient"
-			android:text="Next" />
+			android:text="@string/next" />
 	</LinearLayout>
 
 </RelativeLayout>

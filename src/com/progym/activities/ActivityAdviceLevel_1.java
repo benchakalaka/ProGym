@@ -66,7 +66,7 @@ import com.progym.utils.Utils;
                                    break;
 
                               case GlobalConstants.ADVICE_TYPE.INT_FAT_BURNING:
-                                   Utils.showCustomToast(ActivityAdviceLevel_1.this, R.string.fat_butning, R.drawable.pfc);
+                                   Utils.showCustomToast(ActivityAdviceLevel_1.this, R.string.fat_burning, R.drawable.pfc);
                                    Intent fat = new Intent(ActivityAdviceLevel_1.this, ActivityAdviceLevel_2_.class);
                                    fat.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                                    startActivity(fat);

@@ -14,4 +14,4 @@
         android:textStyle="italic|bold"
         android:textColor="@android:color/white"
         android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft" />
-</LinearLayout>
+</LinearLayout> 

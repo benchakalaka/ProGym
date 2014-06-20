@@ -21,9 +21,8 @@
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
         android:layout_toRightOf="@+id/image"
-        android:text="2"
         android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
         android:textSize="17sp"
        />
-
+  
 </RelativeLayout>

@@ -19,7 +19,7 @@
 			android:textColor="@color/caldroid_darker_gray"
 			android:textStyle="italic|bold"
 			android:textAppearance="?android:attr/textAppearanceLarge"
-			android:text="What do you need?" />
+			android:text="@string/what_do_you_need" />
 	</LinearLayout>
 
 	<LinearLayout
@@ -39,7 +39,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:gravity="center"
-			android:text="Energy"
+			android:text="@string/energy"
 			android:textColor="@color/caldroid_white" />
 	</LinearLayout>
 
@@ -60,7 +60,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:gravity="center"
-			android:text="Fat burning"
+			android:text="@string/fat_burning"
 			android:textColor="@color/caldroid_white" />
 	</LinearLayout>
 
@@ -81,7 +81,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:gravity="center"
-			android:text="Brain work"
+			android:text="@string/brain_work"
 			android:textColor="@color/caldroid_white" />
 	</LinearLayout>
 
@@ -104,7 +104,7 @@
 			android:ellipsize="end"
 			android:gravity="center"
 			android:singleLine="false"
-			android:text="Stress reduction"
+			android:text="@string/stress_reduction"
 			android:textColor="@color/caldroid_white" />
 	</LinearLayout>
 

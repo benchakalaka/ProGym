@@ -13,7 +13,6 @@ import org.androidannotations.annotations.ViewById;
 import org.apache.commons.lang3.time.DateUtils;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -70,11 +69,6 @@ import com.progym.utils.Utils;
      private ArrayList <View>               PLATES_BUTTONS;
      static ProgressDialog                  ringProgressDialog;
 
-     @Override protected void onPause() {
-          super.onPause();
-          startActivity(new Intent(ActivityFoodManagment.this, ActivityStart_.class));
-     }
-
      @Override @AfterViews void afterViews() {
           svListOfConsumedMeals.setOnDragListener(new OnDragListener() {
 
@@ -89,10 +83,6 @@ import com.progym.utils.Utils;
                               // 5 - element fat of prodcut
                               // 6 - element kkal of prodcut
 
-                              if ( Integer.valueOf(((SinglePlateItemView) CURRENT_MEAL_VIEW).twIngridientsAmount.getText().toString()) > 25 ) {
-                                   Utils.showCustomToast(ActivityFoodManagment.this, R.string.restriction_meal, R.drawable.info);
-                                   return true;
-                              }
                               final String name = event.getClipData().getItemAt(0).getText().toString();
                               final String weight = event.getClipData().getItemAt(1).getText().toString();
                               final String groupName = event.getClipData().getItemAt(2).getText().toString();
@@ -105,6 +95,11 @@ import com.progym.utils.Utils;
                                    Utils.showCustomToast(ActivityFoodManagment.this, R.string.create_plate, R.drawable.plus);
                                    ibCreatePlate.startAnimation(fadeIn);
                                    return false;
+                              }
+
+                              if ( Integer.valueOf(((SinglePlateItemView) CURRENT_MEAL_VIEW).twIngridientsAmount.getText().toString()) > 24 ) {
+                                   Utils.showCustomToast(ActivityFoodManagment.this, R.string.restriction_meal, R.drawable.info);
+                                   return true;
                               }
 
                               Ingridient ingridient = new Ingridient(getApplicationContext());
@@ -232,23 +227,6 @@ import com.progym.utils.Utils;
                super.onBackPressed();
           }
      }
-
-     /**
-      * final ProgressDialog ringProgressDialog = ProgressDialog.show(ActivityFoodManagment.this,
-      * getResources().getString(R.string.please_wait),getResources().getString(R.string.saving) , true);
-      * ringProgressDialog.setCancelable(true);
-      * new Thread(new Runnable() {
-      * 
-      * @Override
-      *           public void run() {
-      *           try {
-      *           } catch (Exception e) {
-      *           e.printStackTrace();
-      *           }
-      *           ringProgressDialog.dismiss();
-      *           }
-      *           }).start();
-      */
 
      @Click void ibSavePlate() {
 
@@ -444,7 +422,16 @@ import com.progym.utils.Utils;
      }
 
      @Click void ibCreatePlate() {
+          try {
+               Utils.log(llCreatedPlates.getChildCount());
+               if ( llCreatedPlates.getChildCount() > GlobalConstants.RESTRICTION.RESTRICTION_19 ) {
 
+                    Utils.showCustomToast(ActivityFoodManagment.this, R.string.restriction_plates_amount, R.drawable.info);
+                    return;
+               }
+          } catch (Exception ex) {
+               ex.printStackTrace();
+          }
           llAlreadyOnPlate.removeAllViews();
           User u = DataBaseUtils.getCurrentUser();
           Meal meal = new Meal(getApplicationContext());
@@ -509,11 +496,20 @@ import com.progym.utils.Utils;
 
      public void addReadyMealToCurrentPlate(final List <ReadyIngridient> ingridientsOfReadyMeal) {
           final User u = DataBaseUtils.getCurrentUser();
+
+          // Plate has not been created
           if ( null == CURRENT_MEAL ) {
                Utils.showCustomToast(this, R.string.create_plate, R.drawable.plus);
                ibCreatePlate.startAnimation(fade);
                return;
           }
+
+          // check amount of ingridients restriction (if more than 25 show message and return)
+          if ( llAlreadyOnPlate.getChildCount() > GlobalConstants.RESTRICTION.RESTRICTION_24 || (llAlreadyOnPlate.getChildCount() + ingridientsOfReadyMeal.size()) > GlobalConstants.RESTRICTION.RESTRICTION_25 ) {
+               Utils.showCustomToast(ActivityFoodManagment.this, R.string.restriction_meal, R.drawable.info);
+               return;
+          }
+
           final Meal meal = CURRENT_MEAL;
 
           ActivityFoodManagment.this.runOnUiThread(new Runnable() {
@@ -521,7 +517,6 @@ import com.progym.utils.Utils;
                @Override public void run() {
                     ringProgressDialog = ProgressDialog.show(ActivityFoodManagment.this, getResources().getString(R.string.please_wait), getResources().getString(R.string.building_list), true);
                     ringProgressDialog.setCancelable(true);
-
                }
           });
 

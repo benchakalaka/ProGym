@@ -95,12 +95,6 @@ import com.progym.utils.Utils;
      @AnimationRes ( R.anim.push_right_in ) Animation  rightIn;
      @AnimationRes ( R.anim.push_right_out ) Animation rightOut;
 
-     /*
-      * @Click void ivProteinCarbsFatProgress() {
-      * setLineData3(DATE);
-      * }
-      */
-
      @Click void ivPrevYear() {
           ivPrevYear.startAnimation(fadeIn);
 

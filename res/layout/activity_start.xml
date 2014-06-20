@@ -23,7 +23,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/round_border_gray_gradient"
             android:orientation="horizontal" >
-
+ 
             <ImageView
                 android:id="@+id/ivNutrition"
                 android:layout_width="wrap_content"
@@ -32,12 +32,11 @@
                 android:src="@drawable/nutrition" />
 
             <TextView
-                android:id="@+id/textView1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="Nutrition and Water"
+                android:text="@string/nutrition_and_water"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white"
                 android:textSize="25sp"
@@ -65,12 +64,11 @@
                 android:src="@drawable/progress" />
 
             <TextView
-                android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="Progress"
+                android:text="@string/progress"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white"
                 android:textSize="25sp"
@@ -98,12 +96,11 @@
                 android:src="@drawable/profile" />
 
             <TextView
-                android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="Your profile"
+                android:text="@string/profile"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white"
                 android:textSize="25sp"
@@ -135,7 +132,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="Wise advice"
+                android:text="@string/wise_advice"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white"
                 android:textSize="25sp"

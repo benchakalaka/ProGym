@@ -22,7 +22,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:gravity="center"
-				android:text="Body Mass Index (BMI)"
+				android:text="@string/bmi"
 				android:textAppearance="?android:attr/textAppearanceMedium"
 				android:textStyle="italic"
 				android:typeface="serif" />
@@ -32,7 +32,6 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:gravity="center"
-				android:text="29.5"
 				android:textAppearance="?android:attr/textAppearanceLarge"
 				android:textStyle="bold|italic"
 				android:typeface="serif" />
@@ -40,10 +39,9 @@
 			<TextView
 				android:id="@+id/twBmiResultName"
 				android:layout_width="match_parent"
-				android:layout_height="match_parent"
+				android:layout_height="0dp"
 				android:layout_weight="1"
 				android:gravity="center"
-				android:text="OVERWEIGHT"
 				android:textAppearance="?android:attr/textAppearanceLarge"
 				android:textColor="@color/green"
 				android:typeface="serif" />
@@ -62,9 +60,9 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:gravity="center"
-				android:text="Reccomended daily calorie intake should be"
+				android:text="@string/recomended_kkal_intake_should_be"
 				android:textAppearance="?android:attr/textAppearanceLarge"
-				android:textStyle="italic"
+				android:textStyle="italic|bold"
 				android:typeface="serif" />
 
 			<TextView
@@ -72,7 +70,6 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:gravity="center"
-				android:text="1000-2000 kcal"
 				android:textAppearance="?android:attr/textAppearanceLarge"
 				android:textStyle="bold|italic"
 				android:typeface="serif" />
@@ -91,10 +88,10 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:gravity="center"
-				android:text="Healthy weight range for this height"
+				android:text="@string/healthy_weight_range"
 				android:textAppearance="?android:attr/textAppearanceLarge"
-				android:textColor="@color/purple"
-				android:textStyle="italic"
+				android:textColor="@color/caldroid_black"
+				android:textStyle="italic|bold"
 				android:typeface="serif" />
 
 			<TextView
@@ -102,7 +99,6 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:gravity="center"
-				android:text="1000-2000 kcal"
 				android:textAppearance="?android:attr/textAppearanceLarge"
 				android:textStyle="bold|italic"
 				android:typeface="serif" />
@@ -111,27 +107,29 @@
 		<LinearLayout
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
-			android:layout_margin="10dp"
+			android:layout_margin="5dp"
 			android:layout_weight="1"
 			android:orientation="horizontal" >
-
+ 
 			<Button
 				android:id="@+id/btnFinish"
+				style="?android:attr/buttonBarButtonStyle"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
-				android:layout_margin="10dp"
+				android:layout_margin="10dp" 
 				android:layout_weight="1"
 				android:background="@drawable/round_border_gray_gradient"
-				android:text="Finish" />
-
+				android:text="@string/finish" />
+ 
 			<Button
 				android:id="@+id/btnAboutBmiIndex"
+				style="?android:attr/buttonBarButtonStyle"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:layout_margin="10dp"
 				android:layout_weight="1"
 				android:background="@drawable/round_border_gray_gradient"
-				android:text="About BMI" />
+				android:text="@string/about_bmi" />
 		</LinearLayout>
 	</LinearLayout>
 

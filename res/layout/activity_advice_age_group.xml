@@ -24,24 +24,26 @@
 					android:layout_height="match_parent"
 					android:layout_weight="1"
 					android:gravity="center"
-					android:text="Group"
-					android:textAppearance="?android:attr/textAppearanceMedium" />
+					android:text="@string/group"
+					android:textAppearance="?android:attr/textAppearanceSmall" />
 
 				<LinearLayout
 					android:id="@+id/llPAC"
 					android:layout_width="match_parent"
 					android:layout_height="match_parent"
-					android:layout_margin="2dp"
+					android:layout_margin="1dp"
 					android:layout_weight="1"
 					android:background="@drawable/round_border_gray_gradient"
 					android:orientation="horizontal" >
 
 					<TextView
 						android:layout_width="match_parent"
-						android:layout_height="match_parent"
+						android:layout_height="wrap_content"
 						android:layout_weight="1"
-						android:gravity="center"
-						android:text="PA"
+						android:paddingLeft="2dp"
+						android:gravity="center_vertical"
+						android:text="@string/pa"
+						android:textColor="@android:color/black"
 						android:textAppearance="?android:attr/textAppearanceMedium" />
 
 					<ImageView
@@ -54,47 +56,47 @@
 				<TextView
 					android:layout_width="match_parent"
 					android:layout_height="match_parent"
-					android:layout_margin="3dp"
+					android:layout_margin="1dp"
 					android:layout_weight="1"
 					android:gravity="center"
-					android:text="AGE"
-					android:textAppearance="?android:attr/textAppearanceMedium" />
+					android:text="@string/age_capital"
+					android:textAppearance="?android:attr/textAppearanceSmall" />
 
 				<TextView
 					android:layout_width="match_parent"
 					android:layout_height="match_parent"
-					android:layout_margin="3dp"
+					android:layout_margin="1dp"
 					android:layout_weight="1"
 					android:gravity="center"
-					android:text="Energy KKAL"
-					android:textAppearance="?android:attr/textAppearanceMedium" />
+					android:text="@string/energy_kkal"
+					android:textAppearance="?android:attr/textAppearanceSmall" />
 
 				<TextView
 					android:layout_width="match_parent"
 					android:layout_height="match_parent"
-					android:layout_margin="3dp"
+					android:layout_margin="1dp"
 					android:layout_weight="1"
 					android:gravity="center"
-					android:text="Protin(Animal)g"
-					android:textAppearance="?android:attr/textAppearanceMedium" />
+					android:text="@string/protein_animal_g"
+					android:textAppearance="?android:attr/textAppearanceSmall" />
 
 				<TextView
 					android:layout_width="match_parent"
 					android:layout_height="match_parent"
-					android:layout_margin="3dp"
+					android:layout_margin="1dp"
 					android:layout_weight="1"
 					android:gravity="center"
-					android:text="Fat"
-					android:textAppearance="?android:attr/textAppearanceMedium" />
+					android:text="@string/fat"
+					android:textAppearance="?android:attr/textAppearanceSmall" />
 
 				<TextView
 					android:layout_width="match_parent"
 					android:layout_height="match_parent"
-					android:layout_margin="3dp"
+					android:layout_margin="1dp"
 					android:layout_weight="1"
 					android:gravity="center"
-					android:text="Carbs"
-					android:textAppearance="?android:attr/textAppearanceMedium" />
+					android:text="@string/carbs"
+					android:textAppearance="?android:attr/textAppearanceSmall" />
 			</LinearLayout>
 		</TableRow>
 
@@ -106,7 +108,7 @@
 			android:background="@drawable/round_border_gray_gradient"
 			android:gravity="center_horizontal"
 			android:padding="5dp"
-			android:text="Male"
+			android:text="@string/male"
 			android:textAppearance="?android:attr/textAppearanceMedium" />
 
 		<!-- GROUDP I -->
@@ -1107,7 +1109,7 @@
 			android:background="@drawable/round_border_gray_gradient"
 			android:gravity="center_horizontal"
 			android:padding="5dp"
-			android:text="Female"
+			android:text="@string/female"
 			android:textAppearance="?android:attr/textAppearanceMedium" />
 
 		<!-- FEMALE -->

@@ -55,20 +55,6 @@ import com.progym.utils.Utils;
      PieSlice            sliceFat     = new PieSlice();
      PieSlice            sliceCarbs   = new PieSlice();
 
-     /*
-      * @Override
-      * public void onSaveInstanceState(Bundle outState) {
-      * super.onSaveInstanceState(outState);
-      * outState.put
-      * }
-      * @Override
-      * public void onActivityCreated(Bundle savedInstanceState) {
-      * super.onActivityCreated(savedInstanceState);
-      * mWebView.restoreState(savedInstanceState);
-      * }
-      */
-     // ((ActivityFoodManagment) getActivity()).viewPager.setCurrentItem(ActivityFoodManagment.EXPANDABLE_LISTVIEW_FOOD_TYPES, true);
-
      public void setGroupAndProduct(int groupName, String ingridient) {
           try {
                FragmentIngridient.ingridient = new Ingridient(getActivity());

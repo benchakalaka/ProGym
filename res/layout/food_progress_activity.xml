@@ -14,13 +14,13 @@
 		android:padding="1dp" >
 
 		<LinearLayout
-			android:layout_width="match_parent"
+			android:layout_width="0dp"
 			android:layout_height="match_parent"
 			android:layout_margin="3dp"
 			android:layout_weight="1"
 			android:background="@drawable/round_border_gray_gradient"
 			android:orientation="vertical" >
-
+ 
 			<RelativeLayout
 				android:layout_width="match_parent"
 				android:layout_height="50dp"
@@ -48,20 +48,20 @@
 						android:background="@drawable/background_round_transparent_real"
 						android:gravity="center"
 						android:padding="6dp"
-						android:text="Daily"
+						android:text="@string/daily"
 						android:textAppearance="?android:attr/textAppearanceSmall"
 						android:textColor="@android:color/white"
 						android:textStyle="bold" />
 
 					<TextView
 						android:id="@+id/twMonthly"
-						android:layout_width="wrap_content"
+						android:layout_width="wrap_content" 
 						android:layout_height="wrap_content"
 						android:layout_weight="1"
 						android:background="@drawable/background_round_transparent_real"
 						android:gravity="center"
 						android:padding="6dp"
-						android:text="Monthly"
+						android:text="@string/monthly"
 						android:textAppearance="?android:attr/textAppearanceSmall"
 						android:textColor="@android:color/white"
 						android:textStyle="bold" />
@@ -74,13 +74,13 @@
 						android:background="@drawable/background_round_transparent_real"
 						android:gravity="center"
 						android:padding="6dp"
-						android:text="Yearly"
+						android:text="@string/yearly"
 						android:textAppearance="?android:attr/textAppearanceSmall"
 						android:textColor="@android:color/white"
 						android:textStyle="bold" />
 				</LinearLayout>
 			</RelativeLayout>
-
+ 
 			<RelativeLayout
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"

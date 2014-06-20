@@ -100,21 +100,22 @@ import com.todddavies.components.progressbar.ProgressWheel;
                @Override public boolean onDrag(View v, final DragEvent event) {
                     switch (event.getAction()) {
                          case DragEvent.ACTION_DROP:
-                              if ( null != mediaPlayer ) {
-                                   mediaPlayer.start();
-                              }
-                              final String tag = event.getClipData().getDescription().getLabel().toString();
-                              ConsumedWaterItemView itemView = ConsumedWaterItemView_.build(getApplicationContext());
-                              itemView.ivVolumeImage.setBackgroundResource(Utils.getImageIdByTag(tag));
 
                               try {
-                                   if ( llAlreadyConsumedWaterList.getChildCount() > 25 ) {
+                                   if ( llAlreadyConsumedWaterList.getChildCount() > GlobalConstants.RESTRICTION.RESTRICTION_24 ) {
                                         Utils.showCustomToast(ActivityWaterManagement.this, R.string.restriction_water, R.drawable.info);
                                         return true;
                                    }
                               } catch (Exception ex) {
                                    ex.printStackTrace();
                               }
+
+                              if ( null != mediaPlayer ) {
+                                   mediaPlayer.start();
+                              }
+                              final String tag = event.getClipData().getDescription().getLabel().toString();
+                              ConsumedWaterItemView itemView = ConsumedWaterItemView_.build(getApplicationContext());
+                              itemView.ivVolumeImage.setBackgroundResource(Utils.getImageIdByTag(tag));
 
                               llAlreadyConsumedWaterList.addView(itemView);
                               horizontalScrollView.postDelayed(new Runnable() {
