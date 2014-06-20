@@ -32,7 +32,7 @@
 					android:layout_height="wrap_content"
 					android:layout_gravity="center"
 					android:layout_weight="1"
-					android:text="Name"
+					android:text="@string/name"
 					android:textAppearance="?android:attr/textAppearanceMedium" />
 
 				<EditText
@@ -65,7 +65,7 @@
 					android:layout_height="wrap_content"
 					android:layout_gravity="center"
 					android:layout_weight="1"
-					android:text="Weight (kg)"
+					android:text="@string/weight_kg"
 					android:textAppearance="?android:attr/textAppearanceMedium" />
 
 				<EditText
@@ -98,7 +98,7 @@
 					android:layout_height="wrap_content"
 					android:layout_gravity="center"
 					android:layout_weight="1"
-					android:text="Height (cm)"
+					android:text="@string/height_cm"
 					android:textAppearance="?android:attr/textAppearanceMedium" />
 
 				<EditText
@@ -131,7 +131,7 @@
 					android:layout_height="wrap_content"
 					android:layout_gravity="center"
 					android:layout_weight="1"
-					android:text="Age"
+					android:text="@string/age"
 					android:textAppearance="?android:attr/textAppearanceMedium" />
 
 				<EditText
@@ -161,10 +161,10 @@
 
 				<TextView
 					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
+					android:layout_height="0dp"
 					android:layout_gravity="center"
 					android:layout_weight="1"
-					android:text="Gender"
+					android:text="@string/gender"
 					android:textAppearance="?android:attr/textAppearanceMedium" />
 
 				<com.progym.custom.NDSpinner
@@ -184,22 +184,24 @@
 		android:orientation="horizontal" >
 
 		<Button
-			android:id="@+id/btnSave"
+			android:id="@+id/btnCancel"
+			style="?android:attr/buttonBarButtonStyle"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_margin="10dp"
 			android:layout_weight="1"
 			android:background="@drawable/round_border_gray_gradient"
-			android:text="Save profile" />
+			android:text="@android:string/cancel" />
 
 		<Button
-			android:id="@+id/btnCancel"
+			android:id="@+id/btnSave"
+			style="?android:attr/buttonBarButtonStyle"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_margin="10dp"
 			android:layout_weight="1"
 			android:background="@drawable/round_border_gray_gradient"
-			android:text="Cancel" />
+			android:text="@string/save_profile" />
 	</LinearLayout>
 
 </RelativeLayout>

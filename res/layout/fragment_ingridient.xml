@@ -16,7 +16,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:layout_margin="3dp" >
-
+ 
 			<LinearLayout
 				android:id="@+id/llNutritionInformation"
 				android:layout_width="match_parent"
@@ -58,7 +58,7 @@
 							android:layout_gravity="center"
 							android1:layout_below="@+id/ivFoodImage"
 							android1:layout_weight="1"
-							android:text="Weight (g)"
+							android:text="@string/weight_g"
 							android:textAppearance="?android:attr/textAppearanceMedium" />
 
 						<EditText
@@ -88,11 +88,11 @@
 						android:padding="3dp" >
 
 						<TextView
-							android:layout_width="match_parent"
+							android:layout_width="0dp"
 							android:layout_height="wrap_content"
 							android:layout_gravity="center"
 							android1:layout_weight="1"
-							android:text="100g contains"
+							android:text="@string/_100g_contains"
 							android:textAppearance="?android:attr/textAppearanceMedium"
 							android:textColor="@color/caldroid_white" />
 					</LinearLayout>
@@ -121,7 +121,7 @@
 								android:layout_height="wrap_content"
 								android:layout_gravity="center"
 								android1:layout_weight="1"
-								android:text="Protein"
+								android:text="@string/protein"
 								android:textAppearance="?android:attr/textAppearanceMedium" />
 
 							<EditText
@@ -153,7 +153,7 @@
 								android:layout_height="wrap_content"
 								android:layout_gravity="center"
 								android1:layout_weight="1"
-								android:text="Fat"
+								android:text="@string/fat"
 								android:textAppearance="?android:attr/textAppearanceMedium" />
 
 							<EditText
@@ -185,9 +185,8 @@
 								android:layout_width="match_parent"
 								android:layout_height="wrap_content"
 								android:layout_gravity="center"
-								android1:layout_below="@+id/ivFoodImage"
 								android1:layout_weight="1"
-								android:text="Carbs"
+								android:text="@string/carbs" 
 								android:textAppearance="?android:attr/textAppearanceMedium" />
 
 							<EditText
@@ -220,7 +219,7 @@
 								android:layout_height="match_parent"
 								android:layout_gravity="center"
 								android1:layout_weight="1"
-								android:text="Calories"
+								android:text="@string/calories"
 								android:textAppearance="?android:attr/textAppearanceMedium" />
 
 							<EditText
@@ -296,7 +295,7 @@
 								android:background="@drawable/background_round_transparent_real"
 								android:gravity="center"
 								android:padding="3dp"
-								android:text="Protein"
+								android:text="@string/protein"
 								android:textAppearance="?android:attr/textAppearanceMedium"
 								android:textStyle="bold"
 								android1:textColor="@color/green" />
@@ -308,7 +307,7 @@
 								android:background="@drawable/background_round_transparent_real"
 								android:gravity="center"
 								android:padding="3dp"
-								android:text="Fat"
+								android:text="@string/fat"
 								android:textAppearance="?android:attr/textAppearanceMedium"
 								android:textStyle="bold"
 								android1:textColor="@color/orange" />
@@ -320,7 +319,7 @@
 								android:background="@drawable/background_round_transparent_real"
 								android:gravity="center"
 								android:padding="3dp"
-								android:text="Carbs"
+								android:text="@string/carbs"
 								android:textAppearance="?android:attr/textAppearanceMedium"
 								android:textStyle="bold"
 								android1:textColor="@color/purple" />

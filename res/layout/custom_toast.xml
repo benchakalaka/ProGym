@@ -7,13 +7,12 @@
     android:padding="10dp" >
 
     <LinearLayout
-        android:id="@+id/toast_layout_root"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/background_round_border"
         android:orientation="horizontal"
         android:padding="7dp" >
-
+ 
         <ImageView
             android:id="@+id/toast_image_view"
             android:layout_width="50dp"
@@ -27,7 +26,6 @@
         android:gravity="center_vertical"
         android:textColor="#FFF"
         android:singleLine="false"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:textStyle="bold" />
 
 </LinearLayout>

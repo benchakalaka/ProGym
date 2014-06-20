@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:id="@+id/water_managment_root_relative_layout"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent" >
 
@@ -9,6 +8,7 @@
 		android:layout_height="fill_parent"
 		android:layout_alignParentBottom="true"
 		android:layout_alignParentTop="true"
+		android:baselineAligned="false"
 		android:orientation="horizontal"
 		android:padding="1dp" >
 
@@ -19,7 +19,7 @@
 			android:layout_weight="1"
 			android:background="@drawable/round_border_gray_gradient"
 			android:orientation="vertical" >
-
+ 
 			<RelativeLayout
 				android:layout_width="match_parent"
 				android:layout_height="50dp"
@@ -61,7 +61,6 @@
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:padding="3dp"
-						android:text="2020-20-20"
 						android:textAppearance="?android:attr/textAppearanceSmall"
 						android:textColor="@android:color/white" />
 
@@ -93,7 +92,6 @@
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:paddingLeft="5dp"
-						android:text="50%"
 						android:textAppearance="?android:attr/textAppearanceLarge"
 						android:textColor="@android:color/black" />
 
@@ -142,7 +140,7 @@
 								android:layout_height="match_parent"
 								android:gravity="center_vertical|right"
 								android:paddingRight="5dp"
-								android:text="250 ml"
+								android:text="@string/_250ml"
 								android:textAppearance="?android:attr/textAppearanceLarge" />
 						</LinearLayout>
 
@@ -164,12 +162,11 @@
 								android:tag="500 ml" />
 
 							<TextView
-								android:id="@+id/textView1"
 								android:layout_width="match_parent"
 								android:layout_height="match_parent"
 								android:gravity="center_vertical|right"
 								android:paddingRight="5dp"
-								android:text="500 ml"
+								android:text="@string/_500ml"
 								android:textAppearance="?android:attr/textAppearanceLarge" />
 						</LinearLayout>
 
@@ -191,16 +188,15 @@
 								android:tag="1 littre" />
 
 							<TextView
-								android:id="@+id/textView1"
 								android:layout_width="match_parent"
 								android:layout_height="match_parent"
 								android:gravity="center_vertical|right"
 								android:paddingRight="5dp"
-								android:text="1 littre"
+								android:text="@string/_1littre"
 								android:textAppearance="?android:attr/textAppearanceLarge" />
 						</LinearLayout>
 
-						<!-- 2L LL -->
+						<!-- 2L LL --> 
 
 						<LinearLayout
 							android:id="@+id/ll2L"
@@ -223,7 +219,7 @@
 								android:layout_height="match_parent"
 								android:gravity="center_vertical|right"
 								android:paddingRight="5dp"
-								android:text="2 littre"
+								android:text="@string/_2littre"
 								android:textAppearance="?android:attr/textAppearanceLarge" />
 						</LinearLayout>
 
@@ -279,7 +275,6 @@
 			android:orientation="vertical" >
 
 			<RelativeLayout
-				android:id="@+id/water_managment_root_relative_lasyout"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:layout_margin="3dp" >
@@ -315,7 +310,7 @@
 					ProgressWheel:text="1,25L"
 					ProgressWheel:textColor="@android:color/holo_blue_light"
 					ProgressWheel:textSize="15sp" />
-
+ 
 				<HorizontalScrollView
 					android:id="@+id/horizontalScrollView"
 					android:layout_width="wrap_content"

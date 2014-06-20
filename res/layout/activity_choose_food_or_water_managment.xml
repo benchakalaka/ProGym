@@ -21,10 +21,10 @@
 
 			<TextView
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
+				android:layout_height="0dp"
 				android:layout_weight="1"
 				android:gravity="center"
-				android:text="Manage your food and water consumption"
+				android:text="@string/manage_food_and_water"
 				android:textAppearance="?android:attr/textAppearanceLarge"
 				android:textColor="@color/caldroid_white"
 				android:textSize="20sp"
@@ -58,7 +58,7 @@
 				android:layout_height="match_parent"
 				android:layout_weight="1"
 				android:gravity="center"
-				android:text="Food managment"
+				android:text="@string/food_management"
 				android:textAppearance="?android:attr/textAppearanceMedium"
 				android:textColor="@color/caldroid_white" />
 		</LinearLayout>
@@ -89,7 +89,7 @@
 				android:layout_height="match_parent"
 				android:layout_weight="1"
 				android:gravity="center"
-				android:text="Water managment"
+				android:text="@string/water_management"
 				android:textAppearance="?android:attr/textAppearanceMedium"
 				android:textColor="@color/caldroid_white" />
 		</LinearLayout>

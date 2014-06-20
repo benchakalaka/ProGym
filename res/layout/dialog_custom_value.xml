@@ -17,7 +17,7 @@
 			android:layout_alignParentTop="true"
 			android:layout_centerHorizontal="true"
 			android:background="@drawable/background_round_transparent_real"
-			android:text="Edit"
+			android:text="@string/edit"
 			android:textAppearance="?android:attr/textAppearanceMedium"
 			android:textColor="@color/caldroid_white" />
 
@@ -37,20 +37,22 @@
 			android:orientation="horizontal" >
 
 			<Button
-				android:id="@+id/btnEdit"
+				android:id="@+id/btnCancel"
+				style="?android:attr/buttonBarButtonStyle"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
 				android:background="@drawable/round_border_gray_gradient"
-				android:text="Edit" />
+				android:text="@android:string/cancel" />
 
 			<Button
-				android:id="@+id/btnCancel"
+				android:id="@+id/btnEdit"
+				style="?android:attr/buttonBarButtonStyle"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
 				android:background="@drawable/round_border_gray_gradient"
-				android:text="Cancel" />
+				android:text="@string/edit" />
 		</LinearLayout>
 
 		<EditText
@@ -59,12 +61,11 @@
 			android:layout_height="wrap_content"
 			android:layout_alignBottom="@+id/ivEdit"
 			android:layout_alignParentRight="true"
-			android:textColor="@android:color/white"
 			android:layout_alignTop="@+id/ivEdit"
 			android:layout_toRightOf="@+id/ivEdit"
 			android:ems="10"
-			android:inputType="number" />
-
+			android:inputType="number"
+			android:textColor="@android:color/white" />
 	</RelativeLayout>
 
 </ScrollView>

@@ -6,76 +6,69 @@
 
 	<TableLayout
 		android:layout_width="match_parent"
-		android:layout_height="match_parent" >
+		android:layout_height="wrap_content" >
 
-		<TableRow
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:background="@drawable/background_round_border" >
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:background="@drawable/background_round_border"
+			android:orientation="horizontal" >
 
-			<LinearLayout
+			<TextView
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:layout_weight="1"
-				android:orientation="horizontal" >
-  
-				<TextView
-					android:layout_width="match_parent"
-					android:layout_height="match_parent"
-					android:layout_weight="1"
-					android:gravity="center"
-					android:text="Group"
-					android:textAppearance="?android:attr/textAppearanceMedium" />
+				android:gravity="center"
+				android:text="@string/group"
+				android:textAppearance="?android:attr/textAppearanceSmall" />
 
-				<TextView
-					android:layout_width="match_parent"
-					android:layout_height="match_parent"
-					android:layout_weight="1"
-					android:gravity="center"
-					android:text="PA"
-					android:textAppearance="?android:attr/textAppearanceMedium" />
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:gravity="center"
+				android:text="@string/pa"
+				android:textAppearance="?android:attr/textAppearanceSmall" />
 
-				<TextView
-					android:layout_width="match_parent"
-					android:layout_height="match_parent"
-					android:layout_weight="1"
-					android:gravity="center"
-					android:text="Professional group"
-					android:textAppearance="?android:attr/textAppearanceMedium" />
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:gravity="center"
+				android:text="@string/prof_group"
+				android:textAppearance="?android:attr/textAppearanceSmall" />
 
-				<TextView
-					android:layout_width="match_parent"
-					android:layout_height="match_parent"
-					android:layout_weight="1"
-					android:gravity="center"
-					android:text="Representatives of the group"
-					android:textAppearance="?android:attr/textAppearanceMedium" />
-			</LinearLayout>
-		</TableRow>
-
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:gravity="center"
+				android:text="@string/representatives"
+				android:textAppearance="?android:attr/textAppearanceSmall" />
+		</LinearLayout>
 
 		<TextView
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_weight="1"
 			android:layout_margin="10dp"
-			android:padding="8dp"
+			android:layout_weight="1"
 			android:background="@drawable/round_border_gray_gradient"
 			android:gravity="left"
-			android:textStyle="bold|italic"
+			android:padding="8dp"
+			android:text="@string/pa_explanation"
+			android:textAppearance="?android:attr/textAppearanceMedium"
 			android:textColor="@android:color/black"
-			android:text="PA (Physical Activity Coefficeint) - physical activity is important for managing body weight by both older and small persons who might miss key micronutrients when consuming restrictive diets. Further, physical activity results in the anabolic and regulatory processes in skeletal muscle, develops cardiovascular system improvements, improves blood lipoprotein profiles in older adults, and leads to increased expression of many beneficial enzymes and enzyme systems in diverse organs and organ systems from bones and muscles to brain."
-			android:textAppearance="?android:attr/textAppearanceMedium" />
-
+			android:textStyle="bold|italic" />
 
 		<!-- GROUDP I -->
 
 		<TableRow
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
 			android:layout_marginBottom="5dp"
 			android:layout_marginTop="5dp"
-			android:background="@drawable/background_round_transparent_real"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content" >
+			android:background="@drawable/background_round_transparent_real" >
 
 			<LinearLayout
 				android:layout_width="match_parent"
@@ -107,7 +100,7 @@
 
 					<TextView
 						android:layout_width="match_parent"
-						android:layout_height="match_parent"
+						android:layout_height="0dp"
 						android:layout_weight="1"
 						android:gravity="left"
 						android:text="@string/_1_4_prof_group"
@@ -123,7 +116,7 @@
 
 					<TextView
 						android:layout_width="match_parent"
-						android:layout_height="match_parent"
+						android:layout_height="0dp"
 						android:layout_weight="1"
 						android:gravity="left"
 						android:text="@string/_1_4_prestaviteli"
@@ -133,15 +126,14 @@
 			</LinearLayout>
 		</TableRow>
 
-
 		<!-- GROUDP II -->
 
 		<TableRow
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
 			android:layout_marginBottom="5dp"
 			android:layout_marginTop="5dp"
-			android:background="@drawable/background_round_transparent_real"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content" >
+			android:background="@drawable/background_round_transparent_real" >
 
 			<LinearLayout
 				android:layout_width="match_parent"
@@ -173,7 +165,7 @@
 
 					<TextView
 						android:layout_width="match_parent"
-						android:layout_height="match_parent"
+						android:layout_height="0dp"
 						android:layout_weight="1"
 						android:gravity="left"
 						android:text="@string/_1_6_prof_group"
@@ -189,7 +181,7 @@
 
 					<TextView
 						android:layout_width="match_parent"
-						android:layout_height="match_parent"
+						android:layout_height="0dp"
 						android:layout_weight="1"
 						android:gravity="left"
 						android:text="@string/_1_6_prestaviteli"
@@ -202,11 +194,11 @@
 		<!-- GROUDP III -->
 
 		<TableRow
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
 			android:layout_marginBottom="5dp"
 			android:layout_marginTop="5dp"
-			android:background="@drawable/background_round_transparent_real"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content" >
+			android:background="@drawable/background_round_transparent_real" >
 
 			<LinearLayout
 				android:layout_width="match_parent"
@@ -238,7 +230,7 @@
 
 					<TextView
 						android:layout_width="match_parent"
-						android:layout_height="match_parent"
+						android:layout_height="0dp"
 						android:layout_weight="1"
 						android:gravity="left"
 						android:text="@string/_1_9_prof_group"
@@ -254,7 +246,7 @@
 
 					<TextView
 						android:layout_width="match_parent"
-						android:layout_height="match_parent"
+						android:layout_height="0dp"
 						android:layout_weight="1"
 						android:gravity="left"
 						android:text="@string/_1_9_prestaviteli"
@@ -267,11 +259,11 @@
 		<!-- GROUP IV -->
 
 		<TableRow
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
 			android:layout_marginBottom="5dp"
 			android:layout_marginTop="5dp"
-			android:background="@drawable/background_round_transparent_real"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content" >
+			android:background="@drawable/background_round_transparent_real" >
 
 			<LinearLayout
 				android:layout_width="match_parent"
@@ -303,7 +295,7 @@
 
 					<TextView
 						android:layout_width="match_parent"
-						android:layout_height="match_parent"
+						android:layout_height="0dp"
 						android:layout_weight="1"
 						android:gravity="left"
 						android:text="@string/_2_3_prof_group"
@@ -319,7 +311,7 @@
 
 					<TextView
 						android:layout_width="match_parent"
-						android:layout_height="match_parent"
+						android:layout_height="0dp"
 						android:layout_weight="1"
 						android:gravity="left"
 						android:text="@string/_2_3_prestaviteli"
@@ -332,11 +324,11 @@
 		<!-- GROUP V -->
 
 		<TableRow
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
 			android:layout_marginBottom="5dp"
 			android:layout_marginTop="5dp"
-			android:background="@drawable/background_round_transparent_real"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content" >
+			android:background="@drawable/background_round_transparent_real" >
 
 			<LinearLayout
 				android:layout_width="match_parent"
@@ -368,7 +360,7 @@
 
 					<TextView
 						android:layout_width="match_parent"
-						android:layout_height="match_parent"
+						android:layout_height="0dp"
 						android:layout_weight="1"
 						android:gravity="left"
 						android:text="@string/_2_5_prof_group"
@@ -384,7 +376,7 @@
 
 					<TextView
 						android:layout_width="match_parent"
-						android:layout_height="match_parent"
+						android:layout_height="0dp"
 						android:layout_weight="1"
 						android:gravity="left"
 						android:text="@string/_2_5_prestaviteli"

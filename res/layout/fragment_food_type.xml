@@ -9,7 +9,7 @@
     <TableLayout
         android:id="@+id/activity_start_button_settings"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:background="@drawable/round_border_gray_gradient"
         android:stretchColumns="*" >
 
@@ -21,7 +21,7 @@
         </LinearLayout>
 
         <TableRow>
-
+ 
             <ImageButton
                 android:id="@+id/btnMeat"
                 android:layout_width="match_parent"
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:text="Meat"
+                android:text="@string/meat"
                 android:textColor="@android:color/black"
                 android:textStyle="bold|italic" />
 
@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:text="Porridge"
+                android:text="@string/porridge"
                 android:textColor="@android:color/black"
                 android:textStyle="bold|italic" />
         </LinearLayout>
@@ -96,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:text="Vegetables"
+                android:text="@string/vegetables"
                 android:textColor="@android:color/black"
                 android:textStyle="bold|italic" />
 
@@ -106,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:text="Fruits"
+                android:text="@string/fruits"
                 android:textColor="@android:color/black"
                 android:textStyle="bold|italic" />
         </LinearLayout>
@@ -122,7 +122,7 @@
                 android:src="@drawable/ready_meal" />
 
             <ImageButton
-                android:id="@+id/btnReadyMeals"
+                android:id="@+id/btnReadyMeals" 
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -141,7 +141,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:text="Other"
+                android:text="@string/other"
                 android:textColor="@android:color/black"
                 android:textStyle="bold|italic" />
 
@@ -151,7 +151,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:text="Ready meals"
+                android:text="@string/ready_meals"
                 android:textColor="@android:color/black"
                 android:textStyle="bold|italic" />
         </LinearLayout>

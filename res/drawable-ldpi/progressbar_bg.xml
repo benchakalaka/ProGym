@@ -30,7 +30,7 @@
 
                 <gradient
                     android:angle="0"
-                    android:endColor="@color/caldroid_holo_blue_light"
+                    android:endColor="@color/green_light"
                     android:startColor="@color/caldroid_white" />
             </shape>
         </clip>

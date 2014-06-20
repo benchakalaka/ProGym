@@ -9,6 +9,7 @@ import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.res.AnimationRes;
 import org.apache.commons.lang3.time.DateUtils;
 
+import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.view.animation.Animation;
@@ -114,93 +115,126 @@ import com.progym.utils.Utils;
 
      }
 
-     public void setLineData2(Date date, boolean isLeftIn) {
+     public void setLineData2(final Date date, final boolean isLeftIn) {
 
-          try {
-               if ( rlRootGraphLayout.getChildCount() == 3 ) {
-                    rlRootGraphLayout.removeViewAt(0);
+          final ProgressDialog ringProgressDialog = ProgressDialog.show(getActivity(), getResources().getString(R.string.please_wait), getResources().getString(R.string.populating_data), true);
+          ringProgressDialog.setCancelable(true);
+          new Thread(new Runnable() {
+
+               @Override public void run() {
+                    try {
+
+                         getActivity().runOnUiThread(new Runnable() {
+
+                              @Override public void run() {
+                                   try {
+                                        // magic 3, 2 arrows and graphview
+                                        if ( rlRootGraphLayout.getChildCount() == 3 ) {
+                                             rlRootGraphLayout.removeViewAt(0);
+                                        }
+                                   } catch (Exception edsx) {
+                                        edsx.printStackTrace();
+                                   }
+                              }
+                         });
+
+                         DATE = date;
+                         // 31 - Amount of days in a month
+                         int daysInMonth = Utils.getDaysInMonth(date.getMonth(), Integer.valueOf(Utils.formatDate(date, DataBaseUtils.DATE_PATTERN_YYYY)));
+
+                         // Add to expandable list view ready meal date
+                         List <WaterConsumed> list = DataBaseUtils.getAllWaterConsumedInMonth(Utils.formatDate(date, DataBaseUtils.DATE_PATTERN_YYYY_MM));
+
+                         int shouldDrinkWaterMlPerDay = (int) DataBaseUtils.getWaterUserShouldConsumePerDay();
+
+                         // TODO : HOW TO clear all these serieses ???
+                         graphView = new LineGraphView(getActivity(), String.format("Water statistic for %s  %s", ActivityWaterProgress.months[date.getMonth()], Utils.formatDate(date, DataBaseUtils.DATE_PATTERN_YYYY)));
+
+                         int yMaxAxisValue = shouldDrinkWaterMlPerDay;
+
+                         // first init "should drink" data
+                         GraphViewData[] data = new GraphViewData[2];
+                         data[0] = new GraphViewData(1, shouldDrinkWaterMlPerDay);
+                         data[1] = new GraphViewData(daysInMonth, shouldDrinkWaterMlPerDay);
+
+                         seriesShouldDrink = new GraphViewSeries("Normal", new GraphViewSeriesStyle(Color.rgb(90, 250, 00), 3), data);
+                         // init "average" data
+                         int averageWaterConsumedOnYaxis = 0;
+                         for ( int i = 0; i < list.size(); i++ ) {
+                              // calculate sum of all water consumed by user in a month
+                              averageWaterConsumedOnYaxis += list.get(i).volumeConsumed;
+                         }
+                         averageWaterConsumedOnYaxis = averageWaterConsumedOnYaxis / daysInMonth;
+
+                         yMaxAxisValue = Math.max(yMaxAxisValue, averageWaterConsumedOnYaxis);
+
+                         data = new GraphViewData[2];
+                         data[0] = new GraphViewData(1, averageWaterConsumedOnYaxis);
+                         data[1] = new GraphViewData(daysInMonth, averageWaterConsumedOnYaxis);
+
+                         seriesAverage = new GraphViewSeries("Average Value", new GraphViewSeriesStyle(Color.rgb(250, 80, 90), 3), data);
+
+                         data = new GraphViewData[daysInMonth];
+                         // set first day of month
+                         Date dt = date; // *
+                         dt.setDate(1);
+
+                         // date.setDate(1);
+                         // date = DateUtils.setMonths(date, date.getMonth());
+
+                         dt = DateUtils.setMonths(dt, dt.getMonth());;
+
+                         int consumedPerDay = 0;
+
+                         for ( int i = 0; i < daysInMonth; i++ ) {
+                              consumedPerDay = DataBaseUtils.getConsumedPerDay(Utils.formatDate(dt, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD));
+                              yMaxAxisValue = Math.max(yMaxAxisValue, consumedPerDay);
+                              data[i] = new GraphViewData(i + 1, consumedPerDay);
+                              // increment day
+                              // date = DateUtils.addDays(date, 1);
+                              dt = DateUtils.addDays(dt, 1);
+                         }
+
+                         seriesConsumed = new GraphViewSeries("Consumed", new GraphViewSeriesStyle(Color.BLUE, 4), data);
+
+                         // add data
+                         graphView.addSeries(seriesAverage);
+                         graphView.addSeries(seriesShouldDrink);
+                         graphView.addSeries(seriesConsumed);
+                         // optional - set view port, start=2, size=10
+                         // graphView.setViewPort(2, 10);
+
+                         graphView.getGraphViewStyle().setTextSize(15);
+                         graphView.getGraphViewStyle().setVerticalLabelsColor(Color.DKGRAY);
+                         graphView.getGraphViewStyle().setGridColor(Color.DKGRAY);
+
+                         graphView.setManualYAxisBounds(yMaxAxisValue, 0);
+                         graphView.getGraphViewStyle().setNumHorizontalLabels(daysInMonth / 3);
+                         // optional - legend
+                         graphView.setShowLegend(true);
+
+                         getActivity().runOnUiThread(new Runnable() {
+
+                              @Override public void run() {
+                                   rlRootGraphLayout.addView(graphView, 0);
+
+                                   if ( isLeftIn ) {
+                                        rightIn.setDuration(1000);
+                                        graphView.startAnimation(rightIn);
+                                   } else {
+                                        leftIn.setDuration(1000);
+                                        graphView.startAnimation(leftIn);
+                                   }
+
+                              }
+                         });
+
+                    } catch (Exception e) {
+                         e.printStackTrace();
+                    }
+                    ringProgressDialog.dismiss();
                }
-          } catch (Exception edsx) {
-               edsx.printStackTrace();
-          }
-
-          DATE = date;
-          // 31 - Amount of days in a month
-          int daysInMonth = Utils.getDaysInMonth(date.getMonth(), Integer.valueOf(Utils.formatDate(date, DataBaseUtils.DATE_PATTERN_YYYY)));
-
-          // Add to expandable list view ready meal date
-          List <WaterConsumed> list = DataBaseUtils.getAllWaterConsumedInMonth(Utils.formatDate(date, DataBaseUtils.DATE_PATTERN_YYYY_MM));
-
-          int shouldDrinkWaterMlPerDay = (int) DataBaseUtils.getWaterUserShouldConsumePerDay();
-
-          // TODO : HOW TO clear all these serieses ???
-          graphView = new LineGraphView(getActivity(), String.format("Water statistic for %s  %s", ActivityWaterProgress.months[date.getMonth()], Utils.formatDate(date, DataBaseUtils.DATE_PATTERN_YYYY)));
-
-          int yMaxAxisValue = shouldDrinkWaterMlPerDay;
-
-          // first init "should drink" data
-          GraphViewData[] data = new GraphViewData[2];
-          data[0] = new GraphViewData(1, shouldDrinkWaterMlPerDay);
-          data[1] = new GraphViewData(daysInMonth, shouldDrinkWaterMlPerDay);
-
-          seriesShouldDrink = new GraphViewSeries("Norma", new GraphViewSeriesStyle(Color.rgb(90, 250, 00), 3), data);
-          // init "average" data
-          int averageWaterConsumedOnYaxis = 0;
-          for ( int i = 0; i < list.size(); i++ ) {
-               // calculate sum of all water consumed by user in a month
-               averageWaterConsumedOnYaxis += list.get(i).volumeConsumed;
-          }
-          averageWaterConsumedOnYaxis = averageWaterConsumedOnYaxis / daysInMonth;
-
-          yMaxAxisValue = Math.max(yMaxAxisValue, averageWaterConsumedOnYaxis);
-
-          data = new GraphViewData[2];
-          data[0] = new GraphViewData(1, averageWaterConsumedOnYaxis);
-          data[1] = new GraphViewData(daysInMonth, averageWaterConsumedOnYaxis);
-
-          seriesAverage = new GraphViewSeries("Average Value", new GraphViewSeriesStyle(Color.rgb(250, 80, 90), 3), data);
-
-          data = new GraphViewData[daysInMonth];
-          // set first day of month
-          date.setDate(1);
-          date = DateUtils.setMonths(date, date.getMonth());
-          int consumedPerDay = 0;
-
-          for ( int i = 0; i < daysInMonth; i++ ) {
-               consumedPerDay = DataBaseUtils.getConsumedPerDay(Utils.formatDate(date, DataBaseUtils.DATE_PATTERN_YYYY_MM_DD));
-               yMaxAxisValue = Math.max(yMaxAxisValue, consumedPerDay);
-               data[i] = new GraphViewData(i + 1, consumedPerDay);
-               // increment day
-               date = DateUtils.addDays(date, 1);
-          }
-
-          seriesConsumed = new GraphViewSeries("Consumed", new GraphViewSeriesStyle(Color.BLUE, 4), data);
-
-          // add data
-          graphView.addSeries(seriesAverage);
-          graphView.addSeries(seriesShouldDrink);
-          graphView.addSeries(seriesConsumed);
-          // optional - set view port, start=2, size=10
-          // graphView.setViewPort(2, 10);
-
-          graphView.getGraphViewStyle().setTextSize(15);
-          graphView.getGraphViewStyle().setVerticalLabelsColor(Color.DKGRAY);
-          graphView.getGraphViewStyle().setGridColor(Color.DKGRAY);
-
-          graphView.setManualYAxisBounds(yMaxAxisValue, 0);
-          graphView.getGraphViewStyle().setNumHorizontalLabels(daysInMonth / 3);
-          // optional - legend
-          graphView.setShowLegend(true);
-
-          rlRootGraphLayout.addView(graphView, 0);
-
-          if ( isLeftIn ) {
-               rightIn.setDuration(1000);
-               graphView.startAnimation(rightIn);
-          } else {
-               leftIn.setDuration(1000);
-               graphView.startAnimation(leftIn);
-          }
+          }).start();
 
      }
 }

@@ -17,7 +17,6 @@
 	<TextView
 		android:id="@+id/text"
 		android:paddingLeft="10dp"
-		android:text="TEXT"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_alignTop="@+id/image"
@@ -26,5 +25,5 @@
 		android:textStyle="italic"
 		android:textAppearance="?android:attr/textAppearanceLarge"
 		android:textColor="@android:color/white" />
-
+ 
 </RelativeLayout>

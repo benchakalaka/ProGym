@@ -36,6 +36,7 @@ import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.res.AnimationRes;
 import org.apache.commons.lang3.time.DateUtils;
 
+import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.view.animation.Animation;
@@ -133,111 +134,140 @@ import com.progym.utils.Utils;
           mChartView.startAnimation(leftOut);
      }
 
-     public void setLineData3(Date date, boolean isLeftIn) {
-          int yMaxAxisValue = 0;
-          try {
-               rlRootGraphLayout.removeView(mChartView);
-          } catch (Exception edsx) {
-               edsx.printStackTrace();
-          }
-          DATE = date;
-          // 31 - Amount of days in a month
-          int daysInMonth = Utils.getDaysInMonth(date.getMonth(), Integer.valueOf(Utils.formatDate(date, DataBaseUtils.DATE_PATTERN_YYYY)));
-          // set January as first month
-          date.setMonth(0);
-          date.setDate(1);
+     public void setLineData3(final Date date, final boolean isLeftIn) {
 
-          int[] x = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+          final ProgressDialog ringProgressDialog = ProgressDialog.show(getActivity(), getResources().getString(R.string.please_wait), getResources().getString(R.string.populating_data), true);
+          ringProgressDialog.setCancelable(true);
 
-          // Creating an XYSeries for Consumed water
-          XYSeries consumedSeries = new XYSeries("Consumed");
+          new Thread(new Runnable() {
 
-          List <WaterConsumed> list;
-          int userShouldConsume = (int) DataBaseUtils.getWaterUserShouldConsumePerDay();
-          // Adding data to Income and Expense Series
-          for ( int i = 0; i < x.length; i++ ) {
-               // get all water records consumed per this month
-               list = DataBaseUtils.getAllWaterConsumedInMonth(Utils.formatDate(date, DataBaseUtils.DATE_PATTERN_YYYY_MM));
-               // init "average" data
-               int averageWaterConsumedOnYaxis = 0;
-               for ( int j = 0; j < list.size(); j++ ) {
-                    // calculate sum of all water consumed by user in a month
-                    averageWaterConsumedOnYaxis += list.get(j).volumeConsumed;
+               @Override public void run() {
+                    try {
+
+                         int yMaxAxisValue = 0;
+                         getActivity().runOnUiThread(new Runnable() {
+
+                              @Override public void run() {
+                                   try {
+                                        rlRootGraphLayout.removeView(mChartView);
+                                   } catch (Exception edsx) {
+                                        edsx.printStackTrace();
+                                   }
+                              }
+                         });
+
+                         DATE = date;
+                         // 31 - Amount of days in a month
+                         int daysInMonth = Utils.getDaysInMonth(date.getMonth(), Integer.valueOf(Utils.formatDate(date, DataBaseUtils.DATE_PATTERN_YYYY)));
+                         // set January as first month
+                         date.setMonth(0);
+                         date.setDate(1);
+
+                         int[] x = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+
+                         // Creating an XYSeries for Consumed water
+                         XYSeries consumedSeries = new XYSeries("Consumed");
+
+                         List <WaterConsumed> list;
+                         // int userShouldConsume = (int) DataBaseUtils.getWaterUserShouldConsumePerDay();
+                         Date dt = date; // *
+                         // Adding data to Income and Expense Series
+                         for ( int i = 0; i < x.length; i++ ) {
+                              // get all water records consumed per this month
+                              list = DataBaseUtils.getAllWaterConsumedInMonth(Utils.formatDate(dt, DataBaseUtils.DATE_PATTERN_YYYY_MM));
+                              // init "average" data
+                              int averageWaterConsumedOnYaxis = 0;
+                              for ( int j = 0; j < list.size(); j++ ) {
+                                   // calculate sum of all water consumed by user in a month
+                                   averageWaterConsumedOnYaxis += list.get(j).volumeConsumed;
+                              }
+                              averageWaterConsumedOnYaxis = averageWaterConsumedOnYaxis / daysInMonth;
+                              consumedSeries.add(i, averageWaterConsumedOnYaxis);
+                              // normaSeries.add(i, userShouldConsume);
+                              dt = DateUtils.addMonths(dt, 1);
+                              yMaxAxisValue = Math.max(yMaxAxisValue, averageWaterConsumedOnYaxis);
+                         }
+
+                         // Creating a dataset to hold each series
+                         final XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
+                         // Adding Expense Series to dataset
+                         // dataset.addSeries(normaSeries);
+                         // Adding Income Series to the dataset
+                         dataset.addSeries(consumedSeries);
+
+                         // Creating XYSeriesRenderer to customize incomeSeries
+                         XYSeriesRenderer incomeRenderer = new XYSeriesRenderer();
+                         incomeRenderer.setColor(Color.rgb(50, 255, 50));
+                         incomeRenderer.setFillPoints(true);
+                         incomeRenderer.setLineWidth(2);
+                         incomeRenderer.setDisplayChartValues(true);
+
+                         /*
+                          * // Creating XYSeriesRenderer to customize expenseSeries
+                          * XYSeriesRenderer expenseRenderer = new XYSeriesRenderer();
+                          * expenseRenderer.setColor(Color.rgb(80, 220, 80));
+                          * expenseRenderer.setFillPoints(true);
+                          * expenseRenderer.setLineWidth(2);
+                          * expenseRenderer.setDisplayChartValues(true);
+                          */
+
+                         // Creating a XYMultipleSeriesRenderer to customize the whole chart
+                         final XYMultipleSeriesRenderer multiRenderer = new XYMultipleSeriesRenderer();
+                         multiRenderer.setXLabels(0);
+
+                         for ( int i = 0; i < x.length; i++ ) {
+                              multiRenderer.addXTextLabel(i, ActivityWaterProgress.months_short[i]);
+                         }
+
+                         // Adding incomeRenderer and expenseRenderer to multipleRenderer
+                         // Note: The order of adding dataseries to dataset and renderers to multipleRenderer
+                         // should be same
+                         multiRenderer.setChartTitle(String.format("Water statistic for %s year", Utils.formatDate(DATE, DataBaseUtils.DATE_PATTERN_YYYY)));
+                         multiRenderer.setXTitle("Months");
+                         multiRenderer.setYTitle("Water volume (ml)");
+                         multiRenderer.setAxesColor(Color.WHITE);
+                         multiRenderer.setShowLegend(true);
+                         multiRenderer.addSeriesRenderer(incomeRenderer);
+                         multiRenderer.setShowGrid(true);
+                         multiRenderer.setClickEnabled(true);
+                         // multiRenderer.addSeriesRenderer(expenseRenderer);
+                         multiRenderer.setXLabelsAngle(30);
+                         // multiRenderer.setBackgroundColor(Color.parseColor("#B3FFFFFF"));
+                         // multiRenderer.setApplyBackgroundColor(true);
+                         multiRenderer.setXLabelsColor(Color.WHITE);
+                         multiRenderer.setZoomButtonsVisible(false);
+                         // configure visible area
+                         multiRenderer.setXAxisMax(11.5);
+                         multiRenderer.setXAxisMin(-0.5);
+                         multiRenderer.setYAxisMax(yMaxAxisValue + (yMaxAxisValue / 5));
+                         multiRenderer.setYAxisMin(-0.1);
+
+                         multiRenderer.setAxisTitleTextSize(15);
+                         multiRenderer.setBarSpacing(0.1);
+                         multiRenderer.setZoomEnabled(true);
+
+                         getActivity().runOnUiThread(new Runnable() {
+
+                              @Override public void run() {
+                                   mChartView = ChartFactory.getBarChartView(getActivity(), dataset, multiRenderer, Type.DEFAULT);
+
+                                   rlRootGraphLayout.addView(mChartView, 0);
+                                   if ( isLeftIn ) {
+                                        rightIn.setDuration(1000);
+                                        mChartView.startAnimation(rightIn);
+                                   } else {
+                                        leftIn.setDuration(1000);
+                                        mChartView.startAnimation(leftIn);
+                                   }
+                              }
+                         });
+
+                    } catch (Exception e) {
+                         e.printStackTrace();
+                    }
+                    ringProgressDialog.dismiss();
                }
-               averageWaterConsumedOnYaxis = averageWaterConsumedOnYaxis / daysInMonth;
-               consumedSeries.add(i, averageWaterConsumedOnYaxis);
-               // normaSeries.add(i, userShouldConsume);
-               date = DateUtils.addMonths(date, 1);
-               yMaxAxisValue = Math.max(yMaxAxisValue, averageWaterConsumedOnYaxis);
-          }
-
-          // Creating a dataset to hold each series
-          XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
-          // Adding Expense Series to dataset
-          // dataset.addSeries(normaSeries);
-          // Adding Income Series to the dataset
-          dataset.addSeries(consumedSeries);
-
-          // Creating XYSeriesRenderer to customize incomeSeries
-          XYSeriesRenderer incomeRenderer = new XYSeriesRenderer();
-          incomeRenderer.setColor(Color.rgb(50, 255, 50));
-          incomeRenderer.setFillPoints(true);
-          incomeRenderer.setLineWidth(2);
-          incomeRenderer.setDisplayChartValues(true);
-
-          /*
-           * // Creating XYSeriesRenderer to customize expenseSeries
-           * XYSeriesRenderer expenseRenderer = new XYSeriesRenderer();
-           * expenseRenderer.setColor(Color.rgb(80, 220, 80));
-           * expenseRenderer.setFillPoints(true);
-           * expenseRenderer.setLineWidth(2);
-           * expenseRenderer.setDisplayChartValues(true);
-           */
-
-          // Creating a XYMultipleSeriesRenderer to customize the whole chart
-          XYMultipleSeriesRenderer multiRenderer = new XYMultipleSeriesRenderer();
-          multiRenderer.setXLabels(0);
-
-          for ( int i = 0; i < x.length; i++ ) {
-               multiRenderer.addXTextLabel(i, ActivityWaterProgress.months_short[i]);
-          }
-
-          // Adding incomeRenderer and expenseRenderer to multipleRenderer
-          // Note: The order of adding dataseries to dataset and renderers to multipleRenderer
-          // should be same
-          multiRenderer.setChartTitle(String.format("Water statistic for %s year", Utils.formatDate(DATE, DataBaseUtils.DATE_PATTERN_YYYY)));
-          multiRenderer.setXTitle("Months");
-          multiRenderer.setYTitle("Water volume (ml)");
-          multiRenderer.setAxesColor(Color.WHITE);
-          multiRenderer.setShowLegend(true);
-          multiRenderer.addSeriesRenderer(incomeRenderer);
-          multiRenderer.setShowGrid(true);
-          multiRenderer.setClickEnabled(true);
-          // multiRenderer.addSeriesRenderer(expenseRenderer);
-          multiRenderer.setXLabelsAngle(30);
-          // multiRenderer.setBackgroundColor(Color.parseColor("#B3FFFFFF"));
-          // multiRenderer.setApplyBackgroundColor(true);
-          multiRenderer.setXLabelsColor(Color.WHITE);
-          multiRenderer.setZoomButtonsVisible(false);
-          // configure visible area
-          multiRenderer.setXAxisMax(11.5);
-          multiRenderer.setXAxisMin(-0.5);
-          multiRenderer.setYAxisMax(yMaxAxisValue + (yMaxAxisValue / 5));
-          multiRenderer.setYAxisMin(-0.1);
-
-          multiRenderer.setAxisTitleTextSize(15);
-          multiRenderer.setBarSpacing(0.1);
-          multiRenderer.setZoomEnabled(true);
-
-          mChartView = ChartFactory.getBarChartView(getActivity(), dataset, multiRenderer, Type.DEFAULT);
-          rlRootGraphLayout.addView(mChartView, 0);
-          if ( isLeftIn ) {
-               rightIn.setDuration(1000);
-               mChartView.startAnimation(rightIn);
-          } else {
-               leftIn.setDuration(1000);
-               mChartView.startAnimation(leftIn);
-          }
+          }).start();
 
      }
 }

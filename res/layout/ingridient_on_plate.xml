@@ -21,9 +21,8 @@
         android:layout_toRightOf="@+id/ivProduct"
         android:singleLine="false"
         android:paddingLeft="3dp"
-        android:text="some text"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@android:color/white"
         android:textStyle="bold" />
 
-</RelativeLayout>
+</RelativeLayout> 

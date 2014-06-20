@@ -4,7 +4,7 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:background="@drawable/round_border_gray_gradient" >
-
+ 
 	<LinearLayout
 		android:id="@+id/llBMIHeader"
 		android:layout_width="match_parent"
@@ -14,12 +14,12 @@
 		android:background="@drawable/background_normal"
 		android:orientation="vertical"
 		android:padding="7dp" >
-
+ 
 		<TextView
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:gravity="center"
-			android:text="BMI (Body Mass Index) calculator"
+			android:text="@string/bmi_calculator"
 			android:textAppearance="?android:attr/textAppearanceLarge"
 			android:textColor="@color/caldroid_darker_gray"
 			android:textStyle="italic|bold" />
@@ -50,7 +50,7 @@
 					android:layout_height="wrap_content"
 					android:layout_weight="1"
 					android:checked="true"
-					android:text="Male"
+					android:text="@string/male"
 					android:textColor="@android:color/black"
 					android:textStyle="bold" />
 
@@ -59,14 +59,14 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_weight="1"
-					android:text="Female"
+					android:text="@string/female"
 					android:textColor="@android:color/black"
 					android:textStyle="bold" />
 			</RadioGroup>
 
 			<LinearLayout
 				android:layout_width="match_parent"
-				android:layout_height="match_parent"
+				android:layout_height="0dp"
 				android:layout_margin="10dp"
 				android:layout_weight="1"
 				android:orientation="vertical" >
@@ -83,7 +83,7 @@
 						android:layout_height="match_parent"
 						android:layout_gravity="left"
 						android:layout_weight="1"
-						android:text="Age"
+						android:text="@string/age"
 						android:textColor="@color/caldroid_white" />
 
 					<EditText
@@ -92,14 +92,14 @@
 						android:layout_height="match_parent"
 						android:layout_weight="1"
 						android:gravity="right"
-						android:hint="eg. 24"
+						android:hint="@string/hint_eg_24"
 						android:inputType="numberDecimal"
 						android:textColor="@color/caldroid_white" />
 				</LinearLayout>
 
 				<LinearLayout
 					android:layout_width="match_parent"
-					android:layout_height="match_parent"
+					android:layout_height="0dp"
 					android:layout_marginBottom="10dp"
 					android:layout_weight="1"
 					android:background="@drawable/blue_gradient"
@@ -110,7 +110,7 @@
 						android:layout_height="match_parent"
 						android:layout_gravity="left"
 						android:layout_weight="1"
-						android:text="Height"
+						android:text="@string/height_cm"
 						android:textColor="@color/caldroid_white" />
 
 					<EditText
@@ -119,7 +119,7 @@
 						android:layout_height="match_parent"
 						android:layout_weight="1"
 						android:gravity="right"
-						android:hint="eg. 177,5cm"
+						android:hint="@string/hint_eg_177cm"
 						android:inputType="numberDecimal"
 						android:textColor="@color/caldroid_white" />
 				</LinearLayout>
@@ -136,7 +136,7 @@
 						android:layout_height="match_parent"
 						android:layout_gravity="left"
 						android:layout_weight="1"
-						android:text="Weight"
+						android:text="@string/weight_kg"
 						android:textColor="@color/caldroid_white" />
 
 					<EditText
@@ -145,7 +145,7 @@
 						android:layout_height="match_parent"
 						android:layout_weight="1"
 						android:gravity="right"
-						android:hint="eg. 56kg"
+						android:hint="@string/hint_eg_56kg"
 						android:inputType="numberDecimal"
 						android:textColor="@color/caldroid_white" />
 				</LinearLayout>
@@ -159,15 +159,15 @@
 		android:layout_height="wrap_content"
 		android:layout_alignParentBottom="true"
 		android:orientation="horizontal" >
-
+ 
 		<Button
 			android:id="@+id/btnCalculateBMI"
-			android:layout_width="match_parent"
+			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:layout_margin="10dp"
 			android:layout_weight="1"
 			android:background="@drawable/round_border_gray_gradient"
-			android:text="Calculate" />
+			android:text="@string/next" />
 	</LinearLayout>
 
 </RelativeLayout>
