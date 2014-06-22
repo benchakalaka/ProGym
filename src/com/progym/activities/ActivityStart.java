@@ -23,53 +23,59 @@ import com.progym.utils.Utils;
 @EActivity ( R.layout.activity_start )
 public class ActivityStart extends Activity {
 
-	// Sugar basic usage - List<Book> books = Book.find(Book.class, "author = ?", new String{author.getId()});
-	// Book.find(Note.class, "name = ? and title = ?", "satya", "title1");
-	// http://satyan.github.io/sugar/query.html - query for sugar
-	// List<Note> notes = Note.findWithQuery(Note.class, "Select * from Note where name = ?", "satya");
-	// Select.from(TestRecord.class).where(Condition.prop("test").eq("satya"),Condition.prop("prop").eq(2)).list();
-
+	/**
+	 * LinearLayout section (start buttons)
+	 */
 	@ViewById LinearLayout						llNutrition;
 	@ViewById LinearLayout						llProgress;
 	@ViewById LinearLayout						llProfile;
 	@ViewById LinearLayout						llAdvice;
+	@ViewById LinearLayout						llWater;
 
+	/**
+	 * Animation at the start screen
+	 */
 	@AnimationRes ( R.anim.fadein ) Animation		fadeIn;
 	@AnimationRes ( R.anim.shake ) Animation		shake;
-	@AnimationRes ( R.anim.push_left_in ) Animation	upIn1;
-	@AnimationRes ( R.anim.push_left_in ) Animation	upIn2;
-	@AnimationRes ( R.anim.push_left_in ) Animation	upIn3;
-	@AnimationRes ( R.anim.push_left_in ) Animation	upIn4;
+	@AnimationRes ( R.anim.push_left_in ) Animation	leftIn0;
+	@AnimationRes ( R.anim.push_left_in ) Animation	leftIn1;
+	@AnimationRes ( R.anim.push_left_in ) Animation	leftIn2;
+	@AnimationRes ( R.anim.push_left_in ) Animation	leftIn3;
+	@AnimationRes ( R.anim.push_left_in ) Animation	leftIn4;
 
 	@Pref AppSharedPreferences_					appPref;
- 
-	@AfterViews void afterViews() {
-		
-		upIn1.setDuration(300);
-		upIn2.setDuration(300);
-		upIn3.setDuration(300);
-		upIn4.setDuration(300);
-		
-		upIn1.setStartOffset(0);
-		upIn2.setStartOffset(300);
-		upIn3.setStartOffset(600);
-		upIn4.setStartOffset(900);
-		
-		llNutrition.startAnimation(upIn1);
-		llProgress.startAnimation(upIn2);
-		llProfile.startAnimation(upIn3);
-		llAdvice.startAnimation(upIn4);
 
-		List <User> users = DataBaseUtils.getUsers();
-		if ( users.isEmpty() ) {
-			DataBaseUtils.setCurrentUser(null);
-		} else {
-			DataBaseUtils.setCurrentUser(users.get(0));
+	@AfterViews void afterViews() {
+		// set animations playing one after other with delay 300ms
+		leftIn0.setStartOffset(0);
+		leftIn1.setStartOffset(300);
+		leftIn2.setStartOffset(600);
+		leftIn3.setStartOffset(800);
+		leftIn4.setStartOffset(1200);
+
+		llNutrition.startAnimation(leftIn0);
+		llWater.startAnimation(leftIn1);
+		llProgress.startAnimation(leftIn2);
+		llProfile.startAnimation(leftIn3);
+		llAdvice.startAnimation(leftIn4);
+
+		if ( DataBaseUtils.getCurrentUser() == null ) {
+
+			List <User> users = DataBaseUtils.getUsers();
+			if ( users.isEmpty() ) {
+				DataBaseUtils.setCurrentUser(null);
+			} else {
+				DataBaseUtils.setCurrentUser(users.get(0));
+			}
 		}
+
 		// Set up ingridient database
 		DataBaseUtils.setUpIngridientsDatabase(getApplicationContext());
 	}
 
+	/**
+	 * LinearLayout nutrition and water managment
+	 */
 	@Click void llNutrition() {
 
 		llNutrition.startAnimation(fadeIn);
@@ -78,10 +84,25 @@ public class ActivityStart extends Activity {
 			llProfile.startAnimation(shake);
 			return;
 		}
-		startActivity(new Intent(ActivityStart.this, ActivitySelectFoodOrWaterManagment_.class));
-
+		startActivity(new Intent(ActivityStart.this, ActivityFoodManagment_.class));
 	}
 
+	/**
+	 * LinearLayout water module
+	 */
+	@Click void llWater() {
+		llNutrition.startAnimation(fadeIn);
+		if ( null == DataBaseUtils.getCurrentUser() ) {
+			Utils.showCustomToast(ActivityStart.this, R.string.create_profile_please, R.drawable.info);
+			llProfile.startAnimation(shake);
+			return;
+		}
+		startActivity(new Intent(ActivityStart.this, ActivityWaterManagement_.class));
+	}
+
+	/**
+	 * LinearLayout advice module
+	 */
 	@Click void llAdvice() {
 		llAdvice.startAnimation(fadeIn);
 		if ( null == DataBaseUtils.getCurrentUser() ) {
@@ -92,11 +113,17 @@ public class ActivityStart extends Activity {
 		startActivity(new Intent(ActivityStart.this, ActivityChooseTypeOfAdvice_.class));
 	}
 
+	/**
+	 * LinearLayout your profile
+	 */
 	@Click void llProfile() {
 		llProfile.startAnimation(fadeIn);
 		startActivity(new Intent(ActivityStart.this, ActivityUserProfile_.class));
 	}
 
+	/**
+	 * LinearLayout progress
+	 */
 	@Click void llProgress() {
 		llProgress.startAnimation(fadeIn);
 		if ( null == DataBaseUtils.getCurrentUser() ) {

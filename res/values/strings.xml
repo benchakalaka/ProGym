@@ -1,8 +1,266 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-	<string name="app_name">ProGym</string>
-	<string name="hello_world">Hello world!</string>
-	<string name="action_settings">Settings</string>
+	<string name="app_name">Healthy Way</string>
+	<string name="_1_4_prof_group">Работники преимущественно умственного труда, очень легкая физическая активность</string>
+	<string name="_1_6_prof_group">Работники, занятые легким трудом, легкая физическая активность</string>
+	<string name="_1_9_prof_group">Работники средней тяжести труда, средняя физическая активность </string>
+	<string name="_2_3_prof_group">Работники тяжелого физического труда, высокая физическая активность </string>
+	<string name="_2_5_prof_group">Работники особо тяжелого физического труда, очень высокая физическая активность </string>
+	<string name="_1_4_prestaviteli">научные работники\n студенты гуманитарных специальностей, опреаторы ПК, контролеры, педагоги, диспетчеры, работники пультов управления и др.</string>
+	<string name="_1_6_prestaviteli">водители, работники конвееров, весовщицы, упаковщицы, швеи, работники радиоэлектронной промышленности, агрономы, медсестры, санитарки, работники связи, сферы обслуживания, продавцы промтоваров и др.</string>
+	<string name="_1_9_prestaviteli">слесари, наладчики, настройщики, станочники, буровики, водители эскаваторов, бульдозеров, врачи-хирурги, текстильщики, обувщики, железнодорожники, металлурги-доменщики, работники химзаводов и др.</string>
+	<string name="_2_3_prestaviteli">строительные рабочие, помощники буровиков, проходчики, хлопкоробы, основная масса с\х рабочих, доярки, овощеводы, деревообработчики и др.</string>
+	<string name="_2_5_prestaviteli">механизаторы, и с\х рабочие в посевной, уборочный период, горнорабочие, бетонщики, вальщики леса, каменщики, землекопы, грузчики немеханизированного труда и др. </string>
+
+	<string-array name="brain_ingridients_list1">
+		<item>Muesli</item>
+		<item>Dried apricots</item>
+		<item>Sardines</item>
+		<item>Almonds</item>
+	</string-array>
+	<string-array name="brain_ingridients_list2">
+		<item>Wild berries</item>
+		<item>Melon</item>
+		<item>Green paper</item>
+		<item>Broccoli</item>
+	</string-array>
+	<string-array name="brain_ingridients_list3">
+		<item>Salad</item>
+		<item>Potatoes</item>
+		<item>Bananas</item>
+		<item>Liver</item>
+	</string-array>
+	<string-array name="brain_ingridients_list4">
+		<item>At least 8 glasses of water a day (non sparkling)</item>
+	</string-array>
+	<string-array name="fat_ingridients_list1">
+		<item>Lean red meat</item>
+		<item>Fish</item>
+		<item>Птица</item>
+		<item>Tofu</item>
+	</string-array>
+	<string-array name="fat_ingridients_list2">
+		<item>Wild rice</item>
+		<item>Apples</item>
+		<item>Salad</item>
+		<item>Bread with bran</item>
+	</string-array>
+	<string-array name="fat_ingridients_list3">
+		<item>Cottage cheese or curd?</item>
+		<item>Yogurt</item>
+		<item>Skimmed milk</item>
+		<item>Cream Cheese</item>
+	</string-array>
+	<string-array name="fat_ingridients_list4">
+		<item>Watermelon</item>
+		<item>Tomatoes</item>
+		<item>Cucumbers</item>
+		<item>Sweet paper</item>
+	</string-array>
+	<string-array name="stress_ingridients_list1">
+		<item>Spinach</item>
+		<item>Avocado</item>
+		<item>Potatoes</item>
+		<item>Bananas</item>
+	</string-array>
+	<string-array name="stress_ingridients_list2">
+		<item>Eggs</item>
+		<item>Chickpeas, NYT?</item>
+		<item>Chicken</item>
+		<item>Cereals ? krypu</item>
+	</string-array>
+	<string-array name="stress_ingridients_list3">
+		<item>Cabbage</item>
+		<item>Grapefruit</item>
+		<item>Guava</item>
+		<item>Cherry</item>
+	</string-array>
+	<string-array name="stress_ingridients_list4">
+		<item>Tofu ??</item>
+		<item>Rye bread ??</item>
+		<item>Pine nuts</item>
+		<item>Sesame</item>
+	</string-array>
+	<string-array name="energy_ingridients_list1">
+		<item>Rabbit ??</item>
+		<item>Linseed oil</item>
+		<item>Sunflower oil</item>
+		<item>Oily fish ?? </item>
+	</string-array>
+	<string-array name="energy_ingridients_list2">
+		<item>Buckwheat</item>
+		<item>Brown rice</item>
+		<item>Beans</item>
+		<item>Oatmeal</item>
+	</string-array>
+	<string-array name="energy_ingridients_list3">
+		<item>Carrots</item>
+		<item>Red pepper</item>
+		<item>Arugula ?</item>
+		<item>Mango</item>
+	</string-array>
+	<string-array name="energy_ingridients_list4">
+		<item>Dried figs</item>
+		<item>Cashew</item>
+		<item>Lentils ?? chechevica</item>
+		<item>Lean red oil</item>
+	</string-array>
+
+	<string name="fat1">Protein</string>
+	<string name="fat2">Fiber</string>
+	<string name="fat3">Low-fat dairy products</string>
+	<string name="fat4">Water saturated products</string>
+	<string name="stress1">Potassium</string>
+	<string name="stress2">Vitamin B</string>
+	<string name="stress3">Vitamin C</string>
+	<string name="stress4">Magnesium</string>
+	<string name="brain1">Iron</string>
+	<string name="brain2">Vitamin C</string>
+	<string name="brain3">Vitamin B</string>
+	<string name="brain4">Water</string>
+	<string name="energy1">Полиненасыщенные жырные кислоты</string>
+	<string name="energy2">Food with low GI* (Glycemic index)</string>
+	<string name="energy3">Beta-carotene</string>
+	<string name="energy4">Iron</string>
+	<string name="fat_descr1">Быстро насыщает</string>
+	<string name="fat_descr2">Не дает тебе проголодаться и контролирует уровень сахара в крови</string>
+	<string name="fat_descr3">Помогают справиться с жировыми отложениями</string>
+	<string name="fat_descr4">Содержит мало каллорий</string>
+	<string name="stress_descr1">Улучшает роботу нервной и кровеносной системы</string>
+	<string name="stress_descr2">Для здоровой нервной системы</string>
+	<string name="stress_descr3">Усиливает твой иммунитет</string>
+	<string name="stress_descr4">Минерал, который ты активно расходуешь в состоянии стресса</string>
+	<string name="brain_descr1">Регулирует приток крови к мозгу</string>
+	<string name="brain_descr2">Усиливает твой иммунитет</string>
+	<string name="brain_descr3">Для здоровой нервной системы</string>
+	<string name="brain_descr4">На 10% улучшает роботу мозга</string>
+	<string name="energy_descr1">Источник энергии для каждой клетки</string>
+	<string name="energy_descr2">Поддерживает постоянный уровень энергии в твоем организме</string>
+	<string name="energy_descr3">Усиливает твою устойчивость к вирусам</string>
+	<string name="energy_descr4">Регулирует энергообмен в организме</string>
+	<string name="underweight_">less than 18.5</string>
+	<string name="noraml_">18.5-24.99</string>
+	<string name="overweight_">25-29.99</string>
+	<string name="obese_">30-35.99</string>
+	<string name="severely_obese_">36-39.99</string>
+	<string name="morbidly_obese_">more than 40</string>
+	<string name="drag_items_to_screen_center">Drag one of the item to the center of the screen</string>
+	<string name="ingridients_list">List of ingridients</string>
+	<string name="restriction_meal">You can log up to 25 items per meal</string>
+	<string name="restriction_water">You can log up to 25 water items per day</string>
+
+	<string-array name="genders">
+		<item>Male</item>
+		<item>Female</item>
+	</string-array>
+
+	<string name="saving">Saving</string>
+	<string name="building_list">Building list</string>
+	<string name="please_wait">Please wait...</string>
+	<string name="populating_data">Populating data</string>
+	<string name="brain_work">Brain work</string>
+	<string name="energy">Energy</string>
+	<string name="fat_burning">Fat burning</string>
+	<string name="stress_reduction">Stress reduction</string>
+	<string name="list_of_products">List of products</string>
+	<string name="create_plate">Create plate, please</string>
+	<string name="there_is_nothing_on_plate">Have a look, there is nothing on this plate. Add some food please!</string>
+	<string name="list_of_products_has_been_saved">List of products has been saved. You can find it under the -Ready meals- catalogue</string>
+	<string name="create_plate_before_saving">Create plate before saving it</string>
+	<string name="plate_has_been_created">Plate has been created</string>
+	<string name="create_profile_please">Create profile, before continue, please</string>
+	<string name="body_type_explanation">Body type explanation</string>
+	<string name="name_age_weight_arent_filled_properly">Name/Age/Weight are not filled properly</string>
+	<string name="drink_something">You have no drink a water today, drink something please</string>
+	<string name="today_water_statistic">Today water statistics</string>
+	<string name="input_volume_in_ml">Input water volume in ML</string>
+	<string name="please_input_proper_value">Please input proper value</string>
+	<string name="should_be_greater_than_0">Value should be greater 0</string>
+	<string name="there_is_no_custom_value">There is no custom water value found</string>
+	<string name="callories_consumption">Callories consumption</string>
+	<string name="there_is_no_ready_meal_found">There is no ready meals found</string>
+	<string name="name_of_product_cannot_be_empty">Name of product cannot be empty</string>
+	<string name="set_proper_prot_carbs_fat">Set proper weight,protein,carbs,fat,kkal</string>
+	<string name="ingridients_has_been_added">List of ingridients has been added to current meal</string>
+	<string name="group">Group</string>
+	<string name="pa">PA</string>
+	<string name="age_capital">AGE</string>
+	<string name="energy_kkal">Energy Kkal</string>
+	<string name="protein_animal_g">Protein(Animal)g</string>
+	<string name="fat">Fat</string>
+	<string name="carbs">Carbs</string>
+	<string name="male">Male</string>
+	<string name="female">Female</string>
+	<string name="prof_group">Professional group</string>
+	<string name="representatives">Representatives of the group</string>
+	<string name="pa_explanation">PA (Physical Activity Coefficeint) - physical activity is important for managing body weight by both older and small persons who might miss key micronutrients when consuming restrictive diets. Further, physical activity results in the anabolic and regulatory processes in skeletal muscle, develops cardiovascular system improvements, improves blood lipoprotein profiles in older adults, and leads to increased expression of many beneficial enzymes and enzyme systems in diverse organs and organ systems from bones and muscles to brain.</string>
+	<string name="what_do_you_need">What do you need?</string>
+	<string name="which_describes_best_your_activity">Which of the below best describes your activity levels?</string>
+	<string name="iam_inactive">I am inactive</string>
+	<string name="iam_inactive_description">I travel by car or public transport, I don\'t have an active job, I spend most of my work and leisure time sitting and I do little or no exercise.</string>
+	<string name="iam_low_activity">My activity level are low</string>
+	<string name="iam_low_activity_description">I occasionally travel on foot, I don\'t have an active job, I spend most of my work and leisure time sitting and do a maximum of 2.5 hours exercise a week.</string>
+	<string name="iam_moderate">My activity levels are moderate</string>
+	<string name="iam_moderate_description">I regularly travel on foot or bike, I am active at work and home, I don\'t spend much time sitting and I do at least 2.5 hours exercise each week.</string>
+	<string name="back">Back</string>
+	<string name="next">Next</string>
+	<string name="underweight">Underweight</string>
+	<string name="normal">Normal</string>
+	<string name="overweight">Overweight</string>
+	<string name="obese">Obese</string>
+	<string name="severely_obese">Severely Obese</string>
+	<string name="morbidly_obese">Morbidly Obese</string>
+	<string name="bmi">Body Mass Index (BMI)</string>
+	<string name="recomended_kkal_intake_should_be">Recommended daily calorie intake should be</string>
+	<string name="healthy_weight_range">Healthy weight range for this height</string>
+	<string name="finish">Finish</string>
+	<string name="about_bmi">About BMI</string>
+	<string name="bmi_calculator">BMI (Body Mass Index) calculator</string>
+	<string name="age">Age</string>
+	<string name="hint_eg_24"></string>
+	<string name="height_cm">Height cm</string>
+	<string name="hint_eg_177cm">eg. 177,5cm</string>
+	<string name="weight_kg">Weight kg</string>
+	<string name="hint_eg_56kg">eg. 56kg</string>
+	<string name="manage_food_and_water">Manage your food and water consumption</string>
+	<string name="food_management">Food management</string>
+	<string name="water_management">Water management</string>
+	<string name="stay_wise">Stay wise, read wise advice</string>
+	<string name="energy_table">Energy table</string>
+	<string name="calculate_bmi">Calculate BMI</string>
+	<string name="calculate_my_bmi">Calculate My BMI</string>
+	<string name="track_statistic">Track your progress and statistic</string>
+	<string name="kkal_statistic">Calories statistic</string>
+	<string name="water_statistic">Water statistic</string>
+	<string name="pfc_statistic">Protein/Carbohydrates/Fat statistic</string>
+	<string name="nutrition">Nutrition</string>
+	<string name="progress">Progress</string>
+	<string name="profile">Profile</string>
+	<string name="wise_advice">Wise advice</string>
+	<string name="name">Name</string>
+	<string name="gender">Gender</string>
+	<string name="save_profile">Save profile</string>
+	<string name="_250ml">250 ml</string>
+	<string name="_500ml">500 ml</string>
+	<string name="_1littre">1 littre</string>
+	<string name="_2littre">2 littres</string>
+	<string name="monthly">Monthly</string>
+	<string name="yearly">Yearly</string>
+	<string name="daily">Daily</string>
+	<string name="edit">Edit</string>
+	<string name="add_to_current_meal">Add to current meal</string>
+	<string name="meat">Meat</string>
+	<string name="porridge">Porridge</string>
+	<string name="vegetables">Vegetables</string>
+	<string name="fruits">Fruits</string>
+	<string name="other">Other</string>
+	<string name="ready_meals">Ready meals</string>
+	<string name="_100g_contains">100g contains</string>
+	<string name="protein">Protein</string>
+	<string name="calories">Calories</string>
+	<string name="weight_g">Weight (g)</string>
+	<string name="restriction_plates_amount">You can create up to 20 plates per day</string>
+	<string name="water">Water</string>
 
 </resources>

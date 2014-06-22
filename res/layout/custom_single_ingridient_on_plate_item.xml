@@ -12,7 +12,7 @@
         android:layout_height="50dip"
         android:layout_alignParentTop="true"
         android:background="@drawable/ingridient" />
- 
+  
     <TextView
     	android:id="@+id/twIngridientsAmount"
     	android:layout_width="wrap_content"
@@ -21,7 +21,6 @@
     	android:layout_alignParentTop="true"
     	android:background="@drawable/green_gradient"
     	android:gravity="center_horizontal"
-    	android:textAlignment="center"
     	android:textAppearance="?android:attr/textAppearanceMedium"
     	android:textColor="@android:color/white"
     	android:textStyle="italic|bold"

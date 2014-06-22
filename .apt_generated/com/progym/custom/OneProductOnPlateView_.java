@@ -67,8 +67,8 @@ public final class OneProductOnPlateView_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        twProductDescription = ((TextView) hasViews.findViewById(id.twProductDescription));
         ivProduct = ((ImageView) hasViews.findViewById(id.ivProduct));
+        twProductDescription = ((TextView) hasViews.findViewById(id.twProductDescription));
     }
 
 }

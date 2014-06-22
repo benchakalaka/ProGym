@@ -47,13 +47,13 @@ public final class ActivityFoodManagment_
 
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
-        rightOut = AnimationUtils.loadAnimation(this, anim.push_right_out);
         fadeIn = AnimationUtils.loadAnimation(this, anim.fadein);
-        drag = AnimationUtils.loadAnimation(this, anim.drag_animation);
-        leftOut = AnimationUtils.loadAnimation(this, anim.push_left_out);
-        fade = AnimationUtils.loadAnimation(this, anim.fade);
-        leftIn = AnimationUtils.loadAnimation(this, anim.push_left_in);
+        rightOut = AnimationUtils.loadAnimation(this, anim.push_right_out);
         rightIn = AnimationUtils.loadAnimation(this, anim.push_right_in);
+        drag = AnimationUtils.loadAnimation(this, anim.drag_animation);
+        leftIn = AnimationUtils.loadAnimation(this, anim.push_left_in);
+        fade = AnimationUtils.loadAnimation(this, anim.fade);
+        leftOut = AnimationUtils.loadAnimation(this, anim.push_left_out);
     }
 
     @Override
@@ -98,31 +98,16 @@ public final class ActivityFoodManagment_
     public void onViewChanged(HasViews hasViews) {
         ivPrevDay = ((ImageView) hasViews.findViewById(id.ivPrevDay));
         ivNextDay = ((ImageView) hasViews.findViewById(id.ivNextDay));
-        llLeftPanelDateWithCalendar = ((LinearLayout) hasViews.findViewById(id.llLeftPanelDateWithCalendar));
         twCurrentDate = ((TextView) hasViews.findViewById(id.twCurrentDate));
-        ibSavePlate = ((ImageButton) hasViews.findViewById(id.ibSavePlate));
-        viewPager = ((NonSwipeableViewPager) hasViews.findViewById(id.viewPager));
-        svListOfConsumedMeals = ((ScrollView) hasViews.findViewById(id.svListOfConsumedMeals));
-        llAlreadyOnPlate = ((LinearLayout) hasViews.findViewById(id.llAlreadyOnPlate));
+        llLeftPanelDateWithCalendar = ((LinearLayout) hasViews.findViewById(id.llLeftPanelDateWithCalendar));
         ivOnPlate = ((ImageView) hasViews.findViewById(id.ivOnPlate));
+        ibSavePlate = ((ImageButton) hasViews.findViewById(id.ibSavePlate));
         horizontalScrollView = ((HorizontalScrollView) hasViews.findViewById(id.horizontalScrollView));
+        viewPager = ((NonSwipeableViewPager) hasViews.findViewById(id.viewPager));
+        llAlreadyOnPlate = ((LinearLayout) hasViews.findViewById(id.llAlreadyOnPlate));
         ibCreatePlate = ((ImageButton) hasViews.findViewById(id.ibCreatePlate));
         llCreatedPlates = ((LinearLayout) hasViews.findViewById(id.llCreatedPlates));
-        {
-            View view = hasViews.findViewById(id.ivPrevDay);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        ActivityFoodManagment_.this.ivPrevDay();
-                    }
-
-                }
-                );
-            }
-        }
+        svListOfConsumedMeals = ((ScrollView) hasViews.findViewById(id.svListOfConsumedMeals));
         {
             View view = hasViews.findViewById(id.ivNextDay);
             if (view!= null) {
@@ -139,14 +124,29 @@ public final class ActivityFoodManagment_
             }
         }
         {
-            View view = hasViews.findViewById(id.llLeftPanelDateWithCalendar);
+            View view = hasViews.findViewById(id.ivPrevDay);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        ActivityFoodManagment_.this.llLeftPanelDateWithCalendar();
+                        ActivityFoodManagment_.this.ivPrevDay();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ibCreatePlate);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        ActivityFoodManagment_.this.ibCreatePlate();
                     }
 
                 }
@@ -169,14 +169,14 @@ public final class ActivityFoodManagment_
             }
         }
         {
-            View view = hasViews.findViewById(id.ibCreatePlate);
+            View view = hasViews.findViewById(id.llLeftPanelDateWithCalendar);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        ActivityFoodManagment_.this.ibCreatePlate();
+                        ActivityFoodManagment_.this.llLeftPanelDateWithCalendar();
                     }
 
                 }

@@ -82,8 +82,8 @@ public final class ActivityCalloriesProgress_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        twMonthly = ((TextView) hasViews.findViewById(id.twMonthly));
         twYearly = ((TextView) hasViews.findViewById(id.twYearly));
+        twMonthly = ((TextView) hasViews.findViewById(id.twMonthly));
         viewPager = ((NonSwipeableViewPager) hasViews.findViewById(id.viewPager));
         {
             View view = hasViews.findViewById(id.twMonthly);

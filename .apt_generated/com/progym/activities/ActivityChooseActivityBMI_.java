@@ -76,25 +76,10 @@ public final class ActivityChooseActivityBMI_
     @Override
     public void onViewChanged(HasViews hasViews) {
         btnBack = ((Button) hasViews.findViewById(id.btnBack));
-        rbLow = ((RadioButton) hasViews.findViewById(id.rbLow));
         rbModerate = ((RadioButton) hasViews.findViewById(id.rbModerate));
-        rbInactive = ((RadioButton) hasViews.findViewById(id.rbInactive));
         btnNext = ((Button) hasViews.findViewById(id.btnNext));
-        {
-            View view = hasViews.findViewById(id.btnBack);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        ActivityChooseActivityBMI_.this.btnBack();
-                    }
-
-                }
-                );
-            }
-        }
+        rbInactive = ((RadioButton) hasViews.findViewById(id.rbInactive));
+        rbLow = ((RadioButton) hasViews.findViewById(id.rbLow));
         {
             View view = hasViews.findViewById(id.btnNext);
             if (view!= null) {
@@ -104,6 +89,21 @@ public final class ActivityChooseActivityBMI_
                     @Override
                     public void onClick(View view) {
                         ActivityChooseActivityBMI_.this.btnNext();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.btnBack);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        ActivityChooseActivityBMI_.this.btnBack();
                     }
 
                 }

@@ -8,7 +8,366 @@
 package com.progym;
 
 public final class R {
+    public static final class anim {
+        public static final int appear=0x7f040000;
+        public static final int cycle_7=0x7f040001;
+        public static final int drag_animation=0x7f040002;
+        public static final int fade=0x7f040003;
+        public static final int fadein=0x7f040004;
+        public static final int fadeout=0x7f040005;
+        public static final int push_left_in=0x7f040006;
+        public static final int push_left_out=0x7f040007;
+        public static final int push_right_in=0x7f040008;
+        public static final int push_right_out=0x7f040009;
+        public static final int push_up_in=0x7f04000a;
+        public static final int shake=0x7f04000b;
+    }
+    public static final class array {
+        public static final int brain_ingridients_list1=0x7f0b0000;
+        public static final int brain_ingridients_list2=0x7f0b0001;
+        public static final int brain_ingridients_list3=0x7f0b0002;
+        public static final int brain_ingridients_list4=0x7f0b0003;
+        public static final int energy_ingridients_list1=0x7f0b000c;
+        public static final int energy_ingridients_list2=0x7f0b000d;
+        public static final int energy_ingridients_list3=0x7f0b000e;
+        public static final int energy_ingridients_list4=0x7f0b000f;
+        public static final int fat_ingridients_list1=0x7f0b0004;
+        public static final int fat_ingridients_list2=0x7f0b0005;
+        public static final int fat_ingridients_list3=0x7f0b0006;
+        public static final int fat_ingridients_list4=0x7f0b0007;
+        public static final int genders=0x7f0b0010;
+        public static final int stress_ingridients_list1=0x7f0b0008;
+        public static final int stress_ingridients_list2=0x7f0b0009;
+        public static final int stress_ingridients_list3=0x7f0b000a;
+        public static final int stress_ingridients_list4=0x7f0b000b;
+    }
     public static final class attr {
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int barAxisColor=0x7f010015;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int barColor=0x7f010003;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int barLength=0x7f01000b;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int barShowAxis=0x7f010017;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int barShowAxisLabel=0x7f010018;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int barShowPopup=0x7f01001a;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int barShowText=0x7f010019;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int barWidth=0x7f01000a;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int border_color=0x7f01001d;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int border_width=0x7f01001c;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int circleColor=0x7f010008;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int contourColor=0x7f01000c;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int contourSize=0x7f01000d;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int corner_radius=0x7f01001b;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int delayMillis=0x7f010007;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int lineAxisColor=0x7f010011;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int lineStrokeColor=0x7f010010;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int lineStrokeSpacing=0x7f010013;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int lineStrokeWidth=0x7f010012;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int lineUseDip=0x7f010014;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int mutate_background=0x7f01001e;
+        /** <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>horizontal</code></td><td>0</td><td></td></tr>
+<tr><td><code>vertical</code></td><td>1</td><td></td></tr>
+</table>
+         */
+        public static final int orientation=0x7f010016;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int oval=0x7f01001f;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int pieInnerCircleRatio=0x7f01000e;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int pieSlicePadding=0x7f01000f;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int radius=0x7f010009;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int rimColor=0x7f010004;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int rimWidth=0x7f010005;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int spinSpeed=0x7f010006;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int text=0x7f010000;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int textColor=0x7f010001;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int textSize=0x7f010002;
+    }
+    public static final class color {
+        public static final int blue=0x7f08000b;
+        public static final int caldroid_black=0x7f080001;
+        public static final int caldroid_darker_gray=0x7f080005;
+        public static final int caldroid_gray=0x7f080004;
+        /**  A dark Holo shade of blue 
+ A dark Holo shade of blue 
+         */
+        public static final int caldroid_holo_blue_dark=0x7f080007;
+        /**  A light Holo shade of blue 
+ A light Holo shade of blue 
+         */
+        public static final int caldroid_holo_blue_light=0x7f080006;
+        /**  For settings framework 
+ For settings framework 
+         */
+        public static final int caldroid_lighter_gray=0x7f080003;
+        /**  A really bright Holo shade of blue 
+ A really bright Holo shade of blue 
+         */
+        public static final int caldroid_sky_blue=0x7f080008;
+        public static final int caldroid_transparent=0x7f080002;
+        public static final int caldroid_white=0x7f080000;
+        /**  A really bright Holo shade of blue 
+         */
+        public static final int caldroid_yellow=0x7f080009;
+        public static final int green=0x7f08000d;
+        public static final int green_light=0x7f08000e;
+        public static final int orange=0x7f08000f;
+        public static final int purple=0x7f080011;
+        public static final int red=0x7f08000a;
+        public static final int transparent_blue=0x7f08000c;
+        public static final int transparent_orange=0x7f080010;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -18,37 +377,607 @@ public final class R {
          would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
 	
          */
-        public static final int activity_horizontal_margin=0x7f040000;
-        public static final int activity_vertical_margin=0x7f040001;
+        public static final int activity_horizontal_margin=0x7f0a0000;
+        public static final int activity_vertical_margin=0x7f0a0001;
+        public static final int default_margin=0x7f0a0002;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
+        public static final int advice=0x7f020000;
+        public static final int background_morbidly_obese=0x7f020001;
+        public static final int background_normal=0x7f020002;
+        public static final int background_obese=0x7f020003;
+        public static final int background_overweight=0x7f020004;
+        public static final int background_round_border=0x7f020005;
+        public static final int background_round_border_green=0x7f020006;
+        public static final int background_round_border_green_=0x7f020007;
+        public static final int background_round_transparent_real=0x7f020008;
+        public static final int background_severely_obese=0x7f020009;
+        public static final int background_start_buttons=0x7f02000a;
+        public static final int background_transparent_inside=0x7f02000b;
+        public static final int background_underweight=0x7f02000c;
+        public static final int blue_gradient=0x7f02000d;
+        public static final int body=0x7f02000e;
+        public static final int bottle_05=0x7f02000f;
+        public static final int bottle_1=0x7f020010;
+        public static final int bottle_2=0x7f020011;
+        public static final int brain=0x7f020012;
+        public static final int btn_dropdown=0x7f020013;
+        public static final int btn_dropdown_normal=0x7f020014;
+        public static final int btn_dropdown_pressed=0x7f020015;
+        public static final int calendar=0x7f020016;
+        public static final int calendar_next_arrow=0x7f020017;
+        public static final int calendar_prev_arrow=0x7f020018;
+        public static final int calories_statistics=0x7f020019;
+        public static final int cell_bg=0x7f02001a;
+        public static final int circle=0x7f02001b;
+        public static final int circle_bg=0x7f02001c;
+        public static final int custom=0x7f02001d;
+        public static final int disable_cell=0x7f02001e;
+        public static final int edit=0x7f02001f;
+        public static final int energy=0x7f020020;
+        public static final int energy_table=0x7f020021;
+        public static final int female=0x7f020022;
+        public static final int fruits=0x7f020023;
+        public static final int glass_025=0x7f020024;
+        public static final int green_gradient=0x7f020025;
+        public static final int happy=0x7f020026;
+        public static final int header=0x7f020027;
+        public static final int ic_launcher=0x7f020028;
+        public static final int icon=0x7f020029;
+        public static final int info=0x7f02002a;
+        public static final int ingridient=0x7f02002b;
+        public static final int left=0x7f02002c;
+        public static final int left_arrow=0x7f02002d;
+        public static final int lightning=0x7f02002e;
+        public static final int login_gradient=0x7f02002f;
+        public static final int login_gradient_flip=0x7f020030;
+        public static final int logo=0x7f020031;
+        public static final int male=0x7f020032;
+        public static final int meal_title=0x7f020033;
+        public static final int meat=0x7f020034;
+        public static final int nutrition=0x7f020035;
+        public static final int other=0x7f020036;
+        public static final int pfc=0x7f020037;
+        public static final int plus=0x7f020038;
+        public static final int popup_black=0x7f020039;
+        public static final int porridge=0x7f02003a;
+        public static final int profile=0x7f02003b;
+        public static final int progress=0x7f02003c;
+        public static final int progressbar_bg=0x7f02003d;
+        public static final int protein_carbs_fat_statistics=0x7f02003e;
+        public static final int radio_off=0x7f02003f;
+        public static final int radio_on=0x7f020040;
+        public static final int radio_selector=0x7f020041;
+        public static final int ready=0x7f020042;
+        public static final int ready_meal=0x7f020043;
+        public static final int red_border=0x7f020044;
+        public static final int red_border_gray_bg=0x7f020045;
+        public static final int right=0x7f020046;
+        public static final int right_arrow=0x7f020047;
+        public static final int round_border_gray_gradient=0x7f020048;
+        public static final int save=0x7f020049;
+        public static final int settings_warning=0x7f02004a;
+        public static final int speedometr=0x7f02004b;
+        public static final int stress=0x7f02004c;
+        public static final int transparent_circle=0x7f02004d;
+        public static final int unhappy=0x7f02004e;
+        public static final int user=0x7f02004f;
+        public static final int vegetables=0x7f020050;
+        public static final int warning=0x7f020051;
+        public static final int water_managment=0x7f020052;
+        public static final int water_progress=0x7f020053;
+        public static final int water_statistics=0x7f020054;
     }
     public static final class id {
-        public static final int action_settings=0x7f080002;
-        public static final int rl_start_root=0x7f080000;
-        public static final int twTest=0x7f080001;
+        public static final int RelativeLayout01=0x7f0700ed;
+        public static final int activity_start_button_settings=0x7f0700bb;
+        public static final int bargraph=0x7f0700b1;
+        public static final int btnAboutBmiIndex=0x7f070026;
+        public static final int btnAddReadyMealToCurrPlate=0x7f0700ab;
+        public static final int btnBack=0x7f07001f;
+        public static final int btnCalculateBMI=0x7f07002d;
+        public static final int btnCancel=0x7f070054;
+        public static final int btnClearProfile=0x7f0700fd;
+        public static final int btnEdit=0x7f0700a6;
+        public static final int btnFinish=0x7f070025;
+        public static final int btnFruits=0x7f0700c1;
+        public static final int btnMeat=0x7f0700bc;
+        public static final int btnNext=0x7f070020;
+        public static final int btnOther=0x7f0700c4;
+        public static final int btnPorridge=0x7f0700bd;
+        public static final int btnReadyMeals=0x7f0700c5;
+        public static final int btnSave=0x7f070055;
+        public static final int btnVegitables=0x7f0700c0;
+        public static final int btn_increment=0x7f0700f1;
+        public static final int btn_spin=0x7f0700f0;
+        public static final int buttonCalendar=0x7f0700de;
+        public static final int buttonDrawing=0x7f0700dd;
+        public static final int buttonExit=0x7f0700e2;
+        public static final int buttonGmaps=0x7f0700df;
+        public static final int buttonSettings=0x7f0700e1;
+        public static final int calendar_gridview=0x7f07007d;
+        public static final int calendar_left_arrow=0x7f07006c;
+        public static final int calendar_month_year_textview=0x7f07006d;
+        public static final int calendar_right_arrow=0x7f07006e;
+        public static final int calendar_title_view=0x7f07006b;
+        public static final int calendar_tv=0x7f07007c;
+        public static final int cb10=0x7f070086;
+        public static final int cb1030=0x7f070087;
+        public static final int cb11=0x7f070088;
+        public static final int cb1130=0x7f070089;
+        public static final int cb12=0x7f07008a;
+        public static final int cb1230=0x7f07008b;
+        public static final int cb13=0x7f07008c;
+        public static final int cb1330=0x7f07008d;
+        public static final int cb14=0x7f07008e;
+        public static final int cb1430=0x7f07008f;
+        public static final int cb15=0x7f070090;
+        public static final int cb1530=0x7f070091;
+        public static final int cb16=0x7f070092;
+        public static final int cb1630=0x7f070093;
+        public static final int cb17=0x7f070094;
+        public static final int cb1730=0x7f070095;
+        public static final int cb18=0x7f070096;
+        public static final int cb1830=0x7f070097;
+        public static final int cb19=0x7f070098;
+        public static final int cb1930=0x7f070099;
+        public static final int cb20=0x7f07009a;
+        public static final int cb2030=0x7f07009b;
+        public static final int cb21=0x7f07009c;
+        public static final int cb2130=0x7f07009d;
+        public static final int cb22=0x7f07009e;
+        public static final int cb2230=0x7f07009f;
+        public static final int cb23=0x7f0700a0;
+        public static final int cb2330=0x7f0700a1;
+        public static final int cb630=0x7f07007f;
+        public static final int cb7=0x7f070080;
+        public static final int cb730=0x7f070081;
+        public static final int cb8=0x7f070082;
+        public static final int cb830=0x7f070083;
+        public static final int cb9=0x7f070084;
+        public static final int cb930=0x7f070085;
+        public static final int countryName=0x7f0700ad;
+        public static final int etBMIAge=0x7f07002a;
+        public static final int etBMIHeight=0x7f07002b;
+        public static final int etBMIWeight=0x7f07002c;
+        public static final int etCarbs=0x7f0700d6;
+        public static final int etCustomValue=0x7f0700a7;
+        public static final int etFat=0x7f0700d5;
+        public static final int etKkal=0x7f0700d7;
+        public static final int etName=0x7f0700f7;
+        public static final int etProtein=0x7f0700d4;
+        public static final int etUserAge=0x7f070052;
+        public static final int etUserHeight=0x7f070051;
+        public static final int etUserName=0x7f07004f;
+        public static final int etUserWeight=0x7f070050;
+        public static final int etWeight=0x7f0700d2;
+        public static final int expListView=0x7f0700c9;
+        public static final int horizontal=0x7f070000;
+        public static final int horizontalScrollView=0x7f07003d;
+        public static final int hsvWaterVolumes=0x7f070059;
+        public static final int ibCreatePlate=0x7f070040;
+        public static final int ibSavePlate=0x7f070042;
+        public static final int image=0x7f0700e6;
+        public static final int imageIcon=0x7f0700ac;
+        public static final int iv1=0x7f07000b;
+        public static final int iv2=0x7f07000f;
+        public static final int iv3=0x7f070013;
+        public static final int iv4=0x7f070017;
+        public static final int ivBodyType=0x7f07007a;
+        public static final int ivBodyWater=0x7f070067;
+        public static final int ivBodyWaterLevel=0x7f070066;
+        public static final int ivBottle1L=0x7f070060;
+        public static final int ivBottle2L=0x7f070062;
+        public static final int ivBottle500ML=0x7f07005e;
+        public static final int ivBrain=0x7f070008;
+        public static final int ivCustomWaterVolume=0x7f070064;
+        public static final int ivEdit=0x7f0700a5;
+        public static final int ivEditIngridient=0x7f0700d8;
+        public static final int ivEnergy=0x7f070006;
+        public static final int ivFatBurinig=0x7f070007;
+        public static final int ivFoodImage=0x7f0700d0;
+        public static final int ivGlass250ML=0x7f07005b;
+        public static final int ivListOfConsumedWater=0x7f07006a;
+        public static final int ivNextDay=0x7f070037;
+        public static final int ivNextYear=0x7f0700b3;
+        public static final int ivOnPlate=0x7f07003c;
+        public static final int ivPrevDay=0x7f070036;
+        public static final int ivPrevYear=0x7f0700b2;
+        public static final int ivProduct=0x7f0700e4;
+        public static final int ivStressReduction=0x7f070009;
+        public static final int ivUserProfile=0x7f07004a;
+        public static final int ivUserProgress=0x7f070048;
+        public static final int ivVolumeImage=0x7f070075;
+        public static final int iv_login_header_image=0x7f0700e9;
+        public static final int linear_layout=0x7f0700c8;
+        public static final int ll1L=0x7f07005f;
+        public static final int ll250ml=0x7f07005a;
+        public static final int ll2L=0x7f070061;
+        public static final int ll500ml=0x7f07005d;
+        public static final int llAdvice=0x7f07004b;
+        public static final int llAlreadyConsumedWaterList=0x7f070069;
+        public static final int llAlreadyOnPlate=0x7f070041;
+        public static final int llBMIHeader=0x7f07001a;
+        public static final int llBackNext=0x7f07001b;
+        public static final int llCalcBmi=0x7f070027;
+        public static final int llCalculateBMI=0x7f070031;
+        public static final int llCalculateMyBMI=0x7f070032;
+        public static final int llCalories=0x7f0700b6;
+        public static final int llCarbs=0x7f0700b8;
+        public static final int llConsumedStatistic=0x7f070056;
+        public static final int llCreatedPlates=0x7f07003e;
+        public static final int llDragOnMe=0x7f070005;
+        public static final int llEditCustomWater=0x7f070065;
+        public static final int llFat=0x7f0700b7;
+        public static final int llFoodCalloriesProgress=0x7f070033;
+        public static final int llFoodProgress=0x7f070035;
+        public static final int llIngridientsListToAdd=0x7f0700aa;
+        public static final int llKkalAndWeight=0x7f0700d1;
+        public static final int llLeftPanelDateWithCalendar=0x7f070038;
+        public static final int llNutrition=0x7f070045;
+        public static final int llNutritionInformation=0x7f0700cf;
+        public static final int llOn100gr=0x7f0700d3;
+        public static final int llPAC=0x7f070003;
+        public static final int llPFCColorExplanation=0x7f0700da;
+        public static final int llProfile=0x7f070049;
+        public static final int llProgress=0x7f070047;
+        public static final int llProtein=0x7f0700b9;
+        public static final int llRangePanel=0x7f070071;
+        public static final int llRightPanelBody=0x7f07003b;
+        public static final int llRootListOfWaterVolumes=0x7f0700a8;
+        public static final int llSaveCancelButtons=0x7f07004e;
+        public static final int llUsefulTable=0x7f070030;
+        public static final int llWater=0x7f070046;
+        public static final int llWaterProgress=0x7f070034;
+        public static final int llWhatDoYouNeed=0x7f07002f;
+        public static final int months_infinite_pager=0x7f070070;
+        public static final int pbConsumedLeft=0x7f070058;
+        public static final int pieGraph=0x7f0700db;
+        public static final int pieGraphFoodStats=0x7f0700ca;
+        public static final int piegraph=0x7f0700dc;
+        public static final int progressBar=0x7f0700ec;
+        public static final int progressBarFour=0x7f0700f4;
+        public static final int progressBarThree=0x7f0700f3;
+        public static final int progressBarTwo=0x7f0700f2;
+        public static final int progressImage=0x7f0700ee;
+        public static final int pwConsumedCircleProgress=0x7f070068;
+        public static final int rbFemale=0x7f070029;
+        public static final int rbInactive=0x7f07001c;
+        public static final int rbLow=0x7f07001d;
+        public static final int rbMale=0x7f070028;
+        public static final int rbModerate=0x7f07001e;
+        public static final int rl1=0x7f07000a;
+        public static final int rl2=0x7f07000e;
+        public static final int rl3=0x7f070012;
+        public static final int rl4=0x7f070016;
+        public static final int rlCustomMl=0x7f070063;
+        public static final int rlRoot=0x7f0700a2;
+        public static final int rlRootDailyBar=0x7f0700b0;
+        public static final int rlRootGraphLayout=0x7f0700b5;
+        public static final int rlRrootItem=0x7f070074;
+        public static final int rlSlideMe=0x7f070004;
+        public static final int rl_login_header=0x7f0700e8;
+        public static final int rl_start_root=0x7f070044;
+        public static final int rl_user_profile=0x7f07004d;
+        public static final int roootScrill=0x7f07002e;
+        public static final int rootRelative=0x7f0700e3;
+        public static final int rrrrrrrr=0x7f0700a9;
+        public static final int scrollView1=0x7f070002;
+        public static final int scroll__=0x7f070043;
+        public static final int spinnerGender=0x7f070053;
+        public static final int ssssssssw=0x7f07007e;
+        public static final int start_imagebutton_briefing=0x7f0700e0;
+        public static final int start_textview_briefing=0x7f0700c3;
+        public static final int start_textview_calendar=0x7f0700bf;
+        public static final int start_textview_drawing=0x7f0700be;
+        public static final int start_textview_exit=0x7f0700c7;
+        public static final int start_textview_gmaps=0x7f0700c2;
+        public static final int start_textview_label_settings=0x7f0700c6;
+        public static final int svListOfConsumedMeals=0x7f07003f;
+        public static final int text=0x7f0700e7;
+        public static final int textView1=0x7f07005c;
+        public static final int textView2=0x7f07004c;
+        public static final int toast_image_view=0x7f070078;
+        public static final int toast_layout_root=0x7f070077;
+        public static final int toast_text_view=0x7f070079;
+        public static final int topscroll=0x7f0700ba;
+        public static final int tv_progressText=0x7f0700ef;
+        public static final int tw1=0x7f07000c;
+        public static final int tw1Description=0x7f07000d;
+        public static final int tw2=0x7f070010;
+        public static final int tw2Description=0x7f070011;
+        public static final int tw3=0x7f070014;
+        public static final int tw3Description=0x7f070015;
+        public static final int tw4=0x7f070018;
+        public static final int tw4Description=0x7f070019;
+        public static final int twBmiResultName=0x7f070022;
+        public static final int twBmiValue=0x7f070021;
+        public static final int twBodyType=0x7f07007b;
+        public static final int twBodyTypeExplanation=0x7f0700a3;
+        public static final int twCalories=0x7f0700ce;
+        public static final int twCarbs=0x7f0700cd;
+        public static final int twCurrentDate=0x7f070039;
+        public static final int twCurrentDay=0x7f0700b4;
+        public static final int twDaily=0x7f0700af;
+        public static final int twEdit=0x7f0700a4;
+        public static final int twFat=0x7f0700cc;
+        public static final int twGroupNameAndIngridientName=0x7f0700d9;
+        public static final int twHealthyCaloriesRange=0x7f070023;
+        public static final int twHealthyWeightRange=0x7f070024;
+        public static final int twIngridientsAmount=0x7f070076;
+        public static final int twMonthly=0x7f070072;
+        public static final int twPercentComplete=0x7f070057;
+        public static final int twProductDescription=0x7f0700e5;
+        public static final int twProtein=0x7f0700cb;
+        public static final int twTime=0x7f0700f6;
+        public static final int twWaterVolume=0x7f0700f5;
+        public static final int twYearly=0x7f070073;
+        public static final int v_login_gradient=0x7f0700ea;
+        public static final int vertical=0x7f070001;
+        public static final int vf_login_flipper=0x7f0700eb;
+        public static final int viewPager=0x7f07003a;
+        public static final int water_managment_root_relative_layout=0x7f0700ae;
+        public static final int weekday_gridview=0x7f07006f;
+        public static final int wheelAge=0x7f0700fa;
+        public static final int wheelBodyType=0x7f0700fb;
+        public static final int wheelGender=0x7f0700fc;
+        public static final int wheelHeight=0x7f0700f9;
+        public static final int wheelWeight=0x7f0700f8;
     }
     public static final class layout {
-        public static final int start_activity=0x7f030000;
+        public static final int activity_advice_age_group=0x7f030000;
+        public static final int activity_advice_level_1=0x7f030001;
+        public static final int activity_advice_level_2=0x7f030002;
+        public static final int activity_advice_pac=0x7f030003;
+        public static final int activity_bmi_choose_activity=0x7f030004;
+        public static final int activity_bmi_explanation=0x7f030005;
+        public static final int activity_bmi_result=0x7f030006;
+        public static final int activity_calculate_bmi=0x7f030007;
+        public static final int activity_choose_type_of_advice=0x7f030008;
+        public static final int activity_choose_type_of_progress=0x7f030009;
+        public static final int activity_food_managment=0x7f03000a;
+        public static final int activity_start=0x7f03000b;
+        public static final int activity_user_profile=0x7f03000c;
+        public static final int activity_water_management=0x7f03000d;
+        public static final int calendar_view=0x7f03000e;
+        public static final int callories_progress_activity=0x7f03000f;
+        public static final int custom_hsv_consumed_water_item=0x7f030010;
+        public static final int custom_single_ingridient_on_plate_item=0x7f030011;
+        public static final int custom_toast=0x7f030012;
+        public static final int custom_wheel_bodytype_item=0x7f030013;
+        public static final int date_cell=0x7f030014;
+        public static final int date_grid_fragment=0x7f030015;
+        public static final int dialog_alarm=0x7f030016;
+        public static final int dialog_bodytype_explanation=0x7f030017;
+        public static final int dialog_custom_value=0x7f030018;
+        public static final int dialog_list_consumed_today=0x7f030019;
+        public static final int dialog_list_of_meals=0x7f03001a;
+        public static final int dropdown_bodytype_layout=0x7f03001b;
+        public static final int food_managment_activity=0x7f03001c;
+        public static final int food_progress_activity=0x7f03001d;
+        public static final int fragment_bargraph_daily=0x7f03001e;
+        public static final int fragment_callories_monthly=0x7f03001f;
+        public static final int fragment_custom_ingridient=0x7f030020;
+        public static final int fragment_food_progress_yearly=0x7f030021;
+        public static final int fragment_food_type=0x7f030022;
+        public static final int fragment_food_type_list_view=0x7f030023;
+        public static final int fragment_foodprogress_piechart_daily=0x7f030024;
+        public static final int fragment_ingridient=0x7f030025;
+        public static final int fragment_linegraph_monthly=0x7f030026;
+        public static final int fragment_linegraph_yearly=0x7f030027;
+        public static final int fragment_piegraph=0x7f030028;
+        public static final int fragment_select_food_type_buttons=0x7f030029;
+        public static final int ingridient_on_plate=0x7f03002a;
+        public static final int list_group=0x7f03002b;
+        public static final int main=0x7f03002c;
+        public static final int one_product_on_plate=0x7f03002d;
+        public static final int progress_spinner=0x7f03002e;
+        public static final int progress_wheel_activity=0x7f03002f;
+        public static final int single_consumed_volume_list_item=0x7f030030;
+        public static final int toast_image_and_text=0x7f030031;
+        public static final int transparent_circle=0x7f030032;
+        public static final int user_profile_activity=0x7f030033;
+        public static final int water_progress_activity=0x7f030034;
     }
-    public static final class menu {
-        public static final int start=0x7f070000;
+    public static final class raw {
+        public static final int pouring_liquid=0x7f050000;
     }
     public static final class string {
-        public static final int action_settings=0x7f050002;
-        public static final int app_name=0x7f050000;
-        public static final int hello_world=0x7f050001;
+        public static final int _100g_contains=0x7f06009b;
+        public static final int _1_4_prestaviteli=0x7f060007;
+        public static final int _1_4_prof_group=0x7f060002;
+        public static final int _1_6_prestaviteli=0x7f060008;
+        public static final int _1_6_prof_group=0x7f060003;
+        public static final int _1_9_prestaviteli=0x7f060009;
+        public static final int _1_9_prof_group=0x7f060004;
+        public static final int _1littre=0x7f06008e;
+        public static final int _250ml=0x7f06008c;
+        public static final int _2_3_prestaviteli=0x7f06000a;
+        public static final int _2_3_prof_group=0x7f060005;
+        public static final int _2_5_prestaviteli=0x7f06000b;
+        public static final int _2_5_prof_group=0x7f060006;
+        public static final int _2littre=0x7f06008f;
+        public static final int _500ml=0x7f06008d;
+        public static final int about_bmi=0x7f060072;
+        public static final int add_to_current_meal=0x7f060094;
+        public static final int age=0x7f060074;
+        public static final int age_capital=0x7f060054;
+        public static final int app_name=0x7f060001;
+        public static final int back=0x7f060066;
+        public static final int bmi=0x7f06006e;
+        public static final int bmi_calculator=0x7f060073;
+        public static final int body_type_explanation=0x7f060045;
+        public static final int brain1=0x7f060014;
+        public static final int brain2=0x7f060015;
+        public static final int brain3=0x7f060016;
+        public static final int brain4=0x7f060017;
+        public static final int brain_descr1=0x7f060024;
+        public static final int brain_descr2=0x7f060025;
+        public static final int brain_descr3=0x7f060026;
+        public static final int brain_descr4=0x7f060027;
+        public static final int brain_work=0x7f06003a;
+        public static final int building_list=0x7f060037;
+        public static final int calculate_bmi=0x7f06007f;
+        public static final int calculate_my_bmi=0x7f060080;
+        public static final int callories_consumption=0x7f06004d;
+        public static final int calories=0x7f06009d;
+        public static final int carbs=0x7f060058;
+        public static final int create_plate=0x7f06003f;
+        public static final int create_plate_before_saving=0x7f060042;
+        public static final int create_profile_please=0x7f060044;
+        public static final int daily=0x7f060092;
+        public static final int drag_items_to_screen_center=0x7f060032;
+        public static final int drink_something=0x7f060047;
+        public static final int edit=0x7f060093;
+        public static final int energy=0x7f06003b;
+        public static final int energy1=0x7f060018;
+        public static final int energy2=0x7f060019;
+        public static final int energy3=0x7f06001a;
+        public static final int energy4=0x7f06001b;
+        public static final int energy_descr1=0x7f060028;
+        public static final int energy_descr2=0x7f060029;
+        public static final int energy_descr3=0x7f06002a;
+        public static final int energy_descr4=0x7f06002b;
+        public static final int energy_kkal=0x7f060055;
+        public static final int energy_table=0x7f06007e;
+        public static final int fat=0x7f060057;
+        public static final int fat1=0x7f06000c;
+        public static final int fat2=0x7f06000d;
+        public static final int fat3=0x7f06000e;
+        public static final int fat4=0x7f06000f;
+        public static final int fat_burning=0x7f06003c;
+        public static final int fat_descr1=0x7f06001c;
+        public static final int fat_descr2=0x7f06001d;
+        public static final int fat_descr3=0x7f06001e;
+        public static final int fat_descr4=0x7f06001f;
+        public static final int female=0x7f06005a;
+        public static final int finish=0x7f060071;
+        public static final int food_management=0x7f06007b;
+        public static final int fruits=0x7f060098;
+        public static final int gender=0x7f06008a;
+        public static final int group=0x7f060052;
+        public static final int healthy_weight_range=0x7f060070;
+        public static final int height_cm=0x7f060076;
+        public static final int hello=0x7f060000;
+        public static final int hint_eg_177cm=0x7f060077;
+        public static final int hint_eg_24=0x7f060075;
+        public static final int hint_eg_56kg=0x7f060079;
+        public static final int iam_inactive=0x7f060060;
+        public static final int iam_inactive_description=0x7f060061;
+        public static final int iam_low_activity=0x7f060062;
+        public static final int iam_low_activity_description=0x7f060063;
+        public static final int iam_moderate=0x7f060064;
+        public static final int iam_moderate_description=0x7f060065;
+        public static final int ingridients_has_been_added=0x7f060051;
+        public static final int ingridients_list=0x7f060033;
+        public static final int input_volume_in_ml=0x7f060049;
+        public static final int kkal_statistic=0x7f060082;
+        public static final int list_of_products=0x7f06003e;
+        public static final int list_of_products_has_been_saved=0x7f060041;
+        public static final int male=0x7f060059;
+        public static final int manage_food_and_water=0x7f06007a;
+        public static final int meat=0x7f060095;
+        public static final int monthly=0x7f060090;
+        public static final int morbidly_obese=0x7f06006d;
+        public static final int morbidly_obese_=0x7f060031;
+        public static final int name=0x7f060089;
+        public static final int name_age_weight_arent_filled_properly=0x7f060046;
+        public static final int name_of_product_cannot_be_empty=0x7f06004f;
+        public static final int next=0x7f060067;
+        public static final int noraml_=0x7f06002d;
+        public static final int normal=0x7f060069;
+        public static final int nutrition=0x7f060085;
+        public static final int obese=0x7f06006b;
+        public static final int obese_=0x7f06002f;
+        public static final int other=0x7f060099;
+        public static final int overweight=0x7f06006a;
+        public static final int overweight_=0x7f06002e;
+        public static final int pa=0x7f060053;
+        public static final int pa_explanation=0x7f06005d;
+        public static final int pfc_statistic=0x7f060084;
+        public static final int plate_has_been_created=0x7f060043;
+        public static final int please_input_proper_value=0x7f06004a;
+        public static final int please_wait=0x7f060038;
+        public static final int populating_data=0x7f060039;
+        public static final int porridge=0x7f060096;
+        public static final int prof_group=0x7f06005b;
+        public static final int profile=0x7f060087;
+        public static final int progress=0x7f060086;
+        public static final int protein=0x7f06009c;
+        public static final int protein_animal_g=0x7f060056;
+        public static final int ready_meals=0x7f06009a;
+        public static final int recomended_kkal_intake_should_be=0x7f06006f;
+        public static final int representatives=0x7f06005c;
+        public static final int restriction_meal=0x7f060034;
+        public static final int restriction_plates_amount=0x7f06009f;
+        public static final int restriction_water=0x7f060035;
+        public static final int save_profile=0x7f06008b;
+        public static final int saving=0x7f060036;
+        public static final int set_proper_prot_carbs_fat=0x7f060050;
+        public static final int severely_obese=0x7f06006c;
+        public static final int severely_obese_=0x7f060030;
+        public static final int should_be_greater_than_0=0x7f06004b;
+        public static final int stay_wise=0x7f06007d;
+        public static final int stress1=0x7f060010;
+        public static final int stress2=0x7f060011;
+        public static final int stress3=0x7f060012;
+        public static final int stress4=0x7f060013;
+        public static final int stress_descr1=0x7f060020;
+        public static final int stress_descr2=0x7f060021;
+        public static final int stress_descr3=0x7f060022;
+        public static final int stress_descr4=0x7f060023;
+        public static final int stress_reduction=0x7f06003d;
+        public static final int there_is_no_custom_value=0x7f06004c;
+        public static final int there_is_no_ready_meal_found=0x7f06004e;
+        public static final int there_is_nothing_on_plate=0x7f060040;
+        public static final int today_water_statistic=0x7f060048;
+        public static final int track_statistic=0x7f060081;
+        public static final int underweight=0x7f060068;
+        public static final int underweight_=0x7f06002c;
+        public static final int vegetables=0x7f060097;
+        public static final int water=0x7f0600a0;
+        public static final int water_management=0x7f06007c;
+        public static final int water_statistic=0x7f060083;
+        public static final int weight_g=0x7f06009e;
+        public static final int weight_kg=0x7f060078;
+        public static final int what_do_you_need=0x7f06005e;
+        public static final int which_describes_best_your_activity=0x7f06005f;
+        public static final int wise_advice=0x7f060088;
+        public static final int yearly=0x7f060091;
     }
     public static final class style {
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    
+
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        
+
+        Base application theme for API 11+. This theme completely replaces
+        AppBaseTheme from res/values/styles.xml on API 11+ devices.
+    
+ API 11 theme customizations can go here. 
+
+        Base application theme for API 14+. This theme completely replaces
+        AppBaseTheme from BOTH res/values/styles.xml and
+        res/values-v11/styles.xml on API 14+ devices.
+    
+ API 14 theme customizations can go here. 
+
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+
+
 	
 
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
+
+
 		
 
         Base application theme for API 11+. This theme completely replaces
@@ -62,10 +991,633 @@ public final class R {
 	
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f060000;
+        public static final int AppBaseTheme=0x7f090000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
+ Application theme. 
+ All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f060001;
+        public static final int AppTheme=0x7f090001;
+        public static final int SpinnerText=0x7f090002;
+        public static final int Theme_Transparent=0x7f090003;
     }
+    public static final class styleable {
+        /** Attributes that can be used with a BarGraph.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #BarGraph_barAxisColor com.progym:barAxisColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #BarGraph_barShowAxis com.progym:barShowAxis}</code></td><td></td></tr>
+           <tr><td><code>{@link #BarGraph_barShowAxisLabel com.progym:barShowAxisLabel}</code></td><td></td></tr>
+           <tr><td><code>{@link #BarGraph_barShowPopup com.progym:barShowPopup}</code></td><td></td></tr>
+           <tr><td><code>{@link #BarGraph_barShowText com.progym:barShowText}</code></td><td></td></tr>
+           <tr><td><code>{@link #BarGraph_orientation com.progym:orientation}</code></td><td></td></tr>
+           </table>
+           @see #BarGraph_barAxisColor
+           @see #BarGraph_barShowAxis
+           @see #BarGraph_barShowAxisLabel
+           @see #BarGraph_barShowPopup
+           @see #BarGraph_barShowText
+           @see #BarGraph_orientation
+         */
+        public static final int[] BarGraph = {
+            0x7f010015, 0x7f010016, 0x7f010017, 0x7f010018,
+            0x7f010019, 0x7f01001a
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.progym.R.attr#barAxisColor}
+          attribute's value can be found in the {@link #BarGraph} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.progym:barAxisColor
+        */
+        public static final int BarGraph_barAxisColor = 0;
+        /**
+          <p>This symbol is the offset where the {@link com.progym.R.attr#barShowAxis}
+          attribute's value can be found in the {@link #BarGraph} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.progym:barShowAxis
+        */
+        public static final int BarGraph_barShowAxis = 2;
+        /**
+          <p>This symbol is the offset where the {@link com.progym.R.attr#barShowAxisLabel}
+          attribute's value can be found in the {@link #BarGraph} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.progym:barShowAxisLabel
+        */
+        public static final int BarGraph_barShowAxisLabel = 3;
+        /**
+          <p>This symbol is the offset where the {@link com.progym.R.attr#barShowPopup}
+          attribute's value can be found in the {@link #BarGraph} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.progym:barShowPopup
+        */
+        public static final int BarGraph_barShowPopup = 5;
+        /**
+          <p>This symbol is the offset where the {@link com.progym.R.attr#barShowText}
+          attribute's value can be found in the {@link #BarGraph} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.progym:barShowText
+        */
+        public static final int BarGraph_barShowText = 4;
+        /**
+          <p>This symbol is the offset where the {@link com.progym.R.attr#orientation}
+          attribute's value can be found in the {@link #BarGraph} array.
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>horizontal</code></td><td>0</td><td></td></tr>
+<tr><td><code>vertical</code></td><td>1</td><td></td></tr>
+</table>
+          @attr name com.progym:orientation
+        */
+        public static final int BarGraph_orientation = 1;
+        /** Attributes that can be used with a LineGraph.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #LineGraph_lineAxisColor com.progym:lineAxisColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #LineGraph_lineStrokeColor com.progym:lineStrokeColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #LineGraph_lineStrokeSpacing com.progym:lineStrokeSpacing}</code></td><td></td></tr>
+           <tr><td><code>{@link #LineGraph_lineStrokeWidth com.progym:lineStrokeWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #LineGraph_lineUseDip com.progym:lineUseDip}</code></td><td></td></tr>
+           </table>
+           @see #LineGraph_lineAxisColor
+           @see #LineGraph_lineStrokeColor
+           @see #LineGraph_lineStrokeSpacing
+           @see #LineGraph_lineStrokeWidth
+           @see #LineGraph_lineUseDip
+         */
+        public static final int[] LineGraph = {
+            0x7f010010, 0x7f010011, 0x7f010012, 0x7f010013,
+            0x7f010014
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.progym.R.attr#lineAxisColor}
+          attribute's value can be found in the {@link #LineGraph} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.progym:lineAxisColor
+        */
+        public static final int LineGraph_lineAxisColor = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.progym.R.attr#lineStrokeColor}
+          attribute's value can be found in the {@link #LineGraph} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.progym:lineStrokeColor
+        */
+        public static final int LineGraph_lineStrokeColor = 0;
+        /**
+          <p>This symbol is the offset where the {@link com.progym.R.attr#lineStrokeSpacing}
+          attribute's value can be found in the {@link #LineGraph} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.progym:lineStrokeSpacing
+        */
+        public static final int LineGraph_lineStrokeSpacing = 3;
+        /**
+          <p>This symbol is the offset where the {@link com.progym.R.attr#lineStrokeWidth}
+          attribute's value can be found in the {@link #LineGraph} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.progym:lineStrokeWidth
+        */
+        public static final int LineGraph_lineStrokeWidth = 2;
+        /**
+          <p>This symbol is the offset where the {@link com.progym.R.attr#lineUseDip}
+          attribute's value can be found in the {@link #LineGraph} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.progym:lineUseDip
+        */
+        public static final int LineGraph_lineUseDip = 4;
+        /** Attributes that can be used with a PieGraph.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #PieGraph_pieInnerCircleRatio com.progym:pieInnerCircleRatio}</code></td><td></td></tr>
+           <tr><td><code>{@link #PieGraph_pieSlicePadding com.progym:pieSlicePadding}</code></td><td></td></tr>
+           </table>
+           @see #PieGraph_pieInnerCircleRatio
+           @see #PieGraph_pieSlicePadding
+         */
+        public static final int[] PieGraph = {
+            0x7f01000e, 0x7f01000f
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.progym.R.attr#pieInnerCircleRatio}
+          attribute's value can be found in the {@link #PieGraph} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.progym:pieInnerCircleRatio
+        */
+        public static final int PieGraph_pieInnerCircleRatio = 0;
+        /**
+          <p>This symbol is the offset where the {@link com.progym.R.attr#pieSlicePadding}
+          attribute's value can be found in the {@link #PieGraph} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.progym:pieSlicePadding
+        */
+        public static final int PieGraph_pieSlicePadding = 1;
+        /** Attributes that can be used with a ProgressWheel.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #ProgressWheel_barColor com.progym:barColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #ProgressWheel_barLength com.progym:barLength}</code></td><td></td></tr>
+           <tr><td><code>{@link #ProgressWheel_barWidth com.progym:barWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #ProgressWheel_circleColor com.progym:circleColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #ProgressWheel_contourColor com.progym:contourColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #ProgressWheel_contourSize com.progym:contourSize}</code></td><td></td></tr>
+           <tr><td><code>{@link #ProgressWheel_delayMillis com.progym:delayMillis}</code></td><td></td></tr>
+           <tr><td><code>{@link #ProgressWheel_radius com.progym:radius}</code></td><td></td></tr>
+           <tr><td><code>{@link #ProgressWheel_rimColor com.progym:rimColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #ProgressWheel_rimWidth com.progym:rimWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #ProgressWheel_spinSpeed com.progym:spinSpeed}</code></td><td></td></tr>
+           <tr><td><code>{@link #ProgressWheel_text com.progym:text}</code></td><td></td></tr>
+           <tr><td><code>{@link #ProgressWheel_textColor com.progym:textColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #ProgressWheel_textSize com.progym:textSize}</code></td><td></td></tr>
+           </table>
+           @see #ProgressWheel_barColor
+           @see #ProgressWheel_barLength
+           @see #ProgressWheel_barWidth
+           @see #ProgressWheel_circleColor
+           @see #ProgressWheel_contourColor
+           @see #ProgressWheel_contourSize
+           @see #ProgressWheel_delayMillis
+           @see #ProgressWheel_radius
+           @see #ProgressWheel_rimColor
+           @see #ProgressWheel_rimWidth
+           @see #ProgressWheel_spinSpeed
+           @see #ProgressWheel_text
+           @see #ProgressWheel_textColor
+           @see #ProgressWheel_textSize
+         */
+        public static final int[] ProgressWheel = {
+            0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003,
+            0x7f010004, 0x7f010005, 0x7f010006, 0x7f010007,
+            0x7f010008, 0x7f010009, 0x7f01000a, 0x7f01000b,
+            0x7f01000c, 0x7f01000d
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.progym.R.attr#barColor}
+          attribute's value can be found in the {@link #ProgressWheel} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.progym:barColor
+        */
+        public static final int ProgressWheel_barColor = 3;
+        /**
+          <p>This symbol is the offset where the {@link com.progym.R.attr#barLength}
+          attribute's value can be found in the {@link #ProgressWheel} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.progym:barLength
+        */
+        public static final int ProgressWheel_barLength = 11;
+        /**
+          <p>This symbol is the offset where the {@link com.progym.R.attr#barWidth}
+          attribute's value can be found in the {@link #ProgressWheel} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.progym:barWidth
+        */
+        public static final int ProgressWheel_barWidth = 10;
+        /**
+          <p>This symbol is the offset where the {@link com.progym.R.attr#circleColor}
+          attribute's value can be found in the {@link #ProgressWheel} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.progym:circleColor
+        */
+        public static final int ProgressWheel_circleColor = 8;
+        /**
+          <p>This symbol is the offset where the {@link com.progym.R.attr#contourColor}
+          attribute's value can be found in the {@link #ProgressWheel} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.progym:contourColor
+        */
+        public static final int ProgressWheel_contourColor = 12;
+        /**
+          <p>This symbol is the offset where the {@link com.progym.R.attr#contourSize}
+          attribute's value can be found in the {@link #ProgressWheel} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.progym:contourSize
+        */
+        public static final int ProgressWheel_contourSize = 13;
+        /**
+          <p>This symbol is the offset where the {@link com.progym.R.attr#delayMillis}
+          attribute's value can be found in the {@link #ProgressWheel} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.progym:delayMillis
+        */
+        public static final int ProgressWheel_delayMillis = 7;
+        /**
+          <p>This symbol is the offset where the {@link com.progym.R.attr#radius}
+          attribute's value can be found in the {@link #ProgressWheel} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.progym:radius
+        */
+        public static final int ProgressWheel_radius = 9;
+        /**
+          <p>This symbol is the offset where the {@link com.progym.R.attr#rimColor}
+          attribute's value can be found in the {@link #ProgressWheel} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.progym:rimColor
+        */
+        public static final int ProgressWheel_rimColor = 4;
+        /**
+          <p>This symbol is the offset where the {@link com.progym.R.attr#rimWidth}
+          attribute's value can be found in the {@link #ProgressWheel} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.progym:rimWidth
+        */
+        public static final int ProgressWheel_rimWidth = 5;
+        /**
+          <p>This symbol is the offset where the {@link com.progym.R.attr#spinSpeed}
+          attribute's value can be found in the {@link #ProgressWheel} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.progym:spinSpeed
+        */
+        public static final int ProgressWheel_spinSpeed = 6;
+        /**
+          <p>This symbol is the offset where the {@link com.progym.R.attr#text}
+          attribute's value can be found in the {@link #ProgressWheel} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.progym:text
+        */
+        public static final int ProgressWheel_text = 0;
+        /**
+          <p>This symbol is the offset where the {@link com.progym.R.attr#textColor}
+          attribute's value can be found in the {@link #ProgressWheel} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.progym:textColor
+        */
+        public static final int ProgressWheel_textColor = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.progym.R.attr#textSize}
+          attribute's value can be found in the {@link #ProgressWheel} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.progym:textSize
+        */
+        public static final int ProgressWheel_textSize = 2;
+        /** Attributes that can be used with a RoundedImageView.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #RoundedImageView_android_scaleType android:scaleType}</code></td><td></td></tr>
+           <tr><td><code>{@link #RoundedImageView_border_color com.progym:border_color}</code></td><td></td></tr>
+           <tr><td><code>{@link #RoundedImageView_border_width com.progym:border_width}</code></td><td></td></tr>
+           <tr><td><code>{@link #RoundedImageView_corner_radius com.progym:corner_radius}</code></td><td></td></tr>
+           <tr><td><code>{@link #RoundedImageView_mutate_background com.progym:mutate_background}</code></td><td></td></tr>
+           <tr><td><code>{@link #RoundedImageView_oval com.progym:oval}</code></td><td></td></tr>
+           </table>
+           @see #RoundedImageView_android_scaleType
+           @see #RoundedImageView_border_color
+           @see #RoundedImageView_border_width
+           @see #RoundedImageView_corner_radius
+           @see #RoundedImageView_mutate_background
+           @see #RoundedImageView_oval
+         */
+        public static final int[] RoundedImageView = {
+            0x0101011d, 0x7f01001b, 0x7f01001c, 0x7f01001d,
+            0x7f01001e, 0x7f01001f
+        };
+        /**
+          <p>This symbol is the offset where the {@link android.R.attr#scaleType}
+          attribute's value can be found in the {@link #RoundedImageView} array.
+          @attr name android:scaleType
+        */
+        public static final int RoundedImageView_android_scaleType = 0;
+        /**
+          <p>This symbol is the offset where the {@link com.progym.R.attr#border_color}
+          attribute's value can be found in the {@link #RoundedImageView} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.progym:border_color
+        */
+        public static final int RoundedImageView_border_color = 3;
+        /**
+          <p>This symbol is the offset where the {@link com.progym.R.attr#border_width}
+          attribute's value can be found in the {@link #RoundedImageView} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.progym:border_width
+        */
+        public static final int RoundedImageView_border_width = 2;
+        /**
+          <p>This symbol is the offset where the {@link com.progym.R.attr#corner_radius}
+          attribute's value can be found in the {@link #RoundedImageView} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.progym:corner_radius
+        */
+        public static final int RoundedImageView_corner_radius = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.progym.R.attr#mutate_background}
+          attribute's value can be found in the {@link #RoundedImageView} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.progym:mutate_background
+        */
+        public static final int RoundedImageView_mutate_background = 4;
+        /**
+          <p>This symbol is the offset where the {@link com.progym.R.attr#oval}
+          attribute's value can be found in the {@link #RoundedImageView} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.progym:oval
+        */
+        public static final int RoundedImageView_oval = 5;
+    };
 }

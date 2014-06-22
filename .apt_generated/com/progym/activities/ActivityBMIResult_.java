@@ -76,11 +76,11 @@ public final class ActivityBMIResult_
     @Override
     public void onViewChanged(HasViews hasViews) {
         twBmiResultName = ((TextView) hasViews.findViewById(id.twBmiResultName));
+        twBmiValue = ((TextView) hasViews.findViewById(id.twBmiValue));
         twHealthyWeightRange = ((TextView) hasViews.findViewById(id.twHealthyWeightRange));
         twHealthyCaloriesRange = ((TextView) hasViews.findViewById(id.twHealthyCaloriesRange));
-        twBmiValue = ((TextView) hasViews.findViewById(id.twBmiValue));
-        btnAboutBmiIndex = ((Button) hasViews.findViewById(id.btnAboutBmiIndex));
         btnFinish = ((Button) hasViews.findViewById(id.btnFinish));
+        btnAboutBmiIndex = ((Button) hasViews.findViewById(id.btnAboutBmiIndex));
         {
             View view = hasViews.findViewById(id.btnFinish);
             if (view!= null) {

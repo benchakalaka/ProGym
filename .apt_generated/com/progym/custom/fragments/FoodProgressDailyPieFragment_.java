@@ -57,10 +57,10 @@ public final class FoodProgressDailyPieFragment_
         OnViewChangedNotifier.registerOnViewChangedListener(this);
         rightIn = AnimationUtils.loadAnimation(getActivity(), anim.push_right_in);
         leftOut = AnimationUtils.loadAnimation(getActivity(), anim.push_left_out);
-        leftIn = AnimationUtils.loadAnimation(getActivity(), anim.push_left_in);
-        fadeOut = AnimationUtils.loadAnimation(getActivity(), anim.fadeout);
         rightOut = AnimationUtils.loadAnimation(getActivity(), anim.push_right_out);
+        leftIn = AnimationUtils.loadAnimation(getActivity(), anim.push_left_in);
         fadeIn = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
+        fadeOut = AnimationUtils.loadAnimation(getActivity(), anim.fadeout);
     }
 
     @Override
@@ -75,30 +75,15 @@ public final class FoodProgressDailyPieFragment_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        rlRootDailyBar = ((RelativeLayout) hasViews.findViewById(com.progym.R.id.rlRootDailyBar));
         ivNextYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivNextYear));
-        twProtein = ((TextView) hasViews.findViewById(com.progym.R.id.twProtein));
-        twCarbs = ((TextView) hasViews.findViewById(com.progym.R.id.twCarbs));
-        ivPrevYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivPrevYear));
         pieGraphFoodStats = ((PieGraph) hasViews.findViewById(com.progym.R.id.pieGraphFoodStats));
-        twCurrentDay = ((TextView) hasViews.findViewById(com.progym.R.id.twCurrentDay));
-        twFat = ((TextView) hasViews.findViewById(com.progym.R.id.twFat));
         twCalories = ((TextView) hasViews.findViewById(com.progym.R.id.twCalories));
-        {
-            View view = hasViews.findViewById(com.progym.R.id.ivPrevYear);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        FoodProgressDailyPieFragment_.this.ivPrevYear();
-                    }
-
-                }
-                );
-            }
-        }
+        rlRootDailyBar = ((RelativeLayout) hasViews.findViewById(com.progym.R.id.rlRootDailyBar));
+        twCarbs = ((TextView) hasViews.findViewById(com.progym.R.id.twCarbs));
+        twCurrentDay = ((TextView) hasViews.findViewById(com.progym.R.id.twCurrentDay));
+        ivPrevYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivPrevYear));
+        twProtein = ((TextView) hasViews.findViewById(com.progym.R.id.twProtein));
+        twFat = ((TextView) hasViews.findViewById(com.progym.R.id.twFat));
         {
             View view = hasViews.findViewById(com.progym.R.id.ivNextYear);
             if (view!= null) {
@@ -108,6 +93,21 @@ public final class FoodProgressDailyPieFragment_
                     @Override
                     public void onClick(View view) {
                         FoodProgressDailyPieFragment_.this.ivNextYear();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(com.progym.R.id.ivPrevYear);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        FoodProgressDailyPieFragment_.this.ivPrevYear();
                     }
 
                 }

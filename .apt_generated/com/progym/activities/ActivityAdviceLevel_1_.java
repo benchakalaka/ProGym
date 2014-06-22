@@ -79,10 +79,42 @@ public final class ActivityAdviceLevel_1_
     public void onViewChanged(HasViews hasViews) {
         rlSlideMe = ((RelativeLayout) hasViews.findViewById(id.rlSlideMe));
         ivFatBurinig = ((ImageView) hasViews.findViewById(id.ivFatBurinig));
-        ivBrain = ((ImageView) hasViews.findViewById(id.ivBrain));
-        ivEnergy = ((ImageView) hasViews.findViewById(id.ivEnergy));
         ivStressReduction = ((ImageView) hasViews.findViewById(id.ivStressReduction));
+        ivEnergy = ((ImageView) hasViews.findViewById(id.ivEnergy));
         llDragOnMe = ((LinearLayout) hasViews.findViewById(id.llDragOnMe));
+        ivBrain = ((ImageView) hasViews.findViewById(id.ivBrain));
+        {
+            View view = hasViews.findViewById(id.ivEnergy);
+            if (view!= null) {
+                view.setOnTouchListener(new OnTouchListener() {
+
+
+                    @Override
+                    public boolean onTouch(View view, MotionEvent event) {
+                        ActivityAdviceLevel_1_.this.ivEnergy(event, view);
+                        return true;
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ivStressReduction);
+            if (view!= null) {
+                view.setOnTouchListener(new OnTouchListener() {
+
+
+                    @Override
+                    public boolean onTouch(View view, MotionEvent event) {
+                        ActivityAdviceLevel_1_.this.ivStressReduction(event, view);
+                        return true;
+                    }
+
+                }
+                );
+            }
+        }
         {
             View view = hasViews.findViewById(id.ivBrain);
             if (view!= null) {
@@ -108,38 +140,6 @@ public final class ActivityAdviceLevel_1_
                     @Override
                     public boolean onTouch(View view, MotionEvent event) {
                         ActivityAdviceLevel_1_.this.ivFatBurinig(event, view);
-                        return true;
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.ivStressReduction);
-            if (view!= null) {
-                view.setOnTouchListener(new OnTouchListener() {
-
-
-                    @Override
-                    public boolean onTouch(View view, MotionEvent event) {
-                        ActivityAdviceLevel_1_.this.ivStressReduction(event, view);
-                        return true;
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.ivEnergy);
-            if (view!= null) {
-                view.setOnTouchListener(new OnTouchListener() {
-
-
-                    @Override
-                    public boolean onTouch(View view, MotionEvent event) {
-                        ActivityAdviceLevel_1_.this.ivEnergy(event, view);
                         return true;
                     }
 
