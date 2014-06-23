@@ -47,13 +47,13 @@ public final class ActivityFoodManagment_
 
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
-        fadeIn = AnimationUtils.loadAnimation(this, anim.fadein);
-        rightOut = AnimationUtils.loadAnimation(this, anim.push_right_out);
-        rightIn = AnimationUtils.loadAnimation(this, anim.push_right_in);
         drag = AnimationUtils.loadAnimation(this, anim.drag_animation);
-        leftIn = AnimationUtils.loadAnimation(this, anim.push_left_in);
-        fade = AnimationUtils.loadAnimation(this, anim.fade);
+        rightOut = AnimationUtils.loadAnimation(this, anim.push_right_out);
         leftOut = AnimationUtils.loadAnimation(this, anim.push_left_out);
+        rightIn = AnimationUtils.loadAnimation(this, anim.push_right_in);
+        fade = AnimationUtils.loadAnimation(this, anim.fade);
+        fadeIn = AnimationUtils.loadAnimation(this, anim.fadein);
+        leftIn = AnimationUtils.loadAnimation(this, anim.push_left_in);
     }
 
     @Override
@@ -96,16 +96,16 @@ public final class ActivityFoodManagment_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        ivPrevDay = ((ImageView) hasViews.findViewById(id.ivPrevDay));
         ivNextDay = ((ImageView) hasViews.findViewById(id.ivNextDay));
-        twCurrentDate = ((TextView) hasViews.findViewById(id.twCurrentDate));
         llLeftPanelDateWithCalendar = ((LinearLayout) hasViews.findViewById(id.llLeftPanelDateWithCalendar));
-        ivOnPlate = ((ImageView) hasViews.findViewById(id.ivOnPlate));
-        ibSavePlate = ((ImageButton) hasViews.findViewById(id.ibSavePlate));
-        horizontalScrollView = ((HorizontalScrollView) hasViews.findViewById(id.horizontalScrollView));
+        ivPrevDay = ((ImageView) hasViews.findViewById(id.ivPrevDay));
+        twCurrentDate = ((TextView) hasViews.findViewById(id.twCurrentDate));
         viewPager = ((NonSwipeableViewPager) hasViews.findViewById(id.viewPager));
-        llAlreadyOnPlate = ((LinearLayout) hasViews.findViewById(id.llAlreadyOnPlate));
         ibCreatePlate = ((ImageButton) hasViews.findViewById(id.ibCreatePlate));
+        ivOnPlate = ((ImageView) hasViews.findViewById(id.ivOnPlate));
+        llAlreadyOnPlate = ((LinearLayout) hasViews.findViewById(id.llAlreadyOnPlate));
+        horizontalScrollView = ((HorizontalScrollView) hasViews.findViewById(id.horizontalScrollView));
+        ibSavePlate = ((ImageButton) hasViews.findViewById(id.ibSavePlate));
         llCreatedPlates = ((LinearLayout) hasViews.findViewById(id.llCreatedPlates));
         svListOfConsumedMeals = ((ScrollView) hasViews.findViewById(id.svListOfConsumedMeals));
         {
@@ -154,21 +154,6 @@ public final class ActivityFoodManagment_
             }
         }
         {
-            View view = hasViews.findViewById(id.ibSavePlate);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        ActivityFoodManagment_.this.ibSavePlate();
-                    }
-
-                }
-                );
-            }
-        }
-        {
             View view = hasViews.findViewById(id.llLeftPanelDateWithCalendar);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
@@ -177,6 +162,21 @@ public final class ActivityFoodManagment_
                     @Override
                     public void onClick(View view) {
                         ActivityFoodManagment_.this.llLeftPanelDateWithCalendar();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ibSavePlate);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        ActivityFoodManagment_.this.ibSavePlate();
                     }
 
                 }

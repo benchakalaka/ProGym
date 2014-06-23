@@ -5,11 +5,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.drawable.BitmapDrawable;
 import android.util.Log;
 import android.view.Gravity;
@@ -370,36 +368,6 @@ public class Utils {
 
           return retWaterVolume;
      }
-
-     // for debugging, return string with time (display it in notification manager)
-     public static String isNeedToAddAlarm(SharedPreferences appPref) {
-          String date = Utils.formatDate(new Date(), "HHmm");
-          Map <String, String> allAlarms = (Map <String, String>) appPref.getAll();
-
-          for ( Map.Entry <String, String> entry : allAlarms.entrySet() ) {
-               try {
-                    String value = entry.getValue();
-                    if ( date.equals(value) ) { return value; }
-               } catch (Exception ex) {
-                    ex.printStackTrace();
-               }
-          }
-          return "";
-     }
-
-     /*
-      * Working copy
-      * public static boolean isNeedToAddAlarm(SharedPreferences appPref) {
-      * boolean result = false;
-      * Date now = new Date();
-      * String date = Utils.formatDate(now, "HHmm");
-      * Map <String, String> allAlarms = (Map <String, String>) appPref.getAll();
-      * for ( Map.Entry <String, String> entry : allAlarms.entrySet() ) {
-      * if ( date.equals(entry.getValue()) ) return true;
-      * }
-      * return result;
-      * }
-      */
 
      public static List <String> getIngridientsListByCatalogue(int cataloguePosition) {
           switch (cataloguePosition) {

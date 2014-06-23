@@ -77,28 +77,12 @@ public final class ActivityAdviceLevel_1_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        rlSlideMe = ((RelativeLayout) hasViews.findViewById(id.rlSlideMe));
+        llDragOnMe = ((LinearLayout) hasViews.findViewById(id.llDragOnMe));
         ivFatBurinig = ((ImageView) hasViews.findViewById(id.ivFatBurinig));
+        rlSlideMe = ((RelativeLayout) hasViews.findViewById(id.rlSlideMe));
         ivStressReduction = ((ImageView) hasViews.findViewById(id.ivStressReduction));
         ivEnergy = ((ImageView) hasViews.findViewById(id.ivEnergy));
-        llDragOnMe = ((LinearLayout) hasViews.findViewById(id.llDragOnMe));
         ivBrain = ((ImageView) hasViews.findViewById(id.ivBrain));
-        {
-            View view = hasViews.findViewById(id.ivEnergy);
-            if (view!= null) {
-                view.setOnTouchListener(new OnTouchListener() {
-
-
-                    @Override
-                    public boolean onTouch(View view, MotionEvent event) {
-                        ActivityAdviceLevel_1_.this.ivEnergy(event, view);
-                        return true;
-                    }
-
-                }
-                );
-            }
-        }
         {
             View view = hasViews.findViewById(id.ivStressReduction);
             if (view!= null) {
@@ -116,14 +100,14 @@ public final class ActivityAdviceLevel_1_
             }
         }
         {
-            View view = hasViews.findViewById(id.ivBrain);
+            View view = hasViews.findViewById(id.ivEnergy);
             if (view!= null) {
                 view.setOnTouchListener(new OnTouchListener() {
 
 
                     @Override
                     public boolean onTouch(View view, MotionEvent event) {
-                        ActivityAdviceLevel_1_.this.ivBrain(event, view);
+                        ActivityAdviceLevel_1_.this.ivEnergy(event, view);
                         return true;
                     }
 
@@ -140,6 +124,22 @@ public final class ActivityAdviceLevel_1_
                     @Override
                     public boolean onTouch(View view, MotionEvent event) {
                         ActivityAdviceLevel_1_.this.ivFatBurinig(event, view);
+                        return true;
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ivBrain);
+            if (view!= null) {
+                view.setOnTouchListener(new OnTouchListener() {
+
+
+                    @Override
+                    public boolean onTouch(View view, MotionEvent event) {
+                        ActivityAdviceLevel_1_.this.ivBrain(event, view);
                         return true;
                     }
 

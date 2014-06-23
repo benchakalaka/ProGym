@@ -9,12 +9,21 @@ import com.orm.SugarRecord;
  */
 public class WaterConsumed extends SugarRecord <WaterConsumed> {
 
-	public int	volumeConsumed;
-	public String	date;
-	public User	user;
+     /**
+      * Capacity of consumed water in ml
+      */
+     public int    volumeConsumed;
+     /**
+      * Date when water has been consumed
+      */
+     public String date;
+     /**
+      * Link to user
+      */
+     public User   user;
 
-	public WaterConsumed ( Context ctx ) {
-		super(ctx);
-	}
+     public WaterConsumed ( Context ctx ) {
+          super(ctx);
+     }
 
 }

@@ -12,17 +12,13 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 
 import com.progym.R;
-import com.progym.model.User;
-import com.progym.utils.DataBaseUtils;
 import com.progym.utils.Utils;
 
 @EActivity ( R.layout.activity_calculate_bmi ) public class ActivityCalculateBMI extends Activity {
-     private static int    USER_HEALTHY_CALORIES;
      @ViewById EditText    etBMIAge;
      @ViewById EditText    etBMIWeight;
      @ViewById EditText    etBMIHeight;
 
-     @ViewById Button      btnCalculateMyBMI;
      @ViewById Button      btnCalculateBMI;
 
      @ViewById RadioButton rbMale;
@@ -51,10 +47,6 @@ import com.progym.utils.Utils;
           return retValue;
      }
 
-     @Click void btnCalculateMyBMI() {
-      
-     }
-
      @Click void btnCalculateBMI() {
           if ( !checkFilds() ) {
                Utils.showCustomToast(ActivityCalculateBMI.this, "Fields arent filled properly", R.drawable.warning);
@@ -65,6 +57,9 @@ import com.progym.utils.Utils;
                double userHealthyWeightTo = 24.99 * heightInSquare;
 
                ActivityBMIResult.USER_BMI = userBmi;
+               ActivityBMIResult.USER_AGE = Double.valueOf(etBMIAge.getText().toString());
+               ActivityBMIResult.USER_WEIGHT = Double.valueOf(etBMIWeight.getText().toString());
+               ActivityBMIResult.USER_HEIGHT = Double.valueOf(etBMIHeight.getText().toString());
                ActivityBMIResult.USER_HEALTHY_WEIGHT_FROM = userHealthyWeightFrom;
                ActivityBMIResult.USER_HEALTHY_WEIGHT_TO = userHealthyWeightTo;
                ActivityBMIResult.USER_GENDER = getUserGender();

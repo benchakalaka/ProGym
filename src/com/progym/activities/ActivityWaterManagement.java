@@ -93,7 +93,7 @@ import com.todddavies.components.progressbar.ProgressWheel;
 
           loadVolumesByDate(twCurrentDate.getText().toString());
           // init player
-          mediaPlayer = MediaPlayer.create(ActivityWaterManagement.this, R.raw.pouring_liquid);
+          mediaPlayer = MediaPlayer.create(ActivityWaterManagement.this, R.raw.water);
 
           llRightPanelBody.setOnDragListener(new OnDragListener() {
 

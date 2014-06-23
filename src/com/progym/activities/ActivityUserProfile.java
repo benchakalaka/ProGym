@@ -5,7 +5,6 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.res.StringArrayRes;
-import org.androidannotations.annotations.sharedpreferences.Pref;
 import org.apache.commons.lang3.StringUtils;
 
 import android.app.Activity;
@@ -24,30 +23,27 @@ import android.widget.TextView;
 import com.progym.R;
 import com.progym.custom.NDSpinner;
 import com.progym.model.User;
-import com.progym.utils.AppSharedPreferences_;
 import com.progym.utils.DataBaseUtils;
 import com.progym.utils.Utils;
 
 @EActivity ( R.layout.activity_user_profile ) public class ActivityUserProfile extends Activity {
 
-     @Pref AppSharedPreferences_ appPref;
-
-     @ViewById EditText          etUserName;
-     @ViewById EditText          etUserWeight;
-     @ViewById EditText          etUserAge;
-     @ViewById EditText          etUserHeight;
+     @ViewById EditText       etUserName;
+     @ViewById EditText       etUserWeight;
+     @ViewById EditText       etUserAge;
+     @ViewById EditText       etUserHeight;
      // @ViewById NDSpinner spinnerBodyType;
-     @ViewById NDSpinner         spinnerGender;
+     @ViewById NDSpinner      spinnerGender;
 
-     @ViewById Button            btnSave;
-     @ViewById Button            btnCancel;
+     @ViewById Button         btnSave;
+     @ViewById Button         btnCancel;
 
      // @StringArrayRes String[] bodyTypes;
-     @StringArrayRes String[]    genders;
+     @StringArrayRes String[] genders;
 
-     private User                userToSave;
+     private User             userToSave;
 
-     Dialog                      dialog;
+     Dialog                   dialog;
 
      @AfterViews void afterViews() {
           dialog = new Dialog(ActivityUserProfile.this);

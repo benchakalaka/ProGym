@@ -18,7 +18,6 @@ import android.widget.LinearLayout;
 import com.progym.R.anim;
 import com.progym.R.id;
 import com.progym.R.layout;
-import com.progym.utils.AppSharedPreferences_;
 import org.androidannotations.api.SdkVersionHelper;
 import org.androidannotations.api.view.HasViews;
 import org.androidannotations.api.view.OnViewChangedListener;
@@ -41,15 +40,14 @@ public final class ActivityStart_
     }
 
     private void init_(Bundle savedInstanceState) {
-        appPref = new AppSharedPreferences_(this);
         OnViewChangedNotifier.registerOnViewChangedListener(this);
-        fadeIn = AnimationUtils.loadAnimation(this, anim.fadein);
-        leftIn4 = AnimationUtils.loadAnimation(this, anim.push_left_in);
         leftIn0 = AnimationUtils.loadAnimation(this, anim.push_left_in);
+        fadeIn = AnimationUtils.loadAnimation(this, anim.fadein);
         leftIn2 = AnimationUtils.loadAnimation(this, anim.push_left_in);
-        leftIn3 = AnimationUtils.loadAnimation(this, anim.push_left_in);
-        leftIn1 = AnimationUtils.loadAnimation(this, anim.push_left_in);
         shake = AnimationUtils.loadAnimation(this, anim.shake);
+        leftIn1 = AnimationUtils.loadAnimation(this, anim.push_left_in);
+        leftIn4 = AnimationUtils.loadAnimation(this, anim.push_left_in);
+        leftIn3 = AnimationUtils.loadAnimation(this, anim.push_left_in);
     }
 
     @Override
@@ -92,56 +90,11 @@ public final class ActivityStart_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        llNutrition = ((LinearLayout) hasViews.findViewById(id.llNutrition));
-        llAdvice = ((LinearLayout) hasViews.findViewById(id.llAdvice));
         llWater = ((LinearLayout) hasViews.findViewById(id.llWater));
-        llProgress = ((LinearLayout) hasViews.findViewById(id.llProgress));
+        llAdvice = ((LinearLayout) hasViews.findViewById(id.llAdvice));
+        llNutrition = ((LinearLayout) hasViews.findViewById(id.llNutrition));
         llProfile = ((LinearLayout) hasViews.findViewById(id.llProfile));
-        {
-            View view = hasViews.findViewById(id.llProfile);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        ActivityStart_.this.llProfile();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.llAdvice);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        ActivityStart_.this.llAdvice();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.llNutrition);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        ActivityStart_.this.llNutrition();
-                    }
-
-                }
-                );
-            }
-        }
+        llProgress = ((LinearLayout) hasViews.findViewById(id.llProgress));
         {
             View view = hasViews.findViewById(id.llWater);
             if (view!= null) {
@@ -166,6 +119,51 @@ public final class ActivityStart_
                     @Override
                     public void onClick(View view) {
                         ActivityStart_.this.llProgress();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.llAdvice);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        ActivityStart_.this.llAdvice();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.llProfile);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        ActivityStart_.this.llProfile();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.llNutrition);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        ActivityStart_.this.llNutrition();
                     }
 
                 }

@@ -53,12 +53,12 @@ public final class FoodProgressYearlyLineFragment_
 
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
+        rightIn = AnimationUtils.loadAnimation(getActivity(), anim.push_right_in);
         fadeIn = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
         leftOut = AnimationUtils.loadAnimation(getActivity(), anim.push_left_out);
-        leftIn = AnimationUtils.loadAnimation(getActivity(), anim.push_left_in);
-        rightIn = AnimationUtils.loadAnimation(getActivity(), anim.push_right_in);
         rightOut = AnimationUtils.loadAnimation(getActivity(), anim.push_right_out);
         fadeOut = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
+        leftIn = AnimationUtils.loadAnimation(getActivity(), anim.push_left_in);
     }
 
     @Override
@@ -74,23 +74,8 @@ public final class FoodProgressYearlyLineFragment_
     @Override
     public void onViewChanged(HasViews hasViews) {
         rlRootGraphLayout = ((RelativeLayout) hasViews.findViewById(com.progym.R.id.rlRootGraphLayout));
-        ivNextYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivNextYear));
         ivPrevYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivPrevYear));
-        {
-            View view = hasViews.findViewById(com.progym.R.id.ivNextYear);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        FoodProgressYearlyLineFragment_.this.ivNextYear();
-                    }
-
-                }
-                );
-            }
-        }
+        ivNextYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivNextYear));
         {
             View view = hasViews.findViewById(com.progym.R.id.ivPrevYear);
             if (view!= null) {
@@ -100,6 +85,21 @@ public final class FoodProgressYearlyLineFragment_
                     @Override
                     public void onClick(View view) {
                         FoodProgressYearlyLineFragment_.this.ivPrevYear();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(com.progym.R.id.ivNextYear);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        FoodProgressYearlyLineFragment_.this.ivNextYear();
                     }
 
                 }

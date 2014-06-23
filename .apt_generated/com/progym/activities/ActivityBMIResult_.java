@@ -75,27 +75,12 @@ public final class ActivityBMIResult_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        twBmiResultName = ((TextView) hasViews.findViewById(id.twBmiResultName));
         twBmiValue = ((TextView) hasViews.findViewById(id.twBmiValue));
-        twHealthyWeightRange = ((TextView) hasViews.findViewById(id.twHealthyWeightRange));
-        twHealthyCaloriesRange = ((TextView) hasViews.findViewById(id.twHealthyCaloriesRange));
-        btnFinish = ((Button) hasViews.findViewById(id.btnFinish));
         btnAboutBmiIndex = ((Button) hasViews.findViewById(id.btnAboutBmiIndex));
-        {
-            View view = hasViews.findViewById(id.btnFinish);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        ActivityBMIResult_.this.btnFinish();
-                    }
-
-                }
-                );
-            }
-        }
+        twBmiResultName = ((TextView) hasViews.findViewById(id.twBmiResultName));
+        twHealthyWeightRange = ((TextView) hasViews.findViewById(id.twHealthyWeightRange));
+        btnFinish = ((Button) hasViews.findViewById(id.btnFinish));
+        twHealthyCaloriesRange = ((TextView) hasViews.findViewById(id.twHealthyCaloriesRange));
         {
             View view = hasViews.findViewById(id.btnAboutBmiIndex);
             if (view!= null) {
@@ -105,6 +90,21 @@ public final class ActivityBMIResult_
                     @Override
                     public void onClick(View view) {
                         ActivityBMIResult_.this.btnAboutBmiIndex();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.btnFinish);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        ActivityBMIResult_.this.btnFinish();
                     }
 
                 }

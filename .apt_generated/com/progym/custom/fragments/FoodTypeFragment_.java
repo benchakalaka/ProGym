@@ -65,12 +65,27 @@ public final class FoodTypeFragment_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        btnMeat = ((ImageButton) hasViews.findViewById(com.progym.R.id.btnMeat));
-        btnFruits = ((ImageButton) hasViews.findViewById(com.progym.R.id.btnFruits));
-        btnReadyMeals = ((ImageButton) hasViews.findViewById(com.progym.R.id.btnReadyMeals));
-        btnVegitables = ((ImageButton) hasViews.findViewById(com.progym.R.id.btnVegitables));
-        btnOther = ((ImageButton) hasViews.findViewById(com.progym.R.id.btnOther));
         btnPorridge = ((ImageButton) hasViews.findViewById(com.progym.R.id.btnPorridge));
+        btnOther = ((ImageButton) hasViews.findViewById(com.progym.R.id.btnOther));
+        btnReadyMeals = ((ImageButton) hasViews.findViewById(com.progym.R.id.btnReadyMeals));
+        btnMeat = ((ImageButton) hasViews.findViewById(com.progym.R.id.btnMeat));
+        btnVegitables = ((ImageButton) hasViews.findViewById(com.progym.R.id.btnVegitables));
+        btnFruits = ((ImageButton) hasViews.findViewById(com.progym.R.id.btnFruits));
+        {
+            View view = hasViews.findViewById(com.progym.R.id.btnFruits);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        FoodTypeFragment_.this.btnFruits();
+                    }
+
+                }
+                );
+            }
+        }
         {
             View view = hasViews.findViewById(com.progym.R.id.btnVegitables);
             if (view!= null) {
@@ -80,6 +95,21 @@ public final class FoodTypeFragment_
                     @Override
                     public void onClick(View view) {
                         FoodTypeFragment_.this.btnVegitables();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(com.progym.R.id.btnMeat);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        FoodTypeFragment_.this.btnMeat();
                     }
 
                 }
@@ -117,21 +147,6 @@ public final class FoodTypeFragment_
             }
         }
         {
-            View view = hasViews.findViewById(com.progym.R.id.btnFruits);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        FoodTypeFragment_.this.btnFruits();
-                    }
-
-                }
-                );
-            }
-        }
-        {
             View view = hasViews.findViewById(com.progym.R.id.btnOther);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
@@ -140,21 +155,6 @@ public final class FoodTypeFragment_
                     @Override
                     public void onClick(View view) {
                         FoodTypeFragment_.this.btnOther();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(com.progym.R.id.btnMeat);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        FoodTypeFragment_.this.btnMeat();
                     }
 
                 }

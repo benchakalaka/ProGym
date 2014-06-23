@@ -223,9 +223,6 @@
 	<string name="hint_eg_177cm">eg. 177,5cm</string>
 	<string name="weight_kg">Weight kg</string>
 	<string name="hint_eg_56kg">eg. 56kg</string>
-	<string name="manage_food_and_water">Manage your food and water consumption</string>
-	<string name="food_management">Food management</string>
-	<string name="water_management">Water management</string>
 	<string name="stay_wise">Stay wise, read wise advice</string>
 	<string name="energy_table">Energy table</string>
 	<string name="calculate_bmi">Calculate BMI</string>

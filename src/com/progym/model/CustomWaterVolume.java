@@ -9,11 +9,17 @@ import com.orm.SugarRecord;
  */
 public class CustomWaterVolume extends SugarRecord <CustomWaterVolume> {
 
-	public User	user;
-	public int	customVolume;
+     /**
+      * Link to user
+      */
+     public User user;
+     /**
+      * Water capacity in ml (2000 == 2L)
+      */
+     public int  customVolume;
 
-	public CustomWaterVolume ( Context ctx ) {
-		super(ctx);
-	}
+     public CustomWaterVolume ( Context ctx ) {
+          super(ctx);
+     }
 
 }

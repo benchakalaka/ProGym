@@ -6,7 +6,6 @@ import org.androidannotations.annotations.ViewById;
 import android.content.Context;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.progym.R;
 
