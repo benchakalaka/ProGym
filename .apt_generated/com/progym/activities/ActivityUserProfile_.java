@@ -19,7 +19,6 @@ import com.progym.R.array;
 import com.progym.R.id;
 import com.progym.R.layout;
 import com.progym.custom.NDSpinner;
-import com.progym.utils.AppSharedPreferences_;
 import org.androidannotations.api.view.HasViews;
 import org.androidannotations.api.view.OnViewChangedListener;
 import org.androidannotations.api.view.OnViewChangedNotifier;
@@ -41,7 +40,6 @@ public final class ActivityUserProfile_
     }
 
     private void init_(Bundle savedInstanceState) {
-        appPref = new AppSharedPreferences_(this);
         OnViewChangedNotifier.registerOnViewChangedListener(this);
         Resources resources_ = this.getResources();
         genders = resources_.getStringArray(array.genders);
@@ -79,10 +77,10 @@ public final class ActivityUserProfile_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        btnCancel = ((Button) hasViews.findViewById(id.btnCancel));
         spinnerGender = ((NDSpinner) hasViews.findViewById(id.spinnerGender));
-        etUserWeight = ((EditText) hasViews.findViewById(id.etUserWeight));
         etUserAge = ((EditText) hasViews.findViewById(id.etUserAge));
+        etUserWeight = ((EditText) hasViews.findViewById(id.etUserWeight));
+        btnCancel = ((Button) hasViews.findViewById(id.btnCancel));
         etUserHeight = ((EditText) hasViews.findViewById(id.etUserHeight));
         btnSave = ((Button) hasViews.findViewById(id.btnSave));
         etUserName = ((EditText) hasViews.findViewById(id.etUserName));

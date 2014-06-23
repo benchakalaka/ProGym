@@ -6,14 +6,17 @@ import com.orm.SugarRecord;
 
 public class Meal extends SugarRecord <Meal> {
 
-	/**
-	 * Date when meal has been created
-	 */
-	public String				date;
-	public User				user;
+     /**
+      * Date when meal has been created
+      */
+     public String date;
+     /**
+      * Link to user
+      */
+     public User   user;
 
-	public Meal ( Context arg0 ) {
-		super(arg0);
-	}
+     public Meal ( Context arg0 ) {
+          super(arg0);
+     }
 
 }

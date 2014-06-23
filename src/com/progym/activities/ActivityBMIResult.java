@@ -26,6 +26,8 @@ import com.progym.R;
      public static int                       USER_ACTIVITY_LEVEL = 0;
      public static double                    USER_BMI;
      public static double                    USER_GENDER;
+     public static double                    USER_WEIGHT;
+     public static double                    USER_HEIGHT;
      public static double                    USER_AGE;
      public static double                    USER_HEALTHY_WEIGHT_FROM;
      public static double                    USER_HEALTHY_WEIGHT_TO;
@@ -86,100 +88,120 @@ import com.progym.R;
      }
 
      private void calculateCalories() {
-          // MALE and INACTIVE user activity level
-          if ( USER_ACTIVITY_LEVEL == 0 ) {
-               if ( USER_GENDER == 0 ) {
-                    if ( USER_AGE < 29 ) {
-                         USER_HEALTHY_CALORIES = 2450;
-                    }
+          double caloriesHighestLevel = 0;
+          // MALE
+          if ( USER_GENDER == 0 ) {
+               switch (USER_ACTIVITY_LEVEL) {
+                    case 0:
+                         caloriesHighestLevel = (660 + (13.7 * USER_WEIGHT) + (5 * USER_HEIGHT) - (6.8 * USER_AGE)) * 1.2;
+                         break;
 
-                    if ( USER_AGE >= 29 && USER_AGE <= 39 ) {
-                         USER_HEALTHY_CALORIES = 2300;
-                    }
+                    case 1:
+                         caloriesHighestLevel = (660 + (13.7 * USER_WEIGHT) + (5 * USER_HEIGHT) - (6.8 * USER_AGE)) * 1.375;
+                         break;
 
-                    if ( USER_AGE > 40 ) {
-                         USER_HEALTHY_CALORIES = 2100;
-                    }
+                    case 2:
+                         caloriesHighestLevel = (660 + (13.7 * USER_WEIGHT) + (5 * USER_HEIGHT) - (6.8 * USER_AGE)) * 1.725;
+                         break;
+               }
 
-               } else {
-                    // FEMALE
-                    if ( USER_AGE < 29 ) {
-                         USER_HEALTHY_CALORIES = 2000;
-                    }
+          } else {
+               // FEMALE (user_GENDER == 1)
+               switch (USER_ACTIVITY_LEVEL) {
+                    case 0:
+                         caloriesHighestLevel = (665 + (9.6 * USER_WEIGHT) + (1.8 * USER_HEIGHT) - (4.7 * USER_AGE)) * 1.2;
+                         break;
 
-                    if ( USER_AGE >= 29 && USER_AGE <= 39 ) {
-                         USER_HEALTHY_CALORIES = 1900;
-                    }
+                    case 1:
+                         caloriesHighestLevel = (665 + (9.6 * USER_WEIGHT) + (1.8 * USER_HEIGHT) - (4.7 * USER_AGE)) * 1.375;
+                         break;
 
-                    if ( USER_AGE > 40 ) {
-                         USER_HEALTHY_CALORIES = 1800;
-                    }
+                    case 2:
+                         caloriesHighestLevel = (665 + (9.6 * USER_WEIGHT) + (1.8 * USER_HEIGHT) - (4.7 * USER_AGE)) * 1.725;
+                         break;
                }
           }
 
-          // MALE and LOW user activity level
-          if ( USER_ACTIVITY_LEVEL == 1 ) {
-               if ( USER_GENDER == 0 ) {
-                    if ( USER_AGE < 29 ) {
-                         USER_HEALTHY_CALORIES = 2800;
-                    }
+          twHealthyCaloriesRange.setText(String.format("Low barrier is %.2f , high barrier is %.2f", caloriesHighestLevel * 0.8, caloriesHighestLevel));
 
-                    if ( USER_AGE >= 29 && USER_AGE <= 39 ) {
-                         USER_HEALTHY_CALORIES = 2650;
-                    }
+          /*
+           * // MALE and INACTIVE user activity level
+           * if ( USER_ACTIVITY_LEVEL == 0 ) {
+           * if ( USER_GENDER == 0 ) {
+           * if ( USER_AGE < 29 ) {
+           * USER_HEALTHY_CALORIES = 2450;
+           * }
+           * if ( USER_AGE >= 29 && USER_AGE <= 39 ) {
+           * USER_HEALTHY_CALORIES = 2300;
+           * }
+           * if ( USER_AGE > 40 ) {
+           * USER_HEALTHY_CALORIES = 2100;
+           * }
+           * } else {
+           * // FEMALE
+           * if ( USER_AGE < 29 ) {
+           * USER_HEALTHY_CALORIES = 2000;
+           * }
+           * if ( USER_AGE >= 29 && USER_AGE <= 39 ) {
+           * USER_HEALTHY_CALORIES = 1900;
+           * }
+           * if ( USER_AGE > 40 ) {
+           * USER_HEALTHY_CALORIES = 1800;
+           * }
+           * }
+           * }
+           * // MALE and LOW user activity level
+           * if ( USER_ACTIVITY_LEVEL == 1 ) {
+           * if ( USER_GENDER == 0 ) {
+           * if ( USER_AGE < 29 ) {
+           * USER_HEALTHY_CALORIES = 2800;
+           * }
+           * if ( USER_AGE >= 29 && USER_AGE <= 39 ) {
+           * USER_HEALTHY_CALORIES = 2650;
+           * }
+           * if ( USER_AGE > 40 ) {
+           * USER_HEALTHY_CALORIES = 2500;
+           * }
+           * } else {
+           * // FEMALE
+           * if ( USER_AGE < 29 && USER_ACTIVITY_LEVEL == 1 ) {
+           * USER_HEALTHY_CALORIES = 2200;
+           * }
+           * if ( USER_AGE >= 29 && USER_AGE <= 39 ) {
+           * USER_HEALTHY_CALORIES = 2150;
+           * }
+           * if ( USER_AGE > 40 ) {
+           * USER_HEALTHY_CALORIES = 2100;
+           * }
+           * }
+           * }
+           * // MALE and MODERATE user activity level
+           * if ( USER_ACTIVITY_LEVEL == 2 ) {
+           * if ( USER_GENDER == 0 ) {
+           * if ( USER_AGE < 29 ) {
+           * USER_HEALTHY_CALORIES = 3350;
+           * }
+           * if ( USER_AGE >= 29 && USER_AGE <= 39 ) {
+           * USER_HEALTHY_CALORIES = 3150;
+           * }
+           * if ( USER_AGE > 40 ) {
+           * USER_HEALTHY_CALORIES = 3000;
+           * }
+           * } else {
+           * // FEMALE
+           * if ( USER_AGE < 29 && USER_ACTIVITY_LEVEL == 2 ) {
+           * USER_HEALTHY_CALORIES = 2600;
+           * }
+           * if ( USER_AGE >= 29 && USER_AGE <= 39 ) {
+           * USER_HEALTHY_CALORIES = 2500;
+           * }
+           * if ( USER_AGE > 40 ) {
+           * USER_HEALTHY_CALORIES = 2500;
+           * }
+           * }
+           * }
+           */
 
-                    if ( USER_AGE > 40 ) {
-                         USER_HEALTHY_CALORIES = 2500;
-                    }
-
-               } else {
-                    // FEMALE
-                    if ( USER_AGE < 29 && USER_ACTIVITY_LEVEL == 1 ) {
-                         USER_HEALTHY_CALORIES = 2200;
-                    }
-
-                    if ( USER_AGE >= 29 && USER_AGE <= 39 ) {
-                         USER_HEALTHY_CALORIES = 2150;
-                    }
-
-                    if ( USER_AGE > 40 ) {
-                         USER_HEALTHY_CALORIES = 2100;
-                    }
-               }
-          }
-
-          // MALE and MODERATE user activity level
-          if ( USER_ACTIVITY_LEVEL == 2 ) {
-               if ( USER_GENDER == 0 ) {
-                    if ( USER_AGE < 29 ) {
-                         USER_HEALTHY_CALORIES = 3350;
-                    }
-
-                    if ( USER_AGE >= 29 && USER_AGE <= 39 ) {
-                         USER_HEALTHY_CALORIES = 3150;
-                    }
-
-                    if ( USER_AGE > 40 ) {
-                         USER_HEALTHY_CALORIES = 3000;
-                    }
-
-               } else {
-                    // FEMALE
-                    if ( USER_AGE < 29 && USER_ACTIVITY_LEVEL == 2 ) {
-                         USER_HEALTHY_CALORIES = 2600;
-                    }
-
-                    if ( USER_AGE >= 29 && USER_AGE <= 39 ) {
-                         USER_HEALTHY_CALORIES = 2500;
-                    }
-
-                    if ( USER_AGE > 40 ) {
-                         USER_HEALTHY_CALORIES = 2500;
-                    }
-               }
-          }
-
-          twHealthyCaloriesRange.setText(String.valueOf(USER_HEALTHY_CALORIES) + "kkal  +-3%");
      }
 
      @Click void btnFinish() {

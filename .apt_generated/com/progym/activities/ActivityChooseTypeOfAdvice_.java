@@ -43,13 +43,13 @@ public final class ActivityChooseTypeOfAdvice_
 
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
-        leftIn = AnimationUtils.loadAnimation(this, anim.push_left_in);
-        rightOut = AnimationUtils.loadAnimation(this, anim.push_right_out);
-        drag = AnimationUtils.loadAnimation(this, anim.drag_animation);
-        fadeIn = AnimationUtils.loadAnimation(this, anim.fadein);
-        leftOut = AnimationUtils.loadAnimation(this, anim.push_left_out);
-        fade = AnimationUtils.loadAnimation(this, anim.fade);
         rightIn = AnimationUtils.loadAnimation(this, anim.push_right_in);
+        drag = AnimationUtils.loadAnimation(this, anim.drag_animation);
+        rightOut = AnimationUtils.loadAnimation(this, anim.push_right_out);
+        leftOut = AnimationUtils.loadAnimation(this, anim.push_left_out);
+        leftIn = AnimationUtils.loadAnimation(this, anim.push_left_in);
+        fade = AnimationUtils.loadAnimation(this, anim.fade);
+        fadeIn = AnimationUtils.loadAnimation(this, anim.fadein);
     }
 
     @Override
@@ -92,14 +92,14 @@ public final class ActivityChooseTypeOfAdvice_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
+        ivNextDay = ((ImageView) hasViews.findViewById(id.ivNextDay));
+        ivPrevDay = ((ImageView) hasViews.findViewById(id.ivPrevDay));
         llLeftPanelDateWithCalendar = ((LinearLayout) hasViews.findViewById(id.llLeftPanelDateWithCalendar));
         twCurrentDate = ((TextView) hasViews.findViewById(id.twCurrentDate));
-        ivPrevDay = ((ImageView) hasViews.findViewById(id.ivPrevDay));
-        ivNextDay = ((ImageView) hasViews.findViewById(id.ivNextDay));
-        llCalculateBMI = ((LinearLayout) hasViews.findViewById(id.llCalculateBMI));
         llWhatDoYouNeed = ((LinearLayout) hasViews.findViewById(id.llWhatDoYouNeed));
         llCalculateMyBMI = ((LinearLayout) hasViews.findViewById(id.llCalculateMyBMI));
         llUsefulTable = ((LinearLayout) hasViews.findViewById(id.llUsefulTable));
+        llCalculateBMI = ((LinearLayout) hasViews.findViewById(id.llCalculateBMI));
         {
             View view = hasViews.findViewById(id.ivNextDay);
             if (view!= null) {
@@ -131,21 +131,6 @@ public final class ActivityChooseTypeOfAdvice_
             }
         }
         {
-            View view = hasViews.findViewById(id.llCalculateMyBMI);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        ActivityChooseTypeOfAdvice_.this.llCalculateMyBMI();
-                    }
-
-                }
-                );
-            }
-        }
-        {
             View view = hasViews.findViewById(id.llWhatDoYouNeed);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
@@ -161,14 +146,14 @@ public final class ActivityChooseTypeOfAdvice_
             }
         }
         {
-            View view = hasViews.findViewById(id.llCalculateBMI);
+            View view = hasViews.findViewById(id.llCalculateMyBMI);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        ActivityChooseTypeOfAdvice_.this.llCalculateBMI();
+                        ActivityChooseTypeOfAdvice_.this.llCalculateMyBMI();
                     }
 
                 }
@@ -184,6 +169,21 @@ public final class ActivityChooseTypeOfAdvice_
                     @Override
                     public void onClick(View view) {
                         ActivityChooseTypeOfAdvice_.this.llUsefulTable();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.llCalculateBMI);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        ActivityChooseTypeOfAdvice_.this.llCalculateBMI();
                     }
 
                 }

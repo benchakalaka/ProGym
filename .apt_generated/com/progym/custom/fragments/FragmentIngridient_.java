@@ -71,15 +71,15 @@ public final class FragmentIngridient_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
+        ivFoodImage = ((ImageView) hasViews.findViewById(com.progym.R.id.ivFoodImage));
         etFat = ((EditText) hasViews.findViewById(com.progym.R.id.etFat));
-        etProtein = ((EditText) hasViews.findViewById(com.progym.R.id.etProtein));
-        etKkal = ((EditText) hasViews.findViewById(com.progym.R.id.etKkal));
-        ivEditIngridient = ((ImageView) hasViews.findViewById(com.progym.R.id.ivEditIngridient));
+        etWeight = ((EditText) hasViews.findViewById(com.progym.R.id.etWeight));
         twGroupNameAndIngridientName = ((TextView) hasViews.findViewById(com.progym.R.id.twGroupNameAndIngridientName));
         etCarbs = ((EditText) hasViews.findViewById(com.progym.R.id.etCarbs));
-        ivFoodImage = ((ImageView) hasViews.findViewById(com.progym.R.id.ivFoodImage));
         pieGraph = ((PieGraph) hasViews.findViewById(com.progym.R.id.pieGraph));
-        etWeight = ((EditText) hasViews.findViewById(com.progym.R.id.etWeight));
+        ivEditIngridient = ((ImageView) hasViews.findViewById(com.progym.R.id.ivEditIngridient));
+        etKkal = ((EditText) hasViews.findViewById(com.progym.R.id.etKkal));
+        etProtein = ((EditText) hasViews.findViewById(com.progym.R.id.etProtein));
         {
             View view = hasViews.findViewById(com.progym.R.id.ivEditIngridient);
             if (view!= null) {
@@ -105,29 +105,6 @@ public final class FragmentIngridient_
                     public boolean onTouch(View view, MotionEvent event) {
                         FragmentIngridient_.this.ivFoodImage(event, view);
                         return true;
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            final TextView view = ((TextView) hasViews.findViewById(com.progym.R.id.etFat));
-            if (view!= null) {
-                view.addTextChangedListener(new TextWatcher() {
-
-
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-                        FragmentIngridient_.this.etFat(s);
                     }
 
                 }
@@ -174,6 +151,29 @@ public final class FragmentIngridient_
                     @Override
                     public void afterTextChanged(Editable s) {
                         FragmentIngridient_.this.etProtein(s);
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            final TextView view = ((TextView) hasViews.findViewById(com.progym.R.id.etFat));
+            if (view!= null) {
+                view.addTextChangedListener(new TextWatcher() {
+
+
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        FragmentIngridient_.this.etFat(s);
                     }
 
                 }

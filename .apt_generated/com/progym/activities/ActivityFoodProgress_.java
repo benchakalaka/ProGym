@@ -82,10 +82,10 @@ public final class ActivityFoodProgress_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        twYearly = ((TextView) hasViews.findViewById(id.twYearly));
-        viewPager = ((NonSwipeableViewPager) hasViews.findViewById(id.viewPager));
-        twDaily = ((TextView) hasViews.findViewById(id.twDaily));
         twMonthly = ((TextView) hasViews.findViewById(id.twMonthly));
+        viewPager = ((NonSwipeableViewPager) hasViews.findViewById(id.viewPager));
+        twYearly = ((TextView) hasViews.findViewById(id.twYearly));
+        twDaily = ((TextView) hasViews.findViewById(id.twDaily));
         {
             View view = hasViews.findViewById(id.twMonthly);
             if (view!= null) {

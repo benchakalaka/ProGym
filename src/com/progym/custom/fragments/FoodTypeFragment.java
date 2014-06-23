@@ -116,7 +116,7 @@ import com.progym.utils.Utils;
                     for ( ReadyIngridient i : ingridients ) {
                          OneProductOnPlateView v = OneProductOnPlateView_.build(getActivity());
                          v.ivProduct.setBackgroundResource(Utils.getImageIdByGroupName(i.groupName));
-                         v.twProductDescription.setText(i.name + " : " + i.weight + "g (" + i.kkal + "kkal)");
+                         v.twProductDescription.setText(i.name + " : " + String.format("%.2f", i.weight) + "g (" + i.kkal + "kkal)");
                          ll.addView(v);
                     }
 

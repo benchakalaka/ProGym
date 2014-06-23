@@ -44,11 +44,11 @@ public final class ActivityChooseProgressType_
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
         fade = AnimationUtils.loadAnimation(this, anim.fade);
-        rightIn = AnimationUtils.loadAnimation(this, anim.push_right_in);
-        rightOut = AnimationUtils.loadAnimation(this, anim.push_right_out);
         fadeIn = AnimationUtils.loadAnimation(this, anim.fadein);
+        rightIn = AnimationUtils.loadAnimation(this, anim.push_right_in);
         drag = AnimationUtils.loadAnimation(this, anim.drag_animation);
         leftIn = AnimationUtils.loadAnimation(this, anim.push_left_in);
+        rightOut = AnimationUtils.loadAnimation(this, anim.push_right_out);
         leftOut = AnimationUtils.loadAnimation(this, anim.push_left_out);
     }
 
@@ -92,28 +92,13 @@ public final class ActivityChooseProgressType_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        ivNextDay = ((ImageView) hasViews.findViewById(id.ivNextDay));
-        llLeftPanelDateWithCalendar = ((LinearLayout) hasViews.findViewById(id.llLeftPanelDateWithCalendar));
-        ivPrevDay = ((ImageView) hasViews.findViewById(id.ivPrevDay));
         twCurrentDate = ((TextView) hasViews.findViewById(id.twCurrentDate));
+        llLeftPanelDateWithCalendar = ((LinearLayout) hasViews.findViewById(id.llLeftPanelDateWithCalendar));
+        ivNextDay = ((ImageView) hasViews.findViewById(id.ivNextDay));
+        ivPrevDay = ((ImageView) hasViews.findViewById(id.ivPrevDay));
+        llFoodProgress = ((LinearLayout) hasViews.findViewById(id.llFoodProgress));
         llWaterProgress = ((LinearLayout) hasViews.findViewById(id.llWaterProgress));
         llFoodCalloriesProgress = ((LinearLayout) hasViews.findViewById(id.llFoodCalloriesProgress));
-        llFoodProgress = ((LinearLayout) hasViews.findViewById(id.llFoodProgress));
-        {
-            View view = hasViews.findViewById(id.ivPrevDay);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        ActivityChooseProgressType_.this.ivPrevDay();
-                    }
-
-                }
-                );
-            }
-        }
         {
             View view = hasViews.findViewById(id.ivNextDay);
             if (view!= null) {
@@ -130,14 +115,14 @@ public final class ActivityChooseProgressType_
             }
         }
         {
-            View view = hasViews.findViewById(id.llFoodProgress);
+            View view = hasViews.findViewById(id.ivPrevDay);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        ActivityChooseProgressType_.this.llFoodProgress();
+                        ActivityChooseProgressType_.this.ivPrevDay();
                     }
 
                 }
@@ -153,6 +138,21 @@ public final class ActivityChooseProgressType_
                     @Override
                     public void onClick(View view) {
                         ActivityChooseProgressType_.this.llWaterProgress();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.llFoodProgress);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        ActivityChooseProgressType_.this.llFoodProgress();
                     }
 
                 }

@@ -69,24 +69,9 @@ public final class FoodCalloriesProgressYearlyLineFragment_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
+        rlRootGraphLayout = ((RelativeLayout) hasViews.findViewById(com.progym.R.id.rlRootGraphLayout));
         ivNextYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivNextYear));
         ivPrevYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivPrevYear));
-        rlRootGraphLayout = ((RelativeLayout) hasViews.findViewById(com.progym.R.id.rlRootGraphLayout));
-        {
-            View view = hasViews.findViewById(com.progym.R.id.ivNextYear);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        FoodCalloriesProgressYearlyLineFragment_.this.ivNextYear();
-                    }
-
-                }
-                );
-            }
-        }
         {
             View view = hasViews.findViewById(com.progym.R.id.ivPrevYear);
             if (view!= null) {
@@ -96,6 +81,21 @@ public final class FoodCalloriesProgressYearlyLineFragment_
                     @Override
                     public void onClick(View view) {
                         FoodCalloriesProgressYearlyLineFragment_.this.ivPrevYear();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(com.progym.R.id.ivNextYear);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        FoodCalloriesProgressYearlyLineFragment_.this.ivNextYear();
                     }
 
                 }

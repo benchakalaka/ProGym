@@ -53,12 +53,12 @@ public final class CalloriesProgressMonthlyLineFragment_
 
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
-        rightOut = AnimationUtils.loadAnimation(getActivity(), anim.push_right_out);
         leftOut = AnimationUtils.loadAnimation(getActivity(), anim.push_left_out);
-        fadeOut = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
-        leftIn = AnimationUtils.loadAnimation(getActivity(), anim.push_left_in);
-        rightIn = AnimationUtils.loadAnimation(getActivity(), anim.push_right_in);
         fadeIn = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
+        rightIn = AnimationUtils.loadAnimation(getActivity(), anim.push_right_in);
+        leftIn = AnimationUtils.loadAnimation(getActivity(), anim.push_left_in);
+        fadeOut = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
+        rightOut = AnimationUtils.loadAnimation(getActivity(), anim.push_right_out);
     }
 
     @Override
