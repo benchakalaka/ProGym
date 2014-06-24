@@ -2,19 +2,19 @@
 <resources>
 
 	<string name="app_name">Healthy Way</string>
-	<string name="_1_4_prof_group">Работники преимущественно умственного труда, очень легкая физическая активность</string>
-	<string name="_1_6_prof_group">Работники, занятые легким трудом, легкая физическая активность</string>
-	<string name="_1_9_prof_group">Работники средней тяжести труда, средняя физическая активность </string>
-	<string name="_2_3_prof_group">Работники тяжелого физического труда, высокая физическая активность </string>
-	<string name="_2_5_prof_group">Работники особо тяжелого физического труда, очень высокая физическая активность </string>
-	<string name="_1_4_prestaviteli">научные работники\n студенты гуманитарных специальностей, опреаторы ПК, контролеры, педагоги, диспетчеры, работники пультов управления и др.</string>
-	<string name="_1_6_prestaviteli">водители, работники конвееров, весовщицы, упаковщицы, швеи, работники радиоэлектронной промышленности, агрономы, медсестры, санитарки, работники связи, сферы обслуживания, продавцы промтоваров и др.</string>
-	<string name="_1_9_prestaviteli">слесари, наладчики, настройщики, станочники, буровики, водители эскаваторов, бульдозеров, врачи-хирурги, текстильщики, обувщики, железнодорожники, металлурги-доменщики, работники химзаводов и др.</string>
-	<string name="_2_3_prestaviteli">строительные рабочие, помощники буровиков, проходчики, хлопкоробы, основная масса с\х рабочих, доярки, овощеводы, деревообработчики и др.</string>
-	<string name="_2_5_prestaviteli">механизаторы, и с\х рабочие в посевной, уборочный период, горнорабочие, бетонщики, вальщики леса, каменщики, землекопы, грузчики немеханизированного труда и др. </string>
+	<string name="_1_4_prof_group">Workers mainly intellectual labor (very light physical activity)</string>
+	<string name="_1_6_prof_group">Workers employed light labor (light physical activity)</string>
+	<string name="_1_9_prof_group">Workers moderate severity labor (average physical activity)</string>
+	<string name="_2_3_prof_group">Workers in heavy physical labor (high physical activity)</string>
+	<string name="_2_5_prof_group">Workers especially hard physical labor (very high physical activity)</string>
+	<string name="_1_4_prestaviteli">Scientists\nHumanitarian specialties students\nIT managers\nSoftware developers\nAny inspectors\nTeachers\nLecturers\nManagers\nEmployees who wirking with control panels etc.</string>
+	<string name="_1_6_prestaviteli">Drivers\nWorkers on any conveyors\nWeigher\nPackers\nSeamstresses\nElectronic industry workers\nAgronomists\nNurses/orderlies\nStaff communication\nThe service sector\nSales of manufactured goods etc.</string>
+	<string name="_1_9_prestaviteli">Fitters\nInstallers\nTuners\nMachinists\nDrillers\nDrivers excavators/bulldozers\nSurgeon\nTextile workers\nManufacturers\nRailroad workers\nMetallurgical blast-furnace operators\nWorkers in chemical plants etc.</string>
+	<string name="_2_3_prestaviteli">Construction workers\nAssistant drillers\nTunnellers\nCotton growers\nVast majority of the earthworks\nMilkmaids\nVegetable growers\nWoodworkers, etc.</string>
+	<string name="_2_5_prestaviteli">Machine operators\nHeavy planting work/harvesting period\nMiners\nReinforced concrete\nFellers\nMasons\nDiggers\nLoaders and other non-mechanized labor</string>
 
 	<string-array name="brain_ingridients_list1">
-		<item>Muesli</item>
+		<item>Muesli</item>S
 		<item>Dried apricots</item>
 		<item>Sardines</item>
 		<item>Almonds</item>
@@ -119,31 +119,31 @@
 	<string name="brain2">Vitamin C</string>
 	<string name="brain3">Vitamin B</string>
 	<string name="brain4">Water</string>
-	<string name="energy1">Полиненасыщенные жырные кислоты</string>
+	<string name="energy1">Unsaturated fatty acid</string>
 	<string name="energy2">Food with low GI* (Glycemic index)</string>
 	<string name="energy3">Beta-carotene</string>
 	<string name="energy4">Iron</string>
-	<string name="fat_descr1">Быстро насыщает</string>
-	<string name="fat_descr2">Не дает тебе проголодаться и контролирует уровень сахара в крови</string>
-	<string name="fat_descr3">Помогают справиться с жировыми отложениями</string>
-	<string name="fat_descr4">Содержит мало каллорий</string>
-	<string name="stress_descr1">Улучшает роботу нервной и кровеносной системы</string>
-	<string name="stress_descr2">Для здоровой нервной системы</string>
-	<string name="stress_descr3">Усиливает твой иммунитет</string>
-	<string name="stress_descr4">Минерал, который ты активно расходуешь в состоянии стресса</string>
-	<string name="brain_descr1">Регулирует приток крови к мозгу</string>
-	<string name="brain_descr2">Усиливает твой иммунитет</string>
-	<string name="brain_descr3">Для здоровой нервной системы</string>
-	<string name="brain_descr4">На 10% улучшает роботу мозга</string>
-	<string name="energy_descr1">Источник энергии для каждой клетки</string>
-	<string name="energy_descr2">Поддерживает постоянный уровень энергии в твоем организме</string>
-	<string name="energy_descr3">Усиливает твою устойчивость к вирусам</string>
-	<string name="energy_descr4">Регулирует энергообмен в организме</string>
+	<string name="fat_descr1">Quickly saturates</string>
+	<string name="fat_descr2">Does not give you get hungry and controls the blood sugar level</string>
+	<string name="fat_descr3">Help to cope with fatty adjournment</string>
+	<string name="fat_descr4">Contains few calories</string>
+	<string name="stress_descr1">Improves the functioning of the nervous and circulatory system</string>
+	<string name="stress_descr2">For a healthy nervous system</string>
+	<string name="stress_descr3">Enhances your immunity</string>
+	<string name="stress_descr4">Mineral that you actively spend under stress</string>
+	<string name="brain_descr1">Regulates blood flow to the brain</string>
+	<string name="brain_descr2">Enhances your immunity</string>
+	<string name="brain_descr3">For a healthy nervous system</string>
+	<string name="brain_descr4">Improves brain function by 10% </string>
+	<string name="energy_descr1">Energy source for every cell of your body</string>
+	<string name="energy_descr2">Maintains a constant level of energy in your body</string>
+	<string name="energy_descr3">Enhances your resistance to viruses</string>
+	<string name="energy_descr4">Regulates the energy exchange in the body</string>
 	<string name="underweight_">less than 18.5</string>
-	<string name="noraml_">18.5-24.99</string>
-	<string name="overweight_">25-29.99</string>
-	<string name="obese_">30-35.99</string>
-	<string name="severely_obese_">36-39.99</string>
+	<string name="noraml_">18.5&#8212;24.99</string>
+	<string name="overweight_">25&#8212;29.99</string>
+	<string name="obese_">30&#8212;35.99</string>
+	<string name="severely_obese_">36&#8212;39.99</string>
 	<string name="morbidly_obese_">more than 40</string>
 	<string name="drag_items_to_screen_center">Drag one of the item to the center of the screen</string>
 	<string name="ingridients_list">List of ingridients</string>
@@ -157,7 +157,7 @@
 
 	<string name="saving">Saving</string>
 	<string name="building_list">Building list</string>
-	<string name="please_wait">Please wait...</string>
+	<string name="please_wait">Please wait&#8230;</string>
 	<string name="populating_data">Populating data</string>
 	<string name="brain_work">Brain work</string>
 	<string name="energy">Energy</string>
@@ -247,11 +247,11 @@
 	<string name="daily">Daily</string>
 	<string name="edit">Edit</string>
 	<string name="add_to_current_meal">Add to current meal</string>
-	<string name="meat">Meat</string>
-	<string name="porridge">Porridge</string>
+	<string name="meat">Meat And Fish (Protein)</string>
+	<string name="porridge">Porridge (Carbohydrates)</string>
 	<string name="vegetables">Vegetables</string>
-	<string name="fruits">Fruits</string>
-	<string name="other">Other</string>
+	<string name="fruits">Fruits and Nuts</string>
+	<string name="sweets_milk">Sweets And Milk products</string>
 	<string name="ready_meals">Ready meals</string>
 	<string name="_100g_contains">100g contains</string>
 	<string name="protein">Protein</string>
@@ -259,5 +259,7 @@
 	<string name="weight_g">Weight (g)</string>
 	<string name="restriction_plates_amount">You can create up to 20 plates per day</string>
 	<string name="water">Water</string>
+	<string name="i">I</string>
+	<string name="select_date">Select date please</string>
 
 </resources>

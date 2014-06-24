@@ -10,6 +10,7 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.apache.commons.lang3.time.DateUtils;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -28,6 +29,7 @@ import com.progym.interfaces.IProgressActivity;
 import com.progym.model.WaterConsumed;
 import com.progym.utils.DataBaseUtils;
 import com.progym.utils.Utils;
+import com.roomorama.caldroid.CaldroidFragment;
 
 @EActivity ( R.layout.water_progress_activity ) public class ActivityWaterProgress extends ActivityAbstractProgress implements IProgressActivity {
 
@@ -49,6 +51,12 @@ import com.progym.utils.Utils;
                               Utils.log(e.getMessage());
                          }
                     }
+                    // set up title
+                    Bundle bundle = new Bundle();
+                    bundle.putString(com.roomorama.caldroid.CaldroidFragment.DIALOG_TITLE, getResources().getString(R.string.select_date));
+                    bundle.putBoolean(CaldroidFragment.ENABLE_CLICK_ON_DISABLED_DATES, true);
+                    calendar.setArguments(bundle);
+
                     // highlight dates in calendar with blue color
                     calendar.setBackgroundResourceForDates(datesAndColour);
                     calendar.show(getSupportFragmentManager(), GlobalConstants.TAG);

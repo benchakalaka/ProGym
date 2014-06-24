@@ -55,12 +55,12 @@ public final class WaterProgressDailyBarFragment_
 
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
-        leftIn = AnimationUtils.loadAnimation(getActivity(), anim.push_left_in);
         fadeIn = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
-        leftOut = AnimationUtils.loadAnimation(getActivity(), anim.push_left_out);
-        fadeOut = AnimationUtils.loadAnimation(getActivity(), anim.fadeout);
-        rightIn = AnimationUtils.loadAnimation(getActivity(), anim.push_right_in);
         rightOut = AnimationUtils.loadAnimation(getActivity(), anim.push_right_out);
+        leftIn = AnimationUtils.loadAnimation(getActivity(), anim.push_left_in);
+        rightIn = AnimationUtils.loadAnimation(getActivity(), anim.push_right_in);
+        fadeOut = AnimationUtils.loadAnimation(getActivity(), anim.fadeout);
+        leftOut = AnimationUtils.loadAnimation(getActivity(), anim.push_left_out);
     }
 
     @Override
@@ -75,11 +75,11 @@ public final class WaterProgressDailyBarFragment_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
+        ivPrevYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivPrevYear));
+        ivNextYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivNextYear));
         rlRootDailyBar = ((RelativeLayout) hasViews.findViewById(com.progym.R.id.rlRootDailyBar));
         twCurrentDay = ((TextView) hasViews.findViewById(com.progym.R.id.twCurrentDay));
-        ivPrevYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivPrevYear));
         bargraph = ((BarGraph) hasViews.findViewById(com.progym.R.id.bargraph));
-        ivNextYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivNextYear));
         {
             View view = hasViews.findViewById(com.progym.R.id.ivNextYear);
             if (view!= null) {

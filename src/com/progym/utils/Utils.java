@@ -209,8 +209,8 @@ public class Utils {
                retResourceId = R.drawable.vegetables;
           } else if ( groupName.equals(GlobalConstants.GROUP_INGRIDIENT_NAME.STR_READY_MEALS_CATALOGUE) ) {
                retResourceId = R.drawable.ready;
-          } else if ( groupName.equals(GlobalConstants.GROUP_INGRIDIENT_NAME.STR_OTHER_CATALOGUE) ) {
-               retResourceId = R.drawable.ready_meal;
+          } else if ( groupName.equals(GlobalConstants.GROUP_INGRIDIENT_NAME.STR_SWEETS_MILK_CATALOGUE) ) {
+               retResourceId = R.drawable.sweets_milk;
           } else if ( groupName.equals(GlobalConstants.GROUP_INGRIDIENT_NAME.STR_FRUITS_CATALOGUE) ) {
                retResourceId = R.drawable.fruits;
           }
@@ -229,8 +229,8 @@ public class Utils {
                     retResourceId = R.drawable.fruits;
                     break;
 
-               case GlobalConstants.GROUP_INGRIDIENT_NAME.INT_OTHER_CATALOGUE:
-                    retResourceId = R.drawable.ready_meal;
+               case GlobalConstants.GROUP_INGRIDIENT_NAME.INT_SWEETS_MILK_CATALOGUE:
+                    retResourceId = R.drawable.sweets_milk;
                     break;
 
                case GlobalConstants.GROUP_INGRIDIENT_NAME.INT_PORRIDGE_CATALOGUE:
@@ -260,8 +260,8 @@ public class Utils {
                     retResourceId = GlobalConstants.GROUP_INGRIDIENT_NAME.STR_FRUITS_CATALOGUE;
                     break;
 
-               case GlobalConstants.GROUP_INGRIDIENT_NAME.INT_OTHER_CATALOGUE:
-                    retResourceId = GlobalConstants.GROUP_INGRIDIENT_NAME.STR_OTHER_CATALOGUE;
+               case GlobalConstants.GROUP_INGRIDIENT_NAME.INT_SWEETS_MILK_CATALOGUE:
+                    retResourceId = GlobalConstants.GROUP_INGRIDIENT_NAME.STR_SWEETS_MILK_CATALOGUE;
                     break;
 
                case GlobalConstants.GROUP_INGRIDIENT_NAME.INT_PORRIDGE_CATALOGUE:
@@ -381,7 +381,7 @@ public class Utils {
                     return GlobalConstants.INGRIDIENTS.VEGITABLES_LIST;
                case GlobalConstants.GROUP_INGRIDIENT_NAME.INT_READY_MEALS_CATALOGUE:
                     return GlobalConstants.INGRIDIENTS.READY_MEALS;
-               case GlobalConstants.GROUP_INGRIDIENT_NAME.INT_OTHER_CATALOGUE:
+               case GlobalConstants.GROUP_INGRIDIENT_NAME.INT_SWEETS_MILK_CATALOGUE:
                     return GlobalConstants.INGRIDIENTS.OTHER_LIST;
           }
           return new ArrayList <String>();

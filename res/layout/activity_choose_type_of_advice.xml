@@ -3,7 +3,7 @@
 	android:id="@+id/roootScrill"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:background="@drawable/round_border_gray_gradient" >
+	android:background="@drawable/background_start_buttons" >
 
 	<LinearLayout
 		android:layout_width="match_parent"
@@ -16,19 +16,19 @@
 			android:layout_margin="10dp"
 			android:background="@drawable/background_obese"
 			android:orientation="vertical"
-			android:padding="10dp" > 
+			android:padding="10dp" >
 
 			<TextView
 				android:layout_width="match_parent"
 				android:layout_height="0dp"
 				android:layout_weight="1"
 				android:gravity="center"
-				android:typeface="serif"
-				android:textStyle="italic"
 				android:text="@string/stay_wise"
 				android:textAppearance="?android:attr/textAppearanceLarge"
 				android:textColor="@color/caldroid_white"
-				android:textSize="20sp" />
+				android:textSize="20sp"
+				android:textStyle="italic"
+				android:typeface="serif" />
 		</LinearLayout>
 
 		<LinearLayout
@@ -36,7 +36,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_margin="10dp"
-			android:background="@drawable/background_round_transparent_real"
+			android:background="@drawable/background_round_border"
 			android:orientation="horizontal" >
 
 			<com.progym.custom.roundimageview.RoundedImageView
@@ -59,7 +59,8 @@
 				android:gravity="center"
 				android:text="@string/what_do_you_need"
 				android:textAppearance="?android:attr/textAppearanceMedium"
-				android:textColor="@color/caldroid_white" />
+				android:textColor="@color/orange"
+				android:textStyle="bold" />
 		</LinearLayout>
 
 		<LinearLayout
@@ -67,7 +68,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_margin="10dp"
-			android:background="@drawable/background_round_transparent_real"
+			android:background="@drawable/background_round_border"
 			android:orientation="horizontal" >
 
 			<com.progym.custom.roundimageview.RoundedImageView
@@ -90,7 +91,8 @@
 				android:gravity="center"
 				android:text="@string/energy_table"
 				android:textAppearance="?android:attr/textAppearanceMedium"
-				android:textColor="@color/caldroid_white" />
+				android:textColor="@color/orange"
+				android:textStyle="bold" />
 		</LinearLayout>
 
 		<LinearLayout
@@ -98,7 +100,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_margin="10dp"
-			android:background="@drawable/background_round_transparent_real"
+			android:background="@drawable/background_round_border"
 			android:orientation="horizontal" >
 
 			<com.progym.custom.roundimageview.RoundedImageView
@@ -121,17 +123,16 @@
 				android:gravity="center"
 				android:text="@string/calculate_bmi"
 				android:textAppearance="?android:attr/textAppearanceMedium"
-				android:textColor="@color/caldroid_white" />
+				android:textColor="@color/orange"
+				android:textStyle="bold" />
 		</LinearLayout>
-		
-		
-		
+
 		<LinearLayout
 			android:id="@+id/llCalculateMyBMI"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_margin="10dp"
-			android:background="@drawable/background_round_transparent_real"
+			android:background="@drawable/background_round_border"
 			android:orientation="horizontal" >
 
 			<com.progym.custom.roundimageview.RoundedImageView
@@ -146,7 +147,7 @@
 				app:border_width="4dip"
 				app:corner_radius="30dip"
 				app:oval="false" />
- 
+
 			<TextView
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
@@ -154,10 +155,9 @@
 				android:gravity="center"
 				android:text="@string/calculate_my_bmi"
 				android:textAppearance="?android:attr/textAppearanceMedium"
-				android:textColor="@color/caldroid_white" />
+				android:textColor="@color/orange"
+				android:textStyle="bold" />
 		</LinearLayout>
-		
-		
 	</LinearLayout>
 
 </ScrollView>

@@ -43,13 +43,13 @@ public final class ActivityChooseProgressType_
 
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
-        fade = AnimationUtils.loadAnimation(this, anim.fade);
         fadeIn = AnimationUtils.loadAnimation(this, anim.fadein);
-        rightIn = AnimationUtils.loadAnimation(this, anim.push_right_in);
         drag = AnimationUtils.loadAnimation(this, anim.drag_animation);
-        leftIn = AnimationUtils.loadAnimation(this, anim.push_left_in);
-        rightOut = AnimationUtils.loadAnimation(this, anim.push_right_out);
         leftOut = AnimationUtils.loadAnimation(this, anim.push_left_out);
+        rightOut = AnimationUtils.loadAnimation(this, anim.push_right_out);
+        rightIn = AnimationUtils.loadAnimation(this, anim.push_right_in);
+        fade = AnimationUtils.loadAnimation(this, anim.fade);
+        leftIn = AnimationUtils.loadAnimation(this, anim.push_left_in);
     }
 
     @Override
@@ -92,13 +92,13 @@ public final class ActivityChooseProgressType_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        twCurrentDate = ((TextView) hasViews.findViewById(id.twCurrentDate));
         llLeftPanelDateWithCalendar = ((LinearLayout) hasViews.findViewById(id.llLeftPanelDateWithCalendar));
-        ivNextDay = ((ImageView) hasViews.findViewById(id.ivNextDay));
         ivPrevDay = ((ImageView) hasViews.findViewById(id.ivPrevDay));
+        ivNextDay = ((ImageView) hasViews.findViewById(id.ivNextDay));
+        twCurrentDate = ((TextView) hasViews.findViewById(id.twCurrentDate));
+        llFoodCalloriesProgress = ((LinearLayout) hasViews.findViewById(id.llFoodCalloriesProgress));
         llFoodProgress = ((LinearLayout) hasViews.findViewById(id.llFoodProgress));
         llWaterProgress = ((LinearLayout) hasViews.findViewById(id.llWaterProgress));
-        llFoodCalloriesProgress = ((LinearLayout) hasViews.findViewById(id.llFoodCalloriesProgress));
         {
             View view = hasViews.findViewById(id.ivNextDay);
             if (view!= null) {

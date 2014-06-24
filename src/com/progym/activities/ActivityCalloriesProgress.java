@@ -13,13 +13,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.view.View;
 import android.widget.TextView;
 
 import com.progym.R;
 import com.progym.R.color;
 import com.progym.R.drawable;
-import com.progym.custom.CaldroidFragmentCustom;
 import com.progym.custom.NonSwipeableViewPager;
 import com.progym.custom.fragments.CalloriesProgressMonthlyLineFragment;
 import com.progym.custom.fragments.CalloriesProgressMonthlyLineFragment_;
@@ -29,34 +27,14 @@ import com.progym.interfaces.IProgressActivity;
 
 @EActivity ( R.layout.callories_progress_activity ) public class ActivityCalloriesProgress extends FragmentActivity implements IProgressActivity {
 
-     static Date                                          SELECTED_DATE        = new Date();
-     CaldroidFragmentCustom                               calendar;
+     static Date                            SELECTED_DATE = new Date();
 
-     @ViewById public TextView                            twMonthly;
-     @ViewById public TextView                            twYearly;
-     @ViewById public NonSwipeableViewPager               viewPager;
-     public int                                           FRAGMENT_TYPE;
-     public static final int                              MONTHLY              = 0;
-     public static final int                              YEARLY               = 1;
-     public static final int                              RANGE                = 33;
-
-     // Setup listener
-     public final com.roomorama.caldroid.CaldroidListener onDateChangeListener = new com.roomorama.caldroid.CaldroidListener() {
-                                                                                    @Override public void onSelectDate(final Date date, View view) {
-                                                                                         SELECTED_DATE = date;
-                                                                                         updateFragment(FRAGMENT_TYPE);
-                                                                                         calendar.dismiss();
-                                                                                    }
-
-                                                                                    @Override public void onChangeMonth(int month, int year) {
-                                                                                    }
-
-                                                                                    @Override public void onLongClickDate(Date date, View view) {
-                                                                                    }
-
-                                                                                    @Override public void onCaldroidViewCreated() {
-                                                                                    }
-                                                                               };
+     @ViewById public TextView              twMonthly;
+     @ViewById public TextView              twYearly;
+     @ViewById public NonSwipeableViewPager viewPager;
+     public int                             FRAGMENT_TYPE;
+     public static final int                MONTHLY       = 0;
+     public static final int                YEARLY        = 1;
 
      @Click void twMonthly() {
           FRAGMENT_TYPE = MONTHLY;
@@ -70,8 +48,6 @@ import com.progym.interfaces.IProgressActivity;
 
      @AfterViews void afterViews() {
           viewPager.setAdapter(new ProgressCalloriesViewPagerAdapter(getSupportFragmentManager()));
-          calendar = new CaldroidFragmentCustom();
-          calendar.setCaldroidListener(onDateChangeListener);
           twMonthly.setBackgroundColor(color.red);
      }
 
