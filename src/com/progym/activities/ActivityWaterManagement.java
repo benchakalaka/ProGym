@@ -18,6 +18,7 @@ import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.os.Bundle;
 import android.text.InputType;
 import android.view.DragEvent;
 import android.view.MotionEvent;
@@ -47,6 +48,7 @@ import com.progym.model.User;
 import com.progym.model.WaterConsumed;
 import com.progym.utils.DataBaseUtils;
 import com.progym.utils.Utils;
+import com.roomorama.caldroid.CaldroidFragment;
 import com.todddavies.components.progressbar.ProgressWheel;
 
 @EActivity ( R.layout.activity_water_management ) public class ActivityWaterManagement extends ProgymSuperActivity {
@@ -264,6 +266,12 @@ import com.todddavies.components.progressbar.ProgressWheel;
                     }
 
                     try {
+                         // set up title
+                         Bundle bundle = new Bundle();
+                         bundle.putString(com.roomorama.caldroid.CaldroidFragment.DIALOG_TITLE, getResources().getString(R.string.select_date));
+                         bundle.putBoolean(CaldroidFragment.ENABLE_CLICK_ON_DISABLED_DATES, true);
+                         calendar.setArguments(bundle);
+
                          // highlight dates in calendar with blue color
                          calendar.setCaldroidListener(onDateChangeListener);
                          calendar.setBackgroundResourceForDates(datesAndColour);

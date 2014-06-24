@@ -81,7 +81,7 @@
 					android:layout_height="match_parent"
 					android:layout_weight="1"
 					android:gravity="center"
-					android:text="I"
+					android:text="@string/i"
 					android:textAppearance="?android:attr/textAppearanceMedium" />
 
 				<TextView

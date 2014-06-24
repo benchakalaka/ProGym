@@ -74,14 +74,14 @@ public class GlobalConstants {
           public static final int    INT_VEGITABLES_CATALOGUE  = 2;
           public static final int    INT_FRUITS_CATALOGUE      = 3;
           public static final int    INT_READY_MEALS_CATALOGUE = 4;
-          public static final int    INT_OTHER_CATALOGUE       = 5;
+          public static final int    INT_SWEETS_MILK_CATALOGUE       = 5;
 
           public static final String STR_MEAT_CATALOGUE        = "Meat";
           public static final String STR_PORRIDGE_CATALOGUE    = "Porridge";
           public static final String STR_VEGITABLES_CATALOGUE  = "Vegetables";
           public static final String STR_FRUITS_CATALOGUE      = "Fruits";
           public static final String STR_READY_MEALS_CATALOGUE = "Ready meals";
-          public static final String STR_OTHER_CATALOGUE       = "Other";
+          public static final String STR_SWEETS_MILK_CATALOGUE       = "Other";
 
      }
 

@@ -76,26 +76,11 @@ public final class ActivityBMIResult_
     @Override
     public void onViewChanged(HasViews hasViews) {
         twBmiValue = ((TextView) hasViews.findViewById(id.twBmiValue));
-        btnAboutBmiIndex = ((Button) hasViews.findViewById(id.btnAboutBmiIndex));
         twBmiResultName = ((TextView) hasViews.findViewById(id.twBmiResultName));
+        btnAboutBmiIndex = ((Button) hasViews.findViewById(id.btnAboutBmiIndex));
         twHealthyWeightRange = ((TextView) hasViews.findViewById(id.twHealthyWeightRange));
         btnFinish = ((Button) hasViews.findViewById(id.btnFinish));
         twHealthyCaloriesRange = ((TextView) hasViews.findViewById(id.twHealthyCaloriesRange));
-        {
-            View view = hasViews.findViewById(id.btnAboutBmiIndex);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        ActivityBMIResult_.this.btnAboutBmiIndex();
-                    }
-
-                }
-                );
-            }
-        }
         {
             View view = hasViews.findViewById(id.btnFinish);
             if (view!= null) {
@@ -105,6 +90,21 @@ public final class ActivityBMIResult_
                     @Override
                     public void onClick(View view) {
                         ActivityBMIResult_.this.btnFinish();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.btnAboutBmiIndex);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        ActivityBMIResult_.this.btnAboutBmiIndex();
                     }
 
                 }

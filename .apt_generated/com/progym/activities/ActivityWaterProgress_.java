@@ -83,24 +83,9 @@ public final class ActivityWaterProgress_
     @Override
     public void onViewChanged(HasViews hasViews) {
         twMonthly = ((TextView) hasViews.findViewById(id.twMonthly));
-        twYearly = ((TextView) hasViews.findViewById(id.twYearly));
         viewPager = ((NonSwipeableViewPager) hasViews.findViewById(id.viewPager));
+        twYearly = ((TextView) hasViews.findViewById(id.twYearly));
         twDaily = ((TextView) hasViews.findViewById(id.twDaily));
-        {
-            View view = hasViews.findViewById(id.twDaily);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        ActivityWaterProgress_.this.twDaily();
-                    }
-
-                }
-                );
-            }
-        }
         {
             View view = hasViews.findViewById(id.twMonthly);
             if (view!= null) {
@@ -125,6 +110,21 @@ public final class ActivityWaterProgress_
                     @Override
                     public void onClick(View view) {
                         ActivityWaterProgress_.this.twYearly();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.twDaily);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        ActivityWaterProgress_.this.twDaily();
                     }
 
                 }

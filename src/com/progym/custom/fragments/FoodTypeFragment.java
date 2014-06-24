@@ -72,7 +72,7 @@ import com.progym.utils.Utils;
      }
 
      @Click void btnOther() {
-          setUpIngridientView(GlobalConstants.GROUP_INGRIDIENT_NAME.INT_OTHER_CATALOGUE);
+          setUpIngridientView(GlobalConstants.GROUP_INGRIDIENT_NAME.INT_SWEETS_MILK_CATALOGUE);
      }
 
      @Click void btnReadyMeals() {
@@ -234,7 +234,7 @@ import com.progym.utils.Utils;
           }
 
           // GET ALL OTHER_CATALOGUE INGRIDIENTS
-          cursor = DataBaseUtils.getByGroupName(GlobalConstants.GROUP_INGRIDIENT_NAME.STR_OTHER_CATALOGUE);
+          cursor = DataBaseUtils.getByGroupName(GlobalConstants.GROUP_INGRIDIENT_NAME.STR_SWEETS_MILK_CATALOGUE);
           while ( cursor.moveToNext() ) {
                GlobalConstants.INGRIDIENTS.OTHER_LIST.add(cursor.getString(5));
           }

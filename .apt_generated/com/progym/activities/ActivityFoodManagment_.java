@@ -47,13 +47,13 @@ public final class ActivityFoodManagment_
 
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
-        drag = AnimationUtils.loadAnimation(this, anim.drag_animation);
-        rightOut = AnimationUtils.loadAnimation(this, anim.push_right_out);
-        leftOut = AnimationUtils.loadAnimation(this, anim.push_left_out);
-        rightIn = AnimationUtils.loadAnimation(this, anim.push_right_in);
         fade = AnimationUtils.loadAnimation(this, anim.fade);
-        fadeIn = AnimationUtils.loadAnimation(this, anim.fadein);
+        drag = AnimationUtils.loadAnimation(this, anim.drag_animation);
         leftIn = AnimationUtils.loadAnimation(this, anim.push_left_in);
+        rightIn = AnimationUtils.loadAnimation(this, anim.push_right_in);
+        fadeIn = AnimationUtils.loadAnimation(this, anim.fadein);
+        leftOut = AnimationUtils.loadAnimation(this, anim.push_left_out);
+        rightOut = AnimationUtils.loadAnimation(this, anim.push_right_out);
     }
 
     @Override
@@ -96,33 +96,18 @@ public final class ActivityFoodManagment_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        ivNextDay = ((ImageView) hasViews.findViewById(id.ivNextDay));
         llLeftPanelDateWithCalendar = ((LinearLayout) hasViews.findViewById(id.llLeftPanelDateWithCalendar));
-        ivPrevDay = ((ImageView) hasViews.findViewById(id.ivPrevDay));
+        ivNextDay = ((ImageView) hasViews.findViewById(id.ivNextDay));
         twCurrentDate = ((TextView) hasViews.findViewById(id.twCurrentDate));
+        ivPrevDay = ((ImageView) hasViews.findViewById(id.ivPrevDay));
+        ivOnPlate = ((ImageView) hasViews.findViewById(id.ivOnPlate));
+        ibSavePlate = ((ImageButton) hasViews.findViewById(id.ibSavePlate));
         viewPager = ((NonSwipeableViewPager) hasViews.findViewById(id.viewPager));
         ibCreatePlate = ((ImageButton) hasViews.findViewById(id.ibCreatePlate));
-        ivOnPlate = ((ImageView) hasViews.findViewById(id.ivOnPlate));
-        llAlreadyOnPlate = ((LinearLayout) hasViews.findViewById(id.llAlreadyOnPlate));
         horizontalScrollView = ((HorizontalScrollView) hasViews.findViewById(id.horizontalScrollView));
-        ibSavePlate = ((ImageButton) hasViews.findViewById(id.ibSavePlate));
         llCreatedPlates = ((LinearLayout) hasViews.findViewById(id.llCreatedPlates));
+        llAlreadyOnPlate = ((LinearLayout) hasViews.findViewById(id.llAlreadyOnPlate));
         svListOfConsumedMeals = ((ScrollView) hasViews.findViewById(id.svListOfConsumedMeals));
-        {
-            View view = hasViews.findViewById(id.ivNextDay);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        ActivityFoodManagment_.this.ivNextDay();
-                    }
-
-                }
-                );
-            }
-        }
         {
             View view = hasViews.findViewById(id.ivPrevDay);
             if (view!= null) {
@@ -139,14 +124,14 @@ public final class ActivityFoodManagment_
             }
         }
         {
-            View view = hasViews.findViewById(id.ibCreatePlate);
+            View view = hasViews.findViewById(id.ivNextDay);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        ActivityFoodManagment_.this.ibCreatePlate();
+                        ActivityFoodManagment_.this.ivNextDay();
                     }
 
                 }
@@ -177,6 +162,21 @@ public final class ActivityFoodManagment_
                     @Override
                     public void onClick(View view) {
                         ActivityFoodManagment_.this.ibSavePlate();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.ibCreatePlate);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        ActivityFoodManagment_.this.ibCreatePlate();
                     }
 
                 }

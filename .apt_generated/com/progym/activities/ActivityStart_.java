@@ -41,13 +41,13 @@ public final class ActivityStart_
 
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
+        leftIn2 = AnimationUtils.loadAnimation(this, anim.push_left_in);
+        leftIn4 = AnimationUtils.loadAnimation(this, anim.push_left_in);
         leftIn0 = AnimationUtils.loadAnimation(this, anim.push_left_in);
         fadeIn = AnimationUtils.loadAnimation(this, anim.fadein);
-        leftIn2 = AnimationUtils.loadAnimation(this, anim.push_left_in);
-        shake = AnimationUtils.loadAnimation(this, anim.shake);
-        leftIn1 = AnimationUtils.loadAnimation(this, anim.push_left_in);
-        leftIn4 = AnimationUtils.loadAnimation(this, anim.push_left_in);
         leftIn3 = AnimationUtils.loadAnimation(this, anim.push_left_in);
+        leftIn1 = AnimationUtils.loadAnimation(this, anim.push_left_in);
+        shake = AnimationUtils.loadAnimation(this, anim.shake);
     }
 
     @Override
@@ -90,11 +90,26 @@ public final class ActivityStart_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        llWater = ((LinearLayout) hasViews.findViewById(id.llWater));
-        llAdvice = ((LinearLayout) hasViews.findViewById(id.llAdvice));
         llNutrition = ((LinearLayout) hasViews.findViewById(id.llNutrition));
+        llWater = ((LinearLayout) hasViews.findViewById(id.llWater));
         llProfile = ((LinearLayout) hasViews.findViewById(id.llProfile));
         llProgress = ((LinearLayout) hasViews.findViewById(id.llProgress));
+        llAdvice = ((LinearLayout) hasViews.findViewById(id.llAdvice));
+        {
+            View view = hasViews.findViewById(id.llAdvice);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        ActivityStart_.this.llAdvice();
+                    }
+
+                }
+                );
+            }
+        }
         {
             View view = hasViews.findViewById(id.llWater);
             if (view!= null) {
@@ -119,21 +134,6 @@ public final class ActivityStart_
                     @Override
                     public void onClick(View view) {
                         ActivityStart_.this.llProgress();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.llAdvice);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        ActivityStart_.this.llAdvice();
                     }
 
                 }

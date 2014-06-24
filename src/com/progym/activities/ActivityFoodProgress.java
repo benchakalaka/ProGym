@@ -11,6 +11,7 @@ import org.androidannotations.annotations.EActivity;
 import org.apache.commons.lang3.time.DateUtils;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -29,6 +30,7 @@ import com.progym.custom.fragments.FoodProgressYearlyLineFragment_;
 import com.progym.interfaces.IProgressActivity;
 import com.progym.model.Meal;
 import com.progym.utils.DataBaseUtils;
+import com.roomorama.caldroid.CaldroidFragment;
 
 @EActivity ( R.layout.food_progress_activity ) public class ActivityFoodProgress extends ActivityAbstractProgress implements IProgressActivity {
 
@@ -53,6 +55,12 @@ import com.progym.utils.DataBaseUtils;
                               }
                          }
                     }
+                    // set up title
+                    Bundle bundle = new Bundle();
+                    bundle.putString(com.roomorama.caldroid.CaldroidFragment.DIALOG_TITLE, getResources().getString(R.string.select_date));
+                    bundle.putBoolean(CaldroidFragment.ENABLE_CLICK_ON_DISABLED_DATES, true);
+                    calendar.setArguments(bundle);
+
                     // highlight dates in calendar with blue color
                     calendar.setBackgroundResourceForDates(datesToHighligt);
                     calendar.show(getSupportFragmentManager(), GlobalConstants.TAG);

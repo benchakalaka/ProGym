@@ -53,12 +53,12 @@ public final class CalloriesProgressMonthlyLineFragment_
 
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
-        leftOut = AnimationUtils.loadAnimation(getActivity(), anim.push_left_out);
-        fadeIn = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
         rightIn = AnimationUtils.loadAnimation(getActivity(), anim.push_right_in);
+        fadeIn = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
+        rightOut = AnimationUtils.loadAnimation(getActivity(), anim.push_right_out);
         leftIn = AnimationUtils.loadAnimation(getActivity(), anim.push_left_in);
         fadeOut = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
-        rightOut = AnimationUtils.loadAnimation(getActivity(), anim.push_right_out);
+        leftOut = AnimationUtils.loadAnimation(getActivity(), anim.push_left_out);
     }
 
     @Override
@@ -73,24 +73,9 @@ public final class CalloriesProgressMonthlyLineFragment_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        ivPrevYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivPrevYear));
         rlRootGraphLayout = ((RelativeLayout) hasViews.findViewById(com.progym.R.id.rlRootGraphLayout));
         ivNextYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivNextYear));
-        {
-            View view = hasViews.findViewById(com.progym.R.id.ivPrevYear);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CalloriesProgressMonthlyLineFragment_.this.ivPrevYear();
-                    }
-
-                }
-                );
-            }
-        }
+        ivPrevYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivPrevYear));
         {
             View view = hasViews.findViewById(com.progym.R.id.ivNextYear);
             if (view!= null) {
@@ -100,6 +85,21 @@ public final class CalloriesProgressMonthlyLineFragment_
                     @Override
                     public void onClick(View view) {
                         CalloriesProgressMonthlyLineFragment_.this.ivNextYear();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(com.progym.R.id.ivPrevYear);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CalloriesProgressMonthlyLineFragment_.this.ivPrevYear();
                     }
 
                 }
