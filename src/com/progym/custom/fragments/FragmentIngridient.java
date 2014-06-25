@@ -86,11 +86,19 @@ import com.progym.utils.Utils;
                etKkal.setText(String.format("%s", FragmentIngridient.ingridient.kkal));
                etCarbs.setText(String.format("%s", FragmentIngridient.ingridient.carbohydrates));
                ivFoodImage.setImageResource(Utils.getImageIdByGroupPositionInExpListView(groupName));
-               twGroupNameAndIngridientName.setText(Utils.getGroupNameByCataloguePosition(groupName) + "  " + ingridient);
+               twGroupNameAndIngridientName.setText(ingridient);
 
                setUpPieChart((int) FragmentIngridient.ingridient.protein, (int) FragmentIngridient.ingridient.fat, (int) FragmentIngridient.ingridient.carbohydrates);
 
                cursor.close();
+
+               if ( FragmentIngridient.ingridient.name.contains("egg") ) {
+                    // if it's egg, take one egg as default , weight of one egg is approx 50g
+                    etWeight.setText("50");
+               } else {
+                    // Set default weight as 100 g
+                    etWeight.setText("100");
+               }
           }
      }
 
@@ -131,12 +139,6 @@ import com.progym.utils.Utils;
           editDialog.show();
      }
 
-     @Override public void onResume() {
-          super.onResume();
-          // Set default weight as 100 g
-          etWeight.setText("100");
-     }
-
      private void setUpPieChart(int protein, int fat, int carbs) {
           // set up pie chart parameters
           fat = (fat == 0) ? 1 : fat;
@@ -158,27 +160,20 @@ import com.progym.utils.Utils;
      }
 
      @AfterTextChange void etProtein(Editable text) {
-          checkProtCarbsFatValuesAndSetUpChart();
+          ingridient.protein = StringUtils.isEmpty(etProtein.getText().toString()) ? 0 : Double.valueOf(etProtein.getText().toString());
+          setUpPieChart((int) ingridient.protein, (int) ingridient.fat, (int) ingridient.carbohydrates);
      }
 
      @AfterTextChange void etFat(Editable text) {
-          checkProtCarbsFatValuesAndSetUpChart();
+          ingridient.fat = StringUtils.isEmpty(etFat.getText().toString()) ? 0 : Double.valueOf(etFat.getText().toString());
+          setUpPieChart((int) ingridient.protein, (int) ingridient.fat, (int) ingridient.carbohydrates);
+
      }
 
      @AfterTextChange void etCarbs(Editable text) {
-          checkProtCarbsFatValuesAndSetUpChart();
-     }
+          ingridient.carbohydrates = StringUtils.isEmpty(etCarbs.getText().toString()) ? 0 : Double.valueOf(etCarbs.getText().toString());
+          setUpPieChart((int) ingridient.protein, (int) ingridient.fat, (int) ingridient.carbohydrates);
 
-     private void checkProtCarbsFatValuesAndSetUpChart() {
-          try {
-               ingridient.fat = StringUtils.isEmpty(etFat.getText().toString()) ? 0 : Double.valueOf(etFat.getText().toString());
-               ingridient.protein = StringUtils.isEmpty(etProtein.getText().toString()) ? 0 : Double.valueOf(etProtein.getText().toString());
-               ingridient.carbohydrates = StringUtils.isEmpty(etCarbs.getText().toString()) ? 0 : Double.valueOf(etCarbs.getText().toString());
-               setUpPieChart((int) ingridient.protein, (int) ingridient.fat, (int) ingridient.carbohydrates);
-          } catch (Exception ex) {
-               ex.printStackTrace();
-               // Utils.showCustomToast(getActivity(), "Set proper fat value (0-100)g", R.drawable.facebook);
-          }
      }
 
      @AfterViews void afterViews() {

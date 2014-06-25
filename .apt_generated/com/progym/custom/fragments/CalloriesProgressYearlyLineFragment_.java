@@ -53,10 +53,10 @@ public final class CalloriesProgressYearlyLineFragment_
 
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
-        rightOut = AnimationUtils.loadAnimation(getActivity(), anim.push_right_out);
-        fadeOut = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
-        rightIn = AnimationUtils.loadAnimation(getActivity(), anim.push_right_in);
         leftIn = AnimationUtils.loadAnimation(getActivity(), anim.push_left_in);
+        fadeOut = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
+        rightOut = AnimationUtils.loadAnimation(getActivity(), anim.push_right_out);
+        rightIn = AnimationUtils.loadAnimation(getActivity(), anim.push_right_in);
         fadeIn = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
         leftOut = AnimationUtils.loadAnimation(getActivity(), anim.push_left_out);
     }
@@ -73,8 +73,8 @@ public final class CalloriesProgressYearlyLineFragment_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        ivPrevYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivPrevYear));
         ivNextYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivNextYear));
+        ivPrevYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivPrevYear));
         rlRootGraphLayout = ((RelativeLayout) hasViews.findViewById(com.progym.R.id.rlRootGraphLayout));
         {
             View view = hasViews.findViewById(com.progym.R.id.ivPrevYear);

@@ -77,10 +77,10 @@ public final class ActivityAdviceLevel_1_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        ivBrain = ((ImageView) hasViews.findViewById(id.ivBrain));
-        ivStressReduction = ((ImageView) hasViews.findViewById(id.ivStressReduction));
         rlSlideMe = ((RelativeLayout) hasViews.findViewById(id.rlSlideMe));
+        ivBrain = ((ImageView) hasViews.findViewById(id.ivBrain));
         llDragOnMe = ((LinearLayout) hasViews.findViewById(id.llDragOnMe));
+        ivStressReduction = ((ImageView) hasViews.findViewById(id.ivStressReduction));
         ivEnergy = ((ImageView) hasViews.findViewById(id.ivEnergy));
         ivFatBurinig = ((ImageView) hasViews.findViewById(id.ivFatBurinig));
         {

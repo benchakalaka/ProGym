@@ -45,7 +45,7 @@ public class DataBaseUtils {
      }
 
      public static Cursor getByGroupName(String byGroupName) {
-          return DB.getReadableDatabase().rawQuery("select * from ingridient where groupName = ?", new String[] { byGroupName });
+          return DB.getReadableDatabase().rawQuery("select * from ingridient where groupName = ? order by name ASC", new String[] { byGroupName });
      }
 
      public static Cursor getByGroupNameAndIngridientName(String ingridientName) {

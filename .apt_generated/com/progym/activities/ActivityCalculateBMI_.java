@@ -73,12 +73,12 @@ public final class ActivityCalculateBMI_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        rbMale = ((RadioButton) hasViews.findViewById(id.rbMale));
-        etBMIHeight = ((EditText) hasViews.findViewById(id.etBMIHeight));
-        etBMIWeight = ((EditText) hasViews.findViewById(id.etBMIWeight));
         rbFemale = ((RadioButton) hasViews.findViewById(id.rbFemale));
-        btnCalculateBMI = ((Button) hasViews.findViewById(id.btnCalculateBMI));
         etBMIAge = ((EditText) hasViews.findViewById(id.etBMIAge));
+        etBMIWeight = ((EditText) hasViews.findViewById(id.etBMIWeight));
+        etBMIHeight = ((EditText) hasViews.findViewById(id.etBMIHeight));
+        rbMale = ((RadioButton) hasViews.findViewById(id.rbMale));
+        btnCalculateBMI = ((Button) hasViews.findViewById(id.btnCalculateBMI));
         {
             View view = hasViews.findViewById(id.btnCalculateBMI);
             if (view!= null) {
