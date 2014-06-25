@@ -77,28 +77,13 @@ public final class ActivityUserProfile_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        etUserHeight = ((EditText) hasViews.findViewById(id.etUserHeight));
-        btnCancel = ((Button) hasViews.findViewById(id.btnCancel));
         etUserWeight = ((EditText) hasViews.findViewById(id.etUserWeight));
+        spinnerGender = ((NDSpinner) hasViews.findViewById(id.spinnerGender));
+        btnCancel = ((Button) hasViews.findViewById(id.btnCancel));
         etUserAge = ((EditText) hasViews.findViewById(id.etUserAge));
         btnSave = ((Button) hasViews.findViewById(id.btnSave));
-        spinnerGender = ((NDSpinner) hasViews.findViewById(id.spinnerGender));
         etUserName = ((EditText) hasViews.findViewById(id.etUserName));
-        {
-            View view = hasViews.findViewById(id.btnSave);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        ActivityUserProfile_.this.btnSave();
-                    }
-
-                }
-                );
-            }
-        }
+        etUserHeight = ((EditText) hasViews.findViewById(id.etUserHeight));
         {
             View view = hasViews.findViewById(id.btnCancel);
             if (view!= null) {
@@ -108,6 +93,21 @@ public final class ActivityUserProfile_
                     @Override
                     public void onClick(View view) {
                         ActivityUserProfile_.this.btnCancel();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.btnSave);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        ActivityUserProfile_.this.btnSave();
                     }
 
                 }

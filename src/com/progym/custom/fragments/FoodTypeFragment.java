@@ -198,7 +198,6 @@ import com.progym.utils.Utils;
      }
 
      @AfterViews void afterViews() {
-
           // if any of the ingridient list is empty obtain data from database
           if ( GlobalConstants.INGRIDIENTS.MEAT_LIST.isEmpty() ) {
                prepareListData();

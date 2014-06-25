@@ -82,24 +82,9 @@ public final class ActivityCalloriesProgress_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        viewPager = ((NonSwipeableViewPager) hasViews.findViewById(id.viewPager));
         twYearly = ((TextView) hasViews.findViewById(id.twYearly));
         twMonthly = ((TextView) hasViews.findViewById(id.twMonthly));
-        {
-            View view = hasViews.findViewById(id.twYearly);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        ActivityCalloriesProgress_.this.twYearly();
-                    }
-
-                }
-                );
-            }
-        }
+        viewPager = ((NonSwipeableViewPager) hasViews.findViewById(id.viewPager));
         {
             View view = hasViews.findViewById(id.twMonthly);
             if (view!= null) {
@@ -109,6 +94,21 @@ public final class ActivityCalloriesProgress_
                     @Override
                     public void onClick(View view) {
                         ActivityCalloriesProgress_.this.twMonthly();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.twYearly);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        ActivityCalloriesProgress_.this.twYearly();
                     }
 
                 }

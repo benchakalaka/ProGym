@@ -53,11 +53,11 @@ public final class WaterProgressMonthlyLineFragment_
 
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
-        rightIn = AnimationUtils.loadAnimation(getActivity(), anim.push_right_in);
-        rightOut = AnimationUtils.loadAnimation(getActivity(), anim.push_right_out);
         fadeOut = AnimationUtils.loadAnimation(getActivity(), anim.fadeout);
         leftIn = AnimationUtils.loadAnimation(getActivity(), anim.push_left_in);
+        rightIn = AnimationUtils.loadAnimation(getActivity(), anim.push_right_in);
         leftOut = AnimationUtils.loadAnimation(getActivity(), anim.push_left_out);
+        rightOut = AnimationUtils.loadAnimation(getActivity(), anim.push_right_out);
         fadeIn = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
     }
 
@@ -73,24 +73,9 @@ public final class WaterProgressMonthlyLineFragment_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        ivNextYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivNextYear));
         ivPrevYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivPrevYear));
+        ivNextYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivNextYear));
         rlRootGraphLayout = ((RelativeLayout) hasViews.findViewById(com.progym.R.id.rlRootGraphLayout));
-        {
-            View view = hasViews.findViewById(com.progym.R.id.ivPrevYear);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        WaterProgressMonthlyLineFragment_.this.ivPrevYear();
-                    }
-
-                }
-                );
-            }
-        }
         {
             View view = hasViews.findViewById(com.progym.R.id.ivNextYear);
             if (view!= null) {
@@ -100,6 +85,21 @@ public final class WaterProgressMonthlyLineFragment_
                     @Override
                     public void onClick(View view) {
                         WaterProgressMonthlyLineFragment_.this.ivNextYear();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(com.progym.R.id.ivPrevYear);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        WaterProgressMonthlyLineFragment_.this.ivPrevYear();
                     }
 
                 }
