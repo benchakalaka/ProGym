@@ -53,12 +53,21 @@ public final class FoodProgressYearlyLineFragment_
 
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
+<<<<<<< HEAD
         leftOut = AnimationUtils.loadAnimation(getActivity(), anim.push_left_out);
         fadeIn = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
         rightOut = AnimationUtils.loadAnimation(getActivity(), anim.push_right_out);
         fadeOut = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
         rightIn = AnimationUtils.loadAnimation(getActivity(), anim.push_right_in);
         leftIn = AnimationUtils.loadAnimation(getActivity(), anim.push_left_in);
+=======
+        fadeIn = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
+        leftIn = AnimationUtils.loadAnimation(getActivity(), anim.push_left_in);
+        leftOut = AnimationUtils.loadAnimation(getActivity(), anim.push_left_out);
+        rightOut = AnimationUtils.loadAnimation(getActivity(), anim.push_right_out);
+        fadeOut = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
+        rightIn = AnimationUtils.loadAnimation(getActivity(), anim.push_right_in);
+>>>>>>> develop
     }
 
     @Override
@@ -73,8 +82,8 @@ public final class FoodProgressYearlyLineFragment_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        rlRootGraphLayout = ((RelativeLayout) hasViews.findViewById(com.progym.R.id.rlRootGraphLayout));
         ivNextYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivNextYear));
+        rlRootGraphLayout = ((RelativeLayout) hasViews.findViewById(com.progym.R.id.rlRootGraphLayout));
         ivPrevYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivPrevYear));
         {
             View view = hasViews.findViewById(com.progym.R.id.ivPrevYear);

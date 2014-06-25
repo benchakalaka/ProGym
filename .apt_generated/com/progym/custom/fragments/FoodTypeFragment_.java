@@ -65,6 +65,7 @@ public final class FoodTypeFragment_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
+<<<<<<< HEAD
         btnOther = ((ImageButton) hasViews.findViewById(com.progym.R.id.btnOther));
         btnFruits = ((ImageButton) hasViews.findViewById(com.progym.R.id.btnFruits));
         btnReadyMeals = ((ImageButton) hasViews.findViewById(com.progym.R.id.btnReadyMeals));
@@ -73,13 +74,27 @@ public final class FoodTypeFragment_
         btnMeat = ((ImageButton) hasViews.findViewById(com.progym.R.id.btnMeat));
         {
             View view = hasViews.findViewById(com.progym.R.id.btnPorridge);
+=======
+        btnVegitables = ((ImageButton) hasViews.findViewById(com.progym.R.id.btnVegitables));
+        btnReadyMeals = ((ImageButton) hasViews.findViewById(com.progym.R.id.btnReadyMeals));
+        btnFruits = ((ImageButton) hasViews.findViewById(com.progym.R.id.btnFruits));
+        btnPorridge = ((ImageButton) hasViews.findViewById(com.progym.R.id.btnPorridge));
+        btnOther = ((ImageButton) hasViews.findViewById(com.progym.R.id.btnOther));
+        btnMeat = ((ImageButton) hasViews.findViewById(com.progym.R.id.btnMeat));
+        {
+            View view = hasViews.findViewById(com.progym.R.id.btnFruits);
+>>>>>>> develop
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
+<<<<<<< HEAD
                         FoodTypeFragment_.this.btnPorridge();
+=======
+                        FoodTypeFragment_.this.btnFruits();
+>>>>>>> develop
                     }
 
                 }
@@ -102,14 +117,14 @@ public final class FoodTypeFragment_
             }
         }
         {
-            View view = hasViews.findViewById(com.progym.R.id.btnReadyMeals);
+            View view = hasViews.findViewById(com.progym.R.id.btnPorridge);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        FoodTypeFragment_.this.btnReadyMeals();
+                        FoodTypeFragment_.this.btnPorridge();
                     }
 
                 }
@@ -132,14 +147,22 @@ public final class FoodTypeFragment_
             }
         }
         {
+<<<<<<< HEAD
             View view = hasViews.findViewById(com.progym.R.id.btnMeat);
+=======
+            View view = hasViews.findViewById(com.progym.R.id.btnReadyMeals);
+>>>>>>> develop
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
+<<<<<<< HEAD
                         FoodTypeFragment_.this.btnMeat();
+=======
+                        FoodTypeFragment_.this.btnReadyMeals();
+>>>>>>> develop
                     }
 
                 }

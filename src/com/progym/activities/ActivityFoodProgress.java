@@ -10,7 +10,10 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.apache.commons.lang3.time.DateUtils;
 
+<<<<<<< HEAD
 import android.content.Intent;
+=======
+>>>>>>> develop
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
@@ -70,11 +73,6 @@ import com.roomorama.caldroid.CaldroidFragment;
           });
           t.start();
 
-     }
-
-     @Override protected void onPause() {
-          super.onPause();
-          startActivity(new Intent(ActivityFoodProgress.this, ActivityStart_.class));
      }
 
      @Click void twMonthly() {

@@ -53,8 +53,8 @@ public final class FoodCalloriesProgressYearlyLineFragment_
 
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
-        fadeOut = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
         fadeIn = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
+        fadeOut = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
     }
 
     @Override
@@ -73,21 +73,6 @@ public final class FoodCalloriesProgressYearlyLineFragment_
         ivNextYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivNextYear));
         rlRootGraphLayout = ((RelativeLayout) hasViews.findViewById(com.progym.R.id.rlRootGraphLayout));
         {
-            View view = hasViews.findViewById(com.progym.R.id.ivNextYear);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        FoodCalloriesProgressYearlyLineFragment_.this.ivNextYear();
-                    }
-
-                }
-                );
-            }
-        }
-        {
             View view = hasViews.findViewById(com.progym.R.id.ivPrevYear);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
@@ -96,6 +81,21 @@ public final class FoodCalloriesProgressYearlyLineFragment_
                     @Override
                     public void onClick(View view) {
                         FoodCalloriesProgressYearlyLineFragment_.this.ivPrevYear();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(com.progym.R.id.ivNextYear);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        FoodCalloriesProgressYearlyLineFragment_.this.ivNextYear();
                     }
 
                 }

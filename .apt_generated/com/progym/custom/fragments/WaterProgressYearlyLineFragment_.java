@@ -53,12 +53,20 @@ public final class WaterProgressYearlyLineFragment_
 
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
+<<<<<<< HEAD
         fadeOut = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
         leftIn = AnimationUtils.loadAnimation(getActivity(), anim.push_left_in);
         leftOut = AnimationUtils.loadAnimation(getActivity(), anim.push_left_out);
         rightIn = AnimationUtils.loadAnimation(getActivity(), anim.push_right_in);
         rightOut = AnimationUtils.loadAnimation(getActivity(), anim.push_right_out);
+=======
+        rightIn = AnimationUtils.loadAnimation(getActivity(), anim.push_right_in);
+        leftIn = AnimationUtils.loadAnimation(getActivity(), anim.push_left_in);
+        leftOut = AnimationUtils.loadAnimation(getActivity(), anim.push_left_out);
+>>>>>>> develop
         fadeIn = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
+        rightOut = AnimationUtils.loadAnimation(getActivity(), anim.push_right_out);
+        fadeOut = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
     }
 
     @Override

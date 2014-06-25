@@ -43,6 +43,7 @@ public final class ActivityChooseProgressType_
 
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
+<<<<<<< HEAD
         fadeIn = AnimationUtils.loadAnimation(this, anim.fadein);
         drag = AnimationUtils.loadAnimation(this, anim.drag_animation);
         leftOut = AnimationUtils.loadAnimation(this, anim.push_left_out);
@@ -50,6 +51,15 @@ public final class ActivityChooseProgressType_
         rightIn = AnimationUtils.loadAnimation(this, anim.push_right_in);
         fade = AnimationUtils.loadAnimation(this, anim.fade);
         leftIn = AnimationUtils.loadAnimation(this, anim.push_left_in);
+=======
+        rightOut = AnimationUtils.loadAnimation(this, anim.push_right_out);
+        fade = AnimationUtils.loadAnimation(this, anim.fade);
+        leftOut = AnimationUtils.loadAnimation(this, anim.push_left_out);
+        drag = AnimationUtils.loadAnimation(this, anim.drag_animation);
+        leftIn = AnimationUtils.loadAnimation(this, anim.push_left_in);
+        rightIn = AnimationUtils.loadAnimation(this, anim.push_right_in);
+        fadeIn = AnimationUtils.loadAnimation(this, anim.fadein);
+>>>>>>> develop
     }
 
     @Override
@@ -92,10 +102,18 @@ public final class ActivityChooseProgressType_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
+<<<<<<< HEAD
         llLeftPanelDateWithCalendar = ((LinearLayout) hasViews.findViewById(id.llLeftPanelDateWithCalendar));
         ivPrevDay = ((ImageView) hasViews.findViewById(id.ivPrevDay));
         ivNextDay = ((ImageView) hasViews.findViewById(id.ivNextDay));
         twCurrentDate = ((TextView) hasViews.findViewById(id.twCurrentDate));
+=======
+        twCurrentDate = ((TextView) hasViews.findViewById(id.twCurrentDate));
+        ivNextDay = ((ImageView) hasViews.findViewById(id.ivNextDay));
+        ivPrevDay = ((ImageView) hasViews.findViewById(id.ivPrevDay));
+        llLeftPanelDateWithCalendar = ((LinearLayout) hasViews.findViewById(id.llLeftPanelDateWithCalendar));
+        llWaterProgress = ((LinearLayout) hasViews.findViewById(id.llWaterProgress));
+>>>>>>> develop
         llFoodCalloriesProgress = ((LinearLayout) hasViews.findViewById(id.llFoodCalloriesProgress));
         llFoodProgress = ((LinearLayout) hasViews.findViewById(id.llFoodProgress));
         llWaterProgress = ((LinearLayout) hasViews.findViewById(id.llWaterProgress));
@@ -130,14 +148,22 @@ public final class ActivityChooseProgressType_
             }
         }
         {
+<<<<<<< HEAD
             View view = hasViews.findViewById(id.llWaterProgress);
+=======
+            View view = hasViews.findViewById(id.llFoodCalloriesProgress);
+>>>>>>> develop
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
+<<<<<<< HEAD
                         ActivityChooseProgressType_.this.llWaterProgress();
+=======
+                        ActivityChooseProgressType_.this.llFoodCalloriesProgress();
+>>>>>>> develop
                     }
 
                 }
@@ -160,14 +186,14 @@ public final class ActivityChooseProgressType_
             }
         }
         {
-            View view = hasViews.findViewById(id.llFoodCalloriesProgress);
+            View view = hasViews.findViewById(id.llWaterProgress);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        ActivityChooseProgressType_.this.llFoodCalloriesProgress();
+                        ActivityChooseProgressType_.this.llWaterProgress();
                     }
 
                 }

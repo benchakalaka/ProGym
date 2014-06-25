@@ -76,6 +76,7 @@ public final class ActivityAdviceLevel_2_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
+<<<<<<< HEAD
         rl1 = ((RelativeLayout) hasViews.findViewById(id.rl1));
         rl4 = ((RelativeLayout) hasViews.findViewById(id.rl4));
         rl2 = ((RelativeLayout) hasViews.findViewById(id.rl2));
@@ -92,6 +93,24 @@ public final class ActivityAdviceLevel_2_
         tw2Description = ((TextView) hasViews.findViewById(id.tw2Description));
         tw3 = ((TextView) hasViews.findViewById(id.tw3));
         iv1 = ((ImageView) hasViews.findViewById(id.iv1));
+=======
+        tw4Description = ((TextView) hasViews.findViewById(id.tw4Description));
+        rl4 = ((RelativeLayout) hasViews.findViewById(id.rl4));
+        tw3Description = ((TextView) hasViews.findViewById(id.tw3Description));
+        rl3 = ((RelativeLayout) hasViews.findViewById(id.rl3));
+        iv4 = ((ImageView) hasViews.findViewById(id.iv4));
+        tw2Description = ((TextView) hasViews.findViewById(id.tw2Description));
+        tw3 = ((TextView) hasViews.findViewById(id.tw3));
+        iv2 = ((ImageView) hasViews.findViewById(id.iv2));
+        tw1Description = ((TextView) hasViews.findViewById(id.tw1Description));
+        rl2 = ((RelativeLayout) hasViews.findViewById(id.rl2));
+        tw2 = ((TextView) hasViews.findViewById(id.tw2));
+        tw4 = ((TextView) hasViews.findViewById(id.tw4));
+        rl1 = ((RelativeLayout) hasViews.findViewById(id.rl1));
+        iv1 = ((ImageView) hasViews.findViewById(id.iv1));
+        tw1 = ((TextView) hasViews.findViewById(id.tw1));
+        iv3 = ((ImageView) hasViews.findViewById(id.iv3));
+>>>>>>> develop
         {
             View view = hasViews.findViewById(id.rl1);
             if (view!= null) {
@@ -108,14 +127,22 @@ public final class ActivityAdviceLevel_2_
             }
         }
         {
+<<<<<<< HEAD
             View view = hasViews.findViewById(id.rl3);
+=======
+            View view = hasViews.findViewById(id.rl4);
+>>>>>>> develop
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
+<<<<<<< HEAD
                         ActivityAdviceLevel_2_.this.rl3();
+=======
+                        ActivityAdviceLevel_2_.this.rl4();
+>>>>>>> develop
                     }
 
                 }

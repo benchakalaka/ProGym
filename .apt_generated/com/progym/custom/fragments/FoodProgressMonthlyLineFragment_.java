@@ -54,11 +54,19 @@ public final class FoodProgressMonthlyLineFragment_
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
         fadeOut = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
+<<<<<<< HEAD
         leftIn = AnimationUtils.loadAnimation(getActivity(), anim.push_left_in);
         fadeIn = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
         rightOut = AnimationUtils.loadAnimation(getActivity(), anim.push_right_out);
         leftOut = AnimationUtils.loadAnimation(getActivity(), anim.push_left_out);
         rightIn = AnimationUtils.loadAnimation(getActivity(), anim.push_right_in);
+=======
+        fadeIn = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
+        rightIn = AnimationUtils.loadAnimation(getActivity(), anim.push_right_in);
+        leftOut = AnimationUtils.loadAnimation(getActivity(), anim.push_left_out);
+        leftIn = AnimationUtils.loadAnimation(getActivity(), anim.push_left_in);
+        rightOut = AnimationUtils.loadAnimation(getActivity(), anim.push_right_out);
+>>>>>>> develop
     }
 
     @Override

@@ -43,6 +43,7 @@ public final class ActivityChooseTypeOfAdvice_
 
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
+<<<<<<< HEAD
         rightIn = AnimationUtils.loadAnimation(this, anim.push_right_in);
         rightOut = AnimationUtils.loadAnimation(this, anim.push_right_out);
         leftOut = AnimationUtils.loadAnimation(this, anim.push_left_out);
@@ -50,6 +51,15 @@ public final class ActivityChooseTypeOfAdvice_
         fade = AnimationUtils.loadAnimation(this, anim.fade);
         fadeIn = AnimationUtils.loadAnimation(this, anim.fadein);
         drag = AnimationUtils.loadAnimation(this, anim.drag_animation);
+=======
+        leftIn = AnimationUtils.loadAnimation(this, anim.push_left_in);
+        leftOut = AnimationUtils.loadAnimation(this, anim.push_left_out);
+        fadeIn = AnimationUtils.loadAnimation(this, anim.fadein);
+        fade = AnimationUtils.loadAnimation(this, anim.fade);
+        rightIn = AnimationUtils.loadAnimation(this, anim.push_right_in);
+        drag = AnimationUtils.loadAnimation(this, anim.drag_animation);
+        rightOut = AnimationUtils.loadAnimation(this, anim.push_right_out);
+>>>>>>> develop
     }
 
     @Override
@@ -96,9 +106,15 @@ public final class ActivityChooseTypeOfAdvice_
         llLeftPanelDateWithCalendar = ((LinearLayout) hasViews.findViewById(id.llLeftPanelDateWithCalendar));
         ivPrevDay = ((ImageView) hasViews.findViewById(id.ivPrevDay));
         twCurrentDate = ((TextView) hasViews.findViewById(id.twCurrentDate));
+<<<<<<< HEAD
         llWhatDoYouNeed = ((LinearLayout) hasViews.findViewById(id.llWhatDoYouNeed));
         llCalculateBMI = ((LinearLayout) hasViews.findViewById(id.llCalculateBMI));
         llUsefulTable = ((LinearLayout) hasViews.findViewById(id.llUsefulTable));
+=======
+        llUsefulTable = ((LinearLayout) hasViews.findViewById(id.llUsefulTable));
+        llCalculateBMI = ((LinearLayout) hasViews.findViewById(id.llCalculateBMI));
+        llWhatDoYouNeed = ((LinearLayout) hasViews.findViewById(id.llWhatDoYouNeed));
+>>>>>>> develop
         llCalculateMyBMI = ((LinearLayout) hasViews.findViewById(id.llCalculateMyBMI));
         {
             View view = hasViews.findViewById(id.ivNextDay);
@@ -131,29 +147,22 @@ public final class ActivityChooseTypeOfAdvice_
             }
         }
         {
+<<<<<<< HEAD
             View view = hasViews.findViewById(id.llUsefulTable);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        ActivityChooseTypeOfAdvice_.this.llUsefulTable();
-                    }
-
-                }
-                );
-            }
-        }
-        {
+=======
             View view = hasViews.findViewById(id.llWhatDoYouNeed);
+>>>>>>> develop
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
+<<<<<<< HEAD
+                        ActivityChooseTypeOfAdvice_.this.llUsefulTable();
+=======
                         ActivityChooseTypeOfAdvice_.this.llWhatDoYouNeed();
+>>>>>>> develop
                     }
 
                 }
@@ -169,6 +178,21 @@ public final class ActivityChooseTypeOfAdvice_
                     @Override
                     public void onClick(View view) {
                         ActivityChooseTypeOfAdvice_.this.llCalculateBMI();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.llUsefulTable);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        ActivityChooseTypeOfAdvice_.this.llUsefulTable();
                     }
 
                 }

@@ -53,11 +53,19 @@ public final class WaterProgressMonthlyLineFragment_
 
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
+<<<<<<< HEAD
         rightIn = AnimationUtils.loadAnimation(getActivity(), anim.push_right_in);
         rightOut = AnimationUtils.loadAnimation(getActivity(), anim.push_right_out);
         fadeOut = AnimationUtils.loadAnimation(getActivity(), anim.fadeout);
         leftIn = AnimationUtils.loadAnimation(getActivity(), anim.push_left_in);
         leftOut = AnimationUtils.loadAnimation(getActivity(), anim.push_left_out);
+=======
+        fadeOut = AnimationUtils.loadAnimation(getActivity(), anim.fadeout);
+        leftIn = AnimationUtils.loadAnimation(getActivity(), anim.push_left_in);
+        rightIn = AnimationUtils.loadAnimation(getActivity(), anim.push_right_in);
+        leftOut = AnimationUtils.loadAnimation(getActivity(), anim.push_left_out);
+        rightOut = AnimationUtils.loadAnimation(getActivity(), anim.push_right_out);
+>>>>>>> develop
         fadeIn = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
     }
 
@@ -73,8 +81,13 @@ public final class WaterProgressMonthlyLineFragment_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
+<<<<<<< HEAD
         ivNextYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivNextYear));
         ivPrevYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivPrevYear));
+=======
+        ivPrevYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivPrevYear));
+        ivNextYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivNextYear));
+>>>>>>> develop
         rlRootGraphLayout = ((RelativeLayout) hasViews.findViewById(com.progym.R.id.rlRootGraphLayout));
         {
             View view = hasViews.findViewById(com.progym.R.id.ivPrevYear);
