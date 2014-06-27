@@ -12,7 +12,7 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Touch;
 import org.androidannotations.annotations.ViewById;
 import org.apache.commons.lang3.time.DateUtils;
-
+  
 import android.app.Dialog;
 import android.content.ClipData;
 import android.content.ClipDescription;
@@ -34,7 +34,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
+  
 import com.progym.R;
 import com.progym.constants.GlobalConstants;
 import com.progym.custom.CaldroidFragmentCustom;
@@ -387,25 +387,25 @@ import com.todddavies.components.progressbar.ProgressWheel;
      @Click void ll250ml() {
           animateBody();
           double onePercent = USER_SHOULD_CONSUME / 100;
-          Utils.showCustomToast(ActivityWaterManagement.this, "250 ml is " + String.format("%.2f", 250 / onePercent) + "% of your body norma!", R.drawable.info);
+          Utils.showCustomToast(ActivityWaterManagement.this, "250 ml is " + String.format("%.2f", 250 / onePercent) + "% of your body normal!", R.drawable.info);
      }
 
      @Click void ll500ml() {
           animateBody();
           double onePercent = USER_SHOULD_CONSUME / 100;
-          Utils.showCustomToast(ActivityWaterManagement.this, "500 ml is " + String.format("%.2f", 500 / onePercent) + "% of your body norma!", R.drawable.info);
+          Utils.showCustomToast(ActivityWaterManagement.this, "500 ml is " + String.format("%.2f", 500 / onePercent) + "% of your body normal!", R.drawable.info);
      }
 
      @Click void ll1L() {
           animateBody();
           double onePercent = USER_SHOULD_CONSUME / 100;
-          Utils.showCustomToast(ActivityWaterManagement.this, "1L is " + String.format("%.2f", 1000 / onePercent) + "% of your body norma!", R.drawable.info);
+          Utils.showCustomToast(ActivityWaterManagement.this, "1L is " + String.format("%.2f", 1000 / onePercent) + "% of your body normal!", R.drawable.info);
      }
 
      @Click void ll2L() {
           animateBody();
           double onePercent = USER_SHOULD_CONSUME / 100;
-          Utils.showCustomToast(ActivityWaterManagement.this, "2L is " + String.format("%.2f", 2000 / onePercent) + "% of your body norma!", R.drawable.info);
+          Utils.showCustomToast(ActivityWaterManagement.this, "2L is " + String.format("%.2f", 2000 / onePercent) + "% of your body normal!", R.drawable.info);
      }
 
      @Click void rlCustomMl() {
@@ -413,7 +413,7 @@ import com.todddavies.components.progressbar.ProgressWheel;
           List <CustomWaterVolume> customVolumes = CustomWaterVolume.listAll(CustomWaterVolume.class);
           if ( !customVolumes.isEmpty() ) {
                double onePercent = USER_SHOULD_CONSUME / 100;
-               Utils.showCustomToast(ActivityWaterManagement.this, customVolumes.get(0).customVolume + "ml is " + String.format("%.2f", customVolumes.get(0).customVolume / onePercent) + "% of your body norma!", R.drawable.info);
+                Utils.showCustomToast(ActivityWaterManagement.this, customVolumes.get(0).customVolume + "ml is " + String.format("%.2f", customVolumes.get(0).customVolume / onePercent) + "% of your body normal!", R.drawable.info);
           } else {
                Utils.showCustomToast(ActivityWaterManagement.this, R.string.there_is_no_custom_value, R.drawable.unhappy);
                llEditCustomWater.startAnimation(fade);

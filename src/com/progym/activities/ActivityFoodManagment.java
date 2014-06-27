@@ -11,7 +11,7 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 import org.apache.commons.lang3.time.DateUtils;
-
+   
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -29,7 +29,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
-
+ 
 import com.progym.R;
 import com.progym.constants.GlobalConstants;
 import com.progym.custom.CaldroidFragmentCustom;
@@ -113,7 +113,7 @@ import com.roomorama.caldroid.CaldroidFragment;
                               if ( null != mediaPlayer ) {
                                    mediaPlayer.start();
                               }
-
+ 
                               Ingridient ingridient = new Ingridient(getApplicationContext());
                               ingridient.protein = Double.valueOf(protein);
                               ingridient.carbohydrates = Double.valueOf(carbs);

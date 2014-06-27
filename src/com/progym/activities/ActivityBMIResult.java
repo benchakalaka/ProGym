@@ -41,12 +41,12 @@ import com.progym.R;
      @ViewById TextView                      twHealthyCaloriesRange;
 
      @AnimationRes ( R.anim.fade ) Animation fade;
-     private int                             USER_HEALTHY_CALORIES;
 
      @AfterViews void afterViews() {
           twBmiValue.setText(getGenderNameByIndex(USER_GENDER) + " " + String.format("%.2f", USER_BMI));
           twBmiResultName.setText(getBMINameByIndex(USER_BMI));
           twHealthyWeightRange.setText(String.format("%.2f", USER_HEALTHY_WEIGHT_FROM) + " kg - " + String.format("%.2f", USER_HEALTHY_WEIGHT_TO) + " kg");
+          twHealthyWeightRange.setText(twHealthyWeightRange.getText()+" "+String.format("(%.2f - %.2f)lbs", 2.2*USER_HEALTHY_WEIGHT_FROM, 2.2*USER_HEALTHY_WEIGHT_TO));
           calculateCalories();
      }
 

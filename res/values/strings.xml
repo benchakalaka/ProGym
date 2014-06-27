@@ -7,7 +7,7 @@
 	<string name="_1_9_prof_group">Workers moderate severity labor (average physical activity)</string>
 	<string name="_2_3_prof_group">Workers in heavy physical labor (high physical activity)</string>
 	<string name="_2_5_prof_group">Workers especially hard physical labor (very high physical activity)</string>
-	<string name="_1_4_prestaviteli">Scientists\nHumanitarian specialties students\nIT managers\nSoftware developers\nAny inspectors\nTeachers\nLecturers\nManagers\nEmployees who wirking with control panels etc.</string>
+	<string name="_1_4_prestaviteli">Scientists\nHumanitarian specialties students\nIT managers\nSoftware developers\nAny inspectors\nTeachers\nLecturers\nManagers\nEmployees who working with control panels etc.</string>
 	<string name="_1_6_prestaviteli">Drivers\nWorkers on any conveyors\nWeigher\nPackers\nSeamstresses\nElectronic industry workers\nAgronomists\nNurses/orderlies\nStaff communication\nThe service sector\nSales of manufactured goods etc.</string>
 	<string name="_1_9_prestaviteli">Fitters\nInstallers\nTuners\nMachinists\nDrillers\nDrivers excavators/bulldozers\nSurgeon\nTextile workers\nManufacturers\nRailroad workers\nMetallurgical blast-furnace operators\nWorkers in chemical plants etc.</string>
 	<string name="_2_3_prestaviteli">Construction workers\nAssistant drillers\nTunnellers\nCotton growers\nVast majority of the earthworks\nMilkmaids\nVegetable growers\nWoodworkers, etc.</string>
@@ -22,7 +22,7 @@
 	<string-array name="brain_ingridients_list2">
 		<item>Wild berries</item>
 		<item>Melon</item>
-		<item>Green paper</item>
+		<item>Green papper</item>
 		<item>Broccoli</item>
 	</string-array>
 	<string-array name="brain_ingridients_list3">
@@ -37,7 +37,7 @@
 	<string-array name="fat_ingridients_list1">
 		<item>Lean red meat</item>
 		<item>Fish</item>
-		<item>Птица</item>
+		<item>White meat</item>
 		<item>Tofu</item>
 	</string-array>
 	<string-array name="fat_ingridients_list2">
@@ -47,7 +47,7 @@
 		<item>Bread with bran</item>
 	</string-array>
 	<string-array name="fat_ingridients_list3">
-		<item>Cottage cheese or curd?</item>
+		<item>Cottage cheese or curd</item>
 		<item>Yogurt</item>
 		<item>Skimmed milk</item>
 		<item>Cream Cheese</item>
@@ -56,7 +56,7 @@
 		<item>Watermelon</item>
 		<item>Tomatoes</item>
 		<item>Cucumbers</item>
-		<item>Sweet paper</item>
+		<item>Sweet papper</item>
 	</string-array>
 	<string-array name="stress_ingridients_list1">
 		<item>Spinach</item>
@@ -66,9 +66,9 @@
 	</string-array>
 	<string-array name="stress_ingridients_list2">
 		<item>Eggs</item>
-		<item>Chickpeas, NYT?</item>
+		<item>Chickpeas</item>
 		<item>Chicken</item>
-		<item>Cereals ? krypu</item>
+		<item>Cereals</item>
 	</string-array>
 	<string-array name="stress_ingridients_list3">
 		<item>Cabbage</item>
@@ -77,16 +77,16 @@
 		<item>Cherry</item>
 	</string-array>
 	<string-array name="stress_ingridients_list4">
-		<item>Tofu ??</item>
-		<item>Rye bread ??</item>
+		<item>Tofu</item>
+		<item>Rye bread</item>
 		<item>Pine nuts</item>
 		<item>Sesame</item>
 	</string-array>
 	<string-array name="energy_ingridients_list1">
-		<item>Rabbit ??</item>
+		<item>Rabbit</item>
 		<item>Linseed oil</item>
 		<item>Sunflower oil</item>
-		<item>Oily fish ?? </item>
+		<item>Oily fish</item>
 	</string-array>
 	<string-array name="energy_ingridients_list2">
 		<item>Buckwheat</item>
@@ -96,14 +96,14 @@
 	</string-array>
 	<string-array name="energy_ingridients_list3">
 		<item>Carrots</item>
-		<item>Red pepper</item>
-		<item>Arugula ?</item>
+		<item>Red papper</item>
+		<item>Arugula</item>
 		<item>Mango</item>
 	</string-array>
 	<string-array name="energy_ingridients_list4">
 		<item>Dried figs</item>
 		<item>Cashew</item>
-		<item>Lentils ?? chechevica</item>
+		<item>Lentils</item>
 		<item>Lean red oil</item>
 	</string-array>
 
@@ -124,13 +124,13 @@
 	<string name="energy3">Beta-carotene</string>
 	<string name="energy4">Iron</string>
 	<string name="fat_descr1">Quickly saturates</string>
-	<string name="fat_descr2">Does not give you get hungry and controls the blood sugar level</string>
+	<string name="fat_descr2">Helps you to control hunger and blood sugar level</string>
 	<string name="fat_descr3">Help to cope with fatty adjournment</string>
 	<string name="fat_descr4">Contains few calories</string>
 	<string name="stress_descr1">Improves the functioning of the nervous and circulatory system</string>
 	<string name="stress_descr2">For a healthy nervous system</string>
 	<string name="stress_descr3">Enhances your immunity</string>
-	<string name="stress_descr4">Mineral that you actively spend under stress</string>
+	<string name="stress_descr4">Mineral that you actively loose under stress</string>
 	<string name="brain_descr1">Regulates blood flow to the brain</string>
 	<string name="brain_descr2">Enhances your immunity</string>
 	<string name="brain_descr3">For a healthy nervous system</string>
@@ -145,7 +145,7 @@
 	<string name="obese_">30&#8212;35.99</string>
 	<string name="severely_obese_">36&#8212;39.99</string>
 	<string name="morbidly_obese_">more than 40</string>
-	<string name="drag_items_to_screen_center">Drag one of the item to the center of the screen</string>
+	<string name="drag_items_to_screen_center">Drag one of the items to the center of the screen</string>
 	<string name="ingridients_list">List of ingridients</string>
 	<string name="restriction_meal">You can log up to 25 items per meal</string>
 	<string name="restriction_water">You can log up to 25 water items per day</string>
@@ -196,12 +196,12 @@
 	<string name="representatives">Representatives of the group</string>
 	<string name="pa_explanation">PA (Physical Activity Coefficeint) - physical activity is important for managing body weight by both older and small persons who might miss key micronutrients when consuming restrictive diets. Further, physical activity results in the anabolic and regulatory processes in skeletal muscle, develops cardiovascular system improvements, improves blood lipoprotein profiles in older adults, and leads to increased expression of many beneficial enzymes and enzyme systems in diverse organs and organ systems from bones and muscles to brain.</string>
 	<string name="what_do_you_need">What do you need?</string>
-	<string name="which_describes_best_your_activity">Which of the below best describes your activity levels?</string>
+	<string name="which_describes_best_your_activity">Which of the below best describes your activity levels? (click the circle on the right)</string>
 	<string name="iam_inactive">I am inactive</string>
 	<string name="iam_inactive_description">I travel by car or public transport, I don\'t have an active job, I spend most of my work and leisure time sitting and I do little or no exercise.</string>
-	<string name="iam_low_activity">My activity level are low</string>
+	<string name="iam_low_activity">My activity level is low</string>
 	<string name="iam_low_activity_description">I occasionally travel on foot, I don\'t have an active job, I spend most of my work and leisure time sitting and do a maximum of 2.5 hours exercise a week.</string>
-	<string name="iam_moderate">My activity levels are moderate</string>
+	<string name="iam_moderate">My activity level is moderate</string>
 	<string name="iam_moderate_description">I regularly travel on foot or bike, I am active at work and home, I don\'t spend much time sitting and I do at least 2.5 hours exercise each week.</string>
 	<string name="back">Back</string>
 	<string name="next">Next</string>
@@ -247,11 +247,11 @@
 	<string name="daily">Daily</string>
 	<string name="edit">Edit</string>
 	<string name="add_to_current_meal">Add to current meal</string>
-	<string name="meat">Meat And Fish (Protein)</string>
+	<string name="meat">Meat/Fish (Protein)</string>
 	<string name="porridge">Porridge (Carbohydrates)</string>
 	<string name="vegetables">Vegetables</string>
-	<string name="fruits">Fruits and Nuts</string>
-	<string name="sweets_milk">Sweets And Milk products</string>
+	<string name="fruits">Fruits/Nuts</string>
+	<string name="sweets_milk">Bakery/Sweets/Milk products</string>
 	<string name="ready_meals">Ready meals</string>
 	<string name="_100g_contains">100g contains</string>
 	<string name="protein">Protein</string>

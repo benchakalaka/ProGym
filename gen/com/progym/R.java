@@ -50,7 +50,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int barAxisColor=0x7f010007;
+        public static final int barAxisColor=0x7f010015;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -59,7 +59,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int barColor=0x7f010010;
+        public static final int barColor=0x7f010003;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -69,7 +69,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int barLength=0x7f010018;
+        public static final int barLength=0x7f01000b;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -77,7 +77,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int barShowAxis=0x7f010009;
+        public static final int barShowAxis=0x7f010017;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -85,7 +85,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int barShowAxisLabel=0x7f01000a;
+        public static final int barShowAxisLabel=0x7f010018;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -93,7 +93,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int barShowPopup=0x7f01000c;
+        public static final int barShowPopup=0x7f01001a;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -101,7 +101,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int barShowText=0x7f01000b;
+        public static final int barShowText=0x7f010019;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -111,7 +111,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int barWidth=0x7f010017;
+        public static final int barWidth=0x7f01000a;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -139,7 +139,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int circleColor=0x7f010015;
+        public static final int circleColor=0x7f010008;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -148,7 +148,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int contourColor=0x7f010019;
+        public static final int contourColor=0x7f01000c;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -158,7 +158,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int contourSize=0x7f01001a;
+        public static final int contourSize=0x7f01000d;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -176,7 +176,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int delayMillis=0x7f010014;
+        public static final int delayMillis=0x7f010007;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -185,7 +185,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int lineAxisColor=0x7f010003;
+        public static final int lineAxisColor=0x7f010011;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -194,7 +194,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int lineStrokeColor=0x7f010002;
+        public static final int lineStrokeColor=0x7f010010;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -204,7 +204,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int lineStrokeSpacing=0x7f010005;
+        public static final int lineStrokeSpacing=0x7f010013;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -214,7 +214,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int lineStrokeWidth=0x7f010004;
+        public static final int lineStrokeWidth=0x7f010012;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -222,7 +222,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int lineUseDip=0x7f010006;
+        public static final int lineUseDip=0x7f010014;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -241,7 +241,7 @@ containing a value of this type.
 <tr><td><code>vertical</code></td><td>1</td><td></td></tr>
 </table>
          */
-        public static final int orientation=0x7f010008;
+        public static final int orientation=0x7f010016;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -257,7 +257,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int pieInnerCircleRatio=0x7f010000;
+        public static final int pieInnerCircleRatio=0x7f01000e;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -267,7 +267,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int pieSlicePadding=0x7f010001;
+        public static final int pieSlicePadding=0x7f01000f;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -277,7 +277,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int radius=0x7f010016;
+        public static final int radius=0x7f010009;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -286,7 +286,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int rimColor=0x7f010011;
+        public static final int rimColor=0x7f010004;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -296,7 +296,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int rimWidth=0x7f010012;
+        public static final int rimWidth=0x7f010005;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -306,7 +306,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int spinSpeed=0x7f010013;
+        public static final int spinSpeed=0x7f010006;
         /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -314,7 +314,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int text=0x7f01000d;
+        public static final int text=0x7f010000;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -323,7 +323,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int textColor=0x7f01000e;
+        public static final int textColor=0x7f010001;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -333,7 +333,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int textSize=0x7f01000f;
+        public static final int textSize=0x7f010002;
     }
     public static final class color {
         public static final int blue=0x7f08000b;
@@ -485,203 +485,205 @@ containing a value of this type.
 >>>>>>> develop
     }
     public static final class id {
-        public static final int RelativeLayout01=0x7f0600bb;
-        public static final int activity_start_button_settings=0x7f060091;
-        public static final int bargraph=0x7f06008b;
-        public static final int btnAboutBmiIndex=0x7f060026;
-        public static final int btnAddReadyMealToCurrPlate=0x7f060085;
-        public static final int btnBack=0x7f06001f;
-        public static final int btnCalculateBMI=0x7f06002d;
-        public static final int btnCancel=0x7f060054;
-        public static final int btnEdit=0x7f06007e;
-        public static final int btnFinish=0x7f060025;
-        public static final int btnFruits=0x7f060097;
-        public static final int btnMeat=0x7f060092;
-        public static final int btnNext=0x7f060020;
-        public static final int btnOther=0x7f06009a;
-        public static final int btnPorridge=0x7f060093;
-        public static final int btnReadyMeals=0x7f06009b;
-        public static final int btnSave=0x7f060055;
-        public static final int btnVegitables=0x7f060096;
-        public static final int btn_increment=0x7f0600bf;
-        public static final int btn_spin=0x7f0600be;
-        public static final int calendar_gridview=0x7f06007b;
-        public static final int calendar_left_arrow=0x7f06006c;
-        public static final int calendar_month_year_textview=0x7f06006d;
-        public static final int calendar_right_arrow=0x7f06006e;
-        public static final int calendar_title_view=0x7f06006b;
-        public static final int calendar_tv=0x7f06007a;
-        public static final int countryName=0x7f060087;
-        public static final int etBMIAge=0x7f06002a;
-        public static final int etBMIHeight=0x7f06002b;
-        public static final int etBMIWeight=0x7f06002c;
-        public static final int etCarbs=0x7f0600ab;
-        public static final int etCustomValue=0x7f06007f;
-        public static final int etFat=0x7f0600aa;
-        public static final int etKkal=0x7f0600ac;
-        public static final int etProtein=0x7f0600a9;
-        public static final int etUserAge=0x7f060052;
-        public static final int etUserHeight=0x7f060051;
-        public static final int etUserName=0x7f06004f;
-        public static final int etUserWeight=0x7f060050;
-        public static final int etWeight=0x7f0600a7;
-        public static final int horizontal=0x7f060000;
-        public static final int horizontalScrollView=0x7f06003d;
-        public static final int hsvWaterVolumes=0x7f060059;
-        public static final int ibCreatePlate=0x7f060040;
-        public static final int ibSavePlate=0x7f060042;
-        public static final int image=0x7f0600b4;
-        public static final int imageIcon=0x7f060086;
-        public static final int iv1=0x7f06000b;
-        public static final int iv2=0x7f06000f;
-        public static final int iv3=0x7f060013;
-        public static final int iv4=0x7f060017;
-        public static final int ivBodyWater=0x7f060067;
-        public static final int ivBodyWaterLevel=0x7f060066;
-        public static final int ivBottle1L=0x7f060060;
-        public static final int ivBottle2L=0x7f060062;
-        public static final int ivBottle500ML=0x7f06005e;
-        public static final int ivBrain=0x7f060008;
-        public static final int ivCustomWaterVolume=0x7f060064;
-        public static final int ivEdit=0x7f06007d;
-        public static final int ivEditIngridient=0x7f0600ad;
-        public static final int ivEnergy=0x7f060006;
-        public static final int ivFatBurinig=0x7f060007;
-        public static final int ivFoodImage=0x7f0600a5;
-        public static final int ivGlass250ML=0x7f06005b;
-        public static final int ivListOfConsumedWater=0x7f06006a;
-        public static final int ivNextDay=0x7f060037;
-        public static final int ivNextYear=0x7f06008d;
-        public static final int ivOnPlate=0x7f06003c;
-        public static final int ivPrevDay=0x7f060036;
-        public static final int ivPrevYear=0x7f06008c;
-        public static final int ivProduct=0x7f0600b2;
-        public static final int ivStressReduction=0x7f060009;
-        public static final int ivUserProfile=0x7f06004a;
-        public static final int ivUserProgress=0x7f060048;
-        public static final int ivVolumeImage=0x7f060075;
-        public static final int iv_login_header_image=0x7f0600b7;
-        public static final int linear_layout=0x7f0600a3;
-        public static final int ll1L=0x7f06005f;
-        public static final int ll250ml=0x7f06005a;
-        public static final int ll2L=0x7f060061;
-        public static final int ll500ml=0x7f06005d;
-        public static final int llAdvice=0x7f06004b;
-        public static final int llAlreadyConsumedWaterList=0x7f060069;
-        public static final int llAlreadyOnPlate=0x7f060041;
-        public static final int llBMIHeader=0x7f06001a;
-        public static final int llBackNext=0x7f06001b;
-        public static final int llCalcBmi=0x7f060027;
-        public static final int llCalculateBMI=0x7f060031;
-        public static final int llCalculateMyBMI=0x7f060032;
-        public static final int llConsumedStatistic=0x7f060056;
-        public static final int llCreatedPlates=0x7f06003e;
-        public static final int llDragOnMe=0x7f060005;
-        public static final int llEditCustomWater=0x7f060065;
-        public static final int llFoodCalloriesProgress=0x7f060033;
-        public static final int llFoodProgress=0x7f060035;
-        public static final int llIngridientsListToAdd=0x7f060084;
-        public static final int llKkalAndWeight=0x7f0600a6;
-        public static final int llLeftPanelDateWithCalendar=0x7f060038;
-        public static final int llNutrition=0x7f060045;
-        public static final int llNutritionInformation=0x7f0600a4;
-        public static final int llOn100gr=0x7f0600a8;
-        public static final int llPAC=0x7f060003;
-        public static final int llPFCColorExplanation=0x7f0600af;
-        public static final int llProfile=0x7f060049;
-        public static final int llProgress=0x7f060047;
-        public static final int llRangePanel=0x7f060071;
-        public static final int llRightPanelBody=0x7f06003b;
-        public static final int llRootListOfWaterVolumes=0x7f060081;
-        public static final int llSaveCancelButtons=0x7f06004e;
-        public static final int llUsefulTable=0x7f060030;
-        public static final int llWater=0x7f060046;
-        public static final int llWaterProgress=0x7f060034;
-        public static final int llWhatDoYouNeed=0x7f06002f;
-        public static final int months_infinite_pager=0x7f060070;
-        public static final int pbConsumedLeft=0x7f060058;
-        public static final int pieGraph=0x7f0600b0;
-        public static final int pieGraphFoodStats=0x7f06009e;
-        public static final int progressBar=0x7f0600ba;
-        public static final int progressBarFour=0x7f0600c2;
-        public static final int progressBarThree=0x7f0600c1;
-        public static final int progressBarTwo=0x7f0600c0;
-        public static final int progressImage=0x7f0600bc;
-        public static final int pwConsumedCircleProgress=0x7f060068;
-        public static final int rbFemale=0x7f060029;
-        public static final int rbInactive=0x7f06001c;
-        public static final int rbLow=0x7f06001d;
-        public static final int rbMale=0x7f060028;
-        public static final int rbModerate=0x7f06001e;
-        public static final int rl1=0x7f06000a;
-        public static final int rl2=0x7f06000e;
-        public static final int rl3=0x7f060012;
-        public static final int rl4=0x7f060016;
-        public static final int rlCustomMl=0x7f060063;
-        public static final int rlRoot=0x7f060080;
-        public static final int rlRootDailyBar=0x7f06008a;
-        public static final int rlRootGraphLayout=0x7f06008f;
-        public static final int rlRrootItem=0x7f060074;
-        public static final int rlSlideMe=0x7f060004;
-        public static final int rl_login_header=0x7f0600b6;
-        public static final int rl_start_root=0x7f060044;
-        public static final int rl_user_profile=0x7f06004d;
-        public static final int roootScrill=0x7f06002e;
-        public static final int rootRelative=0x7f0600b1;
-        public static final int rrrrrrrr=0x7f060082;
-        public static final int scrollView1=0x7f060002;
-        public static final int scroll__=0x7f060043;
-        public static final int spinnerGender=0x7f060053;
-        public static final int ssssssssw=0x7f060083;
-        public static final int start_textview_briefing=0x7f060099;
-        public static final int start_textview_calendar=0x7f060095;
-        public static final int start_textview_drawing=0x7f060094;
-        public static final int start_textview_exit=0x7f06009d;
-        public static final int start_textview_gmaps=0x7f060098;
-        public static final int start_textview_label_settings=0x7f06009c;
-        public static final int svListOfConsumedMeals=0x7f06003f;
-        public static final int text=0x7f0600b5;
-        public static final int textView1=0x7f06005c;
-        public static final int textView2=0x7f06004c;
-        public static final int toast_image_view=0x7f060078;
-        public static final int toast_layout_root=0x7f060077;
-        public static final int toast_text_view=0x7f060079;
-        public static final int topscroll=0x7f060090;
-        public static final int tv_progressText=0x7f0600bd;
-        public static final int tw1=0x7f06000c;
-        public static final int tw1Description=0x7f06000d;
-        public static final int tw2=0x7f060010;
-        public static final int tw2Description=0x7f060011;
-        public static final int tw3=0x7f060014;
-        public static final int tw3Description=0x7f060015;
-        public static final int tw4=0x7f060018;
-        public static final int tw4Description=0x7f060019;
-        public static final int twBmiResultName=0x7f060022;
-        public static final int twBmiValue=0x7f060021;
-        public static final int twCalories=0x7f0600a2;
-        public static final int twCarbs=0x7f0600a1;
-        public static final int twCurrentDate=0x7f060039;
-        public static final int twCurrentDay=0x7f06008e;
-        public static final int twDaily=0x7f060089;
-        public static final int twEdit=0x7f06007c;
-        public static final int twFat=0x7f0600a0;
-        public static final int twGroupNameAndIngridientName=0x7f0600ae;
-        public static final int twHealthyCaloriesRange=0x7f060023;
-        public static final int twHealthyWeightRange=0x7f060024;
-        public static final int twIngridientsAmount=0x7f060076;
-        public static final int twMonthly=0x7f060072;
-        public static final int twPercentComplete=0x7f060057;
-        public static final int twProductDescription=0x7f0600b3;
-        public static final int twProtein=0x7f06009f;
-        public static final int twTime=0x7f0600c4;
-        public static final int twWaterVolume=0x7f0600c3;
-        public static final int twYearly=0x7f060073;
-        public static final int v_login_gradient=0x7f0600b8;
-        public static final int vertical=0x7f060001;
-        public static final int vf_login_flipper=0x7f0600b9;
-        public static final int viewPager=0x7f06003a;
-        public static final int water_managment_root_relative_layout=0x7f060088;
-        public static final int weekday_gridview=0x7f06006f;
+        public static final int RelativeLayout01=0x7f0700bd;
+        public static final int activity_start_button_settings=0x7f070093;
+        public static final int bargraph=0x7f07008d;
+        public static final int btnAboutBmiIndex=0x7f070026;
+        public static final int btnAddReadyMealToCurrPlate=0x7f070087;
+        public static final int btnBack=0x7f07001f;
+        public static final int btnCalculateBMI=0x7f07002d;
+        public static final int btnCancel=0x7f070056;
+        public static final int btnEdit=0x7f070080;
+        public static final int btnFinish=0x7f070025;
+        public static final int btnFruits=0x7f070099;
+        public static final int btnMeat=0x7f070094;
+        public static final int btnNext=0x7f070020;
+        public static final int btnOther=0x7f07009c;
+        public static final int btnPorridge=0x7f070095;
+        public static final int btnReadyMeals=0x7f07009d;
+        public static final int btnSave=0x7f070057;
+        public static final int btnVegitables=0x7f070098;
+        public static final int btn_increment=0x7f0700c1;
+        public static final int btn_spin=0x7f0700c0;
+        public static final int calendar_gridview=0x7f07007d;
+        public static final int calendar_left_arrow=0x7f07006e;
+        public static final int calendar_month_year_textview=0x7f07006f;
+        public static final int calendar_right_arrow=0x7f070070;
+        public static final int calendar_title_view=0x7f07006d;
+        public static final int calendar_tv=0x7f07007c;
+        public static final int countryName=0x7f070089;
+        public static final int etBMIAge=0x7f07002a;
+        public static final int etBMIHeight=0x7f07002b;
+        public static final int etBMIWeight=0x7f07002c;
+        public static final int etCarbs=0x7f0700ad;
+        public static final int etCustomValue=0x7f070081;
+        public static final int etFat=0x7f0700ac;
+        public static final int etKkal=0x7f0700ae;
+        public static final int etProtein=0x7f0700ab;
+        public static final int etUserAge=0x7f070054;
+        public static final int etUserHeight=0x7f070053;
+        public static final int etUserName=0x7f07004f;
+        public static final int etUserWeight=0x7f070051;
+        public static final int etWeight=0x7f0700a9;
+        public static final int horizontal=0x7f070000;
+        public static final int horizontalScrollView=0x7f07003d;
+        public static final int hsvWaterVolumes=0x7f07005b;
+        public static final int ibCreatePlate=0x7f070040;
+        public static final int ibSavePlate=0x7f070042;
+        public static final int image=0x7f0700b6;
+        public static final int imageIcon=0x7f070088;
+        public static final int iv1=0x7f07000b;
+        public static final int iv2=0x7f07000f;
+        public static final int iv3=0x7f070013;
+        public static final int iv4=0x7f070017;
+        public static final int ivBodyWater=0x7f070069;
+        public static final int ivBodyWaterLevel=0x7f070068;
+        public static final int ivBottle1L=0x7f070062;
+        public static final int ivBottle2L=0x7f070064;
+        public static final int ivBottle500ML=0x7f070060;
+        public static final int ivBrain=0x7f070008;
+        public static final int ivCustomWaterVolume=0x7f070066;
+        public static final int ivEdit=0x7f07007f;
+        public static final int ivEditIngridient=0x7f0700af;
+        public static final int ivEnergy=0x7f070006;
+        public static final int ivFatBurinig=0x7f070007;
+        public static final int ivFoodImage=0x7f0700a7;
+        public static final int ivGlass250ML=0x7f07005d;
+        public static final int ivListOfConsumedWater=0x7f07006c;
+        public static final int ivNextDay=0x7f070037;
+        public static final int ivNextYear=0x7f07008f;
+        public static final int ivOnPlate=0x7f07003c;
+        public static final int ivPrevDay=0x7f070036;
+        public static final int ivPrevYear=0x7f07008e;
+        public static final int ivProduct=0x7f0700b4;
+        public static final int ivStressReduction=0x7f070009;
+        public static final int ivUserProfile=0x7f07004a;
+        public static final int ivUserProgress=0x7f070048;
+        public static final int ivVolumeImage=0x7f070077;
+        public static final int iv_login_header_image=0x7f0700b9;
+        public static final int linear_layout=0x7f0700a5;
+        public static final int ll1L=0x7f070061;
+        public static final int ll250ml=0x7f07005c;
+        public static final int ll2L=0x7f070063;
+        public static final int ll500ml=0x7f07005f;
+        public static final int llAdvice=0x7f07004b;
+        public static final int llAlreadyConsumedWaterList=0x7f07006b;
+        public static final int llAlreadyOnPlate=0x7f070041;
+        public static final int llBMIHeader=0x7f07001a;
+        public static final int llBackNext=0x7f07001b;
+        public static final int llCalcBmi=0x7f070027;
+        public static final int llCalculateBMI=0x7f070031;
+        public static final int llCalculateMyBMI=0x7f070032;
+        public static final int llConsumedStatistic=0x7f070058;
+        public static final int llCreatedPlates=0x7f07003e;
+        public static final int llDragOnMe=0x7f070005;
+        public static final int llEditCustomWater=0x7f070067;
+        public static final int llFoodCalloriesProgress=0x7f070033;
+        public static final int llFoodProgress=0x7f070035;
+        public static final int llIngridientsListToAdd=0x7f070086;
+        public static final int llKkalAndWeight=0x7f0700a8;
+        public static final int llLeftPanelDateWithCalendar=0x7f070038;
+        public static final int llNutrition=0x7f070045;
+        public static final int llNutritionInformation=0x7f0700a6;
+        public static final int llOn100gr=0x7f0700aa;
+        public static final int llPAC=0x7f070003;
+        public static final int llPFCColorExplanation=0x7f0700b1;
+        public static final int llProfile=0x7f070049;
+        public static final int llProgress=0x7f070047;
+        public static final int llRangePanel=0x7f070073;
+        public static final int llRightPanelBody=0x7f07003b;
+        public static final int llRootListOfWaterVolumes=0x7f070083;
+        public static final int llSaveCancelButtons=0x7f07004e;
+        public static final int llUsefulTable=0x7f070030;
+        public static final int llWater=0x7f070046;
+        public static final int llWaterProgress=0x7f070034;
+        public static final int llWhatDoYouNeed=0x7f07002f;
+        public static final int months_infinite_pager=0x7f070072;
+        public static final int pbConsumedLeft=0x7f07005a;
+        public static final int pieGraph=0x7f0700b2;
+        public static final int pieGraphFoodStats=0x7f0700a0;
+        public static final int progressBar=0x7f0700bc;
+        public static final int progressBarFour=0x7f0700c4;
+        public static final int progressBarThree=0x7f0700c3;
+        public static final int progressBarTwo=0x7f0700c2;
+        public static final int progressImage=0x7f0700be;
+        public static final int pwConsumedCircleProgress=0x7f07006a;
+        public static final int rbFemale=0x7f070029;
+        public static final int rbInactive=0x7f07001c;
+        public static final int rbLow=0x7f07001d;
+        public static final int rbMale=0x7f070028;
+        public static final int rbModerate=0x7f07001e;
+        public static final int rl1=0x7f07000a;
+        public static final int rl2=0x7f07000e;
+        public static final int rl3=0x7f070012;
+        public static final int rl4=0x7f070016;
+        public static final int rlCustomMl=0x7f070065;
+        public static final int rlRoot=0x7f070082;
+        public static final int rlRootDailyBar=0x7f07008c;
+        public static final int rlRootGraphLayout=0x7f070091;
+        public static final int rlRrootItem=0x7f070076;
+        public static final int rlSlideMe=0x7f070004;
+        public static final int rl_login_header=0x7f0700b8;
+        public static final int rl_start_root=0x7f070044;
+        public static final int rl_user_profile=0x7f07004d;
+        public static final int roootScrill=0x7f07002e;
+        public static final int rootRelative=0x7f0700b3;
+        public static final int rrrrrrrr=0x7f070084;
+        public static final int scrollView1=0x7f070002;
+        public static final int scroll__=0x7f070043;
+        public static final int spinnerGender=0x7f070055;
+        public static final int ssssssssw=0x7f070085;
+        public static final int start_textview_briefing=0x7f07009b;
+        public static final int start_textview_calendar=0x7f070097;
+        public static final int start_textview_drawing=0x7f070096;
+        public static final int start_textview_exit=0x7f07009f;
+        public static final int start_textview_gmaps=0x7f07009a;
+        public static final int start_textview_label_settings=0x7f07009e;
+        public static final int svListOfConsumedMeals=0x7f07003f;
+        public static final int text=0x7f0700b7;
+        public static final int textView1=0x7f07005e;
+        public static final int textView2=0x7f07004c;
+        public static final int toast_image_view=0x7f07007a;
+        public static final int toast_layout_root=0x7f070079;
+        public static final int toast_text_view=0x7f07007b;
+        public static final int topscroll=0x7f070092;
+        public static final int tv_progressText=0x7f0700bf;
+        public static final int tw1=0x7f07000c;
+        public static final int tw1Description=0x7f07000d;
+        public static final int tw2=0x7f070010;
+        public static final int tw2Description=0x7f070011;
+        public static final int tw3=0x7f070014;
+        public static final int tw3Description=0x7f070015;
+        public static final int tw4=0x7f070018;
+        public static final int tw4Description=0x7f070019;
+        public static final int twBmiResultName=0x7f070022;
+        public static final int twBmiValue=0x7f070021;
+        public static final int twCalories=0x7f0700a4;
+        public static final int twCarbs=0x7f0700a3;
+        public static final int twCurrentDate=0x7f070039;
+        public static final int twCurrentDay=0x7f070090;
+        public static final int twDaily=0x7f07008b;
+        public static final int twEdit=0x7f07007e;
+        public static final int twFat=0x7f0700a2;
+        public static final int twGroupNameAndIngridientName=0x7f0700b0;
+        public static final int twHealthyCaloriesRange=0x7f070023;
+        public static final int twHealthyWeightRange=0x7f070024;
+        public static final int twHeight=0x7f070052;
+        public static final int twIngridientsAmount=0x7f070078;
+        public static final int twMonthly=0x7f070074;
+        public static final int twPercentComplete=0x7f070059;
+        public static final int twProductDescription=0x7f0700b5;
+        public static final int twProtein=0x7f0700a1;
+        public static final int twTime=0x7f0700c6;
+        public static final int twWaterVolume=0x7f0700c5;
+        public static final int twWeight=0x7f070050;
+        public static final int twYearly=0x7f070075;
+        public static final int v_login_gradient=0x7f0700ba;
+        public static final int vertical=0x7f070001;
+        public static final int vf_login_flipper=0x7f0700bb;
+        public static final int viewPager=0x7f07003a;
+        public static final int water_managment_root_relative_layout=0x7f07008a;
+        public static final int weekday_gridview=0x7f070071;
     }
     public static final class layout {
         public static final int activity_advice_age_group=0x7f030000;
@@ -731,166 +733,166 @@ containing a value of this type.
         public static final int water=0x7f050001;
     }
     public static final class string {
-        public static final int _100g_contains=0x7f070098;
-        public static final int _1_4_prestaviteli=0x7f070007;
-        public static final int _1_4_prof_group=0x7f070002;
-        public static final int _1_6_prestaviteli=0x7f070008;
-        public static final int _1_6_prof_group=0x7f070003;
-        public static final int _1_9_prestaviteli=0x7f070009;
-        public static final int _1_9_prof_group=0x7f070004;
-        public static final int _1littre=0x7f07008b;
-        public static final int _250ml=0x7f070089;
-        public static final int _2_3_prestaviteli=0x7f07000a;
-        public static final int _2_3_prof_group=0x7f070005;
-        public static final int _2_5_prestaviteli=0x7f07000b;
-        public static final int _2_5_prof_group=0x7f070006;
-        public static final int _2littre=0x7f07008c;
-        public static final int _500ml=0x7f07008a;
-        public static final int about_bmi=0x7f070072;
-        public static final int add_to_current_meal=0x7f070091;
-        public static final int age=0x7f070074;
-        public static final int age_capital=0x7f070054;
-        public static final int app_name=0x7f070001;
-        public static final int back=0x7f070066;
-        public static final int bmi=0x7f07006e;
-        public static final int bmi_calculator=0x7f070073;
-        public static final int body_type_explanation=0x7f070045;
-        public static final int brain1=0x7f070014;
-        public static final int brain2=0x7f070015;
-        public static final int brain3=0x7f070016;
-        public static final int brain4=0x7f070017;
-        public static final int brain_descr1=0x7f070024;
-        public static final int brain_descr2=0x7f070025;
-        public static final int brain_descr3=0x7f070026;
-        public static final int brain_descr4=0x7f070027;
-        public static final int brain_work=0x7f07003a;
-        public static final int building_list=0x7f070037;
-        public static final int calculate_bmi=0x7f07007c;
-        public static final int calculate_my_bmi=0x7f07007d;
-        public static final int callories_consumption=0x7f07004d;
-        public static final int calories=0x7f07009a;
-        public static final int carbs=0x7f070058;
-        public static final int create_plate=0x7f07003f;
-        public static final int create_plate_before_saving=0x7f070042;
-        public static final int create_profile_please=0x7f070044;
-        public static final int daily=0x7f07008f;
-        public static final int drag_items_to_screen_center=0x7f070032;
-        public static final int drink_something=0x7f070047;
-        public static final int edit=0x7f070090;
-        public static final int energy=0x7f07003b;
-        public static final int energy1=0x7f070018;
-        public static final int energy2=0x7f070019;
-        public static final int energy3=0x7f07001a;
-        public static final int energy4=0x7f07001b;
-        public static final int energy_descr1=0x7f070028;
-        public static final int energy_descr2=0x7f070029;
-        public static final int energy_descr3=0x7f07002a;
-        public static final int energy_descr4=0x7f07002b;
-        public static final int energy_kkal=0x7f070055;
-        public static final int energy_table=0x7f07007b;
-        public static final int fat=0x7f070057;
-        public static final int fat1=0x7f07000c;
-        public static final int fat2=0x7f07000d;
-        public static final int fat3=0x7f07000e;
-        public static final int fat4=0x7f07000f;
-        public static final int fat_burning=0x7f07003c;
-        public static final int fat_descr1=0x7f07001c;
-        public static final int fat_descr2=0x7f07001d;
-        public static final int fat_descr3=0x7f07001e;
-        public static final int fat_descr4=0x7f07001f;
-        public static final int female=0x7f07005a;
-        public static final int finish=0x7f070071;
-        public static final int fruits=0x7f070095;
-        public static final int gender=0x7f070087;
-        public static final int group=0x7f070052;
-        public static final int healthy_weight_range=0x7f070070;
-        public static final int height_cm=0x7f070076;
-        public static final int hello=0x7f070000;
-        public static final int hint_eg_177cm=0x7f070077;
-        public static final int hint_eg_24=0x7f070075;
-        public static final int hint_eg_56kg=0x7f070079;
-        public static final int i=0x7f07009e;
-        public static final int iam_inactive=0x7f070060;
-        public static final int iam_inactive_description=0x7f070061;
-        public static final int iam_low_activity=0x7f070062;
-        public static final int iam_low_activity_description=0x7f070063;
-        public static final int iam_moderate=0x7f070064;
-        public static final int iam_moderate_description=0x7f070065;
-        public static final int ingridients_has_been_added=0x7f070051;
-        public static final int ingridients_list=0x7f070033;
-        public static final int input_volume_in_ml=0x7f070049;
-        public static final int kkal_statistic=0x7f07007f;
-        public static final int list_of_products=0x7f07003e;
-        public static final int list_of_products_has_been_saved=0x7f070041;
-        public static final int male=0x7f070059;
-        public static final int meat=0x7f070092;
-        public static final int monthly=0x7f07008d;
-        public static final int morbidly_obese=0x7f07006d;
-        public static final int morbidly_obese_=0x7f070031;
-        public static final int name=0x7f070086;
-        public static final int name_age_weight_arent_filled_properly=0x7f070046;
-        public static final int name_of_product_cannot_be_empty=0x7f07004f;
-        public static final int next=0x7f070067;
-        public static final int noraml_=0x7f07002d;
-        public static final int normal=0x7f070069;
-        public static final int nutrition=0x7f070082;
-        public static final int obese=0x7f07006b;
-        public static final int obese_=0x7f07002f;
-        public static final int overweight=0x7f07006a;
-        public static final int overweight_=0x7f07002e;
-        public static final int pa=0x7f070053;
-        public static final int pa_explanation=0x7f07005d;
-        public static final int pfc_statistic=0x7f070081;
-        public static final int plate_has_been_created=0x7f070043;
-        public static final int please_input_proper_value=0x7f07004a;
-        public static final int please_wait=0x7f070038;
-        public static final int populating_data=0x7f070039;
-        public static final int porridge=0x7f070093;
-        public static final int prof_group=0x7f07005b;
-        public static final int profile=0x7f070084;
-        public static final int progress=0x7f070083;
-        public static final int protein=0x7f070099;
-        public static final int protein_animal_g=0x7f070056;
-        public static final int ready_meals=0x7f070097;
-        public static final int recomended_kkal_intake_should_be=0x7f07006f;
-        public static final int representatives=0x7f07005c;
-        public static final int restriction_meal=0x7f070034;
-        public static final int restriction_plates_amount=0x7f07009c;
-        public static final int restriction_water=0x7f070035;
-        public static final int save_profile=0x7f070088;
-        public static final int saving=0x7f070036;
-        public static final int select_date=0x7f07009f;
-        public static final int set_proper_prot_carbs_fat=0x7f070050;
-        public static final int severely_obese=0x7f07006c;
-        public static final int severely_obese_=0x7f070030;
-        public static final int should_be_greater_than_0=0x7f07004b;
-        public static final int stay_wise=0x7f07007a;
-        public static final int stress1=0x7f070010;
-        public static final int stress2=0x7f070011;
-        public static final int stress3=0x7f070012;
-        public static final int stress4=0x7f070013;
-        public static final int stress_descr1=0x7f070020;
-        public static final int stress_descr2=0x7f070021;
-        public static final int stress_descr3=0x7f070022;
-        public static final int stress_descr4=0x7f070023;
-        public static final int stress_reduction=0x7f07003d;
-        public static final int sweets_milk=0x7f070096;
-        public static final int there_is_no_custom_value=0x7f07004c;
-        public static final int there_is_no_ready_meal_found=0x7f07004e;
-        public static final int there_is_nothing_on_plate=0x7f070040;
-        public static final int today_water_statistic=0x7f070048;
-        public static final int track_statistic=0x7f07007e;
-        public static final int underweight=0x7f070068;
-        public static final int underweight_=0x7f07002c;
-        public static final int vegetables=0x7f070094;
-        public static final int water=0x7f07009d;
-        public static final int water_statistic=0x7f070080;
-        public static final int weight_g=0x7f07009b;
-        public static final int weight_kg=0x7f070078;
-        public static final int what_do_you_need=0x7f07005e;
-        public static final int which_describes_best_your_activity=0x7f07005f;
-        public static final int wise_advice=0x7f070085;
-        public static final int yearly=0x7f07008e;
+        public static final int _100g_contains=0x7f060098;
+        public static final int _1_4_prestaviteli=0x7f060007;
+        public static final int _1_4_prof_group=0x7f060002;
+        public static final int _1_6_prestaviteli=0x7f060008;
+        public static final int _1_6_prof_group=0x7f060003;
+        public static final int _1_9_prestaviteli=0x7f060009;
+        public static final int _1_9_prof_group=0x7f060004;
+        public static final int _1littre=0x7f06008b;
+        public static final int _250ml=0x7f060089;
+        public static final int _2_3_prestaviteli=0x7f06000a;
+        public static final int _2_3_prof_group=0x7f060005;
+        public static final int _2_5_prestaviteli=0x7f06000b;
+        public static final int _2_5_prof_group=0x7f060006;
+        public static final int _2littre=0x7f06008c;
+        public static final int _500ml=0x7f06008a;
+        public static final int about_bmi=0x7f060072;
+        public static final int add_to_current_meal=0x7f060091;
+        public static final int age=0x7f060074;
+        public static final int age_capital=0x7f060054;
+        public static final int app_name=0x7f060001;
+        public static final int back=0x7f060066;
+        public static final int bmi=0x7f06006e;
+        public static final int bmi_calculator=0x7f060073;
+        public static final int body_type_explanation=0x7f060045;
+        public static final int brain1=0x7f060014;
+        public static final int brain2=0x7f060015;
+        public static final int brain3=0x7f060016;
+        public static final int brain4=0x7f060017;
+        public static final int brain_descr1=0x7f060024;
+        public static final int brain_descr2=0x7f060025;
+        public static final int brain_descr3=0x7f060026;
+        public static final int brain_descr4=0x7f060027;
+        public static final int brain_work=0x7f06003a;
+        public static final int building_list=0x7f060037;
+        public static final int calculate_bmi=0x7f06007c;
+        public static final int calculate_my_bmi=0x7f06007d;
+        public static final int callories_consumption=0x7f06004d;
+        public static final int calories=0x7f06009a;
+        public static final int carbs=0x7f060058;
+        public static final int create_plate=0x7f06003f;
+        public static final int create_plate_before_saving=0x7f060042;
+        public static final int create_profile_please=0x7f060044;
+        public static final int daily=0x7f06008f;
+        public static final int drag_items_to_screen_center=0x7f060032;
+        public static final int drink_something=0x7f060047;
+        public static final int edit=0x7f060090;
+        public static final int energy=0x7f06003b;
+        public static final int energy1=0x7f060018;
+        public static final int energy2=0x7f060019;
+        public static final int energy3=0x7f06001a;
+        public static final int energy4=0x7f06001b;
+        public static final int energy_descr1=0x7f060028;
+        public static final int energy_descr2=0x7f060029;
+        public static final int energy_descr3=0x7f06002a;
+        public static final int energy_descr4=0x7f06002b;
+        public static final int energy_kkal=0x7f060055;
+        public static final int energy_table=0x7f06007b;
+        public static final int fat=0x7f060057;
+        public static final int fat1=0x7f06000c;
+        public static final int fat2=0x7f06000d;
+        public static final int fat3=0x7f06000e;
+        public static final int fat4=0x7f06000f;
+        public static final int fat_burning=0x7f06003c;
+        public static final int fat_descr1=0x7f06001c;
+        public static final int fat_descr2=0x7f06001d;
+        public static final int fat_descr3=0x7f06001e;
+        public static final int fat_descr4=0x7f06001f;
+        public static final int female=0x7f06005a;
+        public static final int finish=0x7f060071;
+        public static final int fruits=0x7f060095;
+        public static final int gender=0x7f060087;
+        public static final int group=0x7f060052;
+        public static final int healthy_weight_range=0x7f060070;
+        public static final int height_cm=0x7f060076;
+        public static final int hello=0x7f060000;
+        public static final int hint_eg_177cm=0x7f060077;
+        public static final int hint_eg_24=0x7f060075;
+        public static final int hint_eg_56kg=0x7f060079;
+        public static final int i=0x7f06009e;
+        public static final int iam_inactive=0x7f060060;
+        public static final int iam_inactive_description=0x7f060061;
+        public static final int iam_low_activity=0x7f060062;
+        public static final int iam_low_activity_description=0x7f060063;
+        public static final int iam_moderate=0x7f060064;
+        public static final int iam_moderate_description=0x7f060065;
+        public static final int ingridients_has_been_added=0x7f060051;
+        public static final int ingridients_list=0x7f060033;
+        public static final int input_volume_in_ml=0x7f060049;
+        public static final int kkal_statistic=0x7f06007f;
+        public static final int list_of_products=0x7f06003e;
+        public static final int list_of_products_has_been_saved=0x7f060041;
+        public static final int male=0x7f060059;
+        public static final int meat=0x7f060092;
+        public static final int monthly=0x7f06008d;
+        public static final int morbidly_obese=0x7f06006d;
+        public static final int morbidly_obese_=0x7f060031;
+        public static final int name=0x7f060086;
+        public static final int name_age_weight_arent_filled_properly=0x7f060046;
+        public static final int name_of_product_cannot_be_empty=0x7f06004f;
+        public static final int next=0x7f060067;
+        public static final int noraml_=0x7f06002d;
+        public static final int normal=0x7f060069;
+        public static final int nutrition=0x7f060082;
+        public static final int obese=0x7f06006b;
+        public static final int obese_=0x7f06002f;
+        public static final int overweight=0x7f06006a;
+        public static final int overweight_=0x7f06002e;
+        public static final int pa=0x7f060053;
+        public static final int pa_explanation=0x7f06005d;
+        public static final int pfc_statistic=0x7f060081;
+        public static final int plate_has_been_created=0x7f060043;
+        public static final int please_input_proper_value=0x7f06004a;
+        public static final int please_wait=0x7f060038;
+        public static final int populating_data=0x7f060039;
+        public static final int porridge=0x7f060093;
+        public static final int prof_group=0x7f06005b;
+        public static final int profile=0x7f060084;
+        public static final int progress=0x7f060083;
+        public static final int protein=0x7f060099;
+        public static final int protein_animal_g=0x7f060056;
+        public static final int ready_meals=0x7f060097;
+        public static final int recomended_kkal_intake_should_be=0x7f06006f;
+        public static final int representatives=0x7f06005c;
+        public static final int restriction_meal=0x7f060034;
+        public static final int restriction_plates_amount=0x7f06009c;
+        public static final int restriction_water=0x7f060035;
+        public static final int save_profile=0x7f060088;
+        public static final int saving=0x7f060036;
+        public static final int select_date=0x7f06009f;
+        public static final int set_proper_prot_carbs_fat=0x7f060050;
+        public static final int severely_obese=0x7f06006c;
+        public static final int severely_obese_=0x7f060030;
+        public static final int should_be_greater_than_0=0x7f06004b;
+        public static final int stay_wise=0x7f06007a;
+        public static final int stress1=0x7f060010;
+        public static final int stress2=0x7f060011;
+        public static final int stress3=0x7f060012;
+        public static final int stress4=0x7f060013;
+        public static final int stress_descr1=0x7f060020;
+        public static final int stress_descr2=0x7f060021;
+        public static final int stress_descr3=0x7f060022;
+        public static final int stress_descr4=0x7f060023;
+        public static final int stress_reduction=0x7f06003d;
+        public static final int sweets_milk=0x7f060096;
+        public static final int there_is_no_custom_value=0x7f06004c;
+        public static final int there_is_no_ready_meal_found=0x7f06004e;
+        public static final int there_is_nothing_on_plate=0x7f060040;
+        public static final int today_water_statistic=0x7f060048;
+        public static final int track_statistic=0x7f06007e;
+        public static final int underweight=0x7f060068;
+        public static final int underweight_=0x7f06002c;
+        public static final int vegetables=0x7f060094;
+        public static final int water=0x7f06009d;
+        public static final int water_statistic=0x7f060080;
+        public static final int weight_g=0x7f06009b;
+        public static final int weight_kg=0x7f060078;
+        public static final int what_do_you_need=0x7f06005e;
+        public static final int which_describes_best_your_activity=0x7f06005f;
+        public static final int wise_advice=0x7f060085;
+        public static final int yearly=0x7f06008e;
     }
     public static final class style {
         /** 
@@ -960,8 +962,8 @@ containing a value of this type.
            @see #BarGraph_orientation
          */
         public static final int[] BarGraph = {
-            0x7f010007, 0x7f010008, 0x7f010009, 0x7f01000a,
-            0x7f01000b, 0x7f01000c
+            0x7f010015, 0x7f010016, 0x7f010017, 0x7f010018,
+            0x7f010019, 0x7f01001a
         };
         /**
           <p>This symbol is the offset where the {@link com.progym.R.attr#barAxisColor}
@@ -1070,8 +1072,8 @@ containing a value of this type.
            @see #LineGraph_lineUseDip
          */
         public static final int[] LineGraph = {
-            0x7f010002, 0x7f010003, 0x7f010004, 0x7f010005,
-            0x7f010006
+            0x7f010010, 0x7f010011, 0x7f010012, 0x7f010013,
+            0x7f010014
         };
         /**
           <p>This symbol is the offset where the {@link com.progym.R.attr#lineAxisColor}
@@ -1162,7 +1164,7 @@ containing a value of this type.
            @see #PieGraph_pieSlicePadding
          */
         public static final int[] PieGraph = {
-            0x7f010000, 0x7f010001
+            0x7f01000e, 0x7f01000f
         };
         /**
           <p>This symbol is the offset where the {@link com.progym.R.attr#pieInnerCircleRatio}
@@ -1231,10 +1233,10 @@ containing a value of this type.
            @see #ProgressWheel_textSize
          */
         public static final int[] ProgressWheel = {
-            0x7f01000d, 0x7f01000e, 0x7f01000f, 0x7f010010,
-            0x7f010011, 0x7f010012, 0x7f010013, 0x7f010014,
-            0x7f010015, 0x7f010016, 0x7f010017, 0x7f010018,
-            0x7f010019, 0x7f01001a
+            0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003,
+            0x7f010004, 0x7f010005, 0x7f010006, 0x7f010007,
+            0x7f010008, 0x7f010009, 0x7f01000a, 0x7f01000b,
+            0x7f01000c, 0x7f01000d
         };
         /**
           <p>This symbol is the offset where the {@link com.progym.R.attr#barColor}

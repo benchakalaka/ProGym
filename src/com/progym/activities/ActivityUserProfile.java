@@ -1,15 +1,18 @@
 package com.progym.activities;
 
+import org.androidannotations.annotations.AfterTextChange;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.res.StringArrayRes;
+import org.androidannotations.annotations.res.StringRes;
 import org.apache.commons.lang3.StringUtils;
 
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,203 +29,226 @@ import com.progym.model.User;
 import com.progym.utils.DataBaseUtils;
 import com.progym.utils.Utils;
 
-@EActivity ( R.layout.activity_user_profile ) public class ActivityUserProfile extends Activity {
+@EActivity ( R.layout.activity_user_profile )
+public class ActivityUserProfile extends Activity {
 
-     @ViewById EditText       etUserName;
-     @ViewById EditText       etUserWeight;
-     @ViewById EditText       etUserAge;
-     @ViewById EditText       etUserHeight;
-     // @ViewById NDSpinner spinnerBodyType;
-     @ViewById NDSpinner      spinnerGender;
+	@ViewById TextView		twWeight;
+	@ViewById TextView		twHeight;
 
-     @ViewById Button         btnSave;
-     @ViewById Button         btnCancel;
+	@ViewById EditText		etUserName;
+	@ViewById EditText		etUserWeight;
+	@ViewById EditText		etUserAge;
+	@ViewById EditText		etUserHeight;
+	// @ViewById NDSpinner spinnerBodyType;
+	@ViewById NDSpinner		spinnerGender;
 
-     // @StringArrayRes String[] bodyTypes;
-     @StringArrayRes String[] genders;
+	@ViewById Button		btnSave;
+	@ViewById Button		btnCancel;
 
-     private User             userToSave;
+	@StringRes String		height_cm;
+	@StringRes String		weight_kg;
 
-     Dialog                   dialog;
+	// @StringArrayRes String[] bodyTypes;
+	@StringArrayRes String[]	genders;
 
-     @AfterViews void afterViews() {
-          dialog = new Dialog(ActivityUserProfile.this);
-          // tbAlarm.setChecked(appPref.isAlarmSet().get());
-          InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
-          imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+	private User			userToSave;
 
-          // BodyTypeAdapter bodyTypeAdapter = new BodyTypeAdapter(ActivityUserProfile.this, android.R.layout.simple_spinner_item, bodyTypes);
-          GenderAdapter genderAdpater = new GenderAdapter(ActivityUserProfile.this, android.R.layout.simple_spinner_item, genders);
-          spinnerGender.setAdapter(genderAdpater);
-          // spinnerBodyType.setAdapter(bodyTypeAdapter);
-          // dialog.setTitle(R.string.body_type_explanation);
-          // final DialogBodyTypeExplanation view = DialogBodyTypeExplanation_.build(ActivityUserProfile.this);
-          // dialog.setContentView(view);
-          // dialog.setCanceledOnTouchOutside(true);
-     }
+	Dialog				dialog;
 
-     @Click void btnCancel() {
-          onBackPressed();
-     }
+	@AfterViews void afterViews() {
+		dialog = new Dialog(ActivityUserProfile.this);
+		// tbAlarm.setChecked(appPref.isAlarmSet().get());
+		InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+		imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
 
-     @Override protected void onPause() {
-          super.onPause();
-          startActivity(new Intent(ActivityUserProfile.this, ActivityStart_.class));
-     }
+		// BodyTypeAdapter bodyTypeAdapter = new BodyTypeAdapter(ActivityUserProfile.this, android.R.layout.simple_spinner_item, bodyTypes);
+		GenderAdapter genderAdpater = new GenderAdapter(ActivityUserProfile.this, android.R.layout.simple_spinner_item, genders);
+		spinnerGender.setAdapter(genderAdpater);
+		// spinnerBodyType.setAdapter(bodyTypeAdapter);
+		// dialog.setTitle(R.string.body_type_explanation);
+		// final DialogBodyTypeExplanation view = DialogBodyTypeExplanation_.build(ActivityUserProfile.this);
+		// dialog.setContentView(view);
+		// dialog.setCanceledOnTouchOutside(true);
+	}
 
-     private void setUpUser() {
-          User u = DataBaseUtils.getCurrentUser();
-          if ( null != u ) {
-               etUserName.setText(u.name);
-               etUserAge.setText(String.valueOf(u.age));
-               // spinnerBodyType.setSelection(u.bodyType, false);
-               spinnerGender.setSelection(u.gender);
-               etUserWeight.setText(String.valueOf(u.weight));
-               etUserHeight.setText(String.valueOf(u.height));
-          } else {
-               etUserWeight.setText("");
-               etUserName.setText("");
-               etUserAge.setText("");
-               etUserHeight.setText("");
-               // spinnerBodyType.setSelection(0, false);
-               spinnerGender.setSelection(0);
-          }
-     }
+	@AfterTextChange void etUserWeight(Editable text) {
+		try {
+			twWeight.setText(weight_kg + "," + String.format("%.2f lbs", 2.2 * Double.valueOf(etUserWeight.getText().toString())));
+		} catch (Exception ex) {
+			twWeight.setText(weight_kg);
+		}
+	}
 
-     @Override protected void onResume() {
-          super.onResume();
-          setUpUser();
-          if ( null != dialog ) {
-               dialog.dismiss();
-          }
-     }
+	@AfterTextChange void etUserHeight(Editable text) {
+		try {
+			twHeight.setText(height_cm + "," + String.format("%.2f inches", Double.valueOf(etUserHeight.getText().toString())/2.54));
+		} catch (Exception ex) {
+			twWeight.setText(height_cm);
+		}
+	}
 
-     @Click void btnSave() {
-          userToSave = DataBaseUtils.getCurrentUser();
-          if ( null == userToSave ) {
-               userToSave = new User(getApplicationContext());
-          }
+	@Click void btnCancel() {
+		onBackPressed();
+	}
 
-          if ( !checkFields() ) {
-               Utils.showCustomToast(ActivityUserProfile.this, R.string.name_age_weight_arent_filled_properly, R.drawable.settings_warning);
-               return;
-          }
+	@Override protected void onPause() {
+		super.onPause();
+		startActivity(new Intent(ActivityUserProfile.this, ActivityStart_.class));
+	}
 
-          userToSave.name = etUserName.getText().toString();
-          userToSave.age = Integer.valueOf(etUserAge.getText().toString());
+	private void setUpUser() {
+		User u = DataBaseUtils.getCurrentUser();
+		if ( null != u ) {
+			etUserName.setText(u.name);
+			etUserAge.setText(String.valueOf(u.age));
+			// spinnerBodyType.setSelection(u.bodyType, false);
+			spinnerGender.setSelection(u.gender);
+			etUserWeight.setText(String.valueOf(u.weight));
+			etUserHeight.setText(String.valueOf(u.height));
+		} else {
+			etUserWeight.setText("");
+			etUserName.setText("");
+			etUserAge.setText("");
+			etUserHeight.setText("");
+			// spinnerBodyType.setSelection(0, false);
+			spinnerGender.setSelection(0);
+		}
+	}
 
-          userToSave.gender = spinnerGender.getSelectedItemPosition();
-          userToSave.height = Double.valueOf(etUserHeight.getText().toString());
-          userToSave.weight = Double.valueOf(etUserWeight.getText().toString());
-          // userToSave.bodyType = 0; spinnerBodyType.getSelectedItemPosition();
-          userToSave.save();
-          startActivity(new Intent(ActivityUserProfile.this, ActivityStart_.class));
-     }
+	@Override protected void onResume() {
+		super.onResume();
+		setUpUser();
+		if ( null != dialog ) {
+			dialog.dismiss();
+		}
+	}
 
-     private boolean checkFields() {
-          boolean result = true;
-          try {
-               int age = Integer.valueOf(etUserAge.getText().toString());
-               // Set limit of age
-               if ( age == 0 || age > 100 ) {
-                    result = false;
-               } else {
-                    userToSave.age = age;
-               }
-               if ( StringUtils.isBlank(etUserName.getText().toString()) ) {
-                    result = false;
-               }
+	@Click void btnSave() {
+		userToSave = DataBaseUtils.getCurrentUser();
+		if ( null == userToSave ) {
+			userToSave = new User(getApplicationContext());
+		}
 
-               if ( StringUtils.isBlank(etUserWeight.getText().toString()) ) {
-                    result = false;
-               }
+		if ( !checkFields() ) {
+			Utils.showCustomToast(ActivityUserProfile.this, R.string.name_age_weight_arent_filled_properly, R.drawable.settings_warning);
+			return;
+		}
 
-               if ( StringUtils.isBlank(etUserHeight.getText().toString()) ) {
-                    result = false;
-               }
-          } catch (Exception ex) {
-               ex.printStackTrace();
-               result = false;
-          }
+		userToSave.name = etUserName.getText().toString();
+		userToSave.age = Integer.valueOf(etUserAge.getText().toString());
 
-          return result;
-     }
+		userToSave.gender = spinnerGender.getSelectedItemPosition();
+		userToSave.height = Double.valueOf(etUserHeight.getText().toString());
+		userToSave.weight = Double.valueOf(etUserWeight.getText().toString());
+		// userToSave.bodyType = 0; spinnerBodyType.getSelectedItemPosition();
+		userToSave.save();
+		startActivity(new Intent(ActivityUserProfile.this, ActivityStart_.class));
+	}
 
-     // =================================================================================
-     // =================================================================================
-     // ADAPTERS BodyTypeAdapter
-     // =================================================================================
-     /*
-      * public class BodyTypeAdapter extends ArrayAdapter <String> {
-      * private final Activity context;
-      * String[] data = null;
-      * public BodyTypeAdapter ( Activity context , int resource , String[] data ) {
-      * super(context, resource, data);
-      * this.context = context;
-      * this.data = data;
-      * }
-      * @Override public View getView(int position, View convertView, ViewGroup parent) { // Ordinary view in Spinner, we use
-      * // android.R.layout.simple_spinner_item
-      * return super.getView(position, convertView, parent);
-      * }
-      * @Override public View getDropDownView(int position, View convertView, ViewGroup parent) { // This view starts when we click the spinner.
-      * View row = convertView;
-      * if ( row == null ) {
-      * LayoutInflater inflater = context.getLayoutInflater();
-      * row = inflater.inflate(R.layout.dropdown_bodytype_layout, parent, false);
-      * }
-      * ImageView bodyType = (ImageView) row.findViewById(R.id.imageIcon);
-      * TextView bodyTypeDescription = (TextView) row.findViewById(R.id.countryName);
-      * bodyTypeDescription.setText(data[position]);
-      * if ( position == 0 ) {
-      * bodyType.setBackgroundResource(R.drawable.ekto);
-      * } else if ( position == 1 ) {
-      * bodyType.setBackgroundResource(R.drawable.mezo);
-      * } else if ( position == 2 ) {
-      * bodyType.setBackgroundResource(R.drawable.endo);
-      * }
-      * return row;
-      * }
-      * }
-      */
-     // =================================================================================
-     // =================================================================================
-     // ADAPTERS GenderAdapter
-     // =================================================================================
-     public class GenderAdapter extends ArrayAdapter <String> {
-          private final Activity context;
-          String[]               data = null;
+	private boolean checkFields() {
+		boolean result = true;
+		try {
+			int age = Integer.valueOf(etUserAge.getText().toString());
+			// Set limit of age
+			if ( age == 0 || age > 100 ) {
+				result = false;
+			} else {
+				userToSave.age = age;
+			}
+			if ( StringUtils.isBlank(etUserName.getText().toString()) ) {
+				result = false;
+			}
 
-          public GenderAdapter ( Activity context , int resource , String[] data ) {
-               super(context, resource, data);
-               this.context = context;
-               this.data = data;
-          }
+			if ( StringUtils.isBlank(etUserWeight.getText().toString()) ) {
+				result = false;
+			}
 
-          @Override public View getView(int position, View convertView, ViewGroup parent) { // Ordinary view in Spinner, we use
-                                                                                            // android.R.layout.simple_spinner_item
-               return super.getView(position, convertView, parent);
-          }
+			if ( StringUtils.isBlank(etUserHeight.getText().toString()) ) {
+				result = false;
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			result = false;
+		}
 
-          @Override public View getDropDownView(int position, View convertView, ViewGroup parent) { // This view starts when we click the spinner.
-               View row = convertView;
-               if ( row == null ) {
-                    LayoutInflater inflater = context.getLayoutInflater();
-                    row = inflater.inflate(R.layout.dropdown_bodytype_layout, parent, false);
-               }
+		return result;
+	}
 
-               ImageView bodyType = (ImageView) row.findViewById(R.id.imageIcon);
-               TextView bodyTypeDescription = (TextView) row.findViewById(R.id.countryName);
-               bodyTypeDescription.setText(data[position]);
+	// =================================================================================
+	// =================================================================================
+	// ADAPTERS BodyTypeAdapter
+	// =================================================================================
+	/*
+	 * public class BodyTypeAdapter extends ArrayAdapter <String> {
+	 * private final Activity context;
+	 * String[] data = null;
+	 * public BodyTypeAdapter ( Activity context , int resource , String[] data ) {
+	 * super(context, resource, data);
+	 * this.context = context;
+	 * this.data = data;
+	 * }
+	 * @Override public View getView(int position, View convertView, ViewGroup parent) { // Ordinary view in Spinner, we use
+	 * // android.R.layout.simple_spinner_item
+	 * return super.getView(position, convertView, parent);
+	 * }
+	 * @Override public View getDropDownView(int position, View convertView, ViewGroup parent) { // This view starts when we click the spinner.
+	 * View row = convertView;
+	 * if ( row == null ) {
+	 * LayoutInflater inflater = context.getLayoutInflater();
+	 * row = inflater.inflate(R.layout.dropdown_bodytype_layout, parent, false);
+	 * }
+	 * ImageView bodyType = (ImageView) row.findViewById(R.id.imageIcon);
+	 * TextView bodyTypeDescription = (TextView) row.findViewById(R.id.countryName);
+	 * bodyTypeDescription.setText(data[position]);
+	 * if ( position == 0 ) {
+	 * bodyType.setBackgroundResource(R.drawable.ekto);
+	 * } else if ( position == 1 ) {
+	 * bodyType.setBackgroundResource(R.drawable.mezo);
+	 * } else if ( position == 2 ) {
+	 * bodyType.setBackgroundResource(R.drawable.endo);
+	 * }
+	 * return row;
+	 * }
+	 * }
+	 */
+	// =================================================================================
+	// =================================================================================
+	// ADAPTERS GenderAdapter
+	// =================================================================================
+	public class GenderAdapter extends ArrayAdapter <String> {
+		private final Activity	context;
+		String[]				data	= null;
 
-               if ( position == 0 ) {
-                    bodyType.setBackgroundResource(R.drawable.male);
-               } else if ( position == 1 ) {
-                    bodyType.setBackgroundResource(R.drawable.female);
-               }
+		public GenderAdapter ( Activity context , int resource , String[] data ) {
+			super(context, resource, data);
+			this.context = context;
+			this.data = data;
+		}
 
-               return row;
-          }
-     }
+		@Override public View getView(int position, View convertView, ViewGroup parent) { // Ordinary view in Spinner, we use
+																			// android.R.layout.simple_spinner_item
+			return super.getView(position, convertView, parent);
+		}
+
+		@Override public View getDropDownView(int position, View convertView, ViewGroup parent) { // This view starts when we click the spinner.
+			View row = convertView;
+			if ( row == null ) {
+				LayoutInflater inflater = context.getLayoutInflater();
+				row = inflater.inflate(R.layout.dropdown_bodytype_layout, parent, false);
+			}
+
+			ImageView bodyType = (ImageView) row.findViewById(R.id.imageIcon);
+			TextView bodyTypeDescription = (TextView) row.findViewById(R.id.countryName);
+			bodyTypeDescription.setText(data[position]);
+
+			if ( position == 0 ) {
+				bodyType.setBackgroundResource(R.drawable.male);
+			} else if ( position == 1 ) {
+				bodyType.setBackgroundResource(R.drawable.female);
+			}
+
+			return row;
+		}
+	}
 
 }

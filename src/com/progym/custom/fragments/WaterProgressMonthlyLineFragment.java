@@ -157,7 +157,7 @@ import com.progym.utils.Utils;
                          data[0] = new GraphViewData(1, shouldDrinkWaterMlPerDay);
                          data[1] = new GraphViewData(daysInMonth, shouldDrinkWaterMlPerDay);
 
-                         seriesShouldDrink = new GraphViewSeries("Normal", new GraphViewSeriesStyle(Color.rgb(90, 250, 00), 3), data);
+                         seriesShouldDrink = new GraphViewSeries("Normal for you", new GraphViewSeriesStyle(Color.rgb(90, 250, 00), 3), data);
                          // init "average" data
                          int averageWaterConsumedOnYaxis = 0;
                          for ( int i = 0; i < list.size(); i++ ) {

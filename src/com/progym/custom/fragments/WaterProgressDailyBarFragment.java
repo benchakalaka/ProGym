@@ -102,7 +102,7 @@ import com.progym.utils.Utils;
           Bar bar = new Bar();
           bar.setColor(resources.getColor(R.color.green_light));
           bar.setSelectedColor(resources.getColor(R.color.caldroid_white));
-          bar.setName("Norma");
+          bar.setName("Normal for you");
           bar.setValue((int) shouldDrink);
           bar.setValueString(String.format("%.2f L", (shouldDrink / 1000f)));
           aBars.add(bar);
@@ -120,7 +120,7 @@ import com.progym.utils.Utils;
 
                @Override public void onClick(int index) {
                     if ( 0 == index ) {
-                         Utils.showCustomToast(getActivity(), "Norma for you " + String.format("%.2f L per day", (shouldDrink / 1000f)), R.drawable.info);
+                         Utils.showCustomToast(getActivity(), "Normal for you " + String.format("%.2f L per day", (shouldDrink / 1000f)), R.drawable.info);
                     }
 
                     if ( 1 == index ) {
