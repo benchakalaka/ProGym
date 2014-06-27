@@ -64,7 +64,7 @@ import com.progym.utils.Utils;
                }
           }
 
-          // Set up ingridient database
+          // Set up ingridient database chrisybee88@gmail.com
           DataBaseUtils.setUpIngridientsDatabase(getApplicationContext());
      }
 
@@ -86,7 +86,7 @@ import com.progym.utils.Utils;
       * LinearLayout water module
       */
      @Click void llWater() {
-          llNutrition.startAnimation(fadeIn);
+          llWater.startAnimation(fadeIn);
           if ( null == DataBaseUtils.getCurrentUser() ) {
                Utils.showCustomToast(ActivityStart.this, R.string.create_profile_please, R.drawable.info);
                llProfile.startAnimation(shake);

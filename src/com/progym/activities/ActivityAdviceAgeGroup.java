@@ -20,6 +20,6 @@ import com.progym.R;
      @Click void llPAC() {
           llPAC.startAnimation(fade);
           startActivity(new Intent(ActivityAdviceAgeGroup.this, ActivityAdvicePacExplanation_.class));
-     }
+     } 
 
 }

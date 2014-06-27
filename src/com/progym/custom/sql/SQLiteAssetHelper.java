@@ -281,10 +281,6 @@ import android.util.Log;
           }
      }
 
-     @Override public final void onConfigure(SQLiteDatabase db) {
-          // not supported!
-     }
-
      @Override public final void onCreate(SQLiteDatabase db) {
           // do nothing - createOrOpenDatabase() is called in
           // getWritableDatabase() to handle database creation.

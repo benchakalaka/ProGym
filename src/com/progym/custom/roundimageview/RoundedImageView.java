@@ -19,21 +19,11 @@ import com.progym.R;
      public static final String       TAG                  = "RoundedImageView";
      public static final float        DEFAULT_RADIUS       = 0f;
      public static final float        DEFAULT_BORDER_WIDTH = 0f;
-     private static final ScaleType[] SCALE_TYPES          = {
-                                                           ScaleType.MATRIX,
-                                                           ScaleType.FIT_XY,
-                                                           ScaleType.FIT_START,
-                                                           ScaleType.FIT_CENTER,
-                                                           ScaleType.FIT_END,
-                                                           ScaleType.CENTER,
-                                                           ScaleType.CENTER_CROP,
-                                                           ScaleType.CENTER_INSIDE
-                                                           };
+     private static final ScaleType[] SCALE_TYPES          = { ScaleType.MATRIX, ScaleType.FIT_XY, ScaleType.FIT_START, ScaleType.FIT_CENTER, ScaleType.FIT_END, ScaleType.CENTER, ScaleType.CENTER_CROP, ScaleType.CENTER_INSIDE };
 
      private float                    cornerRadius         = DEFAULT_RADIUS;
      private float                    borderWidth          = DEFAULT_BORDER_WIDTH;
-     private ColorStateList           borderColor          =
-                                                                     ColorStateList.valueOf(RoundedDrawable.DEFAULT_BORDER_COLOR);
+     private ColorStateList           borderColor          = ColorStateList.valueOf(RoundedDrawable.DEFAULT_BORDER_COLOR);
      private boolean                  isOval               = false;
      private boolean                  mutateBackground     = false;
 
@@ -185,10 +175,6 @@ import com.progym.R;
           return RoundedDrawable.fromDrawable(d);
      }
 
-     @Override public void setBackground(Drawable background) {
-          setBackgroundDrawable(background);
-     }
-
      private void updateDrawableAttrs() {
           updateAttrs(mDrawable);
      }
@@ -206,12 +192,7 @@ import com.progym.R;
           if ( drawable == null ) { return; }
 
           if ( drawable instanceof RoundedDrawable ) {
-               ((RoundedDrawable) drawable)
-                         .setScaleType(mScaleType)
-                         .setCornerRadius(cornerRadius)
-                         .setBorderWidth(borderWidth)
-                         .setBorderColor(borderColor)
-                         .setOval(isOval);
+               ((RoundedDrawable) drawable).setScaleType(mScaleType).setCornerRadius(cornerRadius).setBorderWidth(borderWidth).setBorderColor(borderColor).setOval(isOval);
           } else if ( drawable instanceof LayerDrawable ) {
                // loop through layers to and set drawable attrs
                LayerDrawable ld = ((LayerDrawable) drawable);
@@ -275,8 +256,7 @@ import com.progym.R;
      public void setBorderColor(ColorStateList colors) {
           if ( borderColor.equals(colors) ) { return; }
 
-          borderColor =
-                    (colors != null) ? colors : ColorStateList.valueOf(RoundedDrawable.DEFAULT_BORDER_COLOR);
+          borderColor = (colors != null) ? colors : ColorStateList.valueOf(RoundedDrawable.DEFAULT_BORDER_COLOR);
           updateDrawableAttrs();
           updateBackgroundDrawableAttrs(false);
           if ( borderWidth > 0 ) {

@@ -226,7 +226,6 @@ import com.progym.utils.Utils;
 
                } catch (Exception ex) {
                     ex.printStackTrace();
-                    // TODO: replace with separate message for each fields
                     Utils.showCustomToast(getActivity(), R.string.set_proper_prot_carbs_fat, R.drawable.warning);
                     return;
                }

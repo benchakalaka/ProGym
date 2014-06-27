@@ -2,19 +2,19 @@
 <resources>
 
 	<string name="app_name">Healthy Way</string>
-	<string name="_1_4_prof_group">Workers mainly intellectual labor (very light physical activity)</string>
-	<string name="_1_6_prof_group">Workers employed light labor (light physical activity)</string>
-	<string name="_1_9_prof_group">Workers moderate severity labor (average physical activity)</string>
-	<string name="_2_3_prof_group">Workers in heavy physical labor (high physical activity)</string>
-	<string name="_2_5_prof_group">Workers especially hard physical labor (very high physical activity)</string>
-	<string name="_1_4_prestaviteli">Scientists\nHumanitarian specialties students\nIT managers\nSoftware developers\nAny inspectors\nTeachers\nLecturers\nManagers\nEmployees who working with control panels etc.</string>
+	<string name="_1_4_prof_group">Workers mainly intellectual labour (very light physical activity)</string>
+	<string name="_1_6_prof_group">Workers employed light labour (light physical activity)</string>
+	<string name="_1_9_prof_group">Workers moderate severity labour (average physical activity)</string>
+	<string name="_2_3_prof_group">Workers in heavy physical labour (high physical activity)</string>
+	<string name="_2_5_prof_group">Workers especially hard physical labour (very high physical activity)</string>
+	<string name="_1_4_prestaviteli">Scientists\nHumanitarian specialities students\nIT managers\nSoftware developers\nAny inspectors\nTeachers\nLecturers\nManagers\nEmployees who working with control panels etc.</string>
 	<string name="_1_6_prestaviteli">Drivers\nWorkers on any conveyors\nWeigher\nPackers\nSeamstresses\nElectronic industry workers\nAgronomists\nNurses/orderlies\nStaff communication\nThe service sector\nSales of manufactured goods etc.</string>
 	<string name="_1_9_prestaviteli">Fitters\nInstallers\nTuners\nMachinists\nDrillers\nDrivers excavators/bulldozers\nSurgeon\nTextile workers\nManufacturers\nRailroad workers\nMetallurgical blast-furnace operators\nWorkers in chemical plants etc.</string>
 	<string name="_2_3_prestaviteli">Construction workers\nAssistant drillers\nTunnellers\nCotton growers\nVast majority of the earthworks\nMilkmaids\nVegetable growers\nWoodworkers, etc.</string>
-	<string name="_2_5_prestaviteli">Machine operators\nHeavy planting work/harvesting period\nMiners\nReinforced concrete\nFellers\nMasons\nDiggers\nLoaders and other non-mechanized labor</string>
+	<string name="_2_5_prestaviteli">Machine operators\nHeavy planting work/harvesting period\nMiners\nReinforced concrete\nFellers\nMasons\nDiggers\nLoaders and other non-mechanized labour</string>
 
 	<string-array name="brain_ingridients_list1">
-		<item>Muesli</item>S
+		<item>Muesli</item>
 		<item>Dried apricots</item>
 		<item>Sardines</item>
 		<item>Almonds</item>
@@ -22,7 +22,7 @@
 	<string-array name="brain_ingridients_list2">
 		<item>Wild berries</item>
 		<item>Melon</item>
-		<item>Green papper</item>
+		<item>Green pepper</item>
 		<item>Broccoli</item>
 	</string-array>
 	<string-array name="brain_ingridients_list3">
@@ -48,7 +48,7 @@
 	</string-array>
 	<string-array name="fat_ingridients_list3">
 		<item>Cottage cheese or curd</item>
-		<item>Yogurt</item>
+		<item>Yoghurt</item>
 		<item>Skimmed milk</item>
 		<item>Cream Cheese</item>
 	</string-array>
@@ -56,7 +56,7 @@
 		<item>Watermelon</item>
 		<item>Tomatoes</item>
 		<item>Cucumbers</item>
-		<item>Sweet papper</item>
+		<item>Sweet pepper</item>
 	</string-array>
 	<string-array name="stress_ingridients_list1">
 		<item>Spinach</item>
@@ -96,7 +96,7 @@
 	</string-array>
 	<string-array name="energy_ingridients_list3">
 		<item>Carrots</item>
-		<item>Red papper</item>
+		<item>Red pepper</item>
 		<item>Arugula</item>
 		<item>Mango</item>
 	</string-array>
@@ -108,7 +108,7 @@
 	</string-array>
 
 	<string name="fat1">Protein</string>
-	<string name="fat2">Fiber</string>
+	<string name="fat2">Fibre</string>
 	<string name="fat3">Low-fat dairy products</string>
 	<string name="fat4">Water saturated products</string>
 	<string name="stress1">Potassium</string>
@@ -139,14 +139,34 @@
 	<string name="energy_descr2">Maintains a constant level of energy in your body</string>
 	<string name="energy_descr3">Enhances your resistance to viruses</string>
 	<string name="energy_descr4">Regulates the energy exchange in the body</string>
-	<string name="underweight_">less than 18.5</string>
-	<string name="noraml_">18.5&#8212;24.99</string>
-	<string name="overweight_">25&#8212;29.99</string>
-	<string name="obese_">30&#8212;35.99</string>
-	<string name="severely_obese_">36&#8212;39.99</string>
-	<string name="morbidly_obese_">more than 40</string>
+	<string name="underweight_">less than 18.5\nYou may simply be underweight because your diet isn\'t providing you with enough energy (calories). This can happen for a number of reasons. Stress or other emotional problems can sometimes cause a change in eating patterns that is hard to recognise. If diet is the cause of your low weight, changing to a healthy, balanced diet can help you achieve a healthy weight. There might be an underlying medical cause for your low weight, such as an over-active thyroid. Your GP or practice nurse can give help and advice.</string>
+	<string name="noraml_">18.5&#8212;24.99\nStaying at a healthy weight is one of the best things you can do for your health. It can help prevent serious health problems. Keep it up.
+But weight is only one part of your health. Even if you carry some extra weight, eating healthy foods and being more active can help you feel better, have more energy, and lower your risk for disease.</string>
+	<string name="overweight_">25&#8212;29.99\nOverweight refers to an individual weighing 10% or more. This light overweight could lead to some health problems, including:
+
+    \n&#8212;Heart disease.
+    \n&#8212;Stroke.
+    \n&#8212;High blood pressure.
+    \n&#8212;Type 2 diabetes.
+    \n&#8212;Sleep apnoea.
+		</string>
+	<string name="obese_">30&#8212;35.99\nThe fundamental cause of obesity is an energy imbalance between calories consumed and calories expended. Globally, there has been:
+    \n&#8212;An increased intake of energy-dense foods that are high in fat;
+    \n&#8212;An increase in physical inactivity due to the increasingly sedentary nature of many forms of work, changing modes of transportation, and increasing urbanization.
+     Overweight and obesity, as well as their related non-communicable diseases, are largely preventable. Making the healthier choice of foods and regular physical activity the easiest choice (accessible, available and affordable), and therefore preventing obesity.
+
+At the individual level, you can:
+
+    \n&#8212;Limit energy intake from total fats and sugars;
+    \n&#8212;Increase consumption of fruit and vegetables, as well as legumes, whole grains and nuts;
+    \n&#8212;Engage in regular physical activity (60 minutes a day for children and 150 minutes per week for adults).</string>
+	<string name="severely_obese_">36&#8212;39.99\nSevere obesity is generally caused by consuming more calories – particularly those in fatty and sugary foods – than you burn off through physical activity. The excess energy is then stored by the body as fat.
+Obesity is an increasingly common problem, because many modern lifestyles often promote eating excessive amounts of cheap, high-calorie food and spending a lot of time sitting at desks, on sofas or in cars.
+There are also some underlying health conditions that can occasionally contribute to weight gain, such as an under-active thyroid gland (hypothyroidism), although conditions such as this don’t usually cause weight problems if they are effectively controlled with medication. The best way to treat obesity is to eat a healthy, reduced-calorie diet and to exercise regularly.</string>
+	<string name="morbidly_obese_">more than 40\nMorbid obesity is a serious health condition that can interfere with basic physical functions such as breathing or walking. Those who are morbidly obese are at greater risk for illnesses including diabetes, high blood pressure, sleep apnoea, Gastroesophageal reflux disease (GERD), gallstones, osteoarthritis, heart disease, and cancer.
+Morbid obesity is diagnosed by determining Body Mass Index (BMI). An individual is considered morbidly obese if he or she is 100 pounds over his/her ideal body weight, has a BMI of 40 or more and experiencing obesity-related health conditions, such as high blood pressure or diabetes.</string>
 	<string name="drag_items_to_screen_center">Drag one of the items to the center of the screen</string>
-	<string name="ingridients_list">List of ingridients</string>
+	<string name="ingridients_list">List of ingredients</string>
 	<string name="restriction_meal">You can log up to 25 items per meal</string>
 	<string name="restriction_water">You can log up to 25 water items per day</string>
 
@@ -178,11 +198,11 @@
 	<string name="please_input_proper_value">Please input proper value</string>
 	<string name="should_be_greater_than_0">Value should be greater 0</string>
 	<string name="there_is_no_custom_value">There is no custom water value found</string>
-	<string name="callories_consumption">Callories consumption</string>
+	<string name="callories_consumption">Calories consumption</string>
 	<string name="there_is_no_ready_meal_found">There is no ready meals found</string>
 	<string name="name_of_product_cannot_be_empty">Name of product cannot be empty</string>
 	<string name="set_proper_prot_carbs_fat">Set proper weight,protein,carbs,fat,kkal</string>
-	<string name="ingridients_has_been_added">List of ingridients has been added to current meal</string>
+	<string name="ingridients_has_been_added">List of ingredients has been added to current meal</string>
 	<string name="group">Group</string>
 	<string name="pa">PA</string>
 	<string name="age_capital">AGE</string>
@@ -194,7 +214,7 @@
 	<string name="female">Female</string>
 	<string name="prof_group">Professional group</string>
 	<string name="representatives">Representatives of the group</string>
-	<string name="pa_explanation">PA (Physical Activity Coefficeint) - physical activity is important for managing body weight by both older and small persons who might miss key micronutrients when consuming restrictive diets. Further, physical activity results in the anabolic and regulatory processes in skeletal muscle, develops cardiovascular system improvements, improves blood lipoprotein profiles in older adults, and leads to increased expression of many beneficial enzymes and enzyme systems in diverse organs and organ systems from bones and muscles to brain.</string>
+	<string name="pa_explanation">PA (Physical Activity Coefficient) - physical activity is important for managing body weight by both older and small persons who might miss key micro-nutrients when consuming restrictive diets. Further, physical activity results in the anabolic and regulatory processes in skeletal muscle, develops cardiovascular system improvements, improves blood lipoprotein profiles in older adults, and leads to increased expression of many beneficial enzymes and enzyme systems in diverse organs and organ systems from bones and muscles to brain.</string>
 	<string name="what_do_you_need">What do you need?</string>
 	<string name="which_describes_best_your_activity">Which of the below best describes your activity levels? (click the circle on the right)</string>
 	<string name="iam_inactive">I am inactive</string>
@@ -219,9 +239,9 @@
 	<string name="bmi_calculator">BMI (Body Mass Index) calculator</string>
 	<string name="age">Age</string>
 	<string name="hint_eg_24"></string>
-	<string name="height_cm">Height cm</string>
+	<string name="height_cm">Height</string>
 	<string name="hint_eg_177cm">eg. 177,5cm</string>
-	<string name="weight_kg">Weight kg</string>
+	<string name="weight_kg">Weight</string>
 	<string name="hint_eg_56kg">eg. 56kg</string>
 	<string name="stay_wise">Stay wise, read wise advice</string>
 	<string name="energy_table">Energy table</string>
@@ -240,8 +260,8 @@
 	<string name="save_profile">Save profile</string>
 	<string name="_250ml">250 ml</string>
 	<string name="_500ml">500 ml</string>
-	<string name="_1littre">1 littre</string>
-	<string name="_2littre">2 littres</string>
+	<string name="_1littre">1 litre</string>
+	<string name="_2littre">2 litres</string>
 	<string name="monthly">Monthly</string>
 	<string name="yearly">Yearly</string>
 	<string name="daily">Daily</string>

@@ -445,25 +445,6 @@ containing a value of this type.
         public static final int radio_on=0x7f02003c;
         public static final int radio_selector=0x7f02003d;
         public static final int ready=0x7f02003e;
-<<<<<<< HEAD
-        public static final int red_border=0x7f02003f;
-        public static final int red_border_gray_bg=0x7f020040;
-        public static final int right=0x7f020041;
-        public static final int right_arrow=0x7f020042;
-        public static final int round_border_gray_gradient=0x7f020043;
-        public static final int save=0x7f020044;
-        public static final int settings_warning=0x7f020045;
-        public static final int speedometr=0x7f020046;
-        public static final int stress=0x7f020047;
-        public static final int sweets_milk=0x7f020048;
-        public static final int unhappy=0x7f020049;
-        public static final int user=0x7f02004a;
-        public static final int vegetables=0x7f02004b;
-        public static final int warning=0x7f02004c;
-        public static final int water_managment=0x7f02004d;
-        public static final int water_progress=0x7f02004e;
-        public static final int water_statistics=0x7f02004f;
-=======
         public static final int ready_meal=0x7f02003f;
         public static final int red_border=0x7f020040;
         public static final int red_border_gray_bg=0x7f020041;
@@ -482,7 +463,6 @@ containing a value of this type.
         public static final int water_managment=0x7f02004e;
         public static final int water_progress=0x7f02004f;
         public static final int water_statistics=0x7f020050;
->>>>>>> develop
     }
     public static final class id {
         public static final int RelativeLayout01=0x7f0700bd;

@@ -14,7 +14,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-    
+
 import com.progym.R;
 import com.progym.R.color;
 import com.progym.constants.GlobalConstants;
@@ -30,7 +30,7 @@ import com.progym.model.WaterConsumed;
 import com.progym.utils.DataBaseUtils;
 import com.progym.utils.Utils;
 import com.roomorama.caldroid.CaldroidFragment;
-  
+
 @EActivity ( R.layout.water_progress_activity ) public class ActivityWaterProgress extends ActivityAbstractProgress implements IProgressActivity {
 
      @Click void twDaily() {
