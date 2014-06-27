@@ -29,7 +29,7 @@ import com.progym.interfaces.ISuperActivity;
      @ViewById ImageView                                  ivNextDay;
      @ViewById ImageView                                  ivPrevDay;
      @ViewById TextView                                   twCurrentDate;
-
+ 
      @AnimationRes ( R.anim.push_left_in ) Animation      leftIn;
      @AnimationRes ( R.anim.push_left_out ) Animation     leftOut;
      @AnimationRes ( R.anim.push_right_in ) Animation     rightIn;

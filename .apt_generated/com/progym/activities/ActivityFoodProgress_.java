@@ -83,9 +83,24 @@ public final class ActivityFoodProgress_
     @Override
     public void onViewChanged(HasViews hasViews) {
         twDaily = ((TextView) hasViews.findViewById(id.twDaily));
-        twYearly = ((TextView) hasViews.findViewById(id.twYearly));
         twMonthly = ((TextView) hasViews.findViewById(id.twMonthly));
         viewPager = ((NonSwipeableViewPager) hasViews.findViewById(id.viewPager));
+        twYearly = ((TextView) hasViews.findViewById(id.twYearly));
+        {
+            View view = hasViews.findViewById(id.twMonthly);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        ActivityFoodProgress_.this.twMonthly();
+                    }
+
+                }
+                );
+            }
+        }
         {
             View view = hasViews.findViewById(id.twDaily);
             if (view!= null) {
@@ -110,21 +125,6 @@ public final class ActivityFoodProgress_
                     @Override
                     public void onClick(View view) {
                         ActivityFoodProgress_.this.twYearly();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.twMonthly);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        ActivityFoodProgress_.this.twMonthly();
                     }
 
                 }

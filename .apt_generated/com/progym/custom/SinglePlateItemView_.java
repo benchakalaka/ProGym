@@ -67,8 +67,8 @@ public final class SinglePlateItemView_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        ivVolumeImage = ((ImageView) hasViews.findViewById(id.ivVolumeImage));
         twIngridientsAmount = ((TextView) hasViews.findViewById(id.twIngridientsAmount));
+        ivVolumeImage = ((ImageView) hasViews.findViewById(id.ivVolumeImage));
     }
 
 }

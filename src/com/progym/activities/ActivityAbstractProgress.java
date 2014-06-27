@@ -17,7 +17,7 @@ import com.progym.R.drawable;
 import com.progym.custom.CaldroidFragmentCustom;
 import com.progym.custom.NonSwipeableViewPager;
 import com.progym.interfaces.IProgressActivity;
-
+ 
 @EBean public abstract class ActivityAbstractProgress extends FragmentActivity implements IProgressActivity {
      static Date                                          SELECTED_DATE        = new Date();
      CaldroidFragmentCustom                               calendar;

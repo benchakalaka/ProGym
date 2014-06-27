@@ -10,14 +10,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import com.progym.R.array;
 import com.progym.R.id;
 import com.progym.R.layout;
+import com.progym.R.string;
 import com.progym.custom.NDSpinner;
 import org.androidannotations.api.view.HasViews;
 import org.androidannotations.api.view.OnViewChangedListener;
@@ -42,6 +46,8 @@ public final class ActivityUserProfile_
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
         Resources resources_ = this.getResources();
+        weight_kg = resources_.getString(string.weight_kg);
+        height_cm = resources_.getString(string.height_cm);
         genders = resources_.getStringArray(array.genders);
     }
 
@@ -77,13 +83,15 @@ public final class ActivityUserProfile_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        etUserWeight = ((EditText) hasViews.findViewById(id.etUserWeight));
-        spinnerGender = ((NDSpinner) hasViews.findViewById(id.spinnerGender));
-        btnCancel = ((Button) hasViews.findViewById(id.btnCancel));
         etUserAge = ((EditText) hasViews.findViewById(id.etUserAge));
-        btnSave = ((Button) hasViews.findViewById(id.btnSave));
         etUserName = ((EditText) hasViews.findViewById(id.etUserName));
+        spinnerGender = ((NDSpinner) hasViews.findViewById(id.spinnerGender));
         etUserHeight = ((EditText) hasViews.findViewById(id.etUserHeight));
+        twWeight = ((TextView) hasViews.findViewById(id.twWeight));
+        btnCancel = ((Button) hasViews.findViewById(id.btnCancel));
+        twHeight = ((TextView) hasViews.findViewById(id.twHeight));
+        etUserWeight = ((EditText) hasViews.findViewById(id.etUserWeight));
+        btnSave = ((Button) hasViews.findViewById(id.btnSave));
         {
             View view = hasViews.findViewById(id.btnCancel);
             if (view!= null) {
@@ -108,6 +116,52 @@ public final class ActivityUserProfile_
                     @Override
                     public void onClick(View view) {
                         ActivityUserProfile_.this.btnSave();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            final TextView view = ((TextView) hasViews.findViewById(id.etUserHeight));
+            if (view!= null) {
+                view.addTextChangedListener(new TextWatcher() {
+
+
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        ActivityUserProfile_.this.etUserHeight(s);
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            final TextView view = ((TextView) hasViews.findViewById(id.etUserWeight));
+            if (view!= null) {
+                view.addTextChangedListener(new TextWatcher() {
+
+
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        ActivityUserProfile_.this.etUserWeight(s);
                     }
 
                 }

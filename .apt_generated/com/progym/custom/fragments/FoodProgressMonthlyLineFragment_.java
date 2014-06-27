@@ -53,12 +53,12 @@ public final class FoodProgressMonthlyLineFragment_
 
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
+        rightOut = AnimationUtils.loadAnimation(getActivity(), anim.push_right_out);
         fadeOut = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
         fadeIn = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
         rightIn = AnimationUtils.loadAnimation(getActivity(), anim.push_right_in);
-        leftOut = AnimationUtils.loadAnimation(getActivity(), anim.push_left_out);
         leftIn = AnimationUtils.loadAnimation(getActivity(), anim.push_left_in);
-        rightOut = AnimationUtils.loadAnimation(getActivity(), anim.push_right_out);
+        leftOut = AnimationUtils.loadAnimation(getActivity(), anim.push_left_out);
     }
 
     @Override
@@ -73,24 +73,9 @@ public final class FoodProgressMonthlyLineFragment_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        ivPrevYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivPrevYear));
-        rlRootGraphLayout = ((RelativeLayout) hasViews.findViewById(com.progym.R.id.rlRootGraphLayout));
         ivNextYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivNextYear));
-        {
-            View view = hasViews.findViewById(com.progym.R.id.ivPrevYear);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        FoodProgressMonthlyLineFragment_.this.ivPrevYear();
-                    }
-
-                }
-                );
-            }
-        }
+        rlRootGraphLayout = ((RelativeLayout) hasViews.findViewById(com.progym.R.id.rlRootGraphLayout));
+        ivPrevYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivPrevYear));
         {
             View view = hasViews.findViewById(com.progym.R.id.ivNextYear);
             if (view!= null) {
@@ -100,6 +85,21 @@ public final class FoodProgressMonthlyLineFragment_
                     @Override
                     public void onClick(View view) {
                         FoodProgressMonthlyLineFragment_.this.ivNextYear();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(com.progym.R.id.ivPrevYear);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        FoodProgressMonthlyLineFragment_.this.ivPrevYear();
                     }
 
                 }

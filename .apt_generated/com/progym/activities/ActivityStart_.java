@@ -41,13 +41,13 @@ public final class ActivityStart_
 
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
-        leftIn2 = AnimationUtils.loadAnimation(this, anim.push_left_in);
         shake = AnimationUtils.loadAnimation(this, anim.shake);
+        leftIn1 = AnimationUtils.loadAnimation(this, anim.push_left_in);
+        leftIn2 = AnimationUtils.loadAnimation(this, anim.push_left_in);
         leftIn3 = AnimationUtils.loadAnimation(this, anim.push_left_in);
         fadeIn = AnimationUtils.loadAnimation(this, anim.fadein);
-        leftIn1 = AnimationUtils.loadAnimation(this, anim.push_left_in);
-        leftIn0 = AnimationUtils.loadAnimation(this, anim.push_left_in);
         leftIn4 = AnimationUtils.loadAnimation(this, anim.push_left_in);
+        leftIn0 = AnimationUtils.loadAnimation(this, anim.push_left_in);
     }
 
     @Override
@@ -90,11 +90,26 @@ public final class ActivityStart_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        llAdvice = ((LinearLayout) hasViews.findViewById(id.llAdvice));
-        llProfile = ((LinearLayout) hasViews.findViewById(id.llProfile));
-        llNutrition = ((LinearLayout) hasViews.findViewById(id.llNutrition));
         llProgress = ((LinearLayout) hasViews.findViewById(id.llProgress));
+        llProfile = ((LinearLayout) hasViews.findViewById(id.llProfile));
+        llAdvice = ((LinearLayout) hasViews.findViewById(id.llAdvice));
         llWater = ((LinearLayout) hasViews.findViewById(id.llWater));
+        llNutrition = ((LinearLayout) hasViews.findViewById(id.llNutrition));
+        {
+            View view = hasViews.findViewById(id.llNutrition);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        ActivityStart_.this.llNutrition();
+                    }
+
+                }
+                );
+            }
+        }
         {
             View view = hasViews.findViewById(id.llProgress);
             if (view!= null) {
@@ -111,14 +126,14 @@ public final class ActivityStart_
             }
         }
         {
-            View view = hasViews.findViewById(id.llNutrition);
+            View view = hasViews.findViewById(id.llAdvice);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        ActivityStart_.this.llNutrition();
+                        ActivityStart_.this.llAdvice();
                     }
 
                 }
@@ -149,21 +164,6 @@ public final class ActivityStart_
                     @Override
                     public void onClick(View view) {
                         ActivityStart_.this.llWater();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.llAdvice);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        ActivityStart_.this.llAdvice();
                     }
 
                 }

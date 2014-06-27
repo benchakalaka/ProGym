@@ -56,9 +56,9 @@ public final class WaterProgressMonthlyLineFragment_
         fadeOut = AnimationUtils.loadAnimation(getActivity(), anim.fadeout);
         leftIn = AnimationUtils.loadAnimation(getActivity(), anim.push_left_in);
         rightIn = AnimationUtils.loadAnimation(getActivity(), anim.push_right_in);
+        fadeIn = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
         leftOut = AnimationUtils.loadAnimation(getActivity(), anim.push_left_out);
         rightOut = AnimationUtils.loadAnimation(getActivity(), anim.push_right_out);
-        fadeIn = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
     }
 
     @Override

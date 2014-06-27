@@ -55,12 +55,12 @@ public final class FoodProgressDailyPieFragment_
 
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
-        fadeOut = AnimationUtils.loadAnimation(getActivity(), anim.fadeout);
-        leftOut = AnimationUtils.loadAnimation(getActivity(), anim.push_left_out);
-        rightIn = AnimationUtils.loadAnimation(getActivity(), anim.push_right_in);
         rightOut = AnimationUtils.loadAnimation(getActivity(), anim.push_right_out);
         fadeIn = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
         leftIn = AnimationUtils.loadAnimation(getActivity(), anim.push_left_in);
+        rightIn = AnimationUtils.loadAnimation(getActivity(), anim.push_right_in);
+        fadeOut = AnimationUtils.loadAnimation(getActivity(), anim.fadeout);
+        leftOut = AnimationUtils.loadAnimation(getActivity(), anim.push_left_out);
     }
 
     @Override
@@ -75,14 +75,14 @@ public final class FoodProgressDailyPieFragment_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        ivPrevYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivPrevYear));
         twCalories = ((TextView) hasViews.findViewById(com.progym.R.id.twCalories));
-        rlRootDailyBar = ((RelativeLayout) hasViews.findViewById(com.progym.R.id.rlRootDailyBar));
-        twCurrentDay = ((TextView) hasViews.findViewById(com.progym.R.id.twCurrentDay));
-        pieGraphFoodStats = ((PieGraph) hasViews.findViewById(com.progym.R.id.pieGraphFoodStats));
-        twFat = ((TextView) hasViews.findViewById(com.progym.R.id.twFat));
-        twProtein = ((TextView) hasViews.findViewById(com.progym.R.id.twProtein));
         ivNextYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivNextYear));
+        rlRootDailyBar = ((RelativeLayout) hasViews.findViewById(com.progym.R.id.rlRootDailyBar));
+        twFat = ((TextView) hasViews.findViewById(com.progym.R.id.twFat));
+        pieGraphFoodStats = ((PieGraph) hasViews.findViewById(com.progym.R.id.pieGraphFoodStats));
+        twCurrentDay = ((TextView) hasViews.findViewById(com.progym.R.id.twCurrentDay));
+        ivPrevYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivPrevYear));
+        twProtein = ((TextView) hasViews.findViewById(com.progym.R.id.twProtein));
         twCarbs = ((TextView) hasViews.findViewById(com.progym.R.id.twCarbs));
         {
             View view = hasViews.findViewById(com.progym.R.id.ivNextYear);

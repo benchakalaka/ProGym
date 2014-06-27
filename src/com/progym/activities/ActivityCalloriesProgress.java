@@ -13,7 +13,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.widget.TextView;
-
+   
 import com.progym.R;
 import com.progym.R.color;
 import com.progym.R.drawable;
@@ -23,7 +23,7 @@ import com.progym.custom.fragments.CalloriesProgressMonthlyLineFragment_;
 import com.progym.custom.fragments.CalloriesProgressYearlyLineFragment;
 import com.progym.custom.fragments.CalloriesProgressYearlyLineFragment_;
 import com.progym.interfaces.IProgressActivity;
-
+ 
 @EActivity ( R.layout.callories_progress_activity ) public class ActivityCalloriesProgress extends FragmentActivity implements IProgressActivity {
 
      static Date                            SELECTED_DATE = new Date();

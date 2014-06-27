@@ -56,11 +56,11 @@ public final class WaterProgressDailyBarFragment_
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
         fadeIn = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
-        leftIn = AnimationUtils.loadAnimation(getActivity(), anim.push_left_in);
         leftOut = AnimationUtils.loadAnimation(getActivity(), anim.push_left_out);
+        rightIn = AnimationUtils.loadAnimation(getActivity(), anim.push_right_in);
         fadeOut = AnimationUtils.loadAnimation(getActivity(), anim.fadeout);
         rightOut = AnimationUtils.loadAnimation(getActivity(), anim.push_right_out);
-        rightIn = AnimationUtils.loadAnimation(getActivity(), anim.push_right_in);
+        leftIn = AnimationUtils.loadAnimation(getActivity(), anim.push_left_in);
     }
 
     @Override
@@ -75,26 +75,11 @@ public final class WaterProgressDailyBarFragment_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        twCurrentDay = ((TextView) hasViews.findViewById(com.progym.R.id.twCurrentDay));
         ivPrevYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivPrevYear));
+        twCurrentDay = ((TextView) hasViews.findViewById(com.progym.R.id.twCurrentDay));
         bargraph = ((BarGraph) hasViews.findViewById(com.progym.R.id.bargraph));
         ivNextYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivNextYear));
         rlRootDailyBar = ((RelativeLayout) hasViews.findViewById(com.progym.R.id.rlRootDailyBar));
-        {
-            View view = hasViews.findViewById(com.progym.R.id.ivNextYear);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        WaterProgressDailyBarFragment_.this.ivNextYear();
-                    }
-
-                }
-                );
-            }
-        }
         {
             View view = hasViews.findViewById(com.progym.R.id.ivPrevYear);
             if (view!= null) {
@@ -104,6 +89,21 @@ public final class WaterProgressDailyBarFragment_
                     @Override
                     public void onClick(View view) {
                         WaterProgressDailyBarFragment_.this.ivPrevYear();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(com.progym.R.id.ivNextYear);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        WaterProgressDailyBarFragment_.this.ivNextYear();
                     }
 
                 }

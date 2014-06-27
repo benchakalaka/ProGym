@@ -76,10 +76,10 @@ public final class ActivityChooseActivityBMI_
     @Override
     public void onViewChanged(HasViews hasViews) {
         rbModerate = ((RadioButton) hasViews.findViewById(id.rbModerate));
-        btnNext = ((Button) hasViews.findViewById(id.btnNext));
         btnBack = ((Button) hasViews.findViewById(id.btnBack));
-        rbInactive = ((RadioButton) hasViews.findViewById(id.rbInactive));
+        btnNext = ((Button) hasViews.findViewById(id.btnNext));
         rbLow = ((RadioButton) hasViews.findViewById(id.rbLow));
+        rbInactive = ((RadioButton) hasViews.findViewById(id.rbInactive));
         {
             View view = hasViews.findViewById(id.btnBack);
             if (view!= null) {

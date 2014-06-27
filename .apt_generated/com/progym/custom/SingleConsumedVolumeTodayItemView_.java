@@ -67,9 +67,9 @@ public final class SingleConsumedVolumeTodayItemView_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        ivVolumeImage = ((ImageView) hasViews.findViewById(id.ivVolumeImage));
         twTime = ((TextView) hasViews.findViewById(id.twTime));
         twWaterVolume = ((TextView) hasViews.findViewById(id.twWaterVolume));
+        ivVolumeImage = ((ImageView) hasViews.findViewById(id.ivVolumeImage));
     }
 
 }

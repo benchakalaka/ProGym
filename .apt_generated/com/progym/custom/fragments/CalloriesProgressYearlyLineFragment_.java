@@ -54,11 +54,11 @@ public final class CalloriesProgressYearlyLineFragment_
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
         leftIn = AnimationUtils.loadAnimation(getActivity(), anim.push_left_in);
+        leftOut = AnimationUtils.loadAnimation(getActivity(), anim.push_left_out);
         fadeOut = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
-        rightOut = AnimationUtils.loadAnimation(getActivity(), anim.push_right_out);
         rightIn = AnimationUtils.loadAnimation(getActivity(), anim.push_right_in);
         fadeIn = AnimationUtils.loadAnimation(getActivity(), anim.fadein);
-        leftOut = AnimationUtils.loadAnimation(getActivity(), anim.push_left_out);
+        rightOut = AnimationUtils.loadAnimation(getActivity(), anim.push_right_out);
     }
 
     @Override
@@ -73,24 +73,9 @@ public final class CalloriesProgressYearlyLineFragment_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        ivNextYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivNextYear));
         ivPrevYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivPrevYear));
         rlRootGraphLayout = ((RelativeLayout) hasViews.findViewById(com.progym.R.id.rlRootGraphLayout));
-        {
-            View view = hasViews.findViewById(com.progym.R.id.ivPrevYear);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CalloriesProgressYearlyLineFragment_.this.ivPrevYear();
-                    }
-
-                }
-                );
-            }
-        }
+        ivNextYear = ((ImageView) hasViews.findViewById(com.progym.R.id.ivNextYear));
         {
             View view = hasViews.findViewById(com.progym.R.id.ivNextYear);
             if (view!= null) {
@@ -100,6 +85,21 @@ public final class CalloriesProgressYearlyLineFragment_
                     @Override
                     public void onClick(View view) {
                         CalloriesProgressYearlyLineFragment_.this.ivNextYear();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(com.progym.R.id.ivPrevYear);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CalloriesProgressYearlyLineFragment_.this.ivPrevYear();
                     }
 
                 }
